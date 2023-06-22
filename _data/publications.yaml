@@ -1,7 +1,7 @@
 papers:
   - title: "Diffusion Probabilistic Models for Structured Node Classification"
     authors: "Hyosoon Jang, <b>Seonghyun Park</b>, Sangwoo Mo, Sungsoo Ahn"
-    # venue: "ICWSM'22: International AAAI Conference on Web and Social Media. 2022."
+    venue: "ICML'23: Workshop on Structured Probabilistic Inference & Generative Modeling. 2023."
     paper_pdf: "/assets/publications/23_DPMSNC.pdf"
     selected: y
 
