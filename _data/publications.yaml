@@ -1,9 +1,15 @@
 papers:
   - title: "Diffusion Probabilistic Models for Structured Node Classification"
     authors: "Hyosoon Jang, <b>Seonghyun Park</b>, Sangwoo Mo, Sungsoo Ahn"
-    venue: "ICML 2023, Workshop on Structured Probabilistic Inference & Generative Modeling"
+    # venue: "ICML 2023, Workshop on Structured Probabilistic Inference & Generative Modeling"
+    venue: "NIPS 2023"
     paper_pdf: "/assets/publications/23_ICML_workshop_DPMSNC.pdf"
     selected: y
+
+  - title: "Non-backtracking Graph Neural Networks"
+    authors: "<b>Seonghyun Park</b><sup>‡</sup>, Narae Ryu<sup>‡</sup>, Gahee Kim, Dongyeop Woo, Se-Young Yun, Sungsoo Ahn"
+    venue: "Under review"
+    paper_pdf: "/assets/publications/23_NBA-GNN_preprint.pdf"
 
     # - title: "Engaging Politically Diverse Audiences on Social Media"
     #   authors: "<b>Martin Saveski</b>, Doug Beeferman, David McClure, Deb Roy"
