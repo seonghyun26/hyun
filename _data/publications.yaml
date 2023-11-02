@@ -1,14 +1,14 @@
 papers:
   - title: "Non-backtracking Graph Neural Networks"
-    authors: "<b>Seonghyun Park</b><sup>‡</sup>, Narae Ryu<sup>‡</sup>, Gahee Kim, Dongyeop Woo, Se-Young Yun, Sungsoo Ahn"
-    venue: "Under review"
+    authors: "<b>Seonghyun Park</b><sup>†</sup>, Narae Ryu<sup>†</sup>, Gahee Kim, Dongyeop Woo, Se-Young Yun</b><sup>‡</sup>, Sungsoo Ahn</b><sup>‡</sup>"
+    venue: "NeurIPS 2023, Workshop on New Frontiers in Graph Learning (GLFrontiers)"
     paper_pdf: "/assets/publications/23_NBA-GNN_preprint.pdf"
     selected: y
 
   - title: "Diffusion Probabilistic Models for Structured Node Classification"
     authors: "Hyosoon Jang, <b>Seonghyun Park</b>, Sangwoo Mo, Sungsoo Ahn"
     # venue: "ICML 2023, Workshop on Structured Probabilistic Inference & Generative Modeling"
-    venue: "NIPS 2023"
+    venue: "NeurIPS 2023"
     paper_pdf: "/assets/publications/23_ICML_workshop_DPMSNC.pdf"
     selected: y
 
