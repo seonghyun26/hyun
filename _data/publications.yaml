@@ -1,9 +1,9 @@
 papers:
-- title: "Collective Variable Free Transition Path Sampling with Generative Flow Network"
+  - title: "Collective Variable Free Transition Path Sampling with Generative Flow Network"
     authors: "Kiyoung Seong, <b>Seonghyun Park</b>, Seonghwan Kim, Woo Youn Kim, Sungsoo Ahn"
     venue: "Preprint, Under review"
     paper_pdf: "/assets/publications/24Preprint_TPS_GFlow.pdf"
-    poster: "https://kiyoung98.github.io/tps-gfn/"
+    page: "https://kiyoung98.github.io/tps-gfn/"
     selected: y
 
   - title: "Non-backtracking Graph Neural Networks"
