@@ -1,14 +1,21 @@
 papers:
+- title: "Collective Variable Free Transition Path Sampling with Generative Flow Network"
+    authors: "Kiyoung Seong, <b>Seonghyun Park</b>, Seonghwan Kim, Woo Youn Kim, Sungsoo Ahn"
+    venue: "Preprint, Under review"
+    paper_pdf: "/assets/publications/24Preprint_TPS_GFlow.pdf"
+    poster: "https://kiyoung98.github.io/tps-gfn/"
+    selected: y
+
   - title: "Non-backtracking Graph Neural Networks"
     authors: "<b>Seonghyun Park</b><sup>†</sup>, Narae Ryu<sup>†</sup>, Gahee Kim, Dongyeop Woo, Se-Young Yun</b><sup>‡</sup>, Sungsoo Ahn</b><sup>‡</sup>"
-    venue: "NeurIPS 2023, Workshop on New Frontiers in Graph Learning (GLFrontiers)"
+    venue: "NeurIPS 2023, Workshop on New Frontiers in Graph Learning (GLFrontiers) <i>(Oral)</i>"
     paper_pdf: "/assets/publications/23NIPS_workshop_NBAGNN.pdf"
     selected: y
 
   - title: "Diffusion Probabilistic Models for Structured Node Classification"
     authors: "Hyosoon Jang, <b>Seonghyun Park</b>, Sangwoo Mo, Sungsoo Ahn"
-    # venue: "ICML 2023, Workshop on Structured Probabilistic Inference & Generative Modeling"
-    venue: "NeurIPS 2023"
+    # venue: ""
+    venue: "NeurIPS 2023 <br> ICML 2023, Workshop on Structured Probabilistic Inference & Generative Modeling"
     paper_pdf: "/assets/publications/23NIPS_DPMSNC.pdf"
     selected: y
 

@@ -69,9 +69,13 @@ title: Home
           <p class="title"><b>{{ paper.title }}</b></p>
           <p>{{ paper.authors }}</p>
           <p><i>{{ paper.venue }}</i></p>
-           <div class="paper-buttons">
+          <div class="paper-buttons">
             {% if paper.paper_pdf %}
               <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">Paper</a>
+            {% endif %}
+
+            {% if paper.page %}
+              <a class="button" href="{{ paper.page | prepend: site.baseurl }}" target="_blank">Page</a>
             {% endif %}
 
             {% if paper.slides %}
@@ -108,6 +112,10 @@ title: Home
            <div class="paper-buttons">
             {% if paper.paper_pdf %}
               <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">Paper</a>
+            {% endif %}
+            
+            {% if paper.page %}
+              <a class="button" href="{{ paper.page | prepend: site.baseurl }}" target="_blank">Page</a>
             {% endif %}
 
             {% if paper.slides %}
