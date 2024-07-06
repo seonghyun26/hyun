@@ -3,7 +3,7 @@ papers:
     authors: "Kiyoung Seong, <b>Seonghyun Park</b>, Seonghwan Kim, Woo Youn Kim, Sungsoo Ahn"
     venue: "Preprint, Under review"
     paper_pdf: "/assets/publications/24Preprint_TPS_GFlow.pdf"
-    page: "https://kiyoung98.github.io/tps-gfn/"
+    page: "https://seonghyun26.github.io/tps-gfn/"
     selected: y
 
   - title: "Non-backtracking Graph Neural Networks"
@@ -14,7 +14,6 @@ papers:
 
   - title: "Diffusion Probabilistic Models for Structured Node Classification"
     authors: "Hyosoon Jang, <b>Seonghyun Park</b>, Sangwoo Mo, Sungsoo Ahn"
-    # venue: ""
     venue: "NeurIPS 2023 <br> ICML 2023, Workshop on Structured Probabilistic Inference & Generative Modeling"
     paper_pdf: "/assets/publications/23NIPS_DPMSNC.pdf"
     selected: y
