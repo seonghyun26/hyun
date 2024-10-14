@@ -1,10 +1,17 @@
 papers:
-  - title: "Collective Variable Free Transition Path Sampling with Generative Flow Network"
+  - title: "transition path sampling with improved off-policy training of diffusion path samplers"
     authors: "Kiyoung Seong, <b>Seonghyun Park</b>, Seonghwan Kim, Woo Youn Kim, Sungsoo Ahn"
     venue: "Preprint, Under review"
-    paper_pdf: "/assets/publications/24Preprint_TPS_GFlow.pdf"
-    page: "https://seonghyun26.github.io/tps-gfn/"
+    paper_pdf: "/assets/publications/25ICLR_preprint_TPS-DPS.pdf"
+    page: "https://kiyoung98.github.io/tps-dps/"
     selected: y
+
+  # - title: "Collective Variable Free Transition Path Sampling with Generative Flow Network"
+  #   authors: "Kiyoung Seong, <b>Seonghyun Park</b>, Seonghwan Kim, Woo Youn Kim, Sungsoo Ahn"
+  #   venue: "Preprint, Under review"
+  #   paper_pdf: "/assets/publications/24Preprint_TPS_GFlow.pdf"
+  #   page: "https://seonghyun26.github.io/tps-gfn/"
+  #   selected: y
 
   - title: "Non-backtracking Graph Neural Networks"
     authors: "<b>Seonghyun Park</b><sup>†</sup>, Narae Ryu<sup>†</sup>, Gahee Kim, Dongyeop Woo, Se-Young Yun</b><sup>‡</sup>, Sungsoo Ahn</b><sup>‡</sup>"
