@@ -1,7 +1,13 @@
 experiences:
+  - place: "???"
+    time: "2025 - "
+    title: "Ph.D. "
+    # subtitle: "Machine Learning Lab."
+    category: "school"
+
   - place: "POSTECH"
-    time: "2023 - now"
-    title: "Masters-Ph.D. combined course"
+    time: "2023 - 2025"
+    title: "M.S."
     subtitle: "Machine Learning Lab."
     category: "school"
 
