@@ -1,14 +1,14 @@
 experiences:
-  - place: "???"
+  - place: "KAIST AI"
     time: "2025 - "
-    title: "Ph.D. "
-    # subtitle: "Machine Learning Lab."
+    title: "PhD"
+    subtitle: "Machine Learning for Molecules Lab"
     category: "school"
 
   - place: "POSTECH"
     time: "2023 - 2025"
     title: "M.S."
-    subtitle: "Machine Learning Lab."
+    subtitle: "Machine Learning Lab"
     category: "school"
 
   - place: "INSA Lyon"
