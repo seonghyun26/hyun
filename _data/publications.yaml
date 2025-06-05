@@ -1,6 +1,6 @@
 papers:
   - title: "Learning Collective Variables from Time-lagged Generation"
-    authors: "<b>Seonghyun Park</b>, Kiyoung Seong, Sungsoo Ahn"
+    authors: "<b>Seonghyun Park</b>, Kiyoung Seong, Soojung Yang, Rafael Gomez-Bombarelli, Sungsoo Ahn"
     venue: "Preprint"
     paper_pdf: "/assets/publications/25ICML_Workshop-TLC.pdf"
     selected: y
@@ -22,7 +22,7 @@ papers:
     authors: "Hyosoon Jang, <b>Seonghyun Park</b>, Sangwoo Mo, Sungsoo Ahn"
     venue: "NeurIPS 2023 <br> ICML 2023, Workshop on Structured Probabilistic Inference & Generative Modeling"
     paper_pdf: "/assets/publications/23NIPS_DPMSNC.pdf"
-    selected: y
+    selected: n
 
   # - title: ""
   #   authors: ""
