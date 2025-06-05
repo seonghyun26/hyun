@@ -1,4 +1,10 @@
 papers:
+  - title: "Learning Collective Variables from Time-lagged Generation"
+    authors: "<b>Seonghyun Park</b>, Kiyoung Seong, Sungsoo Ahn"
+    venue: "Preprint"
+    paper_pdf: "/assets/publications/25ICML_Workshop-TLC.pdf"
+    selected: y
+
   - title: "Transition path sampling with improved off-policy training of diffusion path samplers"
     authors: "Kiyoung Seong, <b>Seonghyun Park</b>, Seonghwan Kim, Woo Youn Kim, Sungsoo Ahn"
     venue: "ICLR 2025 <br> ICML 2024, Workshop SPIGM"
