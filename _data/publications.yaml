@@ -1,14 +1,14 @@
 papers:
   - title: "Learning Collective Variables from Time-lagged Generation"
     authors: "<b>Seonghyun Park</b>, Kiyoung Seong, Soojung Yang, Rafael Gomez-Bombarelli, Sungsoo Ahn"
-    venue: "Preprint"
+    venue: "ICML 2025, Workshop 2nd GenBio "
     paper_pdf: "/assets/publications/25ICML_Workshop-TLC.pdf"
     selected: y
 
   - title: "Transition path sampling with improved off-policy training of diffusion path samplers"
     authors: "Kiyoung Seong, <b>Seonghyun Park</b>, Seonghwan Kim, Woo Youn Kim, Sungsoo Ahn"
     venue: "ICLR 2025 <br> ICML 2024, Workshop SPIGM"
-    paper_pdf: "/assets/publications/25ICLR_preprint_TPS-DPS.pdf"
+    paper_pdf: "/assets/publications/25ICLR_TPS-DPS.pdf"
     page: "https://kiyoung98.github.io/tps-dps/"
     selected: y
 
