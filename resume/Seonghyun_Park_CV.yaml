@@ -1,0 +1,118 @@
+cv:
+  name: Seonghyun Park
+  location: Seoul, South Korea
+  email: hyun26@kaist.ac.kr
+  phone: "+82 01068691033"
+  website: https://seonghyun26.github.io/hyun/
+  social_networks:
+    - network: LinkedIn 
+      username: shpark26
+    - network: GitHub 
+      username: seonghyun26
+    - network: Google Scholar
+      username: w4q4N9sAAAAJ
+  sections:
+    Summary:
+    - "I'm a 1st-year Ph.D. candidate in at KAIST AI, advised by [Sungsoo Ahn](https://sites.google.com/view/sungsooahn0215). My master’s research focused on solving the over-squashing phenomenon in graph neural networks (GNNs). Currently, I am integrating machine learning with molecular dynamics (MD) to advance scientific discovery. Most recently, I led a project on machine learning–based collective variables for enhanced sampling simulations of proteins, leveraging foundation models."
+    Publication:
+    - title: Learning Collective Variables from BioEmu with Time-lagged Generation
+      authors:
+      - '***Seonghyun Park***'
+      - Kiyoung Seong
+      - Soojung Yang
+      - Rafael Gomez-Bombarelli
+      - Sungsoo Ahn
+      journal: Preprint, under review
+      date: 2025
+      # doi: The DOI of the publication
+      # url: The URL of the publication
+    - title: Transition Path Sampling with Improved Off-Policy Training of Diffusion Path Samplers
+      authors: 
+      - Kiyoung Seong
+      - '***Seonghyun Park***'
+      - Seonghwan Kim
+      - Woo Youn Kim
+      - Sungsoo Ahn
+      journal: ICLR 2025
+      date: 2025
+      url: https://iclr.cc/virtual/2025/poster/29361
+    - title: Non-backtracking Graph Neural Networks
+      authors:
+      - '***Seonghyun Park****'
+      - Narae Ryu*
+      - Gahee Kim
+      - Dongyeop Woo
+      - Se-Young Yun**
+      - Sungsoo Ahn**
+      url: https://arxiv.org/abs/2310.07430
+      journal: TMLR, NeurIPS 2023 GLFrontiers Workshop (Oral)
+      date: 2024
+    - title: Diffusion Probabilistic Models for Structured Node Classification
+      authors:
+      - Hyosoon Jang
+      - '***Seonghyun Park***'
+      - Sngwoo Mo
+      - Sungsoo Ahn
+      journal: NeurIPS 2023
+      date: 2023
+      url: https://neurips.cc/virtual/2023/poster/72405
+    Education:
+    - institution: Korea Advanced Institute of Science and Technology (KAIST)
+      area: Kim Jaechul Gradudate School of Artificial Intelligence
+      degree: Ph.D.
+      location: Seoul, South Korea
+      start_date: 2025-02
+      highlights:
+      - '[Structured and Probabilistic Machine Learning Lab](https://sites.google.com/view/sungsooahn0215) @ Sungsoo Ahn'
+      - 'Topic: Molecular dynamics (MD), Collective Variables (CVs)'
+    - institution: Pohang University of Science and Technology (POSTECH)
+      area: Graduate School of Computer Science and Engineering (CSE)
+      degree: M.S.
+      location: Pohang, South Korea
+      start_date: 2023-02
+      end_date: 2025-02
+      highlights: 
+      - '[Machine Learning](https://ml.postech.ac.kr/) Lab @ Sungsoo Ahn '
+      - 'Topic: Graph Neural Networks (GNNs), Over-squashing'
+    - institution: Institut National des Sciences Appliquées (INSA) Lyon
+      area: Bioinfomatics
+      degree: E.S.
+      location: Lyon, France
+      start_date: 2022-01
+      end_date: 2022-06
+      summary: Exchange Student
+    - institution: Pohang University of Science and Technology (POSTECH)
+      area: Computer Science and Engineering (CSE)
+      degree: B.S.
+      location: Pohang, South Korea
+      start_date: 2019-02
+      end_date: 2023-02
+    Experience:
+    # - company: Pohang University of Science and Technology (POSTECH)
+    #   position: Research intern
+    #   location: Pohang, South Korea
+    #   start_date: 2022-07
+    #   end_date: 2022-12 
+    #   summary: Advised
+    #   highlights:
+    #   - 'Advisor: Sungsoo Ahn'
+    - company: Bagelcode
+      position: Buisness Analyst (BA) intern
+      location: Seoul, South Korea
+      start_date: 2021-06
+      end_date: 2021-08
+      summary: KPI routines automation and game economy management
+      # highlights:
+      # - Automation of key routines and Key Performance Indicators (KPI) analysis
+      # - Game economy management with abuse detection and newbie retention
+    - company: Seller Hub
+      position: Product Manager (PM) intern
+      location: Seoul, South Korea
+      start_date: 2020-07
+      end_date: 2020-08
+      summary: Task priority management and landing page renewal
+      # highlights:
+      # - Internal job and task priority management
+      # - Landing page renewal project with inflow funnel analysis
+
+
