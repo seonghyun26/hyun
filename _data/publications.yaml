@@ -1,4 +1,10 @@
 papers:
+  # - title: "Learning Collective Variables from BioEmu with Time-lagged Generation"
+  #   authors: "<b>Seonghyun Park</b>, Kiyoung Seong, Soojung Yang, Rafael Gomez-Bombarelli, Sungsoo Ahn"
+  #   venue: "Preprint, under review"
+  #   paper_pdf: "/assets/publications/26ICLR_preprint-bioemucv.pdf"
+  #   selected: y
+
   - title: "Learning Collective Variables from Time-lagged Generation"
     authors: "<b>Seonghyun Park</b>, Kiyoung Seong, Soojung Yang, Rafael Gomez-Bombarelli, Sungsoo Ahn"
     venue: "ICML 2025, Workshop 2nd GenBio "
