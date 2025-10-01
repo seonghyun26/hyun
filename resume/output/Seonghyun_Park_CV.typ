@@ -3,7 +3,7 @@
 
 #let name = "Seonghyun Park"
 #let locale-catalog-page-numbering-style = context { "Seonghyun Park - Page " + str(here().page()) + " of " + str(counter(page).final().first()) + "" }
-#let locale-catalog-last-updated-date-style = "Last updated in Sept 2025"
+#let locale-catalog-last-updated-date-style = "Last updated in Oct 2025"
 #let locale-catalog-language = "en"
 #let design-page-size = "us-letter"
 #let design-section-titles-font-size = 1.4em
@@ -529,7 +529,7 @@
   ],
 )
 #one-col-entry(content:[
-#v(design-highlights-top-margin);Hyosoon Jang, #strong[#emph[Seonghyun Park]], Sngwoo Mo, Sungsoo Ahn
+#v(design-highlights-top-margin);Hyosoon Jang, #strong[#emph[Seonghyun Park]], Sangwoo Mo, Sungsoo Ahn
 
 #v(design-highlights-top-margin - design-text-leading)#link("https://neurips.cc/virtual/2023/poster/72405")[neurips.cc/virtual/2023/poster/72405] (NeurIPS 2023)])
 

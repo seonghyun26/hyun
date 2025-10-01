@@ -32,7 +32,7 @@ I'm a 1st-year Ph.D. candidate in at KAIST AI, advised by [Sungsoo Ahn](https://
 
 ## Diffusion Probabilistic Models for Structured Node Classification ([https://neurips.cc/virtual/2023/poster/72405](neurips.cc/virtual/2023/poster/72405))
 - 2023
-- Hyosoon Jang, ***Seonghyun Park***, Sngwoo Mo, Sungsoo Ahn
+- Hyosoon Jang, ***Seonghyun Park***, Sangwoo Mo, Sungsoo Ahn
 - NeurIPS 2023
 
 # Education
