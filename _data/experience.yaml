@@ -1,13 +1,13 @@
 experiences:
   - place: "KAIST AI"
     time: "2025 - "
-    title: "Ph.D. Candidate"
+    title: "Ph.D. Student"
     subtitle: "Structured and Probabilistic Machine Learning (SPML) Lab"
     category: "school"
 
   - place: "POSTECH"
     time: "2023 - 2025"
-    title: "M.S."
+    title: "Master's Degree"
     subtitle: "Machine Learning (ML) Lab"
     category: "school"
 
@@ -31,6 +31,6 @@ experiences:
 
   - place: "POSTECH"
     time: "2019 - 2022"
-    title: "Bachelor"
+    title: "Bachelor's Degree"
     subtitle: "Computer Science and Engineering"
     category: "school"
