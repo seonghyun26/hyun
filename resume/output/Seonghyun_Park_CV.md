@@ -11,7 +11,7 @@
 
 # Summary
 
-I'm a 1st-year Ph.D. candidate in at KAIST AI, advised by [Sungsoo Ahn](https://sites.google.com/view/sungsooahn0215). My master’s research focused on solving the over-squashing phenomenon in graph neural networks (GNNs). Currently, I am integrating machine learning with molecular dynamics (MD) to advance scientific discovery. Most recently, I led a project on machine learning–based collective variables for enhanced sampling simulations of proteins, leveraging foundation models.
+I'm a second-year Ph.D. candidate at Graduate School of AI at KAIST, advised by [Sungsoo Ahn](https://sites.google.com/view/sungsooahn0215). My Master’s research focused on addressing the over-squashing phenomenon in Graph Neural Networks (GNNs) to capture long-range interactions in molecule graphs. Currently, my research focuses on AI for Science (AI4Science), specifically integrating machine learning with biomolecular modeling and molecular dynamics (MD). Recently, I led a project on machine learning–based collective variables (CVs) for enhanced sampling of proteins, by repurposing foundation models.
 
 # Publication
 
@@ -28,7 +28,7 @@ I'm a 1st-year Ph.D. candidate in at KAIST AI, advised by [Sungsoo Ahn](https://
 ## Non-backtracking Graph Neural Networks ([https://arxiv.org/abs/2310.07430](arxiv.org/abs/2310.07430))
 - 2024
 - ***Seonghyun Park****, Narae Ryu*, Gahee Kim, Dongyeop Woo, Se-Young Yun**, Sungsoo Ahn**
-- TMLR, NeurIPS 2023 GLFrontiers Workshop (Oral)
+- TMLR 2024, NeurIPS 2023 GLFrontiers Workshop (Oral)
 
 ## Diffusion Probabilistic Models for Structured Node Classification ([https://neurips.cc/virtual/2023/poster/72405](neurips.cc/virtual/2023/poster/72405))
 - 2023
@@ -42,14 +42,14 @@ I'm a 1st-year Ph.D. candidate in at KAIST AI, advised by [Sungsoo Ahn](https://
 - Feb 2025 – present
 - Seoul, South Korea
 - [Structured and Probabilistic Machine Learning Lab](https://sites.google.com/view/sungsooahn0215) @ Sungsoo Ahn
-- Topic: Molecular dynamics (MD), Collective Variables (CVs)
+- Interest: Bio-molecules, Molecular dynamics (MD)
 
 ## Pohang University of Science and Technology (POSTECH), M.S. in Graduate School of Computer Science and Engineering (CSE)
 
 - Feb 2023 – Feb 2025
 - Pohang, South Korea
 - [Machine Learning](https://ml.postech.ac.kr/) Lab @ Sungsoo Ahn 
-- Topic: Graph Neural Networks (GNNs), Over-squashing
+- Interest: Graph Neural Networks (GNNs), Over-squashing
 
 ## Institut National des Sciences Appliquées (INSA) Lyon, E.S. in Bioinfomatics
 

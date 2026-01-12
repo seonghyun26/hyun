@@ -3,7 +3,7 @@
 
 #let name = "Seonghyun Park"
 #let locale-catalog-page-numbering-style = context { "Seonghyun Park - Page " + str(here().page()) + " of " + str(counter(page).final().first()) + "" }
-#let locale-catalog-last-updated-date-style = "Last updated in Oct 2025"
+#let locale-catalog-last-updated-date-style = "Last updated in Jan 2026"
 #let locale-catalog-language = "en"
 #let design-page-size = "us-letter"
 #let design-section-titles-font-size = 1.4em
@@ -467,7 +467,7 @@
 
 
 #one-col-entry(
-  content: [I'm a 1st-year Ph.D. candidate in at KAIST AI, advised by #link("https://sites.google.com/view/sungsooahn0215")[Sungsoo Ahn]. My master’s research focused on solving the over-squashing phenomenon in graph neural networks \(GNNs\). Currently, I am integrating machine learning with molecular dynamics \(MD\) to advance scientific discovery. Most recently, I led a project on machine learning–based collective variables for enhanced sampling simulations of proteins, leveraging foundation models.]
+  content: [I'm a second-year Ph.D. candidate at Graduate School of AI at KAIST, advised by #link("https://sites.google.com/view/sungsooahn0215")[Sungsoo Ahn]. My Master’s research focused on addressing the over-squashing phenomenon in Graph Neural Networks \(GNNs\) to capture long-range interactions in molecule graphs. Currently, my research focuses on AI for Science \(AI4Science\), specifically integrating machine learning with biomolecular modeling and molecular dynamics \(MD\). Recently, I led a project on machine learning–based collective variables \(CVs\) for enhanced sampling of proteins, by repurposing foundation models.]
 )
 
 
@@ -516,7 +516,7 @@
 #one-col-entry(content:[
 #v(design-highlights-top-margin);#strong[#emph[Seonghyun Park]]#sym.ast.basic#h(0pt, weak: true) , Narae Ryu#sym.ast.basic#h(0pt, weak: true) , Gahee Kim, Dongyeop Woo, Se-Young Yun#sym.ast.basic#h(0pt, weak: true) #sym.ast.basic#h(0pt, weak: true) , Sungsoo Ahn#sym.ast.basic#h(0pt, weak: true) #sym.ast.basic#h(0pt, weak: true) 
 
-#v(design-highlights-top-margin - design-text-leading)#link("https://arxiv.org/abs/2310.07430")[arxiv.org/abs/2310.07430] (TMLR, NeurIPS 2023 GLFrontiers Workshop \(Oral\))])
+#v(design-highlights-top-margin - design-text-leading)#link("https://arxiv.org/abs/2310.07430")[arxiv.org/abs/2310.07430] (TMLR 2024, NeurIPS 2023 GLFrontiers Workshop \(Oral\))])
 
 #v(design-entries-vertical-space-between-entries)
 #two-col-entry(
@@ -546,7 +546,7 @@
     #strong[Korea Advanced Institute of Science and Technology \(KAIST\)], Kim Jaechul Gradudate School of Artificial Intelligence
     #v(-design-text-leading)
 
-    #v(design-highlights-top-margin);#highlights([#link("https://sites.google.com/view/sungsooahn0215")[Structured and Probabilistic Machine Learning Lab] \@ Sungsoo Ahn],[Topic: Molecular dynamics \(MD\), Collective Variables \(CVs\)],)
+    #v(design-highlights-top-margin);#highlights([#link("https://sites.google.com/view/sungsooahn0215")[Structured and Probabilistic Machine Learning Lab] \@ Sungsoo Ahn],[Interest: Bio-molecules, Molecular dynamics \(MD\)],)
   ],
   right-content: [
     Seoul, South Korea
@@ -564,7 +564,7 @@ Feb 2025 – present
     #strong[Pohang University of Science and Technology \(POSTECH\)], Graduate School of Computer Science and Engineering \(CSE\)
     #v(-design-text-leading)
 
-    #v(design-highlights-top-margin);#highlights([#link("https://ml.postech.ac.kr/")[Machine Learning] Lab \@ Sungsoo Ahn ],[Topic: Graph Neural Networks \(GNNs\), Over-squashing],)
+    #v(design-highlights-top-margin);#highlights([#link("https://ml.postech.ac.kr/")[Machine Learning] Lab \@ Sungsoo Ahn ],[Interest: Graph Neural Networks \(GNNs\), Over-squashing],)
   ],
   right-content: [
     Pohang, South Korea
