@@ -480,13 +480,13 @@
 
   ],
   right-content: [
-    2025
+    2026
   ],
 )
 #one-col-entry(content:[
   #v(design-highlights-top-margin);#strong[#emph[Seonghyun Park]], Kiyoung Seong, Soojung Yang, Rafael Gomez-Bombarelli, Sungsoo Ahn
 
-#v(design-highlights-top-margin - design-text-leading)Preprint, under review])
+#v(design-highlights-top-margin - design-text-leading)ICLR 2026])
 
 #v(design-entries-vertical-space-between-entries)
 #two-col-entry(

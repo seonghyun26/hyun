@@ -22,8 +22,8 @@ cv:
       - Soojung Yang
       - Rafael Gomez-Bombarelli
       - Sungsoo Ahn
-      journal: Preprint, under review
-      date: 2025
+      journal: ICLR 2026
+      date: 2026
       # doi: The DOI of the publication
       # url: The URL of the publication
     - title: Transition Path Sampling with Improved Off-Policy Training of Diffusion Path Samplers

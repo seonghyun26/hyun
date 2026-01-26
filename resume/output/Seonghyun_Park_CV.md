@@ -16,9 +16,9 @@ I'm a second-year Ph.D. candidate at Graduate School of AI at KAIST, advised by 
 # Publication
 
 ## Learning Collective Variables from BioEmu with Time-lagged Generation 
-- 2025
+- 2026
 - ***Seonghyun Park***, Kiyoung Seong, Soojung Yang, Rafael Gomez-Bombarelli, Sungsoo Ahn
-- Preprint, under review
+- ICLR 2026
 
 ## Transition Path Sampling with Improved Off-Policy Training of Diffusion Path Samplers ([https://iclr.cc/virtual/2025/poster/29361](iclr.cc/virtual/2025/poster/29361))
 - 2025
