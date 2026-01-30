@@ -1,9 +1,27 @@
 papers:
-  # - title: "Learning Collective Variables from BioEmu with Time-lagged Generation"
-  #   authors: "<b>Seonghyun Park</b>, Kiyoung Seong, Soojung Yang, Rafael Gomez-Bombarelli, Sungsoo Ahn"
+  # - title: "title"
+  #   authors: "<b>Seonghyun Park</b>"
   #   venue: "Preprint, under review"
-  #   paper_pdf: "/assets/publications/26ICLR_preprint-bioemucv.pdf"
+  #   paper_pdf: "/assets/publications/xxx.pdf"
   #   selected: y
+
+  - title: "INDIBATOR: Diverse and Fact-Grounded Individuality for Multi-Agent Debate in Molecular Discovery"
+    authors: "Yunhui Jang, <b>Seonghyun Park</b>, Jaehyung Kim, Sungsoo Ahn"
+    venue: "Preprint, under review"
+    paper_pdf: "/assets/publications/26ICML_preprint_Indibator"
+    selected: y
+
+  - title: "Riemannian MeanFlow"
+    authors: "Dongyeop Woo, Marta Skreta, <b>Seonghyun Park</b>, Kirill Neklyudov, Sungsoo Ahn"
+    venue: "Preprint, under review"
+    paper_pdf: "/assets/publications/26ICML_preprint_RMF"
+    selected: y
+
+  - title: "Boltz is a Strong Baseline for Atom-level Representation Learning"
+    authors: "Hyosoon Jang, Hyunjin Seo, Yunhui Jang, <b>Seonghyun Park</b>, Sungsoo Ahn"
+    venue: "Preprint, under review"
+    paper_pdf: "/assets/publications/26ICML_preprint_boltz"
+    selected: y
 
   - title: "Learning Collective Variables for Enhanced Sampling from BioEmu with Time-lagged Generation"
     authors: "<b>Seonghyun Park</b>, Kiyoung Seong, Soojung Yang, Rafael Gómez-Bombarelli, Sungsoo Ahn"
