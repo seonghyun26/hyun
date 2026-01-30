@@ -8,7 +8,7 @@ papers:
   - title: "Learning Collective Variables for Enhanced Sampling from BioEmu with Time-lagged Generation"
     authors: "<b>Seonghyun Park</b>, Kiyoung Seong, Soojung Yang, Rafael Gómez-Bombarelli, Sungsoo Ahn"
     venue: "ICLR 2026 <br> ICML 2025, Workshop GenBio "
-    paper_pdf: "/assets/publications/26ICLR_preprint-bioemucv.pdf"
+    paper_pdf: "/assets/publications/26ICLR_BIoEmuCV.pdf"
     selected: y
 
   - title: "Transition path sampling with improved off-policy training of diffusion path samplers"

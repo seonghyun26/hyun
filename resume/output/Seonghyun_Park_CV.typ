@@ -467,7 +467,7 @@
 
 
 #one-col-entry(
-  content: [I'm a second-year Ph.D. candidate at Graduate School of AI at KAIST, advised by #link("https://sites.google.com/view/sungsooahn0215")[Sungsoo Ahn]. My Master’s research focused on addressing the over-squashing phenomenon in Graph Neural Networks \(GNNs\) to capture long-range interactions in molecule graphs. Currently, my research focuses on AI for Science \(AI4Science\), specifically integrating machine learning with biomolecular modeling and molecular dynamics \(MD\). Recently, I led a project on machine learning–based collective variables \(CVs\) for enhanced sampling of proteins, by repurposing foundation models.]
+  content: [I'm a second-year Ph.D. candidate at Graduate School of AI at KAIST, advised by #link("https://sites.google.com/view/sungsooahn0215")[Sungsoo Ahn]. My Master’s research focused on addressing the over-squashing phenomenon in Graph Neural Networks \(GNNs\) to capture long-range interactions in molecule graphs. Currently, my research focuses on #strong[AI for Science \(AI4Science\)], specifically integrating machine learning with biomolecular modeling and molecular dynamics \(MD\). Recently, I led a project on machine learning–based collective variables \(CVs\) for enhanced sampling of proteins, by repurposing foundation models.]
 )
 
 
@@ -484,9 +484,9 @@
   ],
 )
 #one-col-entry(content:[
-  #v(design-highlights-top-margin);#strong[#emph[Seonghyun Park]], Kiyoung Seong, Soojung Yang, Rafael Gomez-Bombarelli, Sungsoo Ahn
+#v(design-highlights-top-margin);#strong[#emph[Seonghyun Park]], Kiyoung Seong, Soojung Yang, Rafael Gomez-Bombarelli, Sungsoo Ahn
 
-#v(design-highlights-top-margin - design-text-leading)ICLR 2026])
+#v(design-highlights-top-margin - design-text-leading)#link("https://openreview.net/forum?id=1PYj4fMeLe")[openreview.net/forum?id=1PYj4fMeLe] (ICLR 2026)])
 
 #v(design-entries-vertical-space-between-entries)
 #two-col-entry(

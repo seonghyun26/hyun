@@ -11,11 +11,11 @@
 
 # Summary
 
-I'm a second-year Ph.D. candidate at Graduate School of AI at KAIST, advised by [Sungsoo Ahn](https://sites.google.com/view/sungsooahn0215). My Master’s research focused on addressing the over-squashing phenomenon in Graph Neural Networks (GNNs) to capture long-range interactions in molecule graphs. Currently, my research focuses on AI for Science (AI4Science), specifically integrating machine learning with biomolecular modeling and molecular dynamics (MD). Recently, I led a project on machine learning–based collective variables (CVs) for enhanced sampling of proteins, by repurposing foundation models.
+I'm a second-year Ph.D. candidate at Graduate School of AI at KAIST, advised by [Sungsoo Ahn](https://sites.google.com/view/sungsooahn0215). My Master’s research focused on addressing the over-squashing phenomenon in Graph Neural Networks (GNNs) to capture long-range interactions in molecule graphs. Currently, my research focuses on **AI for Science (AI4Science)**, specifically integrating machine learning with biomolecular modeling and molecular dynamics (MD). Recently, I led a project on machine learning–based collective variables (CVs) for enhanced sampling of proteins, by repurposing foundation models.
 
 # Publication
 
-## Learning Collective Variables from BioEmu with Time-lagged Generation 
+## Learning Collective Variables from BioEmu with Time-lagged Generation ([https://openreview.net/forum?id=1PYj4fMeLe](openreview.net/forum?id=1PYj4fMeLe))
 - 2026
 - ***Seonghyun Park***, Kiyoung Seong, Soojung Yang, Rafael Gomez-Bombarelli, Sungsoo Ahn
 - ICLR 2026

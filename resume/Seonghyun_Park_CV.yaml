@@ -13,7 +13,7 @@ cv:
       username: w4q4N9sAAAAJ
   sections:
     Summary:
-    - "I'm a second-year Ph.D. candidate at Graduate School of AI at KAIST, advised by [Sungsoo Ahn](https://sites.google.com/view/sungsooahn0215). My Master’s research focused on addressing the over-squashing phenomenon in Graph Neural Networks (GNNs) to capture long-range interactions in molecule graphs. Currently, my research focuses on AI for Science (AI4Science), specifically integrating machine learning with biomolecular modeling and molecular dynamics (MD). Recently, I led a project on machine learning–based collective variables (CVs) for enhanced sampling of proteins, by repurposing foundation models."
+    - "I'm a second-year Ph.D. candidate at Graduate School of AI at KAIST, advised by [Sungsoo Ahn](https://sites.google.com/view/sungsooahn0215). My Master’s research focused on addressing the over-squashing phenomenon in Graph Neural Networks (GNNs) to capture long-range interactions in molecule graphs. Currently, my research focuses on **AI for Science (AI4Science)**, specifically integrating machine learning with biomolecular modeling and molecular dynamics (MD). Recently, I led a project on machine learning–based collective variables (CVs) for enhanced sampling of proteins, by repurposing foundation models."
     Publication:
     - title: Learning Collective Variables from BioEmu with Time-lagged Generation
       authors:
@@ -25,7 +25,7 @@ cv:
       journal: ICLR 2026
       date: 2026
       # doi: The DOI of the publication
-      # url: The URL of the publication
+      url: https://openreview.net/forum?id=1PYj4fMeLe
     - title: Transition Path Sampling with Improved Off-Policy Training of Diffusion Path Samplers
       authors: 
       - Kiyoung Seong
