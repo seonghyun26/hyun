@@ -8,19 +8,19 @@ papers:
   - title: "INDIBATOR: Diverse and Fact-Grounded Individuality for Multi-Agent Debate in Molecular Discovery"
     authors: "Yunhui Jang, <b>Seonghyun Park</b>, Jaehyung Kim, Sungsoo Ahn"
     venue: "Preprint, under review"
-    paper_pdf: "/assets/publications/26ICML_preprint_Indibator"
+    paper_pdf: "/assets/publications/26ICML_preprint_Indibator.pdf"
     selected: y
 
   - title: "Riemannian MeanFlow"
     authors: "Dongyeop Woo, Marta Skreta, <b>Seonghyun Park</b>, Kirill Neklyudov, Sungsoo Ahn"
     venue: "Preprint, under review"
-    paper_pdf: "/assets/publications/26ICML_preprint_RMF"
+    paper_pdf: "/assets/publications/26ICML_preprint_RMF.pdf"
     selected: y
 
   - title: "Boltz is a Strong Baseline for Atom-level Representation Learning"
     authors: "Hyosoon Jang, Hyunjin Seo, Yunhui Jang, <b>Seonghyun Park</b>, Sungsoo Ahn"
     venue: "Preprint, under review"
-    paper_pdf: "/assets/publications/26ICML_preprint_boltz"
+    paper_pdf: "/assets/publications/26ICML_preprint_boltz.pdf"
     selected: y
 
   - title: "Learning Collective Variables for Enhanced Sampling from BioEmu with Time-lagged Generation"
