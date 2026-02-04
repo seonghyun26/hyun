@@ -41,38 +41,61 @@ title: Home
       {% assign selected_papers = site.data.publications.papers | where: "selected", "y" %}
       {% for paper in selected_papers %}
         <div class="paper">
-          <p class="title"><b>{{ paper.title }}</b></p>
-          <p>{{ paper.authors }}</p>
-          <p><i>{{ paper.venue }}</i></p>
-          <div class="paper-buttons">
-            {% if paper.paper_pdf %}
-              <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">Paper</a>
+          <div class="row">
+            {% if paper.thumbnail %}
+            <div class="three columns">
+              <div class="paper-image-container">
+                {% if paper.page %}
+                  <a href="{{ paper.page }}" target="_blank">
+                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                  </a>
+                {% elsif paper.paper_pdf %}
+                  <a href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">
+                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                  </a>
+                {% else %}
+                  <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                {% endif %}
+              </div>
+            </div>
+            <div class="{% if paper.thumbnail %}nine{% else %}twelve{% endif %} columns">
+            {% else %}
+            <div class="twelve columns">
             {% endif %}
+              <p class="title"><b>{{ paper.title }}</b></p>
+              <p>{{ paper.authors }}</p>
+              <p><i>{{ paper.venue }}</i></p>
+              <div class="paper-buttons">
+                {% if paper.paper_pdf %}
+                  <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">Paper</a>
+                {% endif %}
 
-            {% if paper.page %}
-              <a class="button" href="{{ paper.page }}" target="_blank">Page</a>
-            {% endif %}
+                {% if paper.page %}
+                  <a class="button" href="{{ paper.page }}" target="_blank">Page</a>
+                {% endif %}
 
-            {% if paper.slides %}
-              <a class="button" href="{{ paper.slides | prepend: site.baseurl }}" target="_blank">Slides</a>
-            {% endif %}
+                {% if paper.slides %}
+                  <a class="button" href="{{ paper.slides | prepend: site.baseurl }}" target="_blank">Slides</a>
+                {% endif %}
 
-            {% if paper.poster %}
-              <a class="button" href="{{ paper.poster | prepend: site.baseurl }}" target="_blank">Poster</a>
-            {% endif %}
+                {% if paper.poster %}
+                  <a class="button" href="{{ paper.poster | prepend: site.baseurl }}" target="_blank">Poster</a>
+                {% endif %}
 
-            {% if paper.video %}
-              <a class="button" href="{{ paper.video }}" target="_blank">Video</a>
-            {% endif %}
+                {% if paper.video %}
+                  <a class="button" href="{{ paper.video }}" target="_blank">Video</a>
+                {% endif %}
 
-            {% if paper.code %}
-              <a class="button" href="{{ paper.code }}" target="_blank">Code</a>
-            {% endif %}
+                {% if paper.code %}
+                  <a class="button" href="{{ paper.code }}" target="_blank">Code</a>
+                {% endif %}
 
-            {% if paper.data %}
-              <a class="button" href="{{ paper.data }}" target="_blank">Data</a>
-            {% endif %}
+                {% if paper.data %}
+                  <a class="button" href="{{ paper.data }}" target="_blank">Data</a>
+                {% endif %}
 
+              </div>
+            </div>
           </div>
         </div>
       {% endfor %}
@@ -81,38 +104,61 @@ title: Home
     <div class="tab-pane" id="papers-all">
       {% for paper in site.data.publications.papers %}
         <div class="paper">
-          <p class="title"><b>{{ paper.title }}</b></p>
-          <p>{{ paper.authors }}</p>
-          <p><i>{{ paper.venue }}</i></p>
-          <div class="paper-buttons">
-            {% if paper.paper_pdf %}
-              <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">Paper</a>
+          <div class="row">
+            {% if paper.thumbnail %}
+            <div class="three columns">
+              <div class="paper-image-container">
+                {% if paper.page %}
+                  <a href="{{ paper.page }}" target="_blank">
+                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                  </a>
+                {% elsif paper.paper_pdf %}
+                  <a href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">
+                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                  </a>
+                {% else %}
+                  <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                {% endif %}
+              </div>
+            </div>
+            <div class="{% if paper.thumbnail %}nine{% else %}twelve{% endif %} columns">
+            {% else %}
+            <div class="twelve columns">
             {% endif %}
-            
-            {% if paper.page %}
-              <a class="button" href="{{ paper.page }}" target="_blank">Page</a>
-            {% endif %}
+              <p class="title"><b>{{ paper.title }}</b></p>
+              <p>{{ paper.authors }}</p>
+              <p><i>{{ paper.venue }}</i></p>
+              <div class="paper-buttons">
+                {% if paper.paper_pdf %}
+                  <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">Paper</a>
+                {% endif %}
+                
+                {% if paper.page %}
+                  <a class="button" href="{{ paper.page }}" target="_blank">Page</a>
+                {% endif %}
 
-            {% if paper.slides %}
-              <a class="button" href="{{ paper.slides | prepend: site.baseurl }}" target="_blank">Slides</a>
-            {% endif %}
+                {% if paper.slides %}
+                  <a class="button" href="{{ paper.slides | prepend: site.baseurl }}" target="_blank">Slides</a>
+                {% endif %}
 
-            {% if paper.poster %}
-              <a class="button" href="{{ paper.poster | prepend: site.baseurl }}" target="_blank">Poster</a>
-            {% endif %}
+                {% if paper.poster %}
+                  <a class="button" href="{{ paper.poster | prepend: site.baseurl }}" target="_blank">Poster</a>
+                {% endif %}
 
-            {% if paper.video %}
-              <a class="button" href="{{ paper.video }}" target="_blank">Video</a>
-            {% endif %}
+                {% if paper.video %}
+                  <a class="button" href="{{ paper.video }}" target="_blank">Video</a>
+                {% endif %}
 
-            {% if paper.code %}
-              <a class="button" href="{{ paper.code }}" target="_blank">Code</a>
-            {% endif %}
+                {% if paper.code %}
+                  <a class="button" href="{{ paper.code }}" target="_blank">Code</a>
+                {% endif %}
 
-            {% if paper.data %}
-              <a class="button" href="{{ paper.data }}" target="_blank">Data</a>
-            {% endif %}
+                {% if paper.data %}
+                  <a class="button" href="{{ paper.data }}" target="_blank">Data</a>
+                {% endif %}
 
+              </div>
+            </div>
           </div>
         </div>
       {% endfor %}
