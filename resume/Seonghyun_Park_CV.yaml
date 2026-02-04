@@ -14,48 +14,6 @@ cv:
   sections:
     Summary:
     - "I'm a second-year Ph.D. candidate at Graduate School of AI at KAIST, advised by [Sungsoo Ahn](https://sites.google.com/view/sungsooahn0215). My Master’s research focused on addressing the over-squashing phenomenon in Graph Neural Networks (GNNs) to capture long-range interactions in molecule graphs. Currently, my research focuses on **AI for Science (AI4Science)**, specifically integrating machine learning with biomolecular modeling and molecular dynamics (MD). Recently, I led a project on machine learning–based collective variables (CVs) for enhanced sampling of proteins, by repurposing foundation models."
-    Publication:
-    - title: Learning Collective Variables from BioEmu with Time-lagged Generation
-      authors:
-      - '***Seonghyun Park***'
-      - Kiyoung Seong
-      - Soojung Yang
-      - Rafael Gomez-Bombarelli
-      - Sungsoo Ahn
-      journal: ICLR 2026
-      date: 2026
-      # doi: The DOI of the publication
-      url: https://openreview.net/forum?id=1PYj4fMeLe
-    - title: Transition Path Sampling with Improved Off-Policy Training of Diffusion Path Samplers
-      authors: 
-      - Kiyoung Seong
-      - '***Seonghyun Park***'
-      - Seonghwan Kim
-      - Woo Youn Kim
-      - Sungsoo Ahn
-      journal: ICLR 2025
-      date: 2025
-      url: https://iclr.cc/virtual/2025/poster/29361
-    - title: Non-backtracking Graph Neural Networks
-      authors:
-      - '***Seonghyun Park****'
-      - Narae Ryu*
-      - Gahee Kim
-      - Dongyeop Woo
-      - Se-Young Yun**
-      - Sungsoo Ahn**
-      url: https://arxiv.org/abs/2310.07430
-      journal: TMLR 2024, NeurIPS 2023 GLFrontiers Workshop (Oral)
-      date: 2024
-    - title: Diffusion Probabilistic Models for Structured Node Classification
-      authors:
-      - Hyosoon Jang
-      - '***Seonghyun Park***'
-      - Sangwoo Mo
-      - Sungsoo Ahn
-      journal: NeurIPS 2023
-      date: 2023
-      url: https://neurips.cc/virtual/2023/poster/72405
     Education:
     - institution: Korea Advanced Institute of Science and Technology (KAIST)
       area: Kim Jaechul Gradudate School of Artificial Intelligence
@@ -87,6 +45,87 @@ cv:
       location: Pohang, South Korea
       start_date: 2019-02
       end_date: 2023-02
+    Publication:
+    # - title: 
+    #   authors: 
+    #   - asdf
+    #   jounral: Preprint, under review
+    #   date: 2026
+    #   # doi:
+    #   # url: 
+    - title: 'INDIBATOR: Diverse and Fact-Grounded Individuality for Multi-Agent Debate in Molecular Discovery'
+      authors: 
+      - Yunhui Jang
+      - '***Seonghyun Park***'
+      - Jaehyung Kim
+      - Sungsoo Ahn
+      jounral: Preprint, under review
+      date: 2026
+      # doi:
+      url: https://arxiv.org/abs/2602.01815
+    - title: Riemannian MeanFlow
+      authors: 
+      - Dongyeop Woo
+      - Marta Skreta
+      - '***Seonghyun Park***'
+      - Kirill Neklyudov
+      - Sungsoo Ahn
+      jounral: Preprint, under review
+      date: 2026
+      # doi:
+      # url:    
+    - title: Boltz is a Strong Baseline for Atom-level Representation Learning
+      authors: 
+      - Hyosoon Jang
+      - Hyunjin Seo
+      - Yunhui Jang
+      - '***Seonghyun Park***'
+      - Sungsoo Ahn
+      jounral: Preprint, under review
+      date: 2026
+      # doi:
+      # url: 
+    - title: Learning Collective Variables from BioEmu with Time-lagged Generation
+      authors:
+      - '***Seonghyun Park***'
+      - Kiyoung Seong
+      - Soojung Yang
+      - Rafael Gomez-Bombarelli
+      - Sungsoo Ahn
+      journal: ICLR 2026
+      date: Apr 2026
+      # doi: The DOI of the publication
+      url: https://openreview.net/forum?id=1PYj4fMeLe
+    - title: Transition Path Sampling with Improved Off-Policy Training of Diffusion Path Samplers
+      authors: 
+      - Kiyoung Seong
+      - '***Seonghyun Park***'
+      - Seonghwan Kim
+      - Woo Youn Kim
+      - Sungsoo Ahn
+      journal: ICLR 2025
+      date: Apr 2025
+      url: https://iclr.cc/virtual/2025/poster/29361
+    - title: Non-backtracking Graph Neural Networks
+      authors:
+      - '***Seonghyun Park****'
+      - Narae Ryu*
+      - Gahee Kim
+      - Dongyeop Woo
+      - Se-Young Yun**
+      - Sungsoo Ahn**
+      url: https://arxiv.org/abs/2310.07430
+      journal: TMLR 2024, NeurIPS 2023 GLFrontiers Workshop (Oral)
+      date: Sep 2024
+    - title: Diffusion Probabilistic Models for Structured Node Classification
+      authors:
+      - Hyosoon Jang
+      - '***Seonghyun Park***'
+      - Sangwoo Mo
+      - Sungsoo Ahn
+      journal: NeurIPS 2023
+      date: Nov 2023
+      url: https://neurips.cc/virtual/2023/poster/72405
     Experience:
     # - company: Pohang University of Science and Technology (POSTECH)
     #   position: Research intern
@@ -101,7 +140,7 @@ cv:
       location: Seoul, South Korea
       start_date: 2021-06
       end_date: 2021-08
-      summary: KPI routines automation and game economy management
+      summary: Game economy management KPI analysis automation 
       # highlights:
       # - Automation of key routines and Key Performance Indicators (KPI) analysis
       # - Game economy management with abuse detection and newbie retention
@@ -110,7 +149,7 @@ cv:
       location: Seoul, South Korea
       start_date: 2020-07
       end_date: 2020-08
-      summary: Task priority management and landing page renewal
+      summary: Task priority management and landing funnel renewal
       # highlights:
       # - Internal job and task priority management
       # - Landing page renewal project with inflow funnel analysis

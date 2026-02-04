@@ -13,28 +13,6 @@
 
 I'm a second-year Ph.D. candidate at Graduate School of AI at KAIST, advised by [Sungsoo Ahn](https://sites.google.com/view/sungsooahn0215). My Master’s research focused on addressing the over-squashing phenomenon in Graph Neural Networks (GNNs) to capture long-range interactions in molecule graphs. Currently, my research focuses on **AI for Science (AI4Science)**, specifically integrating machine learning with biomolecular modeling and molecular dynamics (MD). Recently, I led a project on machine learning–based collective variables (CVs) for enhanced sampling of proteins, by repurposing foundation models.
 
-# Publication
-
-## Learning Collective Variables from BioEmu with Time-lagged Generation ([https://openreview.net/forum?id=1PYj4fMeLe](openreview.net/forum?id=1PYj4fMeLe))
-- 2026
-- ***Seonghyun Park***, Kiyoung Seong, Soojung Yang, Rafael Gomez-Bombarelli, Sungsoo Ahn
-- ICLR 2026
-
-## Transition Path Sampling with Improved Off-Policy Training of Diffusion Path Samplers ([https://iclr.cc/virtual/2025/poster/29361](iclr.cc/virtual/2025/poster/29361))
-- 2025
-- Kiyoung Seong, ***Seonghyun Park***, Seonghwan Kim, Woo Youn Kim, Sungsoo Ahn
-- ICLR 2025
-
-## Non-backtracking Graph Neural Networks ([https://arxiv.org/abs/2310.07430](arxiv.org/abs/2310.07430))
-- 2024
-- ***Seonghyun Park****, Narae Ryu*, Gahee Kim, Dongyeop Woo, Se-Young Yun**, Sungsoo Ahn**
-- TMLR 2024, NeurIPS 2023 GLFrontiers Workshop (Oral)
-
-## Diffusion Probabilistic Models for Structured Node Classification ([https://neurips.cc/virtual/2023/poster/72405](neurips.cc/virtual/2023/poster/72405))
-- 2023
-- Hyosoon Jang, ***Seonghyun Park***, Sangwoo Mo, Sungsoo Ahn
-- NeurIPS 2023
-
 # Education
 
 ## Korea Advanced Institute of Science and Technology (KAIST), Ph.D. in Kim Jaechul Gradudate School of Artificial Intelligence
@@ -60,6 +38,40 @@ I'm a second-year Ph.D. candidate at Graduate School of AI at KAIST, advised by 
 
 - Feb 2019 – Feb 2023
 - Pohang, South Korea
+
+# Publication
+
+## INDIBATOR: Diverse and Fact-Grounded Individuality for Multi-Agent Debate in Molecular Discovery ([https://arxiv.org/abs/2602.01815](arxiv.org/abs/2602.01815))
+- 2026
+- Yunhui Jang, ***Seonghyun Park***, Jaehyung Kim, Sungsoo Ahn
+
+## Riemannian MeanFlow 
+- 2026
+- Dongyeop Woo, Marta Skreta, ***Seonghyun Park***, Kirill Neklyudov, Sungsoo Ahn
+
+## Boltz is a Strong Baseline for Atom-level Representation Learning 
+- 2026
+- Hyosoon Jang, Hyunjin Seo, Yunhui Jang, ***Seonghyun Park***, Sungsoo Ahn
+
+## Learning Collective Variables from BioEmu with Time-lagged Generation ([https://openreview.net/forum?id=1PYj4fMeLe](openreview.net/forum?id=1PYj4fMeLe))
+- Apr 2026
+- ***Seonghyun Park***, Kiyoung Seong, Soojung Yang, Rafael Gomez-Bombarelli, Sungsoo Ahn
+- ICLR 2026
+
+## Transition Path Sampling with Improved Off-Policy Training of Diffusion Path Samplers ([https://iclr.cc/virtual/2025/poster/29361](iclr.cc/virtual/2025/poster/29361))
+- Apr 2025
+- Kiyoung Seong, ***Seonghyun Park***, Seonghwan Kim, Woo Youn Kim, Sungsoo Ahn
+- ICLR 2025
+
+## Non-backtracking Graph Neural Networks ([https://arxiv.org/abs/2310.07430](arxiv.org/abs/2310.07430))
+- Sep 2024
+- ***Seonghyun Park****, Narae Ryu*, Gahee Kim, Dongyeop Woo, Se-Young Yun**, Sungsoo Ahn**
+- TMLR 2024, NeurIPS 2023 GLFrontiers Workshop (Oral)
+
+## Diffusion Probabilistic Models for Structured Node Classification ([https://neurips.cc/virtual/2023/poster/72405](neurips.cc/virtual/2023/poster/72405))
+- Nov 2023
+- Hyosoon Jang, ***Seonghyun Park***, Sangwoo Mo, Sungsoo Ahn
+- NeurIPS 2023
 
 # Experience
 

@@ -3,7 +3,7 @@
 
 #let name = "Seonghyun Park"
 #let locale-catalog-page-numbering-style = context { "Seonghyun Park - Page " + str(here().page()) + " of " + str(counter(page).final().first()) + "" }
-#let locale-catalog-last-updated-date-style = "Last updated in Jan 2026"
+#let locale-catalog-last-updated-date-style = "Last updated in Feb 2026"
 #let locale-catalog-language = "en"
 #let design-page-size = "us-letter"
 #let design-section-titles-font-size = 1.4em
@@ -17,7 +17,7 @@
 #let design-section-titles-bold = true
 #let design-section-titles-line-thickness = 0.5pt
 #let design-section-titles-font-size = 1.4em
-#let design-section-titles-type = "with-parial-line"
+#let design-section-titles-type = "with-partial-line"
 #let design-section-titles-vertical-space-above = 0.5cm
 #let design-section-titles-vertical-space-below = 0.3cm
 #let design-section-titles-small-caps = false
@@ -471,70 +471,6 @@
 )
 
 
-== Publication
-
-
-#two-col-entry(
-  left-content: [
-    #strong[Learning Collective Variables from BioEmu with Time-lagged Generation]
-
-  ],
-  right-content: [
-    2026
-  ],
-)
-#one-col-entry(content:[
-#v(design-highlights-top-margin);#strong[#emph[Seonghyun Park]], Kiyoung Seong, Soojung Yang, Rafael Gomez-Bombarelli, Sungsoo Ahn
-
-#v(design-highlights-top-margin - design-text-leading)#link("https://openreview.net/forum?id=1PYj4fMeLe")[openreview.net/forum?id=1PYj4fMeLe] (ICLR 2026)])
-
-#v(design-entries-vertical-space-between-entries)
-#two-col-entry(
-  left-content: [
-    #strong[Transition Path Sampling with Improved Off-Policy Training of Diffusion Path Samplers]
-
-  ],
-  right-content: [
-    2025
-  ],
-)
-#one-col-entry(content:[
-#v(design-highlights-top-margin);Kiyoung Seong, #strong[#emph[Seonghyun Park]], Seonghwan Kim, Woo Youn Kim, Sungsoo Ahn
-
-#v(design-highlights-top-margin - design-text-leading)#link("https://iclr.cc/virtual/2025/poster/29361")[iclr.cc/virtual/2025/poster/29361] (ICLR 2025)])
-
-#v(design-entries-vertical-space-between-entries)
-#two-col-entry(
-  left-content: [
-    #strong[Non-backtracking Graph Neural Networks]
-
-  ],
-  right-content: [
-    2024
-  ],
-)
-#one-col-entry(content:[
-#v(design-highlights-top-margin);#strong[#emph[Seonghyun Park]]#sym.ast.basic#h(0pt, weak: true) , Narae Ryu#sym.ast.basic#h(0pt, weak: true) , Gahee Kim, Dongyeop Woo, Se-Young Yun#sym.ast.basic#h(0pt, weak: true) #sym.ast.basic#h(0pt, weak: true) , Sungsoo Ahn#sym.ast.basic#h(0pt, weak: true) #sym.ast.basic#h(0pt, weak: true) 
-
-#v(design-highlights-top-margin - design-text-leading)#link("https://arxiv.org/abs/2310.07430")[arxiv.org/abs/2310.07430] (TMLR 2024, NeurIPS 2023 GLFrontiers Workshop \(Oral\))])
-
-#v(design-entries-vertical-space-between-entries)
-#two-col-entry(
-  left-content: [
-    #strong[Diffusion Probabilistic Models for Structured Node Classification]
-
-  ],
-  right-content: [
-    2023
-  ],
-)
-#one-col-entry(content:[
-#v(design-highlights-top-margin);Hyosoon Jang, #strong[#emph[Seonghyun Park]], Sangwoo Mo, Sungsoo Ahn
-
-#v(design-highlights-top-margin - design-text-leading)#link("https://neurips.cc/virtual/2023/poster/72405")[neurips.cc/virtual/2023/poster/72405] (NeurIPS 2023)])
-
-
-
 == Education
 
 
@@ -610,6 +546,111 @@ Feb 2019 – Feb 2023
 
 
 
+== Publication
+
+
+#two-col-entry(
+  left-content: [
+    #strong[INDIBATOR: Diverse and Fact-Grounded Individuality for Multi-Agent Debate in Molecular Discovery]
+
+  ],
+  right-content: [
+    2026
+  ],
+)
+#one-col-entry(content:[
+#v(design-highlights-top-margin);Yunhui Jang, #strong[#emph[Seonghyun Park]], Jaehyung Kim, Sungsoo Ahn
+
+#v(design-highlights-top-margin - design-text-leading)#link("https://arxiv.org/abs/2602.01815")[arxiv.org/abs/2602.01815]])
+
+#v(design-entries-vertical-space-between-entries)
+#two-col-entry(
+  left-content: [
+    #strong[Riemannian MeanFlow]
+
+  ],
+  right-content: [
+    2026
+  ],
+)
+#one-col-entry(content:[
+  #v(design-highlights-top-margin);Dongyeop Woo, Marta Skreta, #strong[#emph[Seonghyun Park]], Kirill Neklyudov, Sungsoo Ahn])
+
+#v(design-entries-vertical-space-between-entries)
+#two-col-entry(
+  left-content: [
+    #strong[Boltz is a Strong Baseline for Atom-level Representation Learning]
+
+  ],
+  right-content: [
+    2026
+  ],
+)
+#one-col-entry(content:[
+  #v(design-highlights-top-margin);Hyosoon Jang, Hyunjin Seo, Yunhui Jang, #strong[#emph[Seonghyun Park]], Sungsoo Ahn])
+
+#v(design-entries-vertical-space-between-entries)
+#two-col-entry(
+  left-content: [
+    #strong[Learning Collective Variables from BioEmu with Time-lagged Generation]
+
+  ],
+  right-content: [
+    Apr 2026
+  ],
+)
+#one-col-entry(content:[
+#v(design-highlights-top-margin);#strong[#emph[Seonghyun Park]], Kiyoung Seong, Soojung Yang, Rafael Gomez-Bombarelli, Sungsoo Ahn
+
+#v(design-highlights-top-margin - design-text-leading)#link("https://openreview.net/forum?id=1PYj4fMeLe")[openreview.net/forum?id=1PYj4fMeLe] (ICLR 2026)])
+
+#v(design-entries-vertical-space-between-entries)
+#two-col-entry(
+  left-content: [
+    #strong[Transition Path Sampling with Improved Off-Policy Training of Diffusion Path Samplers]
+
+  ],
+  right-content: [
+    Apr 2025
+  ],
+)
+#one-col-entry(content:[
+#v(design-highlights-top-margin);Kiyoung Seong, #strong[#emph[Seonghyun Park]], Seonghwan Kim, Woo Youn Kim, Sungsoo Ahn
+
+#v(design-highlights-top-margin - design-text-leading)#link("https://iclr.cc/virtual/2025/poster/29361")[iclr.cc/virtual/2025/poster/29361] (ICLR 2025)])
+
+#v(design-entries-vertical-space-between-entries)
+#two-col-entry(
+  left-content: [
+    #strong[Non-backtracking Graph Neural Networks]
+
+  ],
+  right-content: [
+    Sep 2024
+  ],
+)
+#one-col-entry(content:[
+#v(design-highlights-top-margin);#strong[#emph[Seonghyun Park]]#sym.ast.basic#h(0pt, weak: true) , Narae Ryu#sym.ast.basic#h(0pt, weak: true) , Gahee Kim, Dongyeop Woo, Se-Young Yun#sym.ast.basic#h(0pt, weak: true) #sym.ast.basic#h(0pt, weak: true) , Sungsoo Ahn#sym.ast.basic#h(0pt, weak: true) #sym.ast.basic#h(0pt, weak: true) 
+
+#v(design-highlights-top-margin - design-text-leading)#link("https://arxiv.org/abs/2310.07430")[arxiv.org/abs/2310.07430] (TMLR 2024, NeurIPS 2023 GLFrontiers Workshop \(Oral\))])
+
+#v(design-entries-vertical-space-between-entries)
+#two-col-entry(
+  left-content: [
+    #strong[Diffusion Probabilistic Models for Structured Node Classification]
+
+  ],
+  right-content: [
+    Nov 2023
+  ],
+)
+#one-col-entry(content:[
+#v(design-highlights-top-margin);Hyosoon Jang, #strong[#emph[Seonghyun Park]], Sangwoo Mo, Sungsoo Ahn
+
+#v(design-highlights-top-margin - design-text-leading)#link("https://neurips.cc/virtual/2023/poster/72405")[neurips.cc/virtual/2023/poster/72405] (NeurIPS 2023)])
+
+
+
 == Experience
 
 
@@ -618,7 +659,7 @@ Feb 2019 – Feb 2023
     #strong[Bagelcode], Buisness Analyst \(BA\) intern
     #v(-design-text-leading)
 
-    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [KPI routines automation and game economy management])], column-gutter: 0cm)
+    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [Game economy management KPI analysis automation])], column-gutter: 0cm)
   ],
   right-content: [
     Seoul, South Korea
@@ -633,7 +674,7 @@ June 2021 – Aug 2021
     #strong[Seller Hub], Product Manager \(PM\) intern
     #v(-design-text-leading)
 
-    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [Task priority management and landing page renewal])], column-gutter: 0cm)
+    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [Task priority management and landing funnel renewal])], column-gutter: 0cm)
   ],
   right-content: [
     Seoul, South Korea
