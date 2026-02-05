@@ -37,7 +37,7 @@ papers:
 
   - title: "Transition path sampling with improved off-policy training of diffusion path samplers"
     authors: "Kiyoung Seong, <b>Seonghyun Park</b>, Seonghwan Kim, Woo Youn Kim, Sungsoo Ahn"
-     venue: "ICLR 2025 <br> ICML 2024, Workshop SPIGM"
+    venue: "ICLR 2025 <br> ICML 2024, Workshop SPIGM"
     paper_pdf: "/assets/publications/25ICLR_TPS-DPS.pdf"
     page: "https://kiyoung98.github.io/tps-dps/"
     thumbnail: "/assets/publications/thumbnails/tps-dps.png"
