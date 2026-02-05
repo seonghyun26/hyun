@@ -9,7 +9,7 @@ papers:
     authors: "Yunhui Jang, <b>Seonghyun Park</b>, Jaehyung Kim, Sungsoo Ahn"
     venue: "Preprint, under review"
     paper_pdf: "/assets/publications/26ICML_preprint_Indibator.pdf"
-    thumbnail: "/assets/publications/thumbnails/indibator.pdf"
+    thumbnail: "/assets/publications/thumbnails/indibator.png"
     selected: y
 
   - title: "Riemannian MeanFlow"
@@ -52,7 +52,7 @@ papers:
     authors: "Hyosoon Jang, <b>Seonghyun Park</b>, Sangwoo Mo, Sungsoo Ahn"
     venue: "NeurIPS 2023 <br> ICML 2023, Workshop on Structured Probabilistic Inference & Generative Modeling"
     paper_pdf: "/assets/publications/23NIPS_DPMSNC.pdf"
-    thumbnail: "/assets/publications/thumbnails/dpmsnc.png"
+    thumbnail: "/assets/publications/thumbnails/dpm-snc.png"
     selected: n
 
   # - title: ""

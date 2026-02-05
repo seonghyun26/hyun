@@ -51,22 +51,10 @@ title: Home
                   </a>
                 {% elsif paper.paper_pdf %}
                   <a href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">
-                    {% if paper.thumbnail contains '.pdf' %}
-                      <object data="{{ paper.thumbnail | prepend: site.baseurl }}" type="application/pdf" width="100%" height="150px" style="pointer-events: none;">
-                        <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
-                      </object>
-                    {% else %}
-                      <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
-                    {% endif %}
+                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
                   </a>
                 {% else %}
-                  {% if paper.thumbnail contains '.pdf' %}
-                    <object data="{{ paper.thumbnail | prepend: site.baseurl }}" type="application/pdf" width="100%" height="150px" style="pointer-events: none;">
-                      <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
-                    </object>
-                  {% else %}
-                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
-                  {% endif %}
+                  <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
                 {% endif %}
               </div>
             </div>
@@ -126,22 +114,10 @@ title: Home
                   </a>
                 {% elsif paper.paper_pdf %}
                   <a href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">
-                    {% if paper.thumbnail contains '.pdf' %}
-                      <object data="{{ paper.thumbnail | prepend: site.baseurl }}" type="application/pdf" width="100%" height="150px" style="pointer-events: none;">
-                        <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
-                      </object>
-                    {% else %}
-                      <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
-                    {% endif %}
+                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
                   </a>
                 {% else %}
-                  {% if paper.thumbnail contains '.pdf' %}
-                    <object data="{{ paper.thumbnail | prepend: site.baseurl }}" type="application/pdf" width="100%" height="150px" style="pointer-events: none;">
-                      <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
-                    </object>
-                  {% else %}
-                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
-                  {% endif %}
+                  <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
                 {% endif %}
               </div>
             </div>

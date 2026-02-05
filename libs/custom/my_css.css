@@ -120,6 +120,7 @@ h4 {
   padding: 3px;
   transition: 0.3s;
   margin-bottom: 10px;
+  overflow: hidden;
 }
 
 .paper-image-container:hover {
@@ -128,12 +129,14 @@ h4 {
 
 .paper-image-container:hover img {
   opacity: 0.7;
+  transform: scale(1.1);
 }
 
 .paper-image-container img {
   width: 100%;
   height: auto;
   display: block;
+  transition: transform 0.3s ease;
 }
 
 /* Larger than phone */
