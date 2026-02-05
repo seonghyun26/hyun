@@ -9,6 +9,7 @@ papers:
     authors: "Yunhui Jang, <b>Seonghyun Park</b>, Jaehyung Kim, Sungsoo Ahn"
     venue: "Preprint, under review"
     paper_pdf: "/assets/publications/26ICML_preprint_Indibator.pdf"
+    url: "https://arxiv.org/abs/2602.01815"
     thumbnail: "/assets/publications/thumbnails/indibator.png"
     selected: y
 
@@ -29,23 +30,26 @@ papers:
   - title: "Learning Collective Variables for Enhanced Sampling from BioEmu with Time-lagged Generation"
     authors: "<b>Seonghyun Park</b>, Kiyoung Seong, Soojung Yang, Rafael Gómez-Bombarelli, Sungsoo Ahn"
     venue: "ICLR 2026 <br> ICML 2025, Workshop GenBio "
-    paper_pdf: "/assets/publications/26ICLR_BIoEmuCV.pdf"
+    paper_pdf: "/assets/publications/26ICLR_BioEmuCV.pdf"
     thumbnail: "/assets/publications/thumbnails/bioemucv.png"
+    url: "https://openreview.net/forum?id=1PYj4fMeLe"
     selected: y
 
   - title: "Transition path sampling with improved off-policy training of diffusion path samplers"
     authors: "Kiyoung Seong, <b>Seonghyun Park</b>, Seonghwan Kim, Woo Youn Kim, Sungsoo Ahn"
-    venue: "ICLR 2025 <br> ICML 2024, Workshop SPIGM"
+     venue: "ICLR 2025 <br> ICML 2024, Workshop SPIGM"
     paper_pdf: "/assets/publications/25ICLR_TPS-DPS.pdf"
     page: "https://kiyoung98.github.io/tps-dps/"
     thumbnail: "/assets/publications/thumbnails/tps-dps.png"
+    url: "https://iclr.cc/virtual/2025/poster/29361"
     selected: y
 
   - title: "Non-backtracking Graph Neural Networks"
     authors: "<b>Seonghyun Park</b><sup>†</sup>, Narae Ryu<sup>†</sup>, Gahee Kim, Dongyeop Woo, Se-Young Yun</b><sup>‡</sup>, Sungsoo Ahn</b><sup>‡</sup>"
-    venue: "TMLR 2024 <br> NeurIPS 2023, Workshop on New Frontiers in Graph Learning (GLFrontiers) <i>(Oral)</i>"
+    venue: "TMLR 2024 <br> NeurIPS 2023, Workshop on New Frontiers in Graph Learning (GLFrontiers) <i>***(Oral)***</i>"
     paper_pdf: "/assets/publications/24TMLR_NBA-GNN.pdf"
     thumbnail: "/assets/publications/thumbnails/nba-gnn.png"
+    url: "https://arxiv.org/abs/2310.07430"
     selected: y
 
   - title: "Diffusion Probabilistic Models for Structured Node Classification"
@@ -53,6 +57,7 @@ papers:
     venue: "NeurIPS 2023 <br> ICML 2023, Workshop on Structured Probabilistic Inference & Generative Modeling"
     paper_pdf: "/assets/publications/23NIPS_DPMSNC.pdf"
     thumbnail: "/assets/publications/thumbnails/dpm-snc.png"
+    url: "https://neurips.cc/virtual/2023/poster/72405"
     selected: n
 
   # - title: ""
