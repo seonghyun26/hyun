@@ -9,7 +9,7 @@ papers:
     authors: "Yunhui Jang, <b>Seonghyun Park</b>, Jaehyung Kim, Sungsoo Ahn"
     venue: "Preprint, under review"
     paper_pdf: "/assets/publications/26ICML_preprint_Indibator.pdf"
-    thumbnail: "/assets/publications/thumbnails/indibator.png"
+    thumbnail: "/assets/publications/thumbnails/indibator.pdf"
     selected: y
 
   - title: "Riemannian MeanFlow"
