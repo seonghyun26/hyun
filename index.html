@@ -43,7 +43,7 @@ title: Home
         <div class="paper">
           <div class="row">
             {% if paper.thumbnail %}
-            <div class="three columns">
+            <div class="four columns">
               <div class="paper-image-container">
                 {% if paper.page %}
                   <a href="{{ paper.page }}" target="_blank">
@@ -51,14 +51,26 @@ title: Home
                   </a>
                 {% elsif paper.paper_pdf %}
                   <a href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">
-                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                    {% if paper.thumbnail contains '.pdf' %}
+                      <object data="{{ paper.thumbnail | prepend: site.baseurl }}" type="application/pdf" width="100%" height="150px" style="pointer-events: none;">
+                        <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                      </object>
+                    {% else %}
+                      <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                    {% endif %}
                   </a>
                 {% else %}
-                  <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                  {% if paper.thumbnail contains '.pdf' %}
+                    <object data="{{ paper.thumbnail | prepend: site.baseurl }}" type="application/pdf" width="100%" height="150px" style="pointer-events: none;">
+                      <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                    </object>
+                  {% else %}
+                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                  {% endif %}
                 {% endif %}
               </div>
             </div>
-            <div class="{% if paper.thumbnail %}nine{% else %}twelve{% endif %} columns">
+            <div class="{% if paper.thumbnail %}eight{% else %}twelve{% endif %} columns">
             {% else %}
             <div class="twelve columns">
             {% endif %}
@@ -106,7 +118,7 @@ title: Home
         <div class="paper">
           <div class="row">
             {% if paper.thumbnail %}
-            <div class="three columns">
+            <div class="four columns">
               <div class="paper-image-container">
                 {% if paper.page %}
                   <a href="{{ paper.page }}" target="_blank">
@@ -114,14 +126,26 @@ title: Home
                   </a>
                 {% elsif paper.paper_pdf %}
                   <a href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">
-                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                    {% if paper.thumbnail contains '.pdf' %}
+                      <object data="{{ paper.thumbnail | prepend: site.baseurl }}" type="application/pdf" width="100%" height="150px" style="pointer-events: none;">
+                        <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                      </object>
+                    {% else %}
+                      <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                    {% endif %}
                   </a>
                 {% else %}
-                  <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                  {% if paper.thumbnail contains '.pdf' %}
+                    <object data="{{ paper.thumbnail | prepend: site.baseurl }}" type="application/pdf" width="100%" height="150px" style="pointer-events: none;">
+                      <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                    </object>
+                  {% else %}
+                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                  {% endif %}
                 {% endif %}
               </div>
             </div>
-            <div class="{% if paper.thumbnail %}nine{% else %}twelve{% endif %} columns">
+            <div class="{% if paper.thumbnail %}eight{% else %}twelve{% endif %} columns">
             {% else %}
             <div class="twelve columns">
             {% endif %}
@@ -243,7 +267,7 @@ title: Home
 
 <!-- ========== RESUME ========== -->
 <div class="docs-section" id="resume">
-  <h4>Vitæ</h4>
+  <h4>Curriculum Vitæ</h4>
 
   <p>Full Resume in <a href={{ "/resume/output/Seonghyun_Park_CV.pdf" | prepend: site.baseurl }} target="_blank">PDF</a>.</p>
 
