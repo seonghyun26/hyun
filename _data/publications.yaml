@@ -18,6 +18,7 @@ papers:
     venue: "Preprint, under review"
     paper_pdf: "/assets/publications/26ICML_preprint_RMF.pdf"
     thumbnail: "/assets/publications/thumbnails/rmf.png"
+    url: "https://www.arxiv.org/pdf/2602.07744"
     selected: y
 
   - title: "Boltz is a Strong Baseline for Atom-level Representation Learning"
