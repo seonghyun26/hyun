@@ -309,3 +309,56 @@ h4 {
     border-bottom-color: #33C3F0;
   }
 }
+
+/* Floating TOC */
+#floating-toc {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  width: 200px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: none;
+  /* Hidden by default on small screens */
+  z-index: 1000;
+  border: 1px solid #eee;
+}
+
+#floating-toc h5 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: 600;
+}
+
+#floating-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#floating-toc li {
+  margin-bottom: 8px;
+}
+
+#floating-toc a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.2rem;
+  transition: color 0.2s;
+  display: block;
+}
+
+#floating-toc a:hover {
+  color: #33C3F0;
+}
+
+/* Only show on larger screens (left margin of container is auto, but roughly enough space) */
+@media (min-width: 1400px) {
+  #floating-toc {
+    display: block;
+  }
+}

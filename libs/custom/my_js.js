@@ -23,7 +23,9 @@ $(document).ready(function() {
     $popoverLink.on('click', openPopover)
     $document.on('click', closePopover)
     $('a[href^="#"]').on('click', smoothScroll)
+
     buildSnippets();
+    buildTOC();
   }
 
   function smoothScroll(e) {
@@ -86,6 +88,27 @@ $(document).ready(function() {
       var newContent = escapeHtml($(this).html())
       $(this).html(newContent)
     })
+
+  }
+
+  function buildTOC() {
+    var toc = $('<div id="floating-toc"><h5>Contents</h5><ul></ul></div>');
+    var $sections = $('.docs-section');
+    
+    if ($sections.length === 0) return;
+
+    $sections.each(function() {
+      var id = $(this).attr('id');
+      var title = $(this).find('h4').first().text();
+      if (id && title) {
+        toc.find('ul').append('<li><a href="#' + id + '">' + title + '</a></li>');
+      }
+    });
+
+    $('body').append(toc);
+    
+    // Smooth scroll for TOC links
+    $('#floating-toc a').on('click', smoothScroll);
   }
 
 
