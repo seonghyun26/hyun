@@ -7,7 +7,7 @@ title: Home
   <!-- Attending conferences
   <h5 align="center">Curretnly at ICML 2023, Honolulu Hawaii!</h5> -->
   <!-- <h5 align="center">Going to NeurIPS 2023, New Orleans!!</h5> -->
-  <h5 align="center">Going to ICLR 2026, See you in Rio de Janeiro, Brazil🇧🇷 !!!</h5>
+  <h5 align="center">Plan to be at ICLR 2026 4/22 - 4/28, See you in Rio de Janeiro, Brazil🇧🇷 !!!</h5>
 
   <h4>Bio</h4>
   Hello! I'm a 2nd year Ph.D. student at <a href="https://gsai.kaist.ac.kr/">Kim Jaechul Graduate School of AI at KAIST</a>, advised by <a href="https://sites.google.com/view/sungsooahn0215/home">Sungsoo Ahn</a>.
@@ -293,9 +293,17 @@ title: Home
       <div class="row">
         <div class="four columns">
           {% if hobby.youtube %}
-            <div class="video-container" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
-              <iframe src="{{ hobby.youtube }}" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen></iframe>
-            </div>
+            {% assign yt_url = hobby.youtube %}
+            {% if yt_url contains "youtu.be/" %}
+              {% assign yt_id = yt_url | split: "youtu.be/" | last | split: "?" | first %}
+            {% elsif yt_url contains "watch?v=" %}
+              {% assign yt_id = yt_url | split: "watch?v=" | last | split: "&" | first %}
+            {% elsif yt_url contains "/embed/" %}
+              {% assign yt_id = yt_url | split: "/embed/" | last | split: "?" | first %}
+            {% else %}
+              {% assign yt_id = yt_url %}
+            {% endif %}
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ yt_id }}" frameborder="0" allowfullscreen></iframe>
           {% elsif hobby.image %}
             <img src="{{ hobby.image | prepend: site.baseurl }}" alt="{{ hobby.title }}" class="u-max-full-width" />
           {% endif %}

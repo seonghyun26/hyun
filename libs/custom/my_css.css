@@ -362,3 +362,156 @@ h4 {
     display: block;
   }
 }
+
+/* ================ Hobby styling ================ */
+.hobby iframe {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16/9;
+}
+
+/* ================ Dark Mode ================ */
+body.dark-mode {
+  background-color: #1a1a2e;
+  color: #e0e0e0;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+  color: #e0e0e0;
+}
+
+body.dark-mode a {
+  color: #5ec4e8;
+}
+
+body.dark-mode a:hover {
+  color: #33C3F0;
+}
+
+body.dark-mode .title-subtitle h5 {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+body.dark-mode .docs-section {
+  border-top-color: #2a2a4a;
+}
+
+body.dark-mode .footer {
+  color: rgba(255, 255, 255, 0.4);
+  border-top-color: #2a2a4a;
+}
+
+body.dark-mode .paper-image-container {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .project-image-container {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .paper .button {
+  color: #ccc;
+  border-color: #555;
+}
+
+body.dark-mode .paper .button:hover {
+  color: #fff;
+  border-color: #888;
+}
+
+body.dark-mode .tab-nav {
+  border-bottom-color: #444;
+}
+
+body.dark-mode .tab-nav .button {
+  color: #ccc;
+}
+
+body.dark-mode .tab-nav .button.active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+/* Navbar dark mode */
+@media (min-width: 750px) {
+  body.dark-mode .navbar,
+  body.dark-mode .navbar-spacer {
+    background: #16162a;
+    border-top-color: #2a2a4a;
+    border-bottom-color: #2a2a4a;
+  }
+
+  body.dark-mode .navbar-link {
+    color: #ccc;
+  }
+
+  body.dark-mode .navbar-link:hover {
+    color: #fff;
+  }
+
+  body.dark-mode .navbar-link.active {
+    color: #33C3F0;
+  }
+
+  body.dark-mode .popover {
+    background: #1e1e3a;
+    border-color: #2a2a4a;
+  }
+
+  body.dark-mode .popover-link {
+    color: #ccc;
+    border-bottom-color: #2a2a4a;
+  }
+
+  body.dark-mode .navbar+.docs-section {
+    border-top-width: 0;
+  }
+}
+
+/* Timeline dark mode */
+body.dark-mode .timeline .flag {
+  background: #1e1e3a;
+  color: #e0e0e0;
+}
+
+body.dark-mode .timeline .time {
+  background: #1e1e3a;
+  color: rgb(153, 11, 60);
+}
+
+body.dark-mode .timeline .desc {
+  background: #1e1e3a;
+  color: #ccc;
+}
+
+/* Floating TOC dark mode */
+body.dark-mode #floating-toc {
+  background: rgba(26, 26, 46, 0.95);
+  border-color: #2a2a4a;
+}
+
+body.dark-mode #floating-toc a {
+  color: #ccc;
+}
+
+body.dark-mode #floating-toc a:hover {
+  color: #33C3F0;
+}
+
+/* Code blocks dark mode */
+body.dark-mode code {
+  background: #2a2a4a;
+  border-color: #3a3a5a;
+  color: #e0e0e0;
+}
+
+/* Dark mode toggle icon */
+#dark-mode-toggle {
+  cursor: pointer;
+  font-size: 14px;
+}

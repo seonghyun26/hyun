@@ -26,6 +26,22 @@ $(document).ready(function() {
 
     buildSnippets();
     buildTOC();
+    initDarkMode();
+  }
+
+  function initDarkMode() {
+    if (localStorage.getItem('darkMode') === 'true') {
+      $body.addClass('dark-mode');
+      $('#dark-mode-toggle i').removeClass('fa-moon-o').addClass('fa-sun-o');
+    }
+
+    $('#dark-mode-toggle').on('click', function(e) {
+      e.preventDefault();
+      $body.toggleClass('dark-mode');
+      var isDark = $body.hasClass('dark-mode');
+      localStorage.setItem('darkMode', isDark);
+      $(this).find('i').toggleClass('fa-moon-o fa-sun-o');
+    });
   }
 
   function smoothScroll(e) {
