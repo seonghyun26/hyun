@@ -291,7 +291,7 @@ title: Home
   {% for hobby in site.data.hobbies.hobbies %}
     <div class="hobby" style="margin-bottom: 20px;">
       <div class="row">
-        <div class="four columns">
+        <div class="eight columns">
           {% if hobby.youtube %}
             {% assign yt_url = hobby.youtube %}
             {% if yt_url contains "youtu.be/" %}
@@ -308,7 +308,7 @@ title: Home
             <img src="{{ hobby.image | prepend: site.baseurl }}" alt="{{ hobby.title }}" class="u-max-full-width" />
           {% endif %}
         </div>
-        <div class="eight columns">
+        <div class="four columns">
           <p class="title"><b>{{ hobby.title }}</b></p>
           <p>{{ hobby.description }}</p>
         </div>
