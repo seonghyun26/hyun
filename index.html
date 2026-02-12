@@ -303,7 +303,7 @@ title: Home
             {% else %}
               {% assign yt_id = yt_url %}
             {% endif %}
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ yt_id }}" frameborder="0" allowfullscreen></iframe>
+            <iframe width="400" height="225" src="https://www.youtube.com/embed/{{ yt_id }}" frameborder="0" allowfullscreen></iframe>
           {% elsif hobby.image %}
             <img src="{{ hobby.image | prepend: site.baseurl }}" alt="{{ hobby.title }}" class="u-max-full-width" />
           {% endif %}

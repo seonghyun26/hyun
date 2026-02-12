@@ -122,9 +122,38 @@ $(document).ready(function() {
     });
 
     $('body').append(toc);
-    
+
     // Smooth scroll for TOC links
     $('#floating-toc a').on('click', smoothScroll);
+
+    // Highlight active section and shift TOC on scroll
+    var lastScrollTop = 0;
+    $window.on('scroll', function() {
+      var scrollTop = $window.scrollTop();
+      var windowHeight = $window.height();
+
+      // Subtle vertical shift based on scroll direction
+      var delta = scrollTop - lastScrollTop;
+      var shift = Math.max(-8, Math.min(8, delta * 0.3));
+      var $toc = $('#floating-toc');
+      $toc.css('transform', 'translateY(calc(-50% + ' + shift + 'px))');
+
+      // Highlight active section
+      var currentId = '';
+      $sections.each(function() {
+        var sectionTop = $(this).offset().top - 100;
+        if (scrollTop >= sectionTop) {
+          currentId = $(this).attr('id');
+        }
+      });
+
+      $toc.find('a').removeClass('active');
+      if (currentId) {
+        $toc.find('a[href="#' + currentId + '"]').addClass('active');
+      }
+
+      lastScrollTop = scrollTop;
+    });
   }
 
 
