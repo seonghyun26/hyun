@@ -9,6 +9,7 @@ papers:
     authors: "Yunhui Jang, <b>Seonghyun Park</b>, Jaehyung Kim, Sungsoo Ahn"
     venue: "Preprint, under review"
     paper_pdf: "/assets/publications/preprint_Indibator.pdf"
+    page: "https://yunhuijang.github.io/projects/INDIBATOR/"
     arxiv: "https://arxiv.org/abs/2602.01815"
     url: "https://arxiv.org/abs/2602.01815"
     thumbnail: "/assets/publications/thumbnails/indibator.png"
@@ -42,8 +43,9 @@ papers:
     authors: "Kiyoung Seong, <b>Seonghyun Park</b>, Seonghwan Kim, Woo Youn Kim, Sungsoo Ahn"
     venue: "ICLR 2025 <br> ICML 2024, Workshop SPIGM"
     paper_pdf: "/assets/publications/25ICLR_TPS-DPS.pdf"
-    page: "https://kiyoung98.github.io/tps-dps/"
     thumbnail: "/assets/publications/thumbnails/tps-dps.png"
+    page: "https://kiyoung98.github.io/tps-dps/"
+    arxiv: "https://arxiv.org/abs/2405.19961"
     url: "https://iclr.cc/virtual/2025/poster/29361"
     selected: y
 

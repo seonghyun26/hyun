@@ -34,8 +34,12 @@ h4 {
   margin-bottom: 20px
 }
 
-.paper .title {
-  /*text-transform: uppercase; */
+.paper .title a {
+  color: #1a73e8;
+}
+
+body.dark-mode .paper .title a {
+  color: #6db3f2;
 }
 
 .paper p {
