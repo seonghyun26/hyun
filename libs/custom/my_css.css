@@ -379,6 +379,11 @@ h4 {
   aspect-ratio: 16/9;
 }
 
+.hobby img {
+  max-width: 500px;
+  height: auto;
+}
+
 /* ================ Dark Mode ================ */
 body.dark-mode {
   background-color: #1a1a2e;
