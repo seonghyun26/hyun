@@ -1,0 +1,15 @@
+hobbies:
+  # Use "youtube" for a YouTube embed, or "image" for a static image.
+  # YouTube URLs should be in embed format: https://www.youtube.com/embed/VIDEO_ID
+
+  - title: "Back in Time - Nerd Connection"
+    description: "Band Checkshirts 🏁"
+    youtube: "https://youtu.be/kLXU73_YnQY"
+
+  - title: "If I have only you (그대만 있다면) - Nerd Connection"
+    description: "Band Checkshirts 🏁"
+    youtube: "https://youtu.be/JSC378o0TMM"
+
+  # - title: "Example with image"
+  #   description: "Description here."
+  #   image: "/assets/hobbies/example.jpg"

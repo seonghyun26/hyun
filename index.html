@@ -284,6 +284,31 @@ title: Home
 </div>
 
 
+<!-- ========== HOBBIES ========== -->
+<div class="docs-section" id="hobbies">
+  <h4>Hobbies</h4>
+  I love music!
+  {% for hobby in site.data.hobbies.hobbies %}
+    <div class="hobby" style="margin-bottom: 20px;">
+      <div class="row">
+        <div class="four columns">
+          {% if hobby.youtube %}
+            <div class="video-container" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
+              <iframe src="{{ hobby.youtube }}" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen></iframe>
+            </div>
+          {% elsif hobby.image %}
+            <img src="{{ hobby.image | prepend: site.baseurl }}" alt="{{ hobby.title }}" class="u-max-full-width" />
+          {% endif %}
+        </div>
+        <div class="eight columns">
+          <p class="title"><b>{{ hobby.title }}</b></p>
+          <p>{{ hobby.description }}</p>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
 <div class="docs-section" id="template">
     <h4>Website Design</h4>
     Thanks <a href="https://faculty.washington.edu/msaveski/">
