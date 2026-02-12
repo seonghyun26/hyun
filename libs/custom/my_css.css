@@ -391,6 +391,29 @@ h4 {
   margin-bottom: 2px;
 }
 
+/* Mobile layout for hobbies - stack vertically like publications */
+@media (max-width: 549px) {
+  .hobby-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hobby-item iframe,
+  .hobby-item img {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .hobby-item iframe {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .hobby-info {
+    margin-top: 10px;
+  }
+}
+
 /* ================ Dark Mode ================ */
 body.dark-mode {
   background-color: #1a1a2e;
