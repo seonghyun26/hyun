@@ -76,6 +76,10 @@ title: Home
                   <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">Paper</a>
                 {% endif %}
 
+                {% if paper.arxiv %}
+                  <a class="button" href="{{ paper.arxiv }}" target="_blank">Arxiv</a>
+                {% endif %}
+
                 {% if paper.page %}
                   <a class="button" href="{{ paper.page }}" target="_blank">Page</a>
                 {% endif %}

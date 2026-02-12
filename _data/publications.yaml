@@ -8,7 +8,8 @@ papers:
   - title: "INDIBATOR: Diverse and Fact-Grounded Individuality for Multi-Agent Debate in Molecular Discovery"
     authors: "Yunhui Jang, <b>Seonghyun Park</b>, Jaehyung Kim, Sungsoo Ahn"
     venue: "Preprint, under review"
-    paper_pdf: "/assets/publications/26ICML_preprint_Indibator.pdf"
+    paper_pdf: "/assets/publications/preprint_Indibator.pdf"
+    arxiv: "https://arxiv.org/abs/2602.01815"
     url: "https://arxiv.org/abs/2602.01815"
     thumbnail: "/assets/publications/thumbnails/indibator.png"
     selected: y
@@ -16,15 +17,16 @@ papers:
   - title: "Riemannian MeanFlow"
     authors: "Dongyeop Woo, Marta Skreta, <b>Seonghyun Park</b>, Kirill Neklyudov, Sungsoo Ahn"
     venue: "Preprint, under review"
-    paper_pdf: "/assets/publications/26ICML_preprint_RMF.pdf"
+    paper_pdf: "/assets/publications/preprint_RMF.pdf"
     thumbnail: "/assets/publications/thumbnails/rmf.png"
-    url: "https://www.arxiv.org/pdf/2602.07744"
+    arxiv: "https://arxiv.org/abs/2602.07744"
+    url: "https://arxiv.org/abs/2602.07744"
     selected: y
 
   - title: "Boltz is a Strong Baseline for Atom-level Representation Learning"
     authors: "Hyosoon Jang, Hyunjin Seo, Yunhui Jang, <b>Seonghyun Park</b>, Sungsoo Ahn"
     venue: "Preprint, under review"
-    paper_pdf: "/assets/publications/26ICML_preprint_boltz.pdf"
+    paper_pdf: "/assets/publications/preprint_boltz.pdf"
     thumbnail: "/assets/publications/thumbnails/boltz.png"
     selected: y
 
@@ -50,7 +52,8 @@ papers:
     venue: "TMLR 2024 <br> NeurIPS 2023, Workshop on New Frontiers in Graph Learning (GLFrontiers) <i><b>(Oral)</b></i>"
     paper_pdf: "/assets/publications/24TMLR_NBA-GNN.pdf"
     thumbnail: "/assets/publications/thumbnails/nba-gnn.png"
-    url: "https://arxiv.org/abs/2310.07430"
+    arxiv: "https://arxiv.org/abs/2310.07430"
+    url: "https://openreview.net/forum?id=64HdQKnyTc"
     selected: y
 
   - title: "Diffusion Probabilistic Models for Structured Node Classification"
