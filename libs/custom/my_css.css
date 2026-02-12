@@ -375,8 +375,7 @@ h4 {
 
 /* ================ Hobby styling ================ */
 .hobby iframe {
-  width: 100% !important;
-  height: auto !important;
+  max-width: 100%;
   aspect-ratio: 16/9;
 }
 

@@ -22,9 +22,17 @@ hobbies:
     description: "Orchestra, HanUlRim 🎻"
     youtube: "https://youtu.be/Bpgakbl8fHo"
 
+  - title: "Shostakovich Suite for Variety Orchestra(Excerpts)"
+    description: "Orchestra, HanUlRim 🎻"
+    youtube: "https://youtu.be/w8U98_EMHaM"
+
   - title: "Can-Can"
     description: "Orchestra, HanUlRim 🎻"
     youtube: "https://youtu.be/vm8kUjOfy3w"
+
+  - title: "Theme from Jurassic park"
+    description: "Orchestra, HanUlRim 🎻"
+    youtube: "https://youtu.be/vH9a0BCY7bM"
 
   # - title: "Example with image"
   #   description: "Description here."
