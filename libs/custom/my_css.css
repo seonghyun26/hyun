@@ -374,24 +374,21 @@ h4 {
 }
 
 /* ================ Hobby styling ================ */
-.hobby iframe {
-  max-width: 100%;
-  aspect-ratio: 16/9;
-}
-
-.hobby img {
-  max-width: 500px;
-  height: auto;
-}
-
-.hobby .row {
+.hobby-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
-.hobby .row > div {
-  padding-left: 0;
+.hobby-item iframe,
+.hobby-item img {
+  max-width: 500px;
+  flex-shrink: 0;
+}
+
+.hobby-info p {
+  margin-bottom: 2px;
 }
 
 /* ================ Dark Mode ================ */

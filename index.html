@@ -289,29 +289,25 @@ title: Home
   <h4>Hobbies</h4>
   <p style="margin-bottom: 10px;">I love music!</p>
   {% for hobby in site.data.hobbies.hobbies %}
-    <div class="hobby" style="margin-bottom: 20px;">
-      <div class="row">
-        <div class="eight columns">
-          {% if hobby.youtube %}
-            {% assign yt_url = hobby.youtube %}
-            {% if yt_url contains "youtu.be/" %}
-              {% assign yt_id = yt_url | split: "youtu.be/" | last | split: "?" | first %}
-            {% elsif yt_url contains "watch?v=" %}
-              {% assign yt_id = yt_url | split: "watch?v=" | last | split: "&" | first %}
-            {% elsif yt_url contains "/embed/" %}
-              {% assign yt_id = yt_url | split: "/embed/" | last | split: "?" | first %}
-            {% else %}
-              {% assign yt_id = yt_url %}
-            {% endif %}
-            <iframe width="500" height="281" src="https://www.youtube.com/embed/{{ yt_id }}" frameborder="0" allowfullscreen></iframe>
-          {% elsif hobby.image %}
-            <img src="{{ hobby.image | prepend: site.baseurl }}" alt="{{ hobby.title }}" class="u-max-full-width" />
-          {% endif %}
-        </div>
-        <div class="four columns">
-          <p class="title"><b>{{ hobby.title }}</b></p>
-          <p>{{ hobby.description }}</p>
-        </div>
+    <div class="hobby-item">
+      {% if hobby.youtube %}
+        {% assign yt_url = hobby.youtube %}
+        {% if yt_url contains "youtu.be/" %}
+          {% assign yt_id = yt_url | split: "youtu.be/" | last | split: "?" | first %}
+        {% elsif yt_url contains "watch?v=" %}
+          {% assign yt_id = yt_url | split: "watch?v=" | last | split: "&" | first %}
+        {% elsif yt_url contains "/embed/" %}
+          {% assign yt_id = yt_url | split: "/embed/" | last | split: "?" | first %}
+        {% else %}
+          {% assign yt_id = yt_url %}
+        {% endif %}
+        <iframe width="500" height="281" src="https://www.youtube.com/embed/{{ yt_id }}" frameborder="0" allowfullscreen></iframe>
+      {% elsif hobby.image %}
+        <img src="{{ hobby.image | prepend: site.baseurl }}" alt="{{ hobby.title }}" />
+      {% endif %}
+      <div class="hobby-info">
+        <p class="title"><b>{{ hobby.title }}</b></p>
+        <p>{{ hobby.description }}</p>
       </div>
     </div>
   {% endfor %}
