@@ -384,6 +384,16 @@ h4 {
   height: auto;
 }
 
+.hobby .row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hobby .row > div {
+  padding-left: 0;
+}
+
 /* ================ Dark Mode ================ */
 body.dark-mode {
   background-color: #1a1a2e;
