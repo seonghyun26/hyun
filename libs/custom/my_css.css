@@ -418,16 +418,6 @@ body.dark-mode .paper .title a {
   }
 }
 
-/* ================ Hobbies toggle arrow ================ */
-#hobbies-arrow {
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-
-#hobbies-arrow.open {
-  transform: rotate(90deg);
-}
-
 /* ================ Dark Mode ================ */
 body.dark-mode {
   background-color: #1a1a2e;
