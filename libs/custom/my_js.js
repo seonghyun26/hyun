@@ -157,6 +157,15 @@ $(document).ready(function() {
   }
 
 
+  // Hobbies toggle
+  $('#hobbies-toggle').on('click', function(e) {
+    e.preventDefault();
+    var $content = $('#hobbies-content');
+    var $arrow = $('#hobbies-arrow');
+    $content.slideToggle(300);
+    $arrow.toggleClass('open');
+  });
+
   init();
 
 });
