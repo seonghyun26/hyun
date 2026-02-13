@@ -329,16 +329,22 @@ body.dark-mode #hobbies-toggle {
   top: 50%;
   left: 20px;
   transform: translateY(-50%);
-  width: 230px;
+  width: 40px;
   background: rgba(255, 255, 255, 0.95);
-  padding: 24px 22px;
+  padding: 16px 10px;
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   display: none;
-  /* Hidden by default on small screens */
   z-index: 1000;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: width 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
+}
+
+#floating-toc:hover {
+  width: 230px;
+  padding: 24px 22px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 #floating-toc h5 {
@@ -346,6 +352,13 @@ body.dark-mode #hobbies-toggle {
   margin-bottom: 16px;
   text-align: center;
   font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+#floating-toc:hover h5 {
+  opacity: 1;
 }
 
 #floating-toc ul {
@@ -360,25 +373,53 @@ body.dark-mode #hobbies-toggle {
 
 #floating-toc a {
   text-decoration: none;
-  color: #555;
+  color: transparent;
   font-size: 1.4rem;
-  transition: color 0.2s, padding-left 0.2s;
+  transition: color 0.2s ease, padding-left 0.2s ease;
   display: block;
   padding: 2px 0;
+  position: relative;
+  white-space: nowrap;
 }
 
-#floating-toc a:hover {
+/* Collapsed state: show a short line for each link */
+#floating-toc a::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 3px;
+  background: #ccc;
+  border-radius: 2px;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+#floating-toc a.active::before {
+  background: #33C3F0;
+}
+
+/* Expanded state on hover: show text, hide lines */
+#floating-toc:hover a {
+  color: #555;
+}
+
+#floating-toc:hover a::before {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+#floating-toc:hover a:hover {
   color: #33C3F0;
 }
 
-#floating-toc a.active {
+#floating-toc:hover a.active {
   color: #33C3F0;
   font-weight: 600;
   padding-left: 6px;
   border-left: 2px solid #33C3F0;
 }
 
-/* Only show on larger screens (left margin of container is auto, but roughly enough space) */
+/* Only show on larger screens */
 @media (min-width: 1400px) {
   #floating-toc {
     display: block;
@@ -388,7 +429,7 @@ body.dark-mode #hobbies-toggle {
 /* ================ Hobby styling ================ */
 .hobby-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 15px;
   margin-bottom: 20px;
 }
@@ -552,10 +593,18 @@ body.dark-mode #floating-toc {
 }
 
 body.dark-mode #floating-toc a {
+  color: transparent;
+}
+
+body.dark-mode #floating-toc a::before {
+  background: #555;
+}
+
+body.dark-mode #floating-toc:hover a {
   color: #ccc;
 }
 
-body.dark-mode #floating-toc a:hover {
+body.dark-mode #floating-toc:hover a:hover {
   color: #33C3F0;
 }
 
