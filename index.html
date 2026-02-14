@@ -20,7 +20,7 @@ title: Home
   <br>
   <ul>
     <li>Small molecules (drug)</li>
-    <li>Proteins</li>
+    <li>Protein dynamics</li>
     <li>Molecular Dynamics (MD), Collective Variables(CVs)</li>
     <li>Graph Neural Networks (GNNs), Over-squashing</li>
   </ul>
@@ -79,7 +79,7 @@ title: Home
               <p><i>{{ paper.venue }}</i></p>
               <div class="paper-buttons">
                 {% if paper.page %}
-                  <a class="button" href="{{ paper.page }}" target="_blank">Page</a>
+                  <a class="button" href="{{ paper.page }}" target="_blank">Project page</a>
                 {% endif %}
 
                 {% if paper.paper_pdf %}
@@ -154,7 +154,7 @@ title: Home
               <p><i>{{ paper.venue }}</i></p>
               <div class="paper-buttons">
                 {% if paper.page %}
-                  <a class="button" href="{{ paper.page }}" target="_blank">Page</a>
+                  <a class="button" href="{{ paper.page }}" target="_blank">Project page</a>
                 {% endif %}
 
                 {% if paper.paper_pdf %}
@@ -285,7 +285,13 @@ title: Home
       <div class="direction-r">
       {% endif %}
         <div class="flag-wrapper">
-          <span class="flag">{{ exp.place }}</span>
+          <span class="flag">
+            {% if exp.url %}
+              <a href="{{ exp.url }}" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px dotted;">{{ exp.place }}</a>
+            {% else %}
+              {{ exp.place }}
+            {% endif %}
+          </span>
           <span class="time-wrapper"><span class="time">{{ exp.time }}</span></span>
         </div>
         <div class="desc"><b>{{ exp.title }}</b> <br/> {{ exp.subtitle }}</div>
