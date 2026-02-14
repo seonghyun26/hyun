@@ -37,7 +37,9 @@ papers:
     paper_pdf: "/assets/publications/26ICLR_BioEmuCV.pdf"
     thumbnail: "/assets/publications/thumbnails/bioemucv.png"
     arxiv: "https://arxiv.org/abs/2507.07390"
-    url: "https://openreview.net/forum?id=1PYj4fMeLe"
+    # url: "https://openreview.net/forum?id=1PYj4fMeLe"
+    # poster: "https://iclr.cc/virtual/2026/poster/10011831"
+    url: "https://iclr.cc/virtual/2026/poster/10011831"
     selected: y
 
   - title: "Transition path sampling with improved off-policy training of diffusion path samplers"
@@ -47,6 +49,7 @@ papers:
     thumbnail: "/assets/publications/thumbnails/tps-dps.png"
     page: "https://kiyoung98.github.io/tps-dps/"
     arxiv: "https://arxiv.org/abs/2405.19961"
+    # poster: "https://iclr.cc/virtual/2025/poster/29361"
     url: "https://iclr.cc/virtual/2025/poster/29361"
     selected: y
 
@@ -56,6 +59,7 @@ papers:
     thumbnail: "/assets/publications/thumbnails/nba-gnn.png"
     paper_pdf: "/assets/publications/24TMLR_NBA-GNN.pdf"
     arxiv: "https://arxiv.org/abs/2310.07430"
+    poster: "/assets/publications/poster/23nips_nbagnn.png"
     url: "https://openreview.net/forum?id=64HdQKnyTc"
     selected: y
 
@@ -64,6 +68,7 @@ papers:
     venue: "NeurIPS 2023 <br> ICML 2023, Workshop on Structured Probabilistic Inference & Generative Modeling"
     paper_pdf: "/assets/publications/23NIPS_DPMSNC.pdf"
     thumbnail: "/assets/publications/thumbnails/dpm-snc.png"
+    poster: "/assets/publications/poster/23nips_dpmsnc.png"
     url: "https://neurips.cc/virtual/2023/poster/72405"
     selected: n
 
