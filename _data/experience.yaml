@@ -24,7 +24,7 @@ experiences:
     title: "Exchange student"
     subtitle: "Bioinformatique"
     category: "school"
-    url: "https://www.insa-lyon.fr/"
+    url: "https://biotech-bioinfo.insa-lyon.fr"
 
   - place: "Bagelcode"
     time: "Summer 2021"
@@ -45,4 +45,4 @@ experiences:
     title: "Bachelor's Degree"
     subtitle: "Computer Science and Engineering"
     category: "school"
-    url: "https://postech.ac.kr/"
+    url: "https://cse.postech.ac.kr/csepostech/index.do"
