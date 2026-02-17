@@ -467,7 +467,7 @@
 
 
 #one-col-entry(
-  content: [I'm a second-year Ph.D. candidate at Graduate School of AI at KAIST, advised by #link("https://sites.google.com/view/sungsooahn0215")[Sungsoo Ahn]. My Master’s research focused on addressing the over-squashing phenomenon in Graph Neural Networks \(GNNs\) to capture long-range interactions in molecule graphs. Currently, my research focuses on #strong[AI for Science \(AI4Science\)], specifically integrating machine learning with biomolecular modeling and molecular dynamics \(MD\). Recently, I led a project on machine learning–based collective variables \(CVs\) for enhanced sampling of proteins, by repurposing foundation models.]
+  content: [I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate School of AI at KAIST], advised by #link("https://sungsoo-ahn.github.io/")[Sungsoo Ahn]. Currently, my research focuses on #strong[AI for Science \(AI4Science\)], specifically integrating machine learning with biomolecular modeling and molecular dynamics \(MD\). Recently, I led a project on machine learning–based Collective Variables \(CVs\) for enhanced sampling of proteins, by repurposing foundation models. Before, my Master’s research focused on addressing the over-squashing phenomenon in Graph Neural Networks \(GNNs\) to capture long-range interactions in molecule graphs.]
 )
 
 
@@ -546,6 +546,40 @@ Feb 2019 – Feb 2023
 
 
 
+== Experience
+
+
+#two-col-entry(
+  left-content: [
+    #strong[Bagelcode], Buisness Analyst \(BA\) intern
+    #v(-design-text-leading)
+
+    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [Game economy management and KPI analysis automation])], column-gutter: 0cm)
+  ],
+  right-content: [
+    Seoul, South Korea
+
+June 2021 – Aug 2021
+  ],
+)
+
+#v(design-entries-vertical-space-between-entries)
+#two-col-entry(
+  left-content: [
+    #strong[Seller Hub], Product Manager \(PM\) intern
+    #v(-design-text-leading)
+
+    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [Organization-wide task prioritization and landing funnel renewal])], column-gutter: 0cm)
+  ],
+  right-content: [
+    Seoul, South Korea
+
+July 2020 – Aug 2020
+  ],
+)
+
+
+
 == Publication
 
 
@@ -561,7 +595,7 @@ Feb 2019 – Feb 2023
 #one-col-entry(content:[
 #v(design-highlights-top-margin);Yunhui Jang, #strong[#emph[Seonghyun Park]], Jaehyung Kim, Sungsoo Ahn
 
-#v(design-highlights-top-margin - design-text-leading)#link("https://arxiv.org/abs/2602.01815")[arxiv.org/abs/2602.01815]])
+#v(design-highlights-top-margin - design-text-leading)#link("https://doi.org/10.48550/arXiv.2602.01815")[10.48550/arXiv.2602.01815] (Preprint)])
 
 #v(design-entries-vertical-space-between-entries)
 #two-col-entry(
@@ -574,7 +608,9 @@ Feb 2019 – Feb 2023
   ],
 )
 #one-col-entry(content:[
-  #v(design-highlights-top-margin);Dongyeop Woo, Marta Skreta, #strong[#emph[Seonghyun Park]], Kirill Neklyudov, Sungsoo Ahn])
+#v(design-highlights-top-margin);Dongyeop Woo, Marta Skreta, #strong[#emph[Seonghyun Park]], Kirill Neklyudov, Sungsoo Ahn
+
+#v(design-highlights-top-margin - design-text-leading)#link("https://doi.org/10.48550/arXiv.2602.07744")[10.48550/arXiv.2602.07744] (Preprint)])
 
 #v(design-entries-vertical-space-between-entries)
 #two-col-entry(
@@ -587,7 +623,9 @@ Feb 2019 – Feb 2023
   ],
 )
 #one-col-entry(content:[
-  #v(design-highlights-top-margin);Hyosoon Jang, Hyunjin Seo, Yunhui Jang, #strong[#emph[Seonghyun Park]], Sungsoo Ahn])
+#v(design-highlights-top-margin);Hyosoon Jang, Hyunjin Seo, Yunhui Jang, #strong[#emph[Seonghyun Park]], Sungsoo Ahn
+
+#v(design-highlights-top-margin - design-text-leading)#link("https://doi.org/10.48550/arXiv.2602.13249")[10.48550/arXiv.2602.13249] (Preprint)])
 
 #v(design-entries-vertical-space-between-entries)
 #two-col-entry(
@@ -602,7 +640,7 @@ Feb 2019 – Feb 2023
 #one-col-entry(content:[
 #v(design-highlights-top-margin);#strong[#emph[Seonghyun Park]], Kiyoung Seong, Soojung Yang, Rafael Gomez-Bombarelli, Sungsoo Ahn
 
-#v(design-highlights-top-margin - design-text-leading)#link("https://openreview.net/forum?id=1PYj4fMeLe")[openreview.net/forum?id=1PYj4fMeLe] (ICLR 2026)])
+#v(design-highlights-top-margin - design-text-leading)#link("https://doi.org/10.48550/arXiv.2507.07390")[10.48550/arXiv.2507.07390] (ICLR 2026)])
 
 #v(design-entries-vertical-space-between-entries)
 #two-col-entry(
@@ -617,7 +655,7 @@ Feb 2019 – Feb 2023
 #one-col-entry(content:[
 #v(design-highlights-top-margin);Kiyoung Seong, #strong[#emph[Seonghyun Park]], Seonghwan Kim, Woo Youn Kim, Sungsoo Ahn
 
-#v(design-highlights-top-margin - design-text-leading)#link("https://iclr.cc/virtual/2025/poster/29361")[iclr.cc/virtual/2025/poster/29361] (ICLR 2025)])
+#v(design-highlights-top-margin - design-text-leading)#link("https://doi.org/10.48550/arXiv.2405.19961")[10.48550/arXiv.2405.19961] (ICLR 2025)])
 
 #v(design-entries-vertical-space-between-entries)
 #two-col-entry(
@@ -632,7 +670,7 @@ Feb 2019 – Feb 2023
 #one-col-entry(content:[
 #v(design-highlights-top-margin);#strong[#emph[Seonghyun Park]]#sym.ast.basic#h(0pt, weak: true) , Narae Ryu#sym.ast.basic#h(0pt, weak: true) , Gahee Kim, Dongyeop Woo, Se-Young Yun#sym.ast.basic#h(0pt, weak: true) #sym.ast.basic#h(0pt, weak: true) , Sungsoo Ahn#sym.ast.basic#h(0pt, weak: true) #sym.ast.basic#h(0pt, weak: true) 
 
-#v(design-highlights-top-margin - design-text-leading)#link("https://arxiv.org/abs/2310.07430")[arxiv.org/abs/2310.07430] (TMLR 2024, NeurIPS 2023 GLFrontiers Workshop \(Oral\))])
+#v(design-highlights-top-margin - design-text-leading)#link("https://doi.org/10.48550/arXiv.2310.07430")[10.48550/arXiv.2310.07430] (TMLR 2024, NeurIPS 2023 Workshop GLFrontiers Oral)])
 
 #v(design-entries-vertical-space-between-entries)
 #two-col-entry(
@@ -647,41 +685,7 @@ Feb 2019 – Feb 2023
 #one-col-entry(content:[
 #v(design-highlights-top-margin);Hyosoon Jang, #strong[#emph[Seonghyun Park]], Sangwoo Mo, Sungsoo Ahn
 
-#v(design-highlights-top-margin - design-text-leading)#link("https://neurips.cc/virtual/2023/poster/72405")[neurips.cc/virtual/2023/poster/72405] (NeurIPS 2023)])
-
-
-
-== Experience
-
-
-#two-col-entry(
-  left-content: [
-    #strong[Bagelcode], Buisness Analyst \(BA\) intern
-    #v(-design-text-leading)
-
-    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [Game economy management KPI analysis automation])], column-gutter: 0cm)
-  ],
-  right-content: [
-    Seoul, South Korea
-
-June 2021 – Aug 2021
-  ],
-)
-
-#v(design-entries-vertical-space-between-entries)
-#two-col-entry(
-  left-content: [
-    #strong[Seller Hub], Product Manager \(PM\) intern
-    #v(-design-text-leading)
-
-    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [Task priority management and landing funnel renewal])], column-gutter: 0cm)
-  ],
-  right-content: [
-    Seoul, South Korea
-
-July 2020 – Aug 2020
-  ],
-)
+#v(design-highlights-top-margin - design-text-leading)#link("https://doi.org/10.48550/arXiv.2302.10506")[10.48550/arXiv.2302.10506] (NeurIPS 2023)])
 
 
 
