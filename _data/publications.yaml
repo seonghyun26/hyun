@@ -33,6 +33,7 @@ papers:
     venue: "Preprint, under review"
     paper_pdf: "/assets/publications/preprint_boltz.pdf"
     thumbnail: "/assets/publications/thumbnails/boltz.png"
+    arxiv: "https://arxiv.org/abs/2602.13249"
     selected: y
 
   - title: "Learning Collective Variables from BioEmu with Time-lagged Generation"
