@@ -479,7 +479,7 @@
   left-column-width: 1cm,
   left-content: [#strong[Ph.D.]],
   middle-content: [
-    #strong[Korea Advanced Institute of Science and Technology \(KAIST\)], Kim Jaechul Gradudate School of Artificial Intelligence
+    #strong[Korea Advanced Institute of Science and Technology \(KAIST\)], Kim Jaechul Graduate School of Artificial Intelligence
     #v(-design-text-leading)
 
     #v(design-highlights-top-margin);#highlights([#link("https://sites.google.com/view/sungsooahn0215")[Structured and Probabilistic Machine Learning Lab] \@ Sungsoo Ahn],[Interest: Bio-molecules, Molecular dynamics \(MD\)],)
@@ -515,7 +515,7 @@ Feb 2023 – Feb 2025
   left-column-width: 1cm,
   left-content: [#strong[E.S.]],
   middle-content: [
-    #strong[Institut National des Sciences Appliquées \(INSA\) Lyon], Bioinfomatics
+    #strong[Institut National des Sciences Appliquées \(INSA\) Lyon], Bioinformatics
     #v(-design-text-leading)
 
     #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [Exchange Student])], column-gutter: 0cm)
@@ -551,7 +551,7 @@ Feb 2019 – Feb 2023
 
 #two-col-entry(
   left-content: [
-    #strong[Bagelcode], Buisness Analyst \(BA\) intern
+    #strong[Bagelcode], Business Analyst \(BA\) intern
     #v(-design-text-leading)
 
     #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [Game economy management and KPI analysis automation])], column-gutter: 0cm)

@@ -16,7 +16,7 @@ cv:
     - "I'm a second-year Ph.D. student at [Graduate School of AI at KAIST](https://gsai.kaist.ac.kr/), advised by [Sungsoo Ahn](https://sungsoo-ahn.github.io/). Currently, my research focuses on **AI for Science (AI4Science)**, specifically integrating machine learning with biomolecular modeling and molecular dynamics (MD). Recently, I led a project on machine learning–based Collective Variables (CVs) for enhanced sampling of proteins, by repurposing foundation models. Before, my Master’s research focused on addressing the over-squashing phenomenon in Graph Neural Networks (GNNs) to capture long-range interactions in molecule graphs."
     Education:
     - institution: Korea Advanced Institute of Science and Technology (KAIST)
-      area: Kim Jaechul Gradudate School of Artificial Intelligence
+      area: Kim Jaechul Graduate School of Artificial Intelligence
       degree: Ph.D.
       location: Seoul, South Korea
       start_date: 2025-02
@@ -33,7 +33,7 @@ cv:
       - '[Machine Learning](https://ml.postech.ac.kr/) Lab @ Sungsoo Ahn '
       - 'Interest: Graph Neural Networks (GNNs), Over-squashing'
     - institution: Institut National des Sciences Appliquées (INSA) Lyon
-      area: Bioinfomatics
+      area: Bioinformatics
       degree: E.S.
       location: Lyon, France
       start_date: 2022-01
@@ -47,7 +47,7 @@ cv:
       end_date: 2023-02
     Experience:
     - company: Bagelcode
-      position: Buisness Analyst (BA) intern
+      position: Business Analyst (BA) intern
       location: Seoul, South Korea
       start_date: 2021-06
       end_date: 2021-08

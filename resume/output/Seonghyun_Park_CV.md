@@ -15,7 +15,7 @@ I'm a second-year Ph.D. student at [Graduate School of AI at KAIST](https://gsai
 
 # Education
 
-## Korea Advanced Institute of Science and Technology (KAIST), Ph.D. in Kim Jaechul Gradudate School of Artificial Intelligence
+## Korea Advanced Institute of Science and Technology (KAIST), Ph.D. in Kim Jaechul Graduate School of Artificial Intelligence
 
 - Feb 2025 – present
 - Seoul, South Korea
@@ -29,7 +29,7 @@ I'm a second-year Ph.D. student at [Graduate School of AI at KAIST](https://gsai
 - [Machine Learning](https://ml.postech.ac.kr/) Lab @ Sungsoo Ahn 
 - Interest: Graph Neural Networks (GNNs), Over-squashing
 
-## Institut National des Sciences Appliquées (INSA) Lyon, E.S. in Bioinfomatics
+## Institut National des Sciences Appliquées (INSA) Lyon, E.S. in Bioinformatics
 
 - Jan 2022 – June 2022
 - Lyon, France
@@ -41,7 +41,7 @@ I'm a second-year Ph.D. student at [Graduate School of AI at KAIST](https://gsai
 
 # Experience
 
-## Bagelcode, Buisness Analyst (BA) intern
+## Bagelcode, Business Analyst (BA) intern
 
 - June 2021 – Aug 2021
 - Seoul, South Korea
