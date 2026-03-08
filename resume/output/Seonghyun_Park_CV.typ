@@ -3,7 +3,7 @@
 
 #let name = "Seonghyun Park"
 #let locale-catalog-page-numbering-style = context { "Seonghyun Park - Page " + str(here().page()) + " of " + str(counter(page).final().first()) + "" }
-#let locale-catalog-last-updated-date-style = "Last updated in Feb 2026"
+#let locale-catalog-last-updated-date-style = "Last updated in Mar 2026"
 #let locale-catalog-language = "en"
 #let design-page-size = "us-letter"
 #let design-section-titles-font-size = 1.4em
