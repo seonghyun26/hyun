@@ -10,7 +10,14 @@
 theme: minima
 
 exclude:
-  - resume
+  - resume/.venv
+  - resume/classic
+  - resume/markdown
+  - resume/resume
+  - resume/rendercv_output
+  - resume/make.sh
+  - resume/resume.code-workspace
+  - resume/Seonghyun_Park_CV.yaml
   - Gemfile
   - Gemfile.lock
   - serve.sh
