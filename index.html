@@ -10,7 +10,7 @@ title: Home
     Going to NeurIPS 2023, New Orleans!!
   </h5> -->
   <h5 align="center">
-    Will be at ICLR 2026 (4/22-27) presenting <a href="https://openreview.net/forum?id=1PYj4fMeLe" target="_blank">BioEmu-CV</a>
+    Will be at ICLR 2026 (4/23-27) presenting <a href="https://openreview.net/forum?id=1PYj4fMeLe" target="_blank">BioEmu-CV</a>
     </br>
     See you in Rio 🇧🇷, I'd love to <a href="mailto:hyun26@kaist.ac.kr">chat</a> about small molecules and proteins!
   </h5>
@@ -77,7 +77,14 @@ title: Home
                   <b>{{ paper.title }}</b>
                 {% endif %}
               </p>
-              <p>{{ paper.authors }}</p>
+              {% assign author_text = paper.authors %}
+              {% for author in site.data.authors.authors %}
+                {% if author.homepage and author.homepage != "" %}
+                  {% assign author_link = '<a href="' | append: author.homepage | append: '" target="_blank" class="author-link">' | append: author.name | append: '</a>' %}
+                  {% assign author_text = author_text | replace: author.name, author_link %}
+                {% endif %}
+              {% endfor %}
+              <p>{{ author_text }}</p>
               <p><i>{{ paper.venue }}</i></p>
               <div class="paper-buttons">
                 {% if paper.page %}
@@ -152,7 +159,14 @@ title: Home
                   <b>{{ paper.title }}</b>
                 {% endif %}
               </p>
-              <p>{{ paper.authors }}</p>
+              {% assign author_text = paper.authors %}
+              {% for author in site.data.authors.authors %}
+                {% if author.homepage and author.homepage != "" %}
+                  {% assign author_link = '<a href="' | append: author.homepage | append: '" target="_blank" class="author-link">' | append: author.name | append: '</a>' %}
+                  {% assign author_text = author_text | replace: author.name, author_link %}
+                {% endif %}
+              {% endfor %}
+              <p>{{ author_text }}</p>
               <p><i>{{ paper.venue }}</i></p>
               <div class="paper-buttons">
                 {% if paper.page %}

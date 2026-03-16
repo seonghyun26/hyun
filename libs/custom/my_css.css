@@ -54,6 +54,21 @@ body.dark-mode #hobbies-toggle {
   margin-bottom: 2px
 }
 
+.author-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 0.5px;
+  text-underline-offset: 2px;
+}
+
+.author-link:hover {
+  color: #1a73e8;
+}
+
+body.dark-mode .author-link:hover {
+  color: #6db3f2;
+}
+
 .paper-buttons {
   margin-top: 5px
 }

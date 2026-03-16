@@ -8,3 +8,10 @@
 #     output: true
 
 theme: minima
+
+exclude:
+  - resume
+  - Gemfile
+  - Gemfile.lock
+  - serve.sh
+  - CLAUDE.md
