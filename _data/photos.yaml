@@ -1,0 +1,26 @@
+photos:
+  - image: "/assets/photos/250304.jpeg"
+    caption: "Penguins"
+    location: "Asahiyama Zoo, Hokkaido, Japan"
+    date: "2025-03"
+
+  - image: "/assets/photos/220616_paris.jpeg"
+    caption: "Paris"
+    location: "Paris, Île-de-France, France"
+    date: "2022-06"
+
+  - image: "/assets/photos/251021_oasis.jpeg"
+    caption: "Oasis"
+    location: "고양체육관, 경기도, 대한민국"
+    date: "2025-10"
+
+  # Add photos here. Supported fields:
+  #   image: "/assets/photos/filename.jpg"   (required)
+  #   caption: "Short description"           (optional)
+  #   location: "Place name"                 (optional)
+  #   date: "2025-03"                        (optional)
+
+  # - image: "/assets/photos/example.jpg"
+  #   caption: "A beautiful sunset"
+  #   location: "Jeju Island"
+  #   date: "2025-06"

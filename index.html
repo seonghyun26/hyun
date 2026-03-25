@@ -21,7 +21,7 @@ title: Home
   <br>
   <br>
   <ul>
-    <li>Small molecules (drug, ligand)</li>
+    <li>Small molecule interactions (drug, ligand)</li>
     <li>Protein dynamics, Collective Variables (CVs)</li>
     <li>Graph Neural Networks (GNNs), Over-squashing</li>
   </ul>
@@ -210,80 +210,73 @@ title: Home
   </div>
 </div>
 
-<!-- ========== PROJECTS ========== 
-<div class="docs-section" id="projects">
-  <h4>Projects</h4>
+<!-- ========== SIDE PROJECTS ========== -->
+<div class="docs-section" id="side-projects">
+  <h4>Side Projects</h4>
 
-  <ul class="tab-nav">
-    <li><div class="button active" data-ref="#projects-selected">Selected</div></li>
-    <li><div class="button" data-ref="#projects-all">All</div></li>
-  </ul>
+  <div class="side-projects-grid">
+    {% assign selected_projects = site.data.side_projects.projects | where: "selected", "y" %}
+    {% for project in selected_projects %}
+      <div class="side-project-card" data-project-index="{{ forloop.index0 }}">
+        <div class="side-project-card-image">
+          {% if project.thumbnail %}
+            <img src="{{ project.thumbnail | prepend: site.baseurl }}" />
+          {% else %}
+            <div class="side-project-placeholder">
+              <span>{{ project.title }}</span>
+            </div>
+          {% endif %}
+        </div>
+        <div class="side-project-card-footer">
+          <div class="side-project-card-info">
+            <div class="side-project-card-title">{{ project.title }}</div>
+            <div class="side-project-card-subtitle">{{ project.subtitle }}</div>
+          </div>
+          {% if project.code %}
+            <a href="{{ project.code }}" target="_blank" class="side-project-github-link" title="View on GitHub">
+              <i class="fa fa-github"></i>
+            </a>
+          {% endif %}
+        </div>
+      </div>
 
-  <div class="tab-content">
-    <div class="tab-pane active" id="projects-selected">
-      {% assign selected_projects = site.data.projects.projects | where: "selected", "y" %}
-      {% for project in selected_projects %}
-        {% assign index_modulo = forloop.index0 | modulo:3 %}
-        {% if index_modulo == 0 %}
-          <div class="row">
-        {% endif %}
-
-          <div class="four columns">
-            <div class="project-container">
-
-                <div class="project-image-container">
-                  <a href="{{ project.url }}">
-                    <img src="{{ project.thumbnail }}" class="u-max-full-width" />
-                  </a>
-                </div>
-
-                <div class="project-caption">
-                  <b>{{ project.title }}</b> <br/>
-                  {{ project.subtitle }}
-                </div>
-
+      <!-- Modal for this project -->
+      <div class="side-project-modal" id="side-project-modal-{{ forloop.index0 }}">
+        <div class="side-project-modal-backdrop"></div>
+        <div class="side-project-modal-content">
+          <button class="side-project-modal-close">&times;</button>
+          <div class="side-project-modal-header">
+            <div class="side-project-modal-header-info">
+              <h5>{{ project.title }}</h5>
+              {% if project.subtitle %}
+                <p class="side-project-modal-subtitle">{{ project.subtitle }}</p>
+              {% endif %}
+              <div class="paper-buttons">
+                {% if project.code %}
+                  <a class="button side-project-modal-github-btn" href="{{ project.code }}" target="_blank"><i class="fa fa-github"></i> GitHub</a>
+                {% endif %}
+                {% if project.page %}
+                  <a class="button" href="{{ project.page }}" target="_blank">Project page</a>
+                {% endif %}
+                {% if project.demo %}
+                  <a class="button" href="{{ project.demo }}" target="_blank">Demo</a>
+                {% endif %}
+              </div>
             </div>
           </div>
-
-        {% if index_modulo == 2 %}
+          <div class="side-project-modal-body">
+            {% if project.include %}
+              {% capture md_content %}{% include {{ project.include }} %}{% endcapture %}
+              {{ md_content | markdownify }}
+            {% elsif project.description %}
+              {{ project.description }}
+            {% endif %}
           </div>
-        {% endif %}
-      {% endfor %}
-    </div>
-
-    <div class="tab-pane" id="projects-all">
-      {% for project in site.data.projects.projects %}
-        {% assign index_modulo = forloop.index0 | modulo:3 %}
-        {% if index_modulo == 0 %}
-          <div class="row">
-        {% endif %}
-
-          <div class="four columns">
-            <div class="project-container">
-
-                <div class="project-image-container">
-                  <a href="{{ project.url }}">
-                    <img src="{{ project.thumbnail }}" class="u-max-full-width" />
-                  </a>
-                </div>
-
-                <div class="project-caption">
-                  <b>{{ project.title }}</b> <br/>
-                  {{ project.subtitle }}
-                </div>
-
-            </div>
-          </div>
-
-        {% if index_modulo == 2 %}
-          </div>
-        {% endif %}
-      {% endfor %}
-    </div>
+        </div>
+      </div>
+    {% endfor %}
   </div>
-
 </div>
--->
 
 <!-- ========== RESUME ========== -->
 <div class="docs-section" id="resume">
@@ -320,32 +313,79 @@ title: Home
 
 <!-- ========== HOBBIES ========== -->
 <div class="docs-section" id="hobbies">
-  <h4 id="hobbies-toggle" style="cursor: pointer;">Hobbies 🎸🎻🎶</h4>
+  <h4 id="hobbies-toggle" style="cursor: pointer;">Hobbies 🎶📷</h4>
   <div id="hobbies-content" style="display: none;">
-    <p style="margin-bottom: 10px;">I love music!</p>
-    {% for hobby in site.data.hobbies.hobbies %}
-      <div class="hobby-item">
-        {% if hobby.youtube %}
-          {% assign yt_url = hobby.youtube %}
-          {% if yt_url contains "youtu.be/" %}
-            {% assign yt_id = yt_url | split: "youtu.be/" | last | split: "?" | first %}
-          {% elsif yt_url contains "watch?v=" %}
-            {% assign yt_id = yt_url | split: "watch?v=" | last | split: "&" | first %}
-          {% elsif yt_url contains "/embed/" %}
-            {% assign yt_id = yt_url | split: "/embed/" | last | split: "?" | first %}
-          {% else %}
-            {% assign yt_id = yt_url %}
-          {% endif %}
-          <iframe width="500" height="281" src="https://www.youtube.com/embed/{{ yt_id }}" frameborder="0" allowfullscreen></iframe>
-        {% elsif hobby.image %}
-          <img src="{{ hobby.image | prepend: site.baseurl }}" alt="{{ hobby.title }}" />
-        {% endif %}
-        <div class="hobby-info">
-          <p class="title"><b>{{ hobby.title }}</b></p>
-          <p>{{ hobby.description }}</p>
-        </div>
+
+    <ul class="tab-nav">
+      <li><div class="button active" data-ref="#hobbies-music">🎶 Music</div></li>
+      <li><div class="button" data-ref="#hobbies-photos">📷 Photos</div></li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="hobbies-music">
+        <p style="margin-bottom: 10px;">I love music!</p>
+        {% for hobby in site.data.hobbies.hobbies %}
+          <div class="hobby-item">
+            {% if hobby.youtube %}
+              {% assign yt_url = hobby.youtube %}
+              {% if yt_url contains "youtu.be/" %}
+                {% assign yt_id = yt_url | split: "youtu.be/" | last | split: "?" | first %}
+              {% elsif yt_url contains "watch?v=" %}
+                {% assign yt_id = yt_url | split: "watch?v=" | last | split: "&" | first %}
+              {% elsif yt_url contains "/embed/" %}
+                {% assign yt_id = yt_url | split: "/embed/" | last | split: "?" | first %}
+              {% else %}
+                {% assign yt_id = yt_url %}
+              {% endif %}
+              <iframe width="500" height="281" src="https://www.youtube.com/embed/{{ yt_id }}" frameborder="0" allowfullscreen></iframe>
+            {% elsif hobby.image %}
+              <img src="{{ hobby.image | prepend: site.baseurl }}" alt="{{ hobby.title }}" />
+            {% endif %}
+            <div class="hobby-info">
+              <p class="title"><b>{{ hobby.title }}</b></p>
+              <p>{{ hobby.description }}</p>
+            </div>
+          </div>
+        {% endfor %}
       </div>
-    {% endfor %}
+
+      <div class="tab-pane" id="hobbies-photos">
+        <p style="margin-bottom: 10px;">Taken by FUJIFILM X-T30 II and iPhone 12 Pro</p>
+        {% if site.data.photos.photos.size > 0 %}
+          <div class="photo-gallery">
+            {% for photo in site.data.photos.photos %}
+              <div class="photo-item" data-photo-index="{{ forloop.index0 }}">
+                <img src="{{ photo.image | prepend: site.baseurl }}" alt="{{ photo.caption }}" loading="lazy" />
+                {% if photo.caption or photo.location %}
+                  <div class="photo-overlay">
+                    {% if photo.caption %}<span class="photo-caption">{{ photo.caption }}</span>{% endif %}
+                    {% if photo.location %}<span class="photo-location"><i class="fa fa-map-marker"></i> {{ photo.location }}</span>{% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+
+          <!-- Lightbox -->
+          <div class="photo-lightbox" id="photo-lightbox">
+            <div class="photo-lightbox-backdrop"></div>
+            <button class="photo-lightbox-close">&times;</button>
+            <button class="photo-lightbox-prev"><i class="fa fa-chevron-left"></i></button>
+            <button class="photo-lightbox-next"><i class="fa fa-chevron-right"></i></button>
+            <div class="photo-lightbox-content">
+              <img src="" alt="" />
+              <div class="photo-lightbox-info">
+                <span class="photo-lightbox-caption"></span>
+                <span class="photo-lightbox-location"></span>
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <p style="color: rgba(0,0,0,0.4);">Photos coming soon!</p>
+        {% endif %}
+      </div>
+    </div>
+
   </div>
 </div>
 

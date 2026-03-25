@@ -1,0 +1,7 @@
+projects:
+  - title: "AMD"
+    subtitle: "Automating Molecular Dynamics"
+    include: "side_projects/amd.md"
+    code: "https://github.com/seonghyun26/amd"
+    thumbnail: "/assets/side_projects/amd/preview.png"
+    selected: y
