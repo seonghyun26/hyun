@@ -42,12 +42,29 @@ photos:
     date: "2022-06"
     camera: "iPhone 12 Pro"
 
+  - image: "/assets/photos/220527_church.jpeg"
+    caption: "Church of Our Lady"
+    location: "Dresden, Saxony, Germany"
+    date: "2022-05"
+    camera: "iPhone 12 Pro"
+
   - image: "/assets/photos/220528_prague.jpeg"
     caption: "Old Town Square"
     location: "Prague 1, Prague, Czech"
     date: "2022-05"
     camera: "iPhone 12 Pro"
 
+  - image: "/assets/photos/220501_sagrada.jpeg"
+    caption: "Sagrada Familia, "
+    location: "Barcelona, Costa Barcelona, Spain"
+    date: "2022-05"
+    camera: "iPhone 12 Pro"
+
+  - image: "/assets/photos/220504_lyon.jpeg"
+    caption: "Lyon"
+    location: "Lyon, France"
+    date: "2022-05"
+    camera: "iPhone 12 Pro"
 
 
   # - image: "/assets/photos/.jpeg"
