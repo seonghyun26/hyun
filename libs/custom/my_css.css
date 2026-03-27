@@ -603,6 +603,15 @@ body.dark-mode .author-link:hover {
   font-size: 1.2rem;
 }
 
+.photo-lightbox-date {
+  color: rgba(255,255,255,0.6);
+  font-size: 1.1rem;
+}
+
+.photo-lightbox-date .fa {
+  margin-right: 3px;
+}
+
 .photo-lightbox-camera {
   color: rgba(255,255,255,0.5);
   font-size: 1.1rem;

@@ -193,7 +193,8 @@ $(document).ready(function() {
       src: $(this).find('img').attr('src'),
       caption: $(this).find('.photo-caption').text() || '',
       location: $(this).find('.photo-location').text() || '',
-      camera: $(this).data('camera') || ''
+      camera: $(this).data('camera') || '',
+      date: $(this).data('date') || ''
     });
   });
 
@@ -205,6 +206,12 @@ $(document).ready(function() {
     $lb.find('.photo-lightbox-content img').attr('src', photo.src);
     $lb.find('.photo-lightbox-caption').text(photo.caption);
     $lb.find('.photo-lightbox-location').text(photo.location);
+    var $date = $lb.find('.photo-lightbox-date');
+    if (photo.date) {
+      $date.html('<i class="fa fa-calendar"></i> ' + photo.date).show();
+    } else {
+      $date.hide();
+    }
     var $camera = $lb.find('.photo-lightbox-camera');
     if (photo.camera) {
       $camera.html('<i class="fa fa-camera"></i> ' + photo.camera).show();

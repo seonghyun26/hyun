@@ -355,7 +355,7 @@ title: Home
           <div class="photo-gallery">
             {% assign sorted_photos = site.data.photos.photos | sort: "date" | reverse %}
             {% for photo in sorted_photos %}
-              <div class="photo-item" data-photo-index="{{ forloop.index0 }}" {% if photo.camera %}data-camera="{{ photo.camera }}"{% endif %}>
+              <div class="photo-item" data-photo-index="{{ forloop.index0 }}" {% if photo.camera %}data-camera="{{ photo.camera }}"{% endif %} {% if photo.date %}data-date="{{ photo.date }}"{% endif %}>
                 <img src="{{ photo.image | prepend: site.baseurl }}" alt="{{ photo.caption }}" loading="lazy" />
                 {% if photo.caption or photo.location %}
                   <div class="photo-overlay">
@@ -378,6 +378,7 @@ title: Home
               <div class="photo-lightbox-info">
                 <span class="photo-lightbox-caption"></span>
                 <span class="photo-lightbox-location"></span>
+                <span class="photo-lightbox-date"></span>
                 <span class="photo-lightbox-camera"></span>
               </div>
             </div>
