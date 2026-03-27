@@ -192,7 +192,8 @@ $(document).ready(function() {
     photoItems.push({
       src: $(this).find('img').attr('src'),
       caption: $(this).find('.photo-caption').text() || '',
-      location: $(this).find('.photo-location').text() || ''
+      location: $(this).find('.photo-location').text() || '',
+      camera: $(this).data('camera') || ''
     });
   });
 
@@ -204,6 +205,12 @@ $(document).ready(function() {
     $lb.find('.photo-lightbox-content img').attr('src', photo.src);
     $lb.find('.photo-lightbox-caption').text(photo.caption);
     $lb.find('.photo-lightbox-location').text(photo.location);
+    var $camera = $lb.find('.photo-lightbox-camera');
+    if (photo.camera) {
+      $camera.html('<i class="fa fa-camera"></i> ' + photo.camera).show();
+    } else {
+      $camera.hide();
+    }
     $lb.addClass('open');
     $('body').css('overflow', 'hidden');
   }

@@ -603,6 +603,15 @@ body.dark-mode .author-link:hover {
   font-size: 1.2rem;
 }
 
+.photo-lightbox-camera {
+  color: rgba(255,255,255,0.5);
+  font-size: 1.1rem;
+}
+
+.photo-lightbox-camera .fa {
+  margin-right: 3px;
+}
+
 .photo-lightbox-close,
 .photo-lightbox-prev,
 .photo-lightbox-next {
@@ -941,18 +950,98 @@ body.dark-mode .author-link:hover {
   background: rgba(0, 0, 0, 0.06);
 }
 
-@media (max-width: 549px) {
-  .side-project-card {
-    min-width: 180px;
-    max-width: 200px;
+@media (max-width: 749px) {
+  .side-project-modal-content {
+    width: 96%;
+    max-width: 96%;
   }
 
   .side-project-modal-header {
-    padding: 24px 20px 14px;
+    padding: 24px 24px 14px;
   }
 
   .side-project-modal-body {
-    padding: 20px;
+    padding: 20px 24px 28px;
+  }
+}
+
+@media (max-width: 549px) {
+  .side-projects-grid {
+    gap: 12px;
+    padding: 6px 6px 10px;
+    margin: -6px -6px 0;
+  }
+
+  .side-project-card {
+    min-width: 160px;
+    max-width: 180px;
+  }
+
+  .side-project-card-title {
+    font-size: 1.2rem;
+  }
+
+  .side-project-card-subtitle {
+    font-size: 1rem;
+  }
+
+  .side-project-card-footer {
+    padding: 6px 10px;
+  }
+
+  .side-project-github-link {
+    font-size: 1.8rem;
+  }
+
+  .side-project-modal-content {
+    width: 96%;
+    max-height: 90vh;
+    border-radius: 10px;
+  }
+
+  .side-project-modal-header {
+    padding: 20px 16px 12px;
+  }
+
+  .side-project-modal-header h5 {
+    font-size: 1.8rem;
+  }
+
+  .side-project-modal-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .side-project-modal-body {
+    padding: 16px;
+    font-size: 1.2rem;
+  }
+
+  .side-project-modal-body h2 {
+    font-size: 1.5rem;
+    margin-top: 20px;
+  }
+
+  .side-project-modal-body h3 {
+    font-size: 1.3rem;
+  }
+
+  .side-project-modal-body pre {
+    padding: 10px 12px;
+    font-size: 1rem;
+  }
+
+  .side-project-modal-body img {
+    border-radius: 6px;
+  }
+
+  .side-project-modal-close {
+    top: 10px;
+    right: 12px;
+    font-size: 2rem;
+  }
+
+  .side-project-modal-github-btn {
+    font-size: 1rem;
   }
 }
 

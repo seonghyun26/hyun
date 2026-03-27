@@ -353,8 +353,9 @@ title: Home
         <p style="margin-bottom: 10px;">Taken by FUJIFILM X-T30 II and iPhone 12 Pro</p>
         {% if site.data.photos.photos.size > 0 %}
           <div class="photo-gallery">
-            {% for photo in site.data.photos.photos %}
-              <div class="photo-item" data-photo-index="{{ forloop.index0 }}">
+            {% assign sorted_photos = site.data.photos.photos | sort: "date" | reverse %}
+            {% for photo in sorted_photos %}
+              <div class="photo-item" data-photo-index="{{ forloop.index0 }}" {% if photo.camera %}data-camera="{{ photo.camera }}"{% endif %}>
                 <img src="{{ photo.image | prepend: site.baseurl }}" alt="{{ photo.caption }}" loading="lazy" />
                 {% if photo.caption or photo.location %}
                   <div class="photo-overlay">
@@ -377,6 +378,7 @@ title: Home
               <div class="photo-lightbox-info">
                 <span class="photo-lightbox-caption"></span>
                 <span class="photo-lightbox-location"></span>
+                <span class="photo-lightbox-camera"></span>
               </div>
             </div>
           </div>
