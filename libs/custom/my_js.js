@@ -182,6 +182,7 @@ $(document).ready(function() {
   $('#hobbies-toggle').on('click', function(e) {
     e.preventDefault();
     $('#hobbies-content').slideToggle(300);
+    $('#hobbies-hint').fadeToggle(300);
   });
 
   // Photo lightbox
