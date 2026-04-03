@@ -13,7 +13,7 @@ cv:
       username: w4q4N9sAAAAJ
   sections:
     Summary:
-    - "I'm a second-year Ph.D. student at [Graduate School of AI at KAIST](https://gsai.kaist.ac.kr/), advised by [Sungsoo Ahn](https://sungsoo-ahn.github.io/). Currently, my research focuses on **AI for Science (AI4Science)**, specifically integrating machine learning with biomolecular modeling and molecular dynamics (MD). Recently, I led a project on machine learning–based Collective Variables (CVs) for enhanced sampling of proteins, by repurposing foundation models. Before, my Master’s research focused on addressing the over-squashing phenomenon in Graph Neural Networks (GNNs) to capture long-range interactions in molecule graphs."
+    - "I'm a second-year Ph.D. student at [Graduate School of AI at KAIST](https://gsai.kaist.ac.kr/), advised by [Sungsoo Ahn](https://sungsoo-ahn.github.io/). Currently, my research focuses on **AI for Science (AI4Science)**, specifically integrating machine learning with biomolecular modeling and molecular dynamics (MD). Recently, I led a project on machine learning–based Collective Variables (CVs) for enhanced sampling of proteins, by repurposing foundation models."
     Education:
     - institution: Korea Advanced Institute of Science and Technology (KAIST)
       area: Kim Jaechul Graduate School of Artificial Intelligence

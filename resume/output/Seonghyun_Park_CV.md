@@ -11,7 +11,7 @@
 
 # Summary
 
-I'm a second-year Ph.D. student at [Graduate School of AI at KAIST](https://gsai.kaist.ac.kr/), advised by [Sungsoo Ahn](https://sungsoo-ahn.github.io/). Currently, my research focuses on **AI for Science (AI4Science)**, specifically integrating machine learning with biomolecular modeling and molecular dynamics (MD). Recently, I led a project on machine learning–based Collective Variables (CVs) for enhanced sampling of proteins, by repurposing foundation models. Before, my Master’s research focused on addressing the over-squashing phenomenon in Graph Neural Networks (GNNs) to capture long-range interactions in molecule graphs.
+I'm a second-year Ph.D. student at [Graduate School of AI at KAIST](https://gsai.kaist.ac.kr/), advised by [Sungsoo Ahn](https://sungsoo-ahn.github.io/). Currently, my research focuses on **AI for Science (AI4Science)**, specifically integrating machine learning with biomolecular modeling and molecular dynamics (MD). Recently, I led a project on machine learning–based Collective Variables (CVs) for enhanced sampling of proteins, by repurposing foundation models.
 
 # Education
 
@@ -24,7 +24,7 @@ I'm a second-year Ph.D. student at [Graduate School of AI at KAIST](https://gsai
 
 ## Pohang University of Science and Technology (POSTECH), M.S. in Graduate School of Computer Science and Engineering (CSE)
 
-- Feb 2023 – Feb 2025
+- Mar 2023 – Feb 2025
 - Pohang, South Korea
 - [Machine Learning](https://ml.postech.ac.kr/) Lab @ Sungsoo Ahn 
 - Interest: Graph Neural Networks (GNNs), Over-squashing

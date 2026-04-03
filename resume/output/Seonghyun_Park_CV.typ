@@ -3,7 +3,7 @@
 
 #let name = "Seonghyun Park"
 #let locale-catalog-page-numbering-style = context { "Seonghyun Park - Page " + str(here().page()) + " of " + str(counter(page).final().first()) + "" }
-#let locale-catalog-last-updated-date-style = "Last updated in Mar 2026"
+#let locale-catalog-last-updated-date-style = "Last updated in Apr 2026"
 #let locale-catalog-language = "en"
 #let design-page-size = "us-letter"
 #let design-section-titles-font-size = 1.4em
@@ -467,7 +467,7 @@
 
 
 #one-col-entry(
-  content: [I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate School of AI at KAIST], advised by #link("https://sungsoo-ahn.github.io/")[Sungsoo Ahn]. Currently, my research focuses on #strong[AI for Science \(AI4Science\)], specifically integrating machine learning with biomolecular modeling and molecular dynamics \(MD\). Recently, I led a project on machine learning–based Collective Variables \(CVs\) for enhanced sampling of proteins, by repurposing foundation models. Before, my Master’s research focused on addressing the over-squashing phenomenon in Graph Neural Networks \(GNNs\) to capture long-range interactions in molecule graphs.]
+  content: [I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate School of AI at KAIST], advised by #link("https://sungsoo-ahn.github.io/")[Sungsoo Ahn]. Currently, my research focuses on #strong[AI for Science \(AI4Science\)], specifically integrating machine learning with biomolecular modeling and molecular dynamics \(MD\). Recently, I led a project on machine learning–based Collective Variables \(CVs\) for enhanced sampling of proteins, by repurposing foundation models.]
 )
 
 
@@ -505,7 +505,7 @@ Feb 2025 – present
   right-content: [
     Pohang, South Korea
 
-Feb 2023 – Feb 2025
+Mar 2023 – Feb 2025
   ],
 )
 
