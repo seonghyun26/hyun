@@ -1,9 +1,21 @@
 photos:
 
+  - image: "/assets/photos/251013_fuji.jpeg"
+    caption: "Mount Fuji"
+    location: "Arakurayama Sengen Park, Fujiyoshida, Yamanashi, Japan"
+    date: "2025-10"
+    camera: "FUJIFILM X-T30 II"
+
   - image: "/assets/photos/250715_joffre.jpeg"
     caption: "Joffre Lake"
     location: "Joffre Lakes Provincial Park, British Columbia, Canada"
     date: "2025-07"
+    camera: "FUJIFILM X-T30 II"
+
+  - image: "/assets/photos/250606_nodeul.jpeg"
+    caption: "Nodeul Island"
+    location: "Nodeul Island, Seoul, South Korea"
+    date: "2025-06"
     camera: "FUJIFILM X-T30 II"
 
   - image: "/assets/photos/250304_penguin.jpeg"
@@ -29,6 +41,18 @@ photos:
     location: "Unzen-Amakusa National Park, Nagasaki, Japan"
     date: "2024-03"
     camera: "FUJIFILM X-T30 II"
+
+  - image: "/assets/photos/231215_neworleans.jpeg"
+    caption: "New Orleans"
+    location: "New Orleans, Louisiana, United States"
+    date: "2023-12"
+    camera: "iPhone 12 Pro"
+
+  - image: "/assets/photos/230701_waikiki.jpeg"
+    caption: "Waikiki Beach"
+    location: "Duke Paoa Kahanamoku Beach Park, Oʻahu, Honolulu, Hawaiʻi, United States"
+    date: "2023-07"
+    camera: "iPhone 12 Pro"
 
   - image: "/assets/photos/230716_kauai.jpeg"
     caption: "Kauai"
