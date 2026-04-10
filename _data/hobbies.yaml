@@ -2,15 +2,17 @@ hobbies:
   # Use "youtube" for a YouTube embed, or "image" for a static image.
   # YouTube URLs should be in embed format: https://www.youtube.com/embed/VIDEO_ID
 
+  - title: "??? - ???"
+    description: "Drum cover 🥁"
+    image: "/assets/hobbies/question.png"
+
   - title: "Hi Bully - TOUCHED"
     description: "Band 스치듯 (SEUCHIDT)🔥"
     youtube: "https://youtu.be/bMvOorslhKA"
-    # image: "/assets/hobbies/seuchidt.png"
 
   - title: "Highlight - TOUCHED"
     description: "Band 스치듯 (SEUCHIDT)🔥"
     youtube: "https://youtu.be/8V-xgcR8G7Y"
-    # image: "/assets/hobbies/seuchidt.png"
 
   - title: "Back in Time - Nerd Connection"
     description: "Band CHECKSHIRTS 🏁"
