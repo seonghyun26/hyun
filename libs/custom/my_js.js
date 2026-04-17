@@ -157,6 +157,24 @@ $(document).ready(function() {
   }
 
 
+  // Handle links that open a side project modal (e.g. #side-project-amd)
+  $(document).on('click', 'a[href^="#side-project-"]', function(e) {
+    e.preventDefault();
+    var slug = $(this).attr('href').replace('#side-project-', '').toLowerCase();
+    var $card = $('.side-project-card').filter(function() {
+      return $(this).data('project-title').toLowerCase() === slug;
+    });
+    if ($card.length) {
+      var index = $card.data('project-index');
+      $('html, body').animate({
+        scrollTop: $('#side-projects').offset().top - 40
+      }, 400, function() {
+        $('#side-project-modal-' + index).addClass('open');
+        $('body').css('overflow', 'hidden');
+      });
+    }
+  });
+
   // Side project modals
   $('.side-project-card').on('click', function(e) {
     // Don't open modal if clicking the GitHub link

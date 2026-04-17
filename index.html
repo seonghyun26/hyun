@@ -217,7 +217,7 @@ title: Home
   <div class="side-projects-grid">
     {% assign selected_projects = site.data.side_projects.projects | where: "selected", "y" %}
     {% for project in selected_projects %}
-      <div class="side-project-card" data-project-index="{{ forloop.index0 }}">
+      <div class="side-project-card" data-project-index="{{ forloop.index0 }}" data-project-title="{{ project.title }}">
         <div class="side-project-card-image">
           {% if project.thumbnail %}
             <img src="{{ project.thumbnail | prepend: site.baseurl }}" />
