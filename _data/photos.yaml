@@ -87,13 +87,13 @@ photos:
   - image: "/assets/photos/220422_murren.jpeg"
     caption: "Log in Mürren"
     location: "Mürren, Canton of Bern, Switzerland"
-    date: "2025-04"
+    date: "2022-04"
     camera: "iPhone 12 Pro"
 
   - image: "/assets/photos/220417_annecy.jpeg"
     caption: "Annecy"
     location: "Esplanade Des Marquisats, Annecy, Auvergne-Rhône-Alpes, France"
-    date: "2025-04"
+    date: "2022-04"
     camera: "iPhone 12 Pro"
 
   - image: "/assets/photos/220226_fourviere.jpeg"
