@@ -60,12 +60,6 @@ photos:
     date: "2023-07"
     camera: "iPhone 12 Pro"
 
-  - image: "/assets/photos/220224_paris.jpeg"
-    caption: "Eiffel Tower"
-    location: "Centre Georges-Pompidou, Île-de-France, France"
-    date: "2022-06"
-    camera: "iPhone 12 Pro"
-
   - image: "/assets/photos/220527_church.jpeg"
     caption: "Church of Our Lady"
     location: "Dresden, Saxony, Germany"
@@ -90,6 +84,29 @@ photos:
     date: "2022-05"
     camera: "iPhone 12 Pro"
 
+  - image: "/assets/photos/220422_murren.jpeg"
+    caption: "Log in Mürren"
+    location: "Mürren, Canton of Bern, Switzerland"
+    date: "2025-04"
+    camera: "iPhone 12 Pro"
+
+  - image: "/assets/photos/220417_annecy.jpeg"
+    caption: "Annecy"
+    location: "Esplanade Des Marquisats, Annecy, Auvergne-Rhône-Alpes, France"
+    date: "2025-04"
+    camera: "iPhone 12 Pro"
+
+  - image: "/assets/photos/220226_fourviere.jpeg"
+    caption: "Lyon"
+    location: "Basilica of Notre-Dame de Fourvière, Lyon, Auvergne-Rhône-Alpes, France"
+    date: "2022-02"
+    camera: "iPhone 12 Pro"
+  
+  - image: "/assets/photos/220224_paris.jpeg"
+    caption: "Eiffel Tower"
+    location: "Centre Georges-Pompidou, Île-de-France, France"
+    date: "2022-02"
+    camera: "iPhone 12 Pro"
 
   # - image: "/assets/photos/.jpeg"
   #   caption: ""
