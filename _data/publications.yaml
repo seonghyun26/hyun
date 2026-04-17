@@ -70,7 +70,7 @@ papers:
     paper_pdf: "/assets/publications/24TMLR_NBA-GNN.pdf"
     arxiv: "https://arxiv.org/abs/2310.07430"
     code: "https://github.com/seonghyun26/nba-gnn"
-    poster: "/assets/publications/poster/23nips_nbagnn.png"
+    # poster: "/assets/publications/poster/23nips_nbagnn.png"
     url: "https://openreview.net/forum?id=64HdQKnyTc"
     selected: y
 
@@ -81,6 +81,6 @@ papers:
     paper_pdf: "/assets/publications/23NIPS_DPMSNC.pdf"
     arxiv: "https://arxiv.org/abs/2302.10506"
     code: "https://github.com/hsjang0/DPM-SNC"
-    poster: "/assets/publications/poster/23nips_dpmsnc.png"
+    # poster: "/assets/publications/poster/23nips_dpmsnc.png"
     url: "https://neurips.cc/virtual/2023/poster/72405"
     selected: n
