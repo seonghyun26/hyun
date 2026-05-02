@@ -20,16 +20,6 @@ papers:
     thumbnail: "/assets/publications/thumbnails/indibator.png"
     selected: y
 
-  - title: "Riemannian MeanFlow"
-    authors: "Dongyeop Woo, Marta Skreta, <b>Seonghyun Park</b>, Kirill Neklyudov, Sungsoo Ahn"
-    venue: "Preprint, under review"
-    thumbnail: "/assets/publications/thumbnails/rmf.png"
-    paper_pdf: "/assets/publications/preprint_RMF.pdf"
-    arxiv: "https://arxiv.org/abs/2602.07744"
-    code: "https://github.com/dongyeop3813/Riemannian-MeanFlow"
-    # url: "https://arxiv.org/abs/2602.07744"
-    selected: y
-
   - title: "Boltz is a Strong Baseline for Atom-level Representation Learning"
     authors: "Hyosoon Jang, Hyunjin Seo, Yunhui Jang, <b>Seonghyun Park</b>, Sungsoo Ahn"
     venue: "Preprint, under review"
@@ -37,6 +27,16 @@ papers:
     thumbnail: "/assets/publications/thumbnails/boltz.png"
     arxiv: "https://arxiv.org/abs/2602.13249"
     code: "https://github.com/hsjang0/boltz-as-FM"
+    selected: y
+
+  - title: "Riemannian MeanFlow"
+    authors: "Dongyeop Woo, Marta Skreta, <b>Seonghyun Park</b>, Kirill Neklyudov, Sungsoo Ahn"
+    venue: "ICML 2026"
+    thumbnail: "/assets/publications/thumbnails/rmf.png"
+    paper_pdf: "/assets/publications/preprint_RMF.pdf"
+    arxiv: "https://arxiv.org/abs/2602.07744"
+    code: "https://github.com/dongyeop3813/Riemannian-MeanFlow"
+    # url: "https://arxiv.org/abs/2602.07744"
     selected: y
 
   - title: "Learning Collective Variables from BioEmu with Time-lagged Generation"
