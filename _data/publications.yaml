@@ -33,7 +33,7 @@ papers:
     authors: "Dongyeop Woo, Marta Skreta, <b>Seonghyun Park</b>, Kirill Neklyudov, Sungsoo Ahn"
     venue: "ICML 2026"
     thumbnail: "/assets/publications/thumbnails/rmf.png"
-    paper_pdf: "/assets/publications/preprint_RMF.pdf"
+    paper_pdf: "/assets/publications/26ICML_RMF.pdf"
     arxiv: "https://arxiv.org/abs/2602.07744"
     code: "https://github.com/dongyeop3813/Riemannian-MeanFlow"
     # url: "https://arxiv.org/abs/2602.07744"

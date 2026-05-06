@@ -76,17 +76,6 @@ cv:
       date: 2026
       url: https://arxiv.org/abs/2602.01815
       doi: 10.48550/arXiv.2602.01815
-    - title: Riemannian MeanFlow
-      authors: 
-      - Dongyeop Woo
-      - Marta Skreta
-      - '***Seonghyun Park***'
-      - Kirill Neklyudov
-      - Sungsoo Ahn
-      journal: Preprint
-      date: 2026
-      url: https://arxiv.org/abs/2602.07744 
-      doi: 10.48550/arXiv.2602.07744
     - title: Boltz is a Strong Baseline for Atom-level Representation Learning
       authors: 
       - Hyosoon Jang
@@ -98,6 +87,17 @@ cv:
       date: 2026
       url: https://arxiv.org/abs/2602.13249
       doi: 10.48550/arXiv.2602.13249
+    - title: Riemannian MeanFlow
+      authors: 
+      - Dongyeop Woo
+      - Marta Skreta
+      - '***Seonghyun Park***'
+      - Kirill Neklyudov
+      - Sungsoo Ahn
+      journal: ICML 2026
+      date: 2026
+      url: https://arxiv.org/abs/2602.07744 
+      doi: 10.48550/arXiv.2602.07744
     - title: Learning Collective Variables from BioEmu with Time-lagged Generation
       authors:
       - '***Seonghyun Park***'
