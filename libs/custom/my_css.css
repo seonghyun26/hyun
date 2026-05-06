@@ -77,9 +77,14 @@ body.dark-mode .author-link:hover {
   display: inline-block;
   height: 25px;
   padding: 0 25px;
-  font-weight: 100;
+  font-weight: 500;
   line-height: 25px;
   text-transform: none;
+}
+
+.paper .button .fa,
+.paper .button .ai {
+  margin-right: 4px;
 }
 
 .section-header {
