@@ -96,7 +96,7 @@ cv:
       - Sungsoo Ahn
       journal: ICML 2026
       date: 2026
-      url: https://arxiv.org/abs/2602.07744 
+      url: https://icml.cc/virtual/2026/poster/65611
       doi: 10.48550/arXiv.2602.07744
     - title: Learning Collective Variables from BioEmu with Time-lagged Generation
       authors:

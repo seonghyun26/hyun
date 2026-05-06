@@ -36,7 +36,7 @@ papers:
     paper_pdf: "/assets/publications/26ICML_RMF.pdf"
     arxiv: "https://arxiv.org/abs/2602.07744"
     code: "https://github.com/dongyeop3813/Riemannian-MeanFlow"
-    # url: "https://arxiv.org/abs/2602.07744"
+    url: "https://icml.cc/virtual/2026/poster/65611"
     selected: y
 
   - title: "Learning Collective Variables from BioEmu with Time-lagged Generation"
