@@ -21,7 +21,7 @@ papers:
     selected: y
 
   - title: "Boltz is a Strong Baseline for Atom-level Representation Learning"
-    authors: "Hyosoon Jang, Hyunjin Seo, Yunhui Jang, <b>Seonghyun Park</b>, Sungsoo Ahn"
+    authors: "Hyosoon Jang, Hyunjin Seo, Honghui Kim, Taewon Kim, Yunhui Jang, <b>Seonghyun Park</b>, Sungsoo Ahn"
     venue: "Preprint, under review"
     paper_pdf: "/assets/publications/preprint_boltz.pdf"
     thumbnail: "/assets/publications/thumbnails/boltz.png"

@@ -1,10 +1,10 @@
 experiences:
-  - place: "KAIST"
-    time: "2026 - "
-    title: "Technicial Research Personnel (Military Service)"
-    subtitle: "Structured and Probabilistic Machine Learning (SPML) Lab"
-    category: "work"
-    url: "https://www.mma.go.kr/contents.do?mc=mma0000760"
+  # - place: "KAIST"
+  #   time: "2026 - "
+  #   title: "Technicial Research Personnel (Military Service)"
+  #   subtitle: "Structured and Probabilistic Machine Learning (SPML) Lab"
+  #   category: "work"
+  #   url: "https://www.mma.go.kr/contents.do?mc=mma0000760"
 
   - place: "KAIST AI"
     time: "2025 - "
