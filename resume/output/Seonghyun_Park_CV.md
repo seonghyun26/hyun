@@ -39,7 +39,7 @@ Pohang, South Korea
 
 Mar 2023 – Feb 2025
 
-- [Machine Learning](https://ml.postech.ac.kr/) Lab @ Sungsoo Ahn 
+- [Machine Learning Lab](https://ml.postech.ac.kr/) @ Sungsoo Ahn 
 
 - Interest: Graph Neural Networks (GNNs), Over-squashing
 
@@ -115,7 +115,7 @@ Yunhui Jang, ***Seonghyun Park***, Jaehyung Kim, Sungsoo Ahn
 
 2026
 
-Hyosoon Jang, Hyunjin Seo, Yunhui Jang, ***Seonghyun Park***, Sungsoo Ahn
+Hyosoon Jang, Hyunjin Seo, Honghui Kim, Taewon Kim, Yunhui Jang, ***Seonghyun Park***, Sungsoo Ahn
 
 [10.48550/arXiv.2602.13249](https://doi.org/10.48550/arXiv.2602.13249) (Preprint)
 

@@ -81,7 +81,7 @@
   date: datetime(
     year: 2026,
     month: 5,
-    day: 6,
+    day: 8,
   ),
 )
 
@@ -129,7 +129,7 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
   [
     #strong[Pohang University of Science and Technology (POSTECH)], Graduate School of Computer Science and Engineering (CSE)
 
-    - #link("https://ml.postech.ac.kr/")[Machine Learning] Lab \@ Sungsoo Ahn
+    - #link("https://ml.postech.ac.kr/")[Machine Learning Lab] \@ Sungsoo Ahn
 
     - Interest: Graph Neural Networks (GNNs), Over-squashing
 
@@ -240,7 +240,7 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
   [
     #strong[Boltz is a Strong Baseline for Atom-level Representation Learning]
 
-    Hyosoon Jang, Hyunjin Seo, Yunhui Jang, #strong[#emph[Seonghyun Park]], Sungsoo Ahn
+    Hyosoon Jang, Hyunjin Seo, Honghui Kim, Taewon Kim, Yunhui Jang, #strong[#emph[Seonghyun Park]], Sungsoo Ahn
 
     #link("https://doi.org/10.48550/arXiv.2602.13249")[10.48550\/arXiv.2602.13249] (Preprint)
 
