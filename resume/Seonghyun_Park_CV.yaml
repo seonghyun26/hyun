@@ -13,7 +13,7 @@ cv:
       username: w4q4N9sAAAAJ
   sections:
     Summary:
-    - "I'm a second-year Ph.D. student at [Graduate School of AI at KAIST](https://gsai.kaist.ac.kr/), advised by [Sungsoo Ahn](https://sungsoo-ahn.github.io/). Currently, my research focuses on **AI for Science (AI4Science)**, specifically integrating machine learning with biomolecular modeling and molecular dynamics (MD). Recently, I led a project on machine learning–based Collective Variables (CVs) for enhanced sampling of proteins, by repurposing foundation models."
+    - "I'm a second-year Ph.D. student at [Graduate School of AI at KAIST](https://gsai.kaist.ac.kr/), advised by [Sungsoo Ahn](https://sungsoo-ahn.github.io/). Currently, my research focuses on **AI for Science (AI4Science)**, specifically on protein and small molecules. Recently, I led a project on machine learning Collective Variables (CVs) for enhanced sampling of proteins, by repurposing a foundation model."
     Education:
     - institution: Korea Advanced Institute of Science and Technology (KAIST)
       area: Kim Jaechul Graduate School of Artificial Intelligence
@@ -22,7 +22,7 @@ cv:
       start_date: 2025-02
       highlights:
       - '[Structured and Probabilistic Machine Learning Lab](https://sites.google.com/view/sungsooahn0215) @ Sungsoo Ahn'
-      - 'Interest: Bio-molecules, Molecular dynamics (MD)'
+      - 'Interest: Protein-drug interactions, Molecular dynamics (MD)'
     - institution: Pohang University of Science and Technology (POSTECH)
       area: Graduate School of Computer Science and Engineering (CSE)
       degree: M.S.
@@ -76,14 +76,14 @@ cv:
       date: 2026
       url: https://arxiv.org/abs/2602.01815
       doi: 10.48550/arXiv.2602.01815
-    - title: Boltz is a Strong Baseline for Atom-level Representation Learning
+    - title: A Systematic Evaluation of Co-folding Model Representations for Small-Molecule Learning
       authors: 
       - Hyosoon Jang
       - Hyunjin Seo
       - Honghui Kim
+      - '***Seonghyun Park***'
       - Taewon Kim
       - Yunhui Jang
-      - '***Seonghyun Park***'
       - Sungsoo Ahn
       journal: Preprint
       date: 2026
@@ -97,7 +97,7 @@ cv:
       - Kirill Neklyudov
       - Sungsoo Ahn
       journal: ICML 2026
-      date: 2026
+      date: July 2026
       url: https://icml.cc/virtual/2026/poster/65611
       doi: 10.48550/arXiv.2602.07744
     - title: Learning Collective Variables from BioEmu with Time-lagged Generation
@@ -124,12 +124,12 @@ cv:
       doi: 10.48550/arXiv.2405.19961
     - title: Non-backtracking Graph Neural Networks
       authors:
-      - '***Seonghyun Park****'
-      - Narae Ryu*
+      - '***Seonghyun Park***#super[†]'
+      - 'Narae Ryu#super[†]'
       - Gahee Kim
       - Dongyeop Woo
-      - Se-Young Yun**
-      - Sungsoo Ahn**
+      - 'Se-Young Yun#super[‡]'
+      - 'Sungsoo Ahn#super[‡]'
       url: https://openreview.net/forum?id=64HdQKnyTc
       doi: 10.48550/arXiv.2310.07430
       journal: TMLR 2024, NeurIPS 2023 Workshop GLFrontiers Oral

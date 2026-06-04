@@ -20,11 +20,11 @@ papers:
     thumbnail: "/assets/publications/thumbnails/indibator.png"
     selected: y
 
-  - title: "Boltz is a Strong Baseline for Atom-level Representation Learning"
-    authors: "Hyosoon Jang, Hyunjin Seo, Honghui Kim, Taewon Kim, Yunhui Jang, <b>Seonghyun Park</b>, Sungsoo Ahn"
+  - title: "A Systematic Evaluation of Co-folding Model Representations for Small-Molecule Learning"
+    authors: "Hyosoon Jang, Hyunjin Seo, Honghui Kim, <b>Seonghyun Park</b>, Taewon Kim, Yunhui Jang, Sungsoo Ahn"
     venue: "Preprint, under review"
-    paper_pdf: "/assets/publications/preprint_boltz.pdf"
-    thumbnail: "/assets/publications/thumbnails/boltz.png"
+    paper_pdf: "/assets/publications/preprint_cofolding.pdf"
+    thumbnail: "/assets/publications/thumbnails/cofolding.png"
     arxiv: "https://arxiv.org/abs/2602.13249"
     code: "https://github.com/hsjang0/boltz-as-FM"
     selected: y

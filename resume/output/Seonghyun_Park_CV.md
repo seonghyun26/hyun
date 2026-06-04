@@ -10,7 +10,7 @@
 
 
 # Summary
-I'm a second-year Ph.D. student at [Graduate School of AI at KAIST](https://gsai.kaist.ac.kr/), advised by [Sungsoo Ahn](https://sungsoo-ahn.github.io/). Currently, my research focuses on **AI for Science (AI4Science)**, specifically integrating machine learning with biomolecular modeling and molecular dynamics (MD). Recently, I led a project on machine learning–based Collective Variables (CVs) for enhanced sampling of proteins, by repurposing foundation models.
+I'm a second-year Ph.D. student at [Graduate School of AI at KAIST](https://gsai.kaist.ac.kr/), advised by [Sungsoo Ahn](https://sungsoo-ahn.github.io/). Currently, my research focuses on **AI for Science (AI4Science)**, specifically on protein and small molecules. Recently, I led a project on machine learning Collective Variables (CVs) for enhanced sampling of proteins, by repurposing a foundation model.
 
 # Education
 ## **Korea Advanced Institute of Science and Technology (KAIST)**, Kim Jaechul Graduate School of Artificial Intelligence
@@ -25,7 +25,7 @@ Feb 2025 – present
 
 - [Structured and Probabilistic Machine Learning Lab](https://sites.google.com/view/sungsooahn0215) @ Sungsoo Ahn
 
-- Interest: Bio-molecules, Molecular dynamics (MD)
+- Interest: Protein-drug interactions, Molecular dynamics (MD)
 
 
 
@@ -111,11 +111,11 @@ Yunhui Jang, ***Seonghyun Park***, Jaehyung Kim, Sungsoo Ahn
 
 
 
-## **Boltz is a Strong Baseline for Atom-level Representation Learning**
+## **A Systematic Evaluation of Co-folding Model Representations for Small-Molecule Learning**
 
 2026
 
-Hyosoon Jang, Hyunjin Seo, Honghui Kim, Taewon Kim, Yunhui Jang, ***Seonghyun Park***, Sungsoo Ahn
+Hyosoon Jang, Hyunjin Seo, Honghui Kim, ***Seonghyun Park***, Taewon Kim, Yunhui Jang, Sungsoo Ahn
 
 [10.48550/arXiv.2602.13249](https://doi.org/10.48550/arXiv.2602.13249) (Preprint)
 
@@ -123,7 +123,7 @@ Hyosoon Jang, Hyunjin Seo, Honghui Kim, Taewon Kim, Yunhui Jang, ***Seonghyun Pa
 
 ## **Riemannian MeanFlow**
 
-2026
+July 2026
 
 Dongyeop Woo, Marta Skreta, ***Seonghyun Park***, Kirill Neklyudov, Sungsoo Ahn
 
@@ -155,7 +155,7 @@ Kiyoung Seong, ***Seonghyun Park***, Seonghwan Kim, Woo Youn Kim, Sungsoo Ahn
 
 Sep 2024
 
-***Seonghyun Park****, Narae Ryu*, Gahee Kim, Dongyeop Woo, Se-Young Yun**, Sungsoo Ahn**
+***Seonghyun Park***#super[†], Narae Ryu#super[†], Gahee Kim, Dongyeop Woo, Se-Young Yun#super[‡], Sungsoo Ahn#super[‡]
 
 [10.48550/arXiv.2310.07430](https://doi.org/10.48550/arXiv.2310.07430) (TMLR 2024, NeurIPS 2023 Workshop GLFrontiers Oral)
 

@@ -6,7 +6,7 @@
   name: "Seonghyun Park",
   title: "Seonghyun Park - CV",
   footer: context { [#emph[Seonghyun Park -- #str(here().page())\/#str(counter(page).final().first())]] },
-  top-note: [ #emph[Last updated in May 2026] ],
+  top-note: [ #emph[Last updated in June 2026] ],
   locale-catalog-language: "en",
   text-direction: ltr,
   page-size: "us-letter",
@@ -80,8 +80,8 @@
   entries-highlights-space-between-bullet-and-text: 0.5em,
   date: datetime(
     year: 2026,
-    month: 5,
-    day: 8,
+    month: 6,
+    day: 4,
   ),
 )
 
@@ -101,7 +101,7 @@
 
 == Summary
 
-I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate School of AI at KAIST], advised by #link("https://sungsoo-ahn.github.io/")[Sungsoo Ahn]. Currently, my research focuses on #strong[AI for Science (AI4Science)], specifically integrating machine learning with biomolecular modeling and molecular dynamics (MD). Recently, I led a project on machine learning–based Collective Variables (CVs) for enhanced sampling of proteins, by repurposing foundation models.
+I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate School of AI at KAIST], advised by #link("https://sungsoo-ahn.github.io/")[Sungsoo Ahn]. Currently, my research focuses on #strong[AI for Science (AI4Science)], specifically on protein and small molecules. Recently, I led a project on machine learning Collective Variables (CVs) for enhanced sampling of proteins, by repurposing a foundation model.
 
 == Education
 
@@ -111,7 +111,7 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
 
     - #link("https://sites.google.com/view/sungsooahn0215")[Structured and Probabilistic Machine Learning Lab] \@ Sungsoo Ahn
 
-    - Interest: Bio-molecules, Molecular dynamics (MD)
+    - Interest: Protein-drug interactions, Molecular dynamics (MD)
 
   ],
   [
@@ -238,9 +238,9 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
 
 #regular-entry(
   [
-    #strong[Boltz is a Strong Baseline for Atom-level Representation Learning]
+    #strong[A Systematic Evaluation of Co-folding Model Representations for Small-Molecule Learning]
 
-    Hyosoon Jang, Hyunjin Seo, Honghui Kim, Taewon Kim, Yunhui Jang, #strong[#emph[Seonghyun Park]], Sungsoo Ahn
+    Hyosoon Jang, Hyunjin Seo, Honghui Kim, #strong[#emph[Seonghyun Park]], Taewon Kim, Yunhui Jang, Sungsoo Ahn
 
     #link("https://doi.org/10.48550/arXiv.2602.13249")[10.48550\/arXiv.2602.13249] (Preprint)
 
@@ -261,7 +261,7 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
 
   ],
   [
-    2026
+    July 2026
 
   ],
 )
@@ -300,7 +300,7 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
   [
     #strong[Non-backtracking Graph Neural Networks]
 
-    #strong[#emph[Seonghyun Park]]#emph[, Narae Ryu], Gahee Kim, Dongyeop Woo, Se-Young Yun#strong[, Sungsoo Ahn]
+    #strong[#emph[Seonghyun Park]]#super[†], Narae Ryu#super[†], Gahee Kim, Dongyeop Woo, Se-Young Yun#super[‡], Sungsoo Ahn#super[‡]
 
     #link("https://doi.org/10.48550/arXiv.2310.07430")[10.48550\/arXiv.2310.07430] (TMLR 2024, NeurIPS 2023 Workshop GLFrontiers Oral)
 
