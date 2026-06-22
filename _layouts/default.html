@@ -75,8 +75,9 @@
         </div>
         <div class="eight columns main-description">
             <h1>{{ site.data.main_info.name }}</h1>
+            {% if site.data.main_info.name_kr %}<p class="name-kr">KOR name: {{ site.data.main_info.name_kr }}</p>{% endif %}
             <p>{{ site.data.main_info.title }}</p>
-            <p>{{ site.data.main_info.email }}</p>
+            <p>{{ site.data.main_info.email | replace: '[at]', '<span class="email-sep">[at]</span>' | replace: '[dot]', '<span class="email-sep">[dot]</span>' }}</p>
             <p>
               <span onclick="window.open('{{ site.data.main_info.google_scholar }}')" style="cursor: pointer">
                 <i class="ai ai-google-scholar" style="font-size: 2.5rem" aria-hidden="true"></i>
@@ -123,7 +124,7 @@
           {{ site.data.main_info.name }}
         </div>
         <div class="four columns">
-          {{ site.data.main_info.email }}
+          {{ site.data.main_info.email | replace: '[at]', '<span class="email-sep">[at]</span>' | replace: '[dot]', '<span class="email-sep">[dot]</span>' }}
         </div>
         <div class="four columns">
           <span onclick="window.open('{{ site.data.main_info.google_scholar }}')" style="cursor: pointer">

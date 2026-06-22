@@ -164,7 +164,7 @@ body.dark-mode .author-link:hover {
 
 .paper-image-container:hover img {
   opacity: 1;
-  transform: scale(1.6);
+  transform: scale(1.4);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   position: relative;
   z-index: 101;
@@ -1348,4 +1348,21 @@ body.dark-mode code {
 #dark-mode-toggle {
   cursor: pointer;
   font-size: 14px;
+}
+
+/* SPML lab logo (inline in bio) */
+.spml-logo {
+  height: 0.96em;
+  vertical-align: middle;
+  position: relative;
+  top: -0.15em;
+}
+body.dark-mode .spml-logo {
+  /* black lettering -> white on dark bg, while roughly preserving the molecule colors */
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Shrink the [at] / [dot] separators in the obfuscated email */
+.email-sep {
+  font-size: 0.6em;
 }

@@ -6,17 +6,27 @@ title: Home
 <div class="docs-section" id="bio">
   <!-- <h5 align="center">
     Curretnly at ICML 2023, Honolulu Hawaii!</h5> -->
+  
   <!-- <h5 align="center">
     Going to NeurIPS 2023, New Orleans!!
   </h5> -->
+  
   <!-- <h5 align="center">
     I will be at ICLR 2026 (4/23-27) to present <a href="https://iclr.cc/virtual/2026/poster/10011831" target="_blank">BioEmu-CV</a>
     </br>
     See you in Rio 🇧🇷, I'd love to <a href="mailto:hyun26@kaist.ac.kr">chat</a> about small molecules and proteins!
   </h5> -->
 
+  <h5 align="center" style="font-size: 2.0rem;">
+    I will be at <a href="https://icml.cc/Conferences/2026" target="_blank">ICML 2026</a> in Seoul 🇰🇷 (7/6-11), check out <a href="https://icml.cc/virtual/2026/poster/65611" target="_blank">RMF</a> and <a href="https://yunhuijang.github.io/projects/INDIBATOR/" target="_blank">INDIBATOR</a>!
+    </br>
+    I'm also helping organize the <a href="https://holymollyhao.github.io/ai4science-korea/" target="_blank">AI4Science Korea</a> gathering - come join us by signing up <a href="https://luma.com/m7utyjje" target="_blank">here</a>!
+    </br>
+    Feel free to <a href="{{ site.data.main_info.linkedin }}" target="_blank">reach out</a> and chat about small molecules and proteins!
+  </h5>
+
   <h4>Bio</h4>
-  Hello! I'm a 2nd year Ph.D. student at <a href="https://gsai.kaist.ac.kr/">Kim Jaechul Graduate School of AI at KAIST</a>, advised by <a href="https://sungsoo-ahn.github.io/">Sungsoo Ahn</a>.
+  Hello! I'm a 2nd year Ph.D. student at <a href="https://gsai.kaist.ac.kr/">Kim Jaechul Graduate School of AI at KAIST</a>, advised by <a href="https://sungsoo-ahn.github.io/">Sungsoo Ahn</a> in the Structured and Probabilistic Machine Learning (<img src="{{ '/assets/img/spml_logo.svg' | prepend: site.baseurl }}" alt="SPML" class="spml-logo" />) Lab.
   My research interests are mainly on <b>AI4Science</b>, integrating machine learning to advance scientific discovery on small molecules and proteins! I'm interested in the following topics:
   <br>
   <br>
@@ -69,10 +79,10 @@ title: Home
             <div class="twelve columns">
             {% endif %}
               <p class="title">
-                {% if paper.page %}
-                  <a href="{{ paper.page }}" target="_blank"><b>{{ paper.title }}</b></a>
-                {% elsif paper.paper_pdf %}
+                {% if paper.paper_pdf %}
                   <a href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank"><b>{{ paper.title }}</b></a>
+                {% elsif paper.page %}
+                  <a href="{{ paper.page }}" target="_blank"><b>{{ paper.title }}</b></a>
                 {% else %}
                   <b>{{ paper.title }}</b>
                 {% endif %}
@@ -151,10 +161,10 @@ title: Home
             <div class="twelve columns">
             {% endif %}
               <p class="title">
-                {% if paper.page %}
-                  <a href="{{ paper.page }}" target="_blank"><b>{{ paper.title }}</b></a>
-                {% elsif paper.paper_pdf %}
+                {% if paper.paper_pdf %}
                   <a href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank"><b>{{ paper.title }}</b></a>
+                {% elsif paper.page %}
+                  <a href="{{ paper.page }}" target="_blank"><b>{{ paper.title }}</b></a>
                 {% else %}
                   <b>{{ paper.title }}</b>
                 {% endif %}
