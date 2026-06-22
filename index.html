@@ -61,12 +61,12 @@ title: Home
             {% if paper.thumbnail %}
             <div class="four columns">
               <div class="paper-image-container">
-                {% if paper.page %}
-                  <a href="{{ paper.page }}" target="_blank">
+                {% if paper.paper_pdf %}
+                  <a href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">
                     <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
                   </a>
-                {% elsif paper.paper_pdf %}
-                  <a href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">
+                {% elsif paper.page %}
+                  <a href="{{ paper.page }}" target="_blank">
                     <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
                   </a>
                 {% else %}
@@ -143,12 +143,12 @@ title: Home
             {% if paper.thumbnail %}
             <div class="four columns">
               <div class="paper-image-container">
-                {% if paper.page %}
-                  <a href="{{ paper.page }}" target="_blank">
+                {% if paper.paper_pdf %}
+                  <a href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">
                     <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
                   </a>
-                {% elsif paper.paper_pdf %}
-                  <a href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">
+                {% elsif paper.page %}
+                  <a href="{{ paper.page }}" target="_blank">
                     <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
                   </a>
                 {% else %}
