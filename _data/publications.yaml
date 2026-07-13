@@ -63,7 +63,7 @@ papers:
 
   - title: "Non-backtracking Graph Neural Networks"
     authors: "<b>Seonghyun Park</b><sup>†</sup>, Narae Ryu<sup>†</sup>, Gahee Kim, Dongyeop Woo, Se-Young Yun</b><sup>‡</sup>, Sungsoo Ahn</b><sup>‡</sup>"
-    venue: "TMLR 2024 <br> NeurIPS 2023 Workshop, New Frontiers in Graph Learning (GLFrontiers) <i><b>(Oral)</b></i>"
+    venue: "TMLR 2024 <br> NeurIPS 2023 Workshop, GLFrontiers <i><b>(Oral)</b></i>"
     thumbnail: "/assets/publications/thumbnails/nba-gnn.png"
     paper_pdf: "/assets/publications/24TMLR_NBA-GNN.pdf"
     arxiv: "https://arxiv.org/abs/2310.07430"

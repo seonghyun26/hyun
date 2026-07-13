@@ -18,13 +18,13 @@ title: Home
     See you in Rio 🇧🇷, I'd love to <a href="mailto:hyun26@kaist.ac.kr">chat</a> about small molecules and proteins!
   </h5> -->
 
-  <h5 align="center" style="font-size: 1.8rem;">
+  <!-- <h5 align="center" style="font-size: 1.8rem;">
     I will be at <a href="https://icml.cc/Conferences/2026" target="_blank">ICML 2026</a> in Seoul 🇰🇷 (7/6-11), check out <a href="https://icml.cc/virtual/2026/poster/65611" target="_blank">RMF</a> and <a href="https://yunhuijang.github.io/projects/INDIBATOR/" target="_blank">INDIBATOR</a>!
     </br>
     I'm also on <a href="https://holymollyhao.github.io/ai4science-korea/" target="_blank">AI4Science Korea</a>'s student committee, 7/6 (Mon) near COEX - <a href="https://luma.com/m7utyjje" target="_blank">come join us</a>!
     </br>
     Feel free to <a href="{{ site.data.main_info.linkedin }}" target="_blank">reach out</a> and chat about small molecules and proteins!
-  </h5>
+  </h5> -->
 
   <h4>Bio</h4>
   Hello! I'm a 2nd year Ph.D. student at <a href="https://gsai.kaist.ac.kr/">Kim Jaechul Graduate School of AI at KAIST</a>, advised by <a href="https://sungsoo-ahn.github.io/">Sungsoo Ahn</a> in the Structured and Probabilistic Machine Learning (<img src="{{ '/assets/img/spml_logo.svg' | prepend: site.baseurl }}" alt="SPML" class="spml-logo" />) Lab.
@@ -319,6 +319,26 @@ title: Home
     </li>
     {% endfor %}
   </ul>
+
+  <!-- Academic Service -->
+  <div class="service">
+    <h5>Academic Service</h5>
+    <p class="service-line">
+      <span class="service-label">Conference Reviewer</span>
+      {% for item in site.data.service.reviewer %}
+        <span class="service-item">{{ item.venue }} <span class="service-years">{{ item.years }}</span></span>{% unless forloop.last %} {% endunless %}
+      {% endfor %}
+      <span class="service-more">and more</span>
+    </p>
+    {% if site.data.service.organizer and site.data.service.organizer.size > 0 %}
+    <p class="service-line">
+      <span class="service-label">Workshop Organizer</span>
+      {% for item in site.data.service.organizer %}
+        <span class="service-item">{% if item.url and item.url != "" %}<a href="{{ item.url }}" target="_blank">{{ item.name }}</a>{% else %}{{ item.name }}{% endif %}</span>{% unless forloop.last %} {% endunless %}
+      {% endfor %}
+    </p>
+    {% endif %}
+  </div>
 </div>
 
 

@@ -1,0 +1,11 @@
+reviewer:
+  - venue: "ICLR"
+    years: "2024–2026"
+  - venue: "ICML"
+    years: "2024–2026"
+  - venue: "NeurIPS"
+    years: "2024–2025"
+
+organizer:
+  - name: "Korea AI4Science Gathering @ ICML 2026"
+    url: "https://holymollyhao.github.io/ai4science-korea/"
