@@ -60,6 +60,12 @@ photos:
     date: "2023-07"
     camera: "iPhone 12 Pro"
 
+  - image: "/assets/photos/220616_paris.jpeg"
+    caption: "Eiffel Tower"
+    location: "Pairs, Île-de-France, France"
+    date: "2022-02"
+    camera: "iPhone 12 Pro"
+
   - image: "/assets/photos/220527_church.jpeg"
     caption: "Church of Our Lady"
     location: "Dresden, Saxony, Germany"
