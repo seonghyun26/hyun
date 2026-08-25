@@ -7,6 +7,10 @@
 #   projects:
 #     output: true
 
+# Site origin, used by absolute_url (sitemap.xml, robots.txt).
+# baseurl (/hyun) is injected at build time by actions/configure-pages.
+url: "https://seonghyun26.github.io"
+
 theme: minima
 
 exclude:
@@ -18,7 +22,11 @@ exclude:
   - resume/make.sh
   - resume/resume.code-workspace
   - resume/Seonghyun_Park_CV.yaml
+  - 2509_SeonghyunPark_resume.docx
   - Gemfile
   - Gemfile.lock
   - serve.sh
   - CLAUDE.md
+  - AGENTS.md
+  - README.md
+  - www_personal.code-workspace

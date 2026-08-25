@@ -38,16 +38,8 @@ h4 {
   color: #1a73e8;
 }
 
-body.dark-mode .paper .title a {
-  color: #6db3f2;
-}
-
 #hobbies-toggle {
   color: #1a73e8;
-}
-
-body.dark-mode #hobbies-toggle {
-  color: #6db3f2;
 }
 
 .paper p {
@@ -63,10 +55,6 @@ body.dark-mode #hobbies-toggle {
 
 .author-link:hover {
   color: #1a73e8;
-}
-
-body.dark-mode .author-link:hover {
-  color: #6db3f2;
 }
 
 .paper-buttons {
@@ -1108,258 +1096,12 @@ body.dark-mode .author-link:hover {
   }
 }
 
-/* ================ Dark Mode ================ */
-body.dark-mode {
-  background-color: #1a1a2e;
-  color: #e0e0e0;
-}
-
-body.dark-mode h1,
-body.dark-mode h2,
-body.dark-mode h3,
-body.dark-mode h4,
-body.dark-mode h5,
-body.dark-mode h6 {
-  color: #e0e0e0;
-}
-
-body.dark-mode a {
-  color: #5ec4e8;
-}
-
-body.dark-mode a:hover {
-  color: #33C3F0;
-}
-
-body.dark-mode .title-subtitle h5 {
-  color: rgba(255, 255, 255, 0.55);
-}
-
-body.dark-mode .docs-section {
-  border-top-color: #2a2a4a;
-}
-
-body.dark-mode .footer {
-  color: rgba(255, 255, 255, 0.4);
-  border-top-color: #2a2a4a;
-}
-
-body.dark-mode .paper-image-container {
-  border-color: rgba(255, 255, 255, 0.15);
-}
-
-body.dark-mode .project-image-container {
-  border-color: rgba(255, 255, 255, 0.15);
-}
-
-body.dark-mode .side-projects-grid::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-body.dark-mode .side-project-card {
-  border-color: rgba(255, 255, 255, 0.15);
-}
-
-body.dark-mode .side-project-card:hover {
-  box-shadow: 0 4px 20px 4px rgba(0, 0, 0, 0.25);
-}
-
-body.dark-mode .side-project-card-image {
-  background: #2a2a4a;
-}
-
-body.dark-mode .side-project-card-footer {
-  border-top-color: rgba(255, 255, 255, 0.1);
-}
-
-body.dark-mode .side-project-card-subtitle {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-body.dark-mode .side-project-placeholder {
-  background: linear-gradient(135deg, #3a7bd5, #5a9bf5);
-}
-
-body.dark-mode .side-project-github-link {
-  color: #ccc;
-}
-
-body.dark-mode .side-project-github-link:hover {
-  color: #6db3f2;
-}
-
-body.dark-mode .side-project-modal-content {
-  background: #1e1e3a;
-  color: #e0e0e0;
-}
-
-body.dark-mode .side-project-modal-header {
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-
-body.dark-mode .side-project-modal-subtitle {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-body.dark-mode .side-project-modal-body > p:first-child {
-  color: rgba(255, 255, 255, 0.65);
-}
-
-body.dark-mode .side-project-modal-body h2 {
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-
-body.dark-mode .side-project-modal-body li b {
-  color: #6db3f2;
-}
-
-body.dark-mode .side-project-modal-body pre {
-  background: #2a2a4a;
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-body.dark-mode .side-project-modal-body code {
-  background: rgba(255, 255, 255, 0.08);
-}
-
-body.dark-mode .side-project-modal-body pre code {
-  background: none;
-}
-
-body.dark-mode .side-project-modal-body img {
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-}
-
-body.dark-mode .side-project-modal-close {
-  color: #999;
-}
-
-body.dark-mode .side-project-modal-close:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-body.dark-mode .paper .button {
-  color: #ccc;
-  border-color: #555;
-}
-
-body.dark-mode .paper .button:hover {
-  color: #fff;
-  border-color: #888;
-}
-
-body.dark-mode .tab-nav {
-  border-bottom-color: #444;
-}
-
-body.dark-mode .tab-nav .button {
-  color: #ccc;
-}
-
-body.dark-mode .tab-nav .button.active {
-  color: #fff;
-  border-bottom-color: #fff;
-}
-
-/* Navbar dark mode */
-@media (min-width: 750px) {
-  body.dark-mode .navbar,
-  body.dark-mode .navbar-spacer {
-    background: #16162a;
-    border-top-color: #2a2a4a;
-    border-bottom-color: #2a2a4a;
-  }
-
-  body.dark-mode .navbar-link {
-    color: #ccc;
-  }
-
-  body.dark-mode .navbar-link:hover {
-    color: #fff;
-  }
-
-  body.dark-mode .navbar-link.active {
-    color: #33C3F0;
-  }
-
-  body.dark-mode .popover {
-    background: #1e1e3a;
-    border-color: #2a2a4a;
-  }
-
-  body.dark-mode .popover-link {
-    color: #ccc;
-    border-bottom-color: #2a2a4a;
-  }
-
-  body.dark-mode .navbar+.docs-section {
-    border-top-width: 0;
-  }
-}
-
-/* Timeline dark mode */
-body.dark-mode .timeline .flag {
-  background: #1e1e3a;
-  color: #e0e0e0;
-}
-
-body.dark-mode .timeline .time {
-  background: #1e1e3a;
-  color: rgb(153, 11, 60);
-}
-
-body.dark-mode .timeline .desc {
-  background: #1e1e3a;
-  color: #ccc;
-}
-
-/* Floating TOC dark mode */
-body.dark-mode #floating-toc {
-  background: rgba(26, 26, 46, 0.95);
-  border-color: #2a2a4a;
-}
-
-body.dark-mode #floating-toc a {
-  color: transparent;
-}
-
-body.dark-mode #floating-toc a::before {
-  background: #555;
-}
-
-body.dark-mode #floating-toc:hover a {
-  color: #ccc;
-}
-
-body.dark-mode #floating-toc:hover a:hover {
-  color: #33C3F0;
-}
-
-/* Code blocks dark mode */
-body.dark-mode code {
-  background: #2a2a4a;
-  border-color: #3a3a5a;
-  color: #e0e0e0;
-}
-
-/* Dark mode toggle icon */
-#dark-mode-toggle {
-  cursor: pointer;
-  font-size: 14px;
-}
-
 /* SPML lab logo (inline in bio) */
 .spml-logo {
   height: 0.96em;
   vertical-align: middle;
   position: relative;
   top: -0.15em;
-}
-body.dark-mode .spml-logo {
-  /* black lettering -> white on dark bg, while roughly preserving the molecule colors */
-  filter: invert(1) hue-rotate(180deg);
 }
 
 /* Shrink the [at] / [dot] separators in the obfuscated email */
@@ -1405,14 +1147,4 @@ body.dark-mode .spml-logo {
   color: rgba(0, 0, 0, 0.45);
   font-size: 0.78em;
   font-style: italic;
-}
-body.dark-mode .service-label {
-  color: rgba(255, 255, 255, 0.7);
-}
-body.dark-mode .service-item {
-  background: rgba(109, 179, 242, 0.15);
-}
-body.dark-mode .service-years,
-body.dark-mode .service-more {
-  color: rgba(255, 255, 255, 0.5);
 }

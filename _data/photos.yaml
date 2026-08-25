@@ -56,14 +56,14 @@ photos:
 
   - image: "/assets/photos/230716_kauai.jpeg"
     caption: "Kauai"
-    location: "Kauai, Hawai, United States"
+    location: "Kauai, Hawaii, United States"
     date: "2023-07"
     camera: "iPhone 12 Pro"
 
   - image: "/assets/photos/220616_paris.jpeg"
     caption: "Eiffel Tower"
-    location: "Pairs, Île-de-France, France"
-    date: "2022-02"
+    location: "Paris, Île-de-France, France"
+    date: "2022-06"
     camera: "iPhone 12 Pro"
 
   - image: "/assets/photos/220527_church.jpeg"
@@ -74,12 +74,12 @@ photos:
 
   - image: "/assets/photos/220528_prague.jpeg"
     caption: "Old Town Square"
-    location: "Prague 1, Prague, Czech"
+    location: "Prague 1, Prague, Czechia"
     date: "2022-05"
     camera: "iPhone 12 Pro"
 
   - image: "/assets/photos/220501_sagrada.jpeg"
-    caption: "Sagrada Familia, "
+    caption: "Sagrada Familia"
     location: "Barcelona, Costa Barcelona, Spain"
     date: "2022-05"
     camera: "iPhone 12 Pro"
