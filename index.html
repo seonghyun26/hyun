@@ -226,7 +226,7 @@ title: Home
   <h4>Side Projects</h4>
 
   <div class="side-projects-grid">
-    {% assign selected_projects = site.data.side_projects.projects | where: "selected", "y" %}
+    {% assign selected_projects = site.data.side_projects.projects | where: "selected", "y" | sort: "date" | reverse %}
     {% for project in selected_projects %}
       <div class="side-project-card" data-project-index="{{ forloop.index0 }}" data-project-title="{{ project.title }}">
         <div class="side-project-card-image">
@@ -259,6 +259,9 @@ title: Home
           <div class="side-project-modal-header">
             <div class="side-project-modal-header-info">
               <h5>{{ project.title }}</h5>
+              {% if project.date %}
+                <p class="side-project-modal-date">{{ project.date | date: "%B %Y" }}</p>
+              {% endif %}
               {% if project.subtitle %}
                 <p class="side-project-modal-subtitle">{{ project.subtitle }}</p>
               {% endif %}

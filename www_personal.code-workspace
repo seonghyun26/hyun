@@ -1,8 +1,11 @@
 {
 	"folders": [
-		{
-			"path": "."
-		}
+        {
+            "path": "."
+        },
+        {
+            "path": "../scholar2bibtex"
+        }
     ],
     "settings": {
         "workbench.colorCustomizations": {
