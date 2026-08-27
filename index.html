@@ -351,6 +351,8 @@ title: Home
   <p id="hobbies-hint" style="margin-top: -5px; color: rgba(0,0,0,0.4); font-size: 0.9em;">&uarr; Click this!</p>
   <div id="hobbies-content" style="display: none;">
 
+    <p style="margin-bottom: 10px;">I love music, coffee, and traveling!</p>
+
     <ul class="tab-nav">
       <li><div class="button active" data-ref="#hobbies-music">🎶 Music</div></li>
       <li><div class="button" data-ref="#hobbies-photos">📷 Photos</div></li>
@@ -358,7 +360,6 @@ title: Home
 
     <div class="tab-content">
       <div class="tab-pane active" id="hobbies-music">
-        <p style="margin-bottom: 10px;">I love music!</p>
         {% for hobby in site.data.hobbies.hobbies %}
           <div class="hobby-item">
             {% if hobby.youtube %}
@@ -385,7 +386,7 @@ title: Home
       </div>
 
       <div class="tab-pane" id="hobbies-photos">
-        <p style="margin-bottom: 10px;">Taken by FUJIFILM X-T30 II and iPhone 12 Pro</p>
+        <!-- <p style="margin-bottom: 10px;">Taken by FUJIFILM X-T30 II and iPhone 12 Pro</p> -->
         {% if site.data.photos.photos.size > 0 %}
           <div class="photo-gallery">
             {% assign sorted_photos = site.data.photos.photos | sort: "date" | reverse %}
