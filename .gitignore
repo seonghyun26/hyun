@@ -10,4 +10,5 @@ CLAUDE.md
 .claude
 .omx
 .omc
+*.code-workspace
 *conference*

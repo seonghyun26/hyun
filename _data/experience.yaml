@@ -6,6 +6,13 @@ experiences:
   #   category: "work"
   #   url: "https://www.mma.go.kr/contents.do?mc=mma0000760"
 
+  - place: "SBInt"
+    time: "Fall 2026"
+    title: "AI4Sicence"
+    subtitle: "Remote co-work"
+    category: "work"
+    url: "https://www.sbintuitions.co.jp/en/"
+
   - place: "KAIST AI"
     time: "2025 - "
     title: "Ph.D. Student"
