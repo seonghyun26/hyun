@@ -10,7 +10,7 @@
 
 
 # Summary
-I'm a second-year Ph.D. student at [Graduate School of AI at KAIST](https://gsai.kaist.ac.kr/), advised by [Sungsoo Ahn](https://sungsoo-ahn.github.io/). Currently, my research focuses on **AI for Science (AI4Science)**, specifically on protein and small molecules. Recently, I led a project on machine learning Collective Variables (CVs) for enhanced sampling of proteins, by repurposing a foundation model.
+I'm a second-year Ph.D. student at [Graduate School of AI at KAIST](https://gsai.kaist.ac.kr/), advised by [Sungsoo Ahn](https://sungsoo-ahn.github.io/). My research interests lie mainly in **AI4Science**, and I believe that machine learning can advance scientific discovery involving small molecules and proteins. Recently, I have been focusing on incorporating experimental data into machine learning models to better understand protein-ligand interactions.
 
 # Education
 ## **Korea Advanced Institute of Science and Technology (KAIST)**, Kim Jaechul Graduate School of Artificial Intelligence
@@ -101,72 +101,64 @@ Organization-wide task prioritization and landing funnel renewal
 
 
 # Publication
-## **INDIBATOR: Diverse and Fact-Grounded Individuality for Multi-Agent Debate in Molecular Discovery**
+## **Blending experimental electron density information to protein-ligand interactions**
 
-2026
-
-Yunhui Jang, ***Seonghyun Park***, Jaehyung Kim, Sungsoo Ahn
-
-[10.48550/arXiv.2602.01815](https://doi.org/10.48550/arXiv.2602.01815) (Preprint)
+***Seonghyun Park***, Shuan Chen, Jun Jin Choong, Noboru Kuno, Gyubok Lee, Kaushalya Madhawa, Keisuke Ozawa, Hikaru Shindo, Sungsoo Ahn
 
 
 
 ## **A Systematic Evaluation of Co-folding Model Representations for Small-Molecule Learning**
 
-2026
-
 Hyosoon Jang, Hyunjin Seo, Honghui Kim, ***Seonghyun Park***, Taewon Kim, Yunhui Jang, Sungsoo Ahn
 
-[10.48550/arXiv.2602.13249](https://doi.org/10.48550/arXiv.2602.13249) (Preprint)
+NeurIPS 2026 ([10.48550/arXiv.2602.13249](https://doi.org/10.48550/arXiv.2602.13249))
+
+
+
+## **INDIBATOR: Diverse and Fact-Grounded Individuality for Multi-Agent Debate in Molecular Discovery**
+
+Yunhui Jang, ***Seonghyun Park***, Jaehyung Kim, Sungsoo Ahn
+
+ICML 2026 Workshop, AI4Science ([10.48550/arXiv.2602.01815](https://doi.org/10.48550/arXiv.2602.01815))
 
 
 
 ## **Riemannian MeanFlow**
 
-July 2026
-
 Dongyeop Woo, Marta Skreta, ***Seonghyun Park***, Kirill Neklyudov, Sungsoo Ahn
 
-[10.48550/arXiv.2602.07744](https://doi.org/10.48550/arXiv.2602.07744) (ICML 2026)
+ICML 2026 ([10.48550/arXiv.2602.07744](https://doi.org/10.48550/arXiv.2602.07744))
 
 
 
 ## **Learning Collective Variables from BioEmu with Time-lagged Generation**
 
-Apr 2026
-
 ***Seonghyun Park***, Kiyoung Seong, Soojung Yang, Rafael Gomez-Bombarelli, Sungsoo Ahn
 
-[10.48550/arXiv.2507.07390](https://doi.org/10.48550/arXiv.2507.07390) (ICLR 2026)
+ICLR 2026 ([10.48550/arXiv.2507.07390](https://doi.org/10.48550/arXiv.2507.07390))
 
 
 
 ## **Transition Path Sampling with Improved Off-Policy Training of Diffusion Path Samplers**
 
-Apr 2025
-
 Kiyoung Seong, ***Seonghyun Park***, Seonghwan Kim, Woo Youn Kim, Sungsoo Ahn
 
-[10.48550/arXiv.2405.19961](https://doi.org/10.48550/arXiv.2405.19961) (ICLR 2025)
+ICLR 2025 ([10.48550/arXiv.2405.19961](https://doi.org/10.48550/arXiv.2405.19961))
 
 
 
 ## **Non-backtracking Graph Neural Networks**
 
-Sep 2024
-
 ***Seonghyun Park***#super[†], Narae Ryu#super[†], Gahee Kim, Dongyeop Woo, Se-Young Yun#super[‡], Sungsoo Ahn#super[‡]
 
-[10.48550/arXiv.2310.07430](https://doi.org/10.48550/arXiv.2310.07430) (TMLR 2024, NeurIPS 2023 Workshop GLFrontiers Oral)
+TMLR 2024, NeurIPS 2023 Workshop GLFrontiers Oral ([10.48550/arXiv.2310.07430](https://doi.org/10.48550/arXiv.2310.07430))
 
 
 
 ## **Diffusion Probabilistic Models for Structured Node Classification**
 
-Nov 2023
-
 Hyosoon Jang, ***Seonghyun Park***, Sangwoo Mo, Sungsoo Ahn
 
-[10.48550/arXiv.2302.10506](https://doi.org/10.48550/arXiv.2302.10506) (NeurIPS 2023)
+NeurIPS 2023 ([10.48550/arXiv.2302.10506](https://doi.org/10.48550/arXiv.2302.10506))
 
 

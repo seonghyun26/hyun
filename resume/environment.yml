@@ -1,0 +1,9 @@
+name: cv
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - rendercv[full]==2.8

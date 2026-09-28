@@ -6,7 +6,7 @@
   name: "Seonghyun Park",
   title: "Seonghyun Park - CV",
   footer: context { [#emph[Seonghyun Park -- #str(here().page())\/#str(counter(page).final().first())]] },
-  top-note: [ #emph[Last updated in June 2026] ],
+  top-note: [ #emph[Last updated in Sept 2026] ],
   locale-catalog-language: "en",
   text-direction: ltr,
   page-size: "us-letter",
@@ -80,8 +80,8 @@
   entries-highlights-space-between-bullet-and-text: 0.5em,
   date: datetime(
     year: 2026,
-    month: 6,
-    day: 4,
+    month: 9,
+    day: 28,
   ),
 )
 
@@ -101,7 +101,7 @@
 
 == Summary
 
-I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate School of AI at KAIST], advised by #link("https://sungsoo-ahn.github.io/")[Sungsoo Ahn]. Currently, my research focuses on #strong[AI for Science (AI4Science)], specifically on protein and small molecules. Recently, I led a project on machine learning Collective Variables (CVs) for enhanced sampling of proteins, by repurposing a foundation model.
+I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate School of AI at KAIST], advised by #link("https://sungsoo-ahn.github.io/")[Sungsoo Ahn]. My research interests lie mainly in #strong[AI4Science], and I believe that machine learning can advance scientific discovery involving small molecules and proteins. Recently, I have been focusing on incorporating experimental data into machine learning models to better understand protein-ligand interactions.
 
 == Education
 
@@ -121,7 +121,7 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
 
   ],
   degree-column: [
-    #strong[Ph.D.]
+    #text(size: 11pt)[#strong[Ph.D.]]
   ],
 )
 
@@ -141,7 +141,7 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
 
   ],
   degree-column: [
-    #strong[M.S.]
+    #text(size: 11pt)[#strong[M.S.]]
   ],
 )
 
@@ -159,7 +159,7 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
 
   ],
   degree-column: [
-    #strong[E.S.]
+    #text(size: 11pt)[#strong[E.S.]]
   ],
 )
 
@@ -175,7 +175,7 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
 
   ],
   degree-column: [
-    #strong[B.S.]
+    #text(size: 11pt)[#strong[B.S.]]
   ],
 )
 
@@ -183,7 +183,7 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
 
 #regular-entry(
   [
-    #strong[Bagelcode], Business Analyst (BA) intern
+    #text(size: 11pt)[#strong[Bagelcode], Business Analyst (BA) intern]
 
     #summary[Game economy management and KPI analysis automation]
 
@@ -202,7 +202,7 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
 
 #regular-entry(
   [
-    #strong[Seller Hub], Product Manager (PM) intern
+    #text(size: 11pt)[#strong[Seller Hub], Product Manager (PM) intern]
 
     #summary[Organization-wide task prioritization and landing funnel renewal]
 
@@ -221,107 +221,108 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
 
 == Publication
 
+#block(below: 0.6cm, sticky: true)[
+  #text(size: 8pt, fill: rgb("#666666"))[† Equal contribution · ‡ Co-corresponding author]
+]
+
 #regular-entry(
-  [
-    #strong[INDIBATOR: Diverse and Fact-Grounded Individuality for Multi-Agent Debate in Molecular Discovery]
+  [ ],
+  [ ],
+  main-column-second-row: [
+    #text(size: 11pt)[#strong[Blending experimental electron density information to protein-ligand interactions]]
 
-    Yunhui Jang, #strong[#emph[Seonghyun Park]], Jaehyung Kim, Sungsoo Ahn
-
-    #link("https://doi.org/10.48550/arXiv.2602.01815")[10.48550\/arXiv.2602.01815] (Preprint)
-
-  ],
-  [
-    2026
+    #strong[#emph[Seonghyun Park]], Shuan Chen, Jun Jin Choong, Noboru Kuno, Gyubok Lee, Kaushalya Madhawa, Keisuke Ozawa, Hikaru Shindo, Sungsoo Ahn
 
   ],
 )
 
 #regular-entry(
-  [
-    #strong[A Systematic Evaluation of Co-folding Model Representations for Small-Molecule Learning]
+  [ ],
+  [ ],
+  main-column-second-row: [
+    #text(size: 11pt)[#strong[A Systematic Evaluation of Co-folding Model Representations for Small-Molecule Learning]]
 
     Hyosoon Jang, Hyunjin Seo, Honghui Kim, #strong[#emph[Seonghyun Park]], Taewon Kim, Yunhui Jang, Sungsoo Ahn
 
-    #link("https://doi.org/10.48550/arXiv.2602.13249")[10.48550\/arXiv.2602.13249] (Preprint)
-
-  ],
-  [
-    2026
+    NeurIPS 2026 (#link("https://doi.org/10.48550/arXiv.2602.13249")[10.48550\/arXiv.2602.13249])
 
   ],
 )
 
 #regular-entry(
-  [
-    #strong[Riemannian MeanFlow]
+  [ ],
+  [ ],
+  main-column-second-row: [
+    #text(size: 11pt)[#strong[INDIBATOR: Diverse and Fact-Grounded Individuality for Multi-Agent Debate in Molecular Discovery]]
+
+    Yunhui Jang, #strong[#emph[Seonghyun Park]], Jaehyung Kim, Sungsoo Ahn
+
+    ICML 2026 Workshop, AI4Science (#link("https://doi.org/10.48550/arXiv.2602.01815")[10.48550\/arXiv.2602.01815])
+
+  ],
+)
+
+#regular-entry(
+  [ ],
+  [ ],
+  main-column-second-row: [
+    #text(size: 11pt)[#strong[Riemannian MeanFlow]]
 
     Dongyeop Woo, Marta Skreta, #strong[#emph[Seonghyun Park]], Kirill Neklyudov, Sungsoo Ahn
 
-    #link("https://doi.org/10.48550/arXiv.2602.07744")[10.48550\/arXiv.2602.07744] (ICML 2026)
-
-  ],
-  [
-    July 2026
+    ICML 2026 (#link("https://doi.org/10.48550/arXiv.2602.07744")[10.48550\/arXiv.2602.07744])
 
   ],
 )
 
 #regular-entry(
-  [
-    #strong[Learning Collective Variables from BioEmu with Time-lagged Generation]
+  [ ],
+  [ ],
+  main-column-second-row: [
+    #text(size: 11pt)[#strong[Learning Collective Variables from BioEmu with Time-lagged Generation]]
 
     #strong[#emph[Seonghyun Park]], Kiyoung Seong, Soojung Yang, Rafael Gomez-Bombarelli, Sungsoo Ahn
 
-    #link("https://doi.org/10.48550/arXiv.2507.07390")[10.48550\/arXiv.2507.07390] (ICLR 2026)
-
-  ],
-  [
-    Apr 2026
+    ICLR 2026 (#link("https://doi.org/10.48550/arXiv.2507.07390")[10.48550\/arXiv.2507.07390])
 
   ],
 )
 
 #regular-entry(
-  [
-    #strong[Transition Path Sampling with Improved Off-Policy Training of Diffusion Path Samplers]
+  [ ],
+  [ ],
+  main-column-second-row: [
+    #text(size: 11pt)[#strong[Transition Path Sampling with Improved Off-Policy Training of Diffusion Path Samplers]]
 
     Kiyoung Seong, #strong[#emph[Seonghyun Park]], Seonghwan Kim, Woo Youn Kim, Sungsoo Ahn
 
-    #link("https://doi.org/10.48550/arXiv.2405.19961")[10.48550\/arXiv.2405.19961] (ICLR 2025)
-
-  ],
-  [
-    Apr 2025
+    ICLR 2025 (#link("https://doi.org/10.48550/arXiv.2405.19961")[10.48550\/arXiv.2405.19961])
 
   ],
 )
 
 #regular-entry(
-  [
-    #strong[Non-backtracking Graph Neural Networks]
+  [ ],
+  [ ],
+  main-column-second-row: [
+    #text(size: 11pt)[#strong[Non-backtracking Graph Neural Networks]]
 
     #strong[#emph[Seonghyun Park]]#super[†], Narae Ryu#super[†], Gahee Kim, Dongyeop Woo, Se-Young Yun#super[‡], Sungsoo Ahn#super[‡]
 
-    #link("https://doi.org/10.48550/arXiv.2310.07430")[10.48550\/arXiv.2310.07430] (TMLR 2024, NeurIPS 2023 Workshop GLFrontiers Oral)
-
-  ],
-  [
-    Sep 2024
+    TMLR 2024, NeurIPS 2023 Workshop GLFrontiers Oral (#link("https://doi.org/10.48550/arXiv.2310.07430")[10.48550\/arXiv.2310.07430])
 
   ],
 )
 
 #regular-entry(
-  [
-    #strong[Diffusion Probabilistic Models for Structured Node Classification]
+  [ ],
+  [ ],
+  main-column-second-row: [
+    #text(size: 11pt)[#strong[Diffusion Probabilistic Models for Structured Node Classification]]
 
     Hyosoon Jang, #strong[#emph[Seonghyun Park]], Sangwoo Mo, Sungsoo Ahn
 
-    #link("https://doi.org/10.48550/arXiv.2302.10506")[10.48550\/arXiv.2302.10506] (NeurIPS 2023)
-
-  ],
-  [
-    Nov 2023
+    NeurIPS 2023 (#link("https://doi.org/10.48550/arXiv.2302.10506")[10.48550\/arXiv.2302.10506])
 
   ],
 )
