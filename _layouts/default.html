@@ -28,7 +28,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href={{ "/libs/external/skeleton/normalize.css" | prepend: site.baseurl }}>
   <link rel="stylesheet" href={{ "/libs/external/skeleton/skeleton.css" | prepend: site.baseurl }}>
-  <link rel="stylesheet" href={{ "/libs/custom/my_css.css" | prepend: site.baseurl }}>
+  <link rel="stylesheet" href="{{ '/libs/custom/my_css.css' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}">
 
   <!-- JQuery
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -54,7 +54,7 @@
   <!-- Scripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <!--<link rel="stylesheet" href={{ "/libs/external/github-prettify-theme.css" | prepend: site.baseurl }}>-->
-  <script src={{ "/libs/custom/my_js.js" | prepend: site.baseurl }}></script>
+  <script src="{{ '/libs/custom/my_js.js' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}"></script>
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -69,34 +69,75 @@
   <div class="container">
 
     <section class="header">
-      <div class="row">
-        <div class="four columns">
-          <a href="{{ site.baseurl }}/"><img class="u-max-full-width" src='{{ site.baseurl }}{{ site.data.main_info.profile_pic }}'></a>
+      <div class="row profile-header">
+        <div class="four columns profile-column">
+          {%- assign profile_pics = site.data.profile.pictures -%}
+          {%- assign first_pic = profile_pics | first -%}
+          <div class="profile-pic" id="profile-pic"
+               data-transition="{{ site.data.profile.transition | jsonify | escape }}">
+            <img class="profile-pic-img" id="profile-pic-img"
+                 src="{{ site.baseurl }}{{ first_pic.picture }}"
+                 alt="{{ site.data.main_info.name }}">
+          </div>
+          <div class="profile-switch" role="group" aria-label="Profile picture">
+            {%- for pic in profile_pics %}
+            <button type="button"
+                    class="profile-switch-btn{% if forloop.first %} active{% endif %}"
+                    data-image="{{ site.baseurl }}{{ pic.picture }}"
+                    title="{{ pic.name | escape }}"
+                    aria-label="{{ pic.name | escape }}"
+                    aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">
+              {%- case pic.icon -%}
+                {%- when "book" -%}
+                <svg class="profile-switch-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M12 6C9.4 4.2 6.2 3.8 2.5 4.8v13.4c3.7-1 6.9-.6 9.5 1.3 2.6-1.9 5.8-2.3 9.5-1.3V4.8C17.8 3.8 14.6 4.2 12 6zm0 0v13.5"/>
+                  <path d="M5.5 8.5c1.3-.1 2.4.1 3.5.6m-3.5 3c1.3-.1 2.4.1 3.5.6m6-3.6c1.1-.5 2.2-.7 3.5-.6m-3.5 4.2c1.1-.5 2.2-.7 3.5-.6" stroke-width="1.2"/>
+                </svg>
+                {%- when "camera" -%}
+                <svg class="profile-switch-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M8 6.5 9.5 4h5l1.5 2.5h3.5a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2h-15a2 2 0 0 1-2-2V8.5a2 2 0 0 1 2-2z"/>
+                  <circle cx="12" cy="13.3" r="4"/>
+                  <path d="M4.5 4.5h2M18 9h.5m-8.1 4.3a1.6 1.6 0 0 1 1.6-1.6" stroke-width="1.2"/>
+                </svg>
+                {%- when "guitar" -%}
+                <svg class="profile-switch-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <g transform="rotate(40 12 12)">
+                    <path d="M8.4 10.5C6.7 8.3 4.9 9.8 6.3 12c.8 1.2-1.6 2.4-1.6 4.7C4.7 19.3 7.6 21 12 21s7.3-1.7 7.3-4.3c0-2.3-2.4-3.5-1.6-4.7 1.4-2.2-.4-3.7-2.1-1.5"/>
+                    <path d="M9.6 3.5 9.1 0.5h5.8l-.5 3z"/>
+                    <path d="M10.5 3.5v14M13.5 3.5v14"/>
+                  </g>
+                </svg>
+                {%- when "music" -%}
+                <svg class="profile-switch-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M9 18V6l11-2.5v12"/>
+                  <path d="M9 6 20 3.5v2.4L9 8.4z" fill="currentColor" stroke="none"/>
+                  <ellipse cx="6" cy="18" rx="3.3" ry="2.4" transform="rotate(-20 6 18)" fill="currentColor" stroke="none"/>
+                  <ellipse cx="17" cy="15.5" rx="3.3" ry="2.4" transform="rotate(-20 17 15.5)" fill="currentColor" stroke="none"/>
+                </svg>
+              {%- endcase -%}
+            </button>
+            {%- endfor %}
+          </div>
         </div>
         <div class="eight columns main-description">
             <h1>{{ site.data.main_info.name }}</h1>
             {% if site.data.main_info.name_kr %}<p class="name-kr">KOR name: {{ site.data.main_info.name_kr }}</p>{% endif %}
             <p>{{ site.data.main_info.title }}</p>
             <p>{{ site.data.main_info.email | replace: '[at]', '<span class="email-sep">[at]</span>' | replace: '[dot]', '<span class="email-sep">[dot]</span>' }}</p>
-            <p>
-              <span onclick="window.open('{{ site.data.main_info.google_scholar }}')" style="cursor: pointer">
-                <i class="ai ai-google-scholar" style="font-size: 2.5rem" aria-hidden="true"></i>
-              </span>
-
-              <span onclick="window.open('{{ site.data.main_info.github }}')" style="cursor: pointer">
-                <i class="fa fa-github" style="font-size: 2.5rem" aria-hidden="true"></i>
-              </span>
-
-              <span onclick="window.open('{{ site.data.main_info.linkedin }}')" style="cursor: pointer">
-                <i class="fa fa-linkedin-square" style="font-size: 2.5rem" aria-hidden="true"></i>
-              </span>
-
-              <span onclick="window.open('{{ site.data.main_info.x }}')" style="cursor: pointer">
-                <svg viewBox="0 0 24 24" style="height: 2.1rem; width: auto; vertical-align: -0.12rem; fill: currentColor" aria-hidden="true">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </span>
-            </p>
+            <div class="social-icons">
+              <a class="social-icon social-icon--scholar" href="{{ site.data.main_info.google_scholar }}" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar">
+                <i class="ai ai-google-scholar" aria-hidden="true"></i>
+              </a>
+              <a class="social-icon social-icon--github" href="{{ site.data.main_info.github }}" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+                <i class="fa fa-github" aria-hidden="true"></i>
+              </a>
+              <a class="social-icon social-icon--linkedin" href="{{ site.data.main_info.linkedin }}" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+                <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+              </a>
+              <a class="social-icon social-icon--x" href="{{ site.data.main_info.x }}" target="_blank" rel="noopener" title="X" aria-label="X">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+            </div>
         </div>
       </div>
     </section>
@@ -127,20 +168,20 @@
           {{ site.data.main_info.email | replace: '[at]', '<span class="email-sep">[at]</span>' | replace: '[dot]', '<span class="email-sep">[dot]</span>' }}
         </div>
         <div class="four columns">
-          <span onclick="window.open('{{ site.data.main_info.google_scholar }}')" style="cursor: pointer">
-            <i class="ai ai-google-scholar ai-lg" aria-hidden="true"></i>
-          </span>
-          <span onclick="window.open('{{ site.data.main_info.github }}')" style="cursor: pointer">
-            <i class="fa fa-github" aria-hidden="true"></i>
-          </span>
-          <span onclick="window.open('{{ site.data.main_info.linkedin }}')" style="cursor: pointer">
-            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-          </span>
-          <span onclick="window.open('{{ site.data.main_info.x }}')" style="cursor: pointer">
-            <svg viewBox="0 0 24 24" style="height: 1.1em; width: auto; vertical-align: -0.05em; fill: currentColor" aria-hidden="true">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
-          </span>
+          <div class="social-icons">
+            <a class="social-icon social-icon--scholar" href="{{ site.data.main_info.google_scholar }}" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar">
+              <i class="ai ai-google-scholar" aria-hidden="true"></i>
+            </a>
+            <a class="social-icon social-icon--github" href="{{ site.data.main_info.github }}" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+              <i class="fa fa-github" aria-hidden="true"></i>
+            </a>
+            <a class="social-icon social-icon--linkedin" href="{{ site.data.main_info.linkedin }}" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+            </a>
+            <a class="social-icon social-icon--x" href="{{ site.data.main_info.x }}" target="_blank" rel="noopener" title="X" aria-label="X">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>

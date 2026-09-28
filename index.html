@@ -45,12 +45,12 @@ title: Home
   <h4>Publications</h4>
 
   <p>Most recent publications on <a href="{{ site.data.main_info.google_scholar }}" target="_blank">Google Scholar</a>.<br/>
-  <sup>†</sup> indicates equal contribution, <sup>‡</sup> indicates co-corresponding author.
+  <small class="publication-note"><sup>†</sup> indicates equal contribution, <sup>‡</sup> indicates co-corresponding author.</small>
   </p>
 
   <ul class="tab-nav">
-    <li><div class="button active" data-ref="#papers-selected">Selected</div></li>
-    <li><div class="button" data-ref="#papers-all">All</div></li>
+    <li><button type="button" class="button active" data-ref="#papers-selected">Selected</button></li>
+    <li><button type="button" class="button" data-ref="#papers-all">All</button></li>
   </ul>
 
   <div class="tab-content">
@@ -64,14 +64,14 @@ title: Home
               <div class="paper-image-container">
                 {% if paper.paper_pdf %}
                   <a href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">
-                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" alt="{{ paper.title | escape }}" loading="lazy" />
                   </a>
                 {% elsif paper.page %}
                   <a href="{{ paper.page }}" target="_blank">
-                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" alt="{{ paper.title | escape }}" loading="lazy" />
                   </a>
                 {% else %}
-                  <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                  <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" alt="{{ paper.title | escape }}" loading="lazy" />
                 {% endif %}
               </div>
             </div>
@@ -146,14 +146,14 @@ title: Home
               <div class="paper-image-container">
                 {% if paper.paper_pdf %}
                   <a href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">
-                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" alt="{{ paper.title | escape }}" loading="lazy" />
                   </a>
                 {% elsif paper.page %}
                   <a href="{{ paper.page }}" target="_blank">
-                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                    <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" alt="{{ paper.title | escape }}" loading="lazy" />
                   </a>
                 {% else %}
-                  <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" />
+                  <img src="{{ paper.thumbnail | prepend: site.baseurl }}" class="u-max-full-width" alt="{{ paper.title | escape }}" loading="lazy" />
                 {% endif %}
               </div>
             </div>
@@ -228,10 +228,10 @@ title: Home
   <div class="side-projects-grid">
     {% assign selected_projects = site.data.side_projects.projects | where: "selected", "y" | sort: "date" | reverse %}
     {% for project in selected_projects %}
-      <div class="side-project-card" data-project-index="{{ forloop.index0 }}" data-project-title="{{ project.title }}">
+      <div class="side-project-card" data-project-index="{{ forloop.index0 }}" data-project-title="{{ project.title | escape }}" data-project-slug="{{ project.title | slugify }}">
         <div class="side-project-card-image">
           {% if project.thumbnail %}
-            <img src="{{ project.thumbnail | prepend: site.baseurl }}" />
+            <img src="{{ project.thumbnail | prepend: site.baseurl }}" alt="{{ project.title | escape }} preview" loading="lazy" />
           {% else %}
             <div class="side-project-placeholder">
               <span>{{ project.title }}</span>
@@ -255,7 +255,7 @@ title: Home
       <div class="side-project-modal" id="side-project-modal-{{ forloop.index0 }}">
         <div class="side-project-modal-backdrop"></div>
         <div class="side-project-modal-content">
-          <button class="side-project-modal-close">&times;</button>
+          <button class="side-project-modal-close" aria-label="Close project">&times;</button>
           <div class="side-project-modal-header">
             <div class="side-project-modal-header-info">
               <h5>{{ project.title }}</h5>
@@ -327,7 +327,7 @@ title: Home
   <div class="service">
     <h5>Academic Service</h5>
     <p class="service-line">
-      <span class="service-label">Conference Reviewer</span>
+      <span class="service-label">Reviewer</span>
       {% for item in site.data.service.reviewer %}
         <span class="service-item">{{ item.venue }} <span class="service-years">{{ item.years }}</span></span>{% unless forloop.last %} {% endunless %}
       {% endfor %}
@@ -335,7 +335,7 @@ title: Home
     </p>
     {% if site.data.service.organizer and site.data.service.organizer.size > 0 %}
     <p class="service-line">
-      <span class="service-label">Workshop Organizer</span>
+      <span class="service-label">Organizer</span>
       {% for item in site.data.service.organizer %}
         <span class="service-item">{% if item.url and item.url != "" %}<a href="{{ item.url }}" target="_blank">{{ item.name }}</a>{% else %}{{ item.name }}{% endif %}</span>{% unless forloop.last %} {% endunless %}
       {% endfor %}
@@ -347,15 +347,15 @@ title: Home
 
 <!-- ========== HOBBIES ========== -->
 <div class="docs-section" id="hobbies">
-  <h4 id="hobbies-toggle" style="cursor: pointer;">Hobbies 🎶📷☕</h4>
+  <h4 id="hobbies-toggle" role="button" tabindex="0" aria-expanded="false" aria-controls="hobbies-content" style="cursor: pointer;">Hobbies 🎶📷☕</h4>
   <p id="hobbies-hint" style="margin-top: -5px; color: rgba(0,0,0,0.4); font-size: 0.9em;">&uarr; Click this!</p>
   <div id="hobbies-content" style="display: none;">
 
     <p style="margin-bottom: 10px;">I love music, coffee, and traveling!</p>
 
     <ul class="tab-nav">
-      <li><div class="button active" data-ref="#hobbies-music">🎶 Music</div></li>
-      <li><div class="button" data-ref="#hobbies-photos">📷 Photos</div></li>
+      <li><button type="button" class="button active" data-ref="#hobbies-music">🎶 Music</button></li>
+      <li><button type="button" class="button" data-ref="#hobbies-photos">📷 Photos</button></li>
     </ul>
 
     <div class="tab-content">
@@ -374,13 +374,19 @@ title: Home
               {% else %}
                 {% assign yt_id = yt_url %}
               {% endif %}
-              <iframe width="500" height="281" src="https://www.youtube.com/embed/{{ yt_id }}" frameborder="0" allowfullscreen></iframe>
+              <iframe width="500" height="281" src="https://www.youtube.com/embed/{{ yt_id }}"
+                      title="{{ hobby.title | escape }}"
+                      referrerpolicy="strict-origin-when-cross-origin"
+                      allow="encrypted-media; picture-in-picture; fullscreen"
+                      frameborder="0" allowfullscreen></iframe>
             {% elsif hobby.image %}
               <img src="{{ hobby.image | prepend: site.baseurl }}" alt="{{ hobby.title }}" />
+            {% elsif hobby.emoji %}
+              <div class="hobby-emoji" role="img" aria-label="{{ hobby.title | escape }}">{{ hobby.emoji }}</div>
             {% endif %}
             <div class="hobby-info">
               <p class="title"><b>{{ hobby.title }}</b></p>
-              <p>{{ hobby.description }}</p>
+              {% if hobby.description %}<p>{{ hobby.description }}</p>{% endif %}
             </div>
           </div>
         {% endfor %}
@@ -428,9 +434,9 @@ title: Home
           <!-- Lightbox -->
           <div class="photo-lightbox" id="photo-lightbox">
             <div class="photo-lightbox-backdrop"></div>
-            <button class="photo-lightbox-close">&times;</button>
-            <button class="photo-lightbox-prev"><i class="fa fa-chevron-left"></i></button>
-            <button class="photo-lightbox-next"><i class="fa fa-chevron-right"></i></button>
+            <button class="photo-lightbox-close" aria-label="Close photo">&times;</button>
+            <button class="photo-lightbox-prev" aria-label="Previous photo"><i class="fa fa-chevron-left"></i></button>
+            <button class="photo-lightbox-next" aria-label="Next photo"><i class="fa fa-chevron-right"></i></button>
             <div class="photo-lightbox-content">
               <img src="" alt="" />
               <div class="photo-lightbox-info">
@@ -456,7 +462,9 @@ title: Home
     <h5>Website Design</h5>
     Thanks <a href="https://faculty.washington.edu/msaveski/">
     Martin Saveski
-    </a> for this awesome website template!
+    </a> for this awesome website template, <a href="https://www.cyhuh.com/">
+    ChaeYoung Huh
+    </a> for the inspiration behind the profile photo transitions!
     I have made some edits, feel free to use from my version <a href="https://github.com/seonghyun26/hyun">github</a> and if you end up using it, just drop me an <a href="mailto:hyun26@kaist.ac.kr">email</a> :)
     <!-- Since I made this website, many people have found this Jekyll template useful -->
     <!-- <a href="https://people.csail.mit.edu/davidam/" target="_blank">[1</a>,

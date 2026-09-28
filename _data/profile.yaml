@@ -1,0 +1,22 @@
+# Photo transition settings. Times are in milliseconds (1200ms = 1.2s).
+transition:
+  duration_ms: 1200
+  patch_fade_ms: 300 # Each patch fades for 0.3s; starts are spread evenly over the remaining 0.9s.
+  patch_rows: 32
+  patch_columns: 32
+  easing: "cubic-bezier(0.33, 0, 0.67, 1)" # Gentle acceleration and deceleration for each patch.
+
+# The first picture is shown on load. Icons: book, camera, guitar, music.
+pictures:
+  - name: "Research"
+    icon: "book"
+    picture: "/assets/profile-pics/basic.jpeg"
+  - name: "Photography"
+    icon: "camera"
+    picture: "/assets/profile-pics/photo.jpeg"
+  - name: "Guitar"
+    icon: "guitar"
+    picture: "/assets/profile-pics/guitar.jpeg"
+  - name: "Music"
+    icon: "music"
+    picture: "/assets/profile-pics/music.jpeg"

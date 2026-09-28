@@ -1,3 +1,32 @@
+/*  ================ Palette  ================ */
+/*
+ * Every accent in this file comes from here. Add a colour once and reference it
+ * with var(), so a change lands everywhere instead of in the places someone
+ * remembered to update.
+ */
+:root {
+  /* Interactive accents: the light one at rest, the strong one for hover and
+     for whatever is currently selected. */
+  --accent: #8092F6;
+  --accent-strong: #4761F2;
+
+  /* Resting grey for icon rows that have a selected state. */
+  --icon-idle: #B4BBBE;
+
+  /* Skeleton's own accent, still driving the navbar and popover states. */
+  --accent-sky: #33C3F0;
+}
+
+/* Plain links take the light accent; the strong one is reserved for things that
+   are either a heading or the thing you are currently on. */
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--accent-strong);
+}
+
 html {
   font-size: 70%;
 }
@@ -25,7 +54,8 @@ h4 {
   margin-bottom: 0px;
 }
 
-.main-description .fa {
+.main-description .fa,
+.footer .social-icons .fa {
   font-size: 22px;
   margin-top: 5px;
 }
@@ -34,12 +64,21 @@ h4 {
   margin-bottom: 20px
 }
 
+.publication-note {
+  font-size: 0.85em;
+}
+
+#publications .tab-nav .button.active,
+#hobbies .tab-nav .button.active {
+  color: var(--accent-strong);
+}
+
 .paper .title a {
-  color: #1a73e8;
+  color: var(--accent-strong);
 }
 
 #hobbies-toggle {
-  color: #1a73e8;
+  color: var(--accent-strong);
 }
 
 .paper p {
@@ -54,7 +93,7 @@ h4 {
 }
 
 .author-link:hover {
-  color: #1a73e8;
+  color: var(--accent-strong);
 }
 
 .paper-buttons {
@@ -136,36 +175,33 @@ h4 {
 }
 
 /*  ================ Publication image styling  ================ */
+/*
+ * The zoom is on the container, not the image inside it. Scaling the image left
+ * the border and its 3px padding at the original size, so the picture grew out
+ * of its own frame; scaling the container takes the border along with it.
+ */
 .paper-image-container {
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 3px;
-  transition: 0.3s;
   margin-bottom: 10px;
   position: relative;
   z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .paper-image-container:hover {
-  transition: 0.3s;
-  z-index: 100;
-}
-
-.paper-image-container:hover img {
-  opacity: 1;
   transform: scale(1.12);
+  z-index: 100;
   /* Same even, fade-out shadow as the side-project cards (0 0 offset, layered blurs) */
   box-shadow:
     0 0 10px rgba(0, 0, 0, 0.10),
     0 0 22px rgba(0, 0, 0, 0.06);
-  position: relative;
-  z-index: 101;
 }
 
 .paper-image-container img {
   width: 100%;
   height: auto;
   display: block;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Larger than phone */
@@ -352,7 +388,7 @@ h4 {
   overflow: hidden;
 }
 
-#floating-toc:hover {
+#floating-toc:is(:hover, :focus-within) {
   width: 230px;
   padding: 24px 22px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -368,7 +404,7 @@ h4 {
   white-space: nowrap;
 }
 
-#floating-toc:hover h5 {
+#floating-toc:is(:hover, :focus-within) h5 {
   opacity: 1;
 }
 
@@ -405,35 +441,331 @@ h4 {
 }
 
 #floating-toc a.active::before {
-  background: #33C3F0;
+  background: var(--accent-strong);
 }
 
 /* Expanded state on hover: show text, hide lines */
-#floating-toc:hover a {
+#floating-toc:is(:hover, :focus-within) a {
   color: #555;
 }
 
-#floating-toc:hover a::before {
+#floating-toc:is(:hover, :focus-within) a::before {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-#floating-toc:hover a:hover {
-  color: #33C3F0;
+#floating-toc:is(:hover, :focus-within) a:hover {
+  color: var(--accent);
 }
 
-#floating-toc:hover a.active {
-  color: #33C3F0;
+#floating-toc:is(:hover, :focus-within) a.active {
+  color: var(--accent-strong);
   font-weight: 600;
   padding-left: 6px;
-  border-left: 2px solid #33C3F0;
+  border-left: 2px solid var(--accent-strong);
 }
 
 /* Only show on larger screens */
 @media (min-width: 1400px) {
   #floating-toc {
     display: block;
+  }
+}
+
+/* ================ Social icons ================ */
+/*
+ * Four glyphs from three sources - Academicons, Font Awesome and an inline SVG
+ * - and none of them ink the same fraction of their own box. Measured against
+ * the em box they occupy:
+ *
+ *   Google Scholar  ink 0.86 tall, centre 0.14em below the box centre
+ *   GitHub          ink 0.84 tall, centre 0.14em below
+ *   LinkedIn        ink 0.86 tall, centre 0.14em below
+ *   X (svg)         ink 0.81 tall, centre exactly on the box centre
+ *
+ * Centring the boxes therefore does NOT line up the marks: the three font icons
+ * sit low and X ends up smaller than the rest. So each icon declares its own two
+ * numbers and the rules below solve for them - --ink is the drawn height every
+ * icon has to end up at, and the shift cancels the font glyphs' low centre.
+ * Re-measure these if an icon is ever swapped out.
+ */
+.social-icons {
+  --social-box: 2.18rem;
+  --ink: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 6px;
+}
+
+.footer .social-icons {
+  margin-top: 0;
+  justify-content: center;
+}
+
+.social-icon {
+  --ink-ratio: 0.989;  /* measured: drawn height ÷ font-size */
+  --ink-nudge: 0.07;   /* measured: correction onto the shared centre, × --ink */
+  width: var(--social-box);
+  height: var(--social-box);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-icon--github {
+  --ink-ratio: 0.798;
+  --ink-nudge: -0.055;
+}
+
+.social-icon--linkedin {
+  --ink-ratio: 0.860;
+  --ink-nudge: -0.08;
+}
+
+.social-icon--x {
+  --ink-ratio: 0.935;
+  --ink-nudge: 0.07;
+}
+
+.social-icon:hover {
+  color: var(--accent-strong);
+  transform: translateY(-2px);
+}
+
+.main-description .social-icon,
+.footer .social-icon {
+  color: #000;
+}
+
+.main-description .social-icon:hover,
+.main-description .social-icon:focus-visible,
+.footer .social-icon:hover,
+.footer .social-icon:focus-visible {
+  color: var(--accent-strong);
+}
+
+.social-icon i {
+  font-size: calc(var(--ink) / var(--ink-ratio));
+  line-height: 1;
+  transform: translateY(calc(var(--ink) * var(--ink-nudge)));
+}
+
+.social-icon svg {
+  width: calc(var(--ink) / var(--ink-ratio));
+  height: calc(var(--ink) / var(--ink-ratio));
+  transform: translateY(calc(var(--ink) * var(--ink-nudge)));
+  fill: currentColor;
+  display: block;
+}
+
+/* ================ Profile picture + switcher ================ */
+/*
+ * The photos are portrait and square in equal measure, so the frame fixes the
+ * square and object-fit crops to it rather than letter-boxing.
+ *
+ * Enlarge each photo side by 1.2: the former 30.6667% column × 90% × 1.2
+ * becomes a 33.12% photo column. Keep the gutter and fit mobile photos to width.
+ */
+.header .profile-column {
+  --profile-width: 100%;
+  --profile-icon-box: 3.7632rem; /* 20% larger controls. */
+  --profile-icon-glyph: 2.8224rem; /* 20% larger glyphs. */
+  width: 100%;
+}
+
+@media (min-width: 550px) {
+  .header .profile-header {
+    --profile-gutter: 4%;
+    display: grid;
+    grid-template-columns: var(--profile-gutter) 33.12% var(--profile-gutter) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .header .profile-column {
+    grid-column: 2;
+  }
+
+  .header .main-description {
+    grid-column: 4;
+  }
+
+  .header .profile-header > .columns {
+    width: 100%;
+    margin: 0;
+    float: none;
+    min-width: 0;
+  }
+
+  .header .profile-header::after {
+    display: none;
+  }
+}
+.profile-pic {
+  position: relative;
+  width: var(--profile-width);
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.profile-pic-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/*
+ * One patch of the incoming photo. Each is a window onto an <img> sized to the
+ * whole frame and offset by the patch's position, so every patch gets the same
+ * object-fit crop the base image has - computing a background-position per
+ * patch would have to redo that crop by hand.
+ */
+.profile-tile {
+  position: absolute;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity var(--profile-tile-fade) var(--profile-tile-easing);
+  will-change: opacity;
+}
+
+.profile-tile.show {
+  opacity: 1;
+}
+
+.profile-tile img {
+  position: absolute;
+  object-fit: cover;
+  max-width: none;
+}
+
+/*
+ * Centre the controls within the photo width, with room above and between them.
+ */
+.profile-switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(2px, 1vw, 10px);
+  width: var(--profile-width);
+  margin-top: 16px;
+}
+
+@media (max-width: 549px) {
+  .header .profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .header .profile-header::after {
+    display: none;
+  }
+
+  .header .profile-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-switch {
+    margin-top: 6px;
+  }
+
+  .header .main-description {
+    text-align: center;
+  }
+
+  .main-description .social-icons {
+    justify-content: center;
+  }
+}
+
+/*
+ * Simple SVG outlines share a 24-unit canvas and a light, rounded stroke.
+ */
+.profile-switch-btn {
+  position: relative;
+  flex-shrink: 1;
+  min-width: 0;
+  width: var(--profile-icon-box);
+  height: var(--profile-icon-box);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  color: var(--icon-idle);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.16s ease;
+}
+
+.profile-switch-btn:hover,
+.profile-switch-btn:focus-visible {
+  color: var(--icon-idle);
+  transform: translateY(-2px);
+}
+
+.profile-switch-btn:active {
+  transform: scale(0.94);
+  transition-duration: 80ms;
+}
+
+.profile-switch-btn:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}
+
+.profile-switch-svg {
+  width: var(--profile-icon-glyph);
+  max-width: 100%;
+  height: var(--profile-icon-glyph);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.92;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: block;
+}
+
+/* A blue copy wipes across the stationary grey icon on selection changes. */
+.profile-switch-svg--selected {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--accent-strong);
+  pointer-events: none;
+  clip-path: inset(0 100% 0 0);
+}
+
+.profile-switch-btn.active .profile-switch-svg--selected {
+  clip-path: inset(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-tile {
+    transition: none;
+  }
+
+  .profile-switch-btn {
+    transition: none;
+  }
+
+  .profile-switch-btn:hover,
+  .profile-switch-btn:active,
+  .profile-switch-btn:focus-visible {
+    transform: none;
   }
 }
 
@@ -458,8 +790,7 @@ h4 {
 /*
  * The embed is sized by its column, not by the width/height attributes on the
  * iframe - those stay only as a fallback for before the CSS applies. Images
- * keep their own aspect ratio: the "???" placeholder is a wide banner, and
- * forcing 16/9 on it would squash it.
+ * keep their own aspect ratio rather than being forced into the video format.
  */
 .hobby-item iframe {
   width: 100%;
@@ -473,6 +804,16 @@ h4 {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.hobby-emoji {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  font-size: clamp(4rem, 10vw, 7rem);
+  line-height: 1;
 }
 
 .hobby-info {
@@ -802,7 +1143,7 @@ h4 {
 .side-project-placeholder {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #1a73e8, #4a9ff5);
+  background: linear-gradient(135deg, var(--accent-strong), #4a9ff5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -837,6 +1178,12 @@ h4 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+
+.side-project-card:hover .side-project-card-title,
+.side-project-card:focus-within .side-project-card-title {
+  color: var(--accent-strong);
 }
 
 .side-project-card-subtitle {
@@ -857,7 +1204,7 @@ h4 {
 }
 
 .side-project-github-link:hover {
-  color: #1a73e8;
+  color: var(--accent-strong);
 }
 
 /* Modal */
@@ -967,7 +1314,7 @@ h4 {
 }
 
 .side-project-modal-body li b {
-  color: #1a73e8;
+  color: var(--accent-strong);
 }
 
 .side-project-modal-body pre {

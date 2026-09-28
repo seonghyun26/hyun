@@ -9,13 +9,13 @@ papers:
   #   url: "https://"
   #   selected: y
 
-  # - title: "Blending experimental electron density information to protein-ligand interactions"
-  #   authors: "<b>Seonghyun Park</b>, Shuan Chen, Jun Jin Choong, Noboru Kuno, Gyubok Lee, Kaushalya Madhawa, Keisuke Ozawa, Hikaru Shindo, Sungsoo Ahn"
-  #   venue: "Preprint, under review"
-  #   thumbnail: "/assets/publications/thumbnails/CoDE.png"
-  #   # paper_pdf: "/assets/publications/preprint_CoDE.pdf"
-  #   # arxiv: "https://arxiv.org/abs/"
-  #   selected: y
+  - title: "Blending experimental electron density information to protein-ligand interactions"
+    authors: "<b>Seonghyun Park</b>, Shuan Chen, Jun Jin Choong, Noboru Kuno, Gyubok Lee, Kaushalya Madhawa, Keisuke Ozawa, Hikaru Shindo, Sungsoo Ahn"
+    venue: "Preprint, under review"
+    thumbnail: "/assets/publications/thumbnails/CoDE.png"
+    # paper_pdf: "/assets/publications/preprint_CoDE.pdf"
+    # arxiv: "https://arxiv.org/abs/"
+    selected: y
 
   - title: "A Systematic Evaluation of Co-folding Model Representations for Small-Molecule Learning"
     authors: "Hyosoon Jang, Hyunjin Seo, Honghui Kim, <b>Seonghyun Park</b>, Taewon Kim, Yunhui Jang, Sungsoo Ahn"

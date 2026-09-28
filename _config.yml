@@ -20,6 +20,9 @@ exclude:
   - resume/resume
   - resume/rendercv_output
   - resume/make.sh
+  - resume/environment.yml
+  - resume/README.md
+  - resume/templates
   - resume/resume.code-workspace
   - resume/Seonghyun_Park_CV.yaml
   - 2509_SeonghyunPark_resume.docx

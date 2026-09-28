@@ -1,6 +1,13 @@
 # Ordered newest-first; the template also sorts by `date` descending.
 # `date`: the day the project was first registered here (YYYY-MM-DD).
 projects:
+  - title: "Atlas Log"
+    subtitle: "Ongoing"
+    date: "2026-09-28"
+    description: "Ongoing, TBA"
+    thumbnail: "/assets/side_projects/atlas-log/preview.png"
+    selected: y
+
   - title: "Scholar2BibTeX"
     subtitle: "Auto-pasting BibTeX to clipboard"
     date: "2026-08-26"
@@ -16,4 +23,3 @@ projects:
     code: "https://github.com/seonghyun26/amd"
     thumbnail: "/assets/side_projects/amd/preview.png"
     selected: y
-
