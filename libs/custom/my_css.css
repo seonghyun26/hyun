@@ -54,12 +54,6 @@ h4 {
   margin-bottom: 0px;
 }
 
-.main-description .fa,
-.footer .social-icons .fa {
-  font-size: 22px;
-  margin-top: 5px;
-}
-
 .paper {
   margin-bottom: 20px
 }
@@ -474,28 +468,14 @@ h4 {
 }
 
 /* ================ Social icons ================ */
-/*
- * Four glyphs from three sources - Academicons, Font Awesome and an inline SVG
- * - and none of them ink the same fraction of their own box. Measured against
- * the em box they occupy:
- *
- *   Google Scholar  ink 0.86 tall, centre 0.14em below the box centre
- *   GitHub          ink 0.84 tall, centre 0.14em below
- *   LinkedIn        ink 0.86 tall, centre 0.14em below
- *   X (svg)         ink 0.81 tall, centre exactly on the box centre
- *
- * Centring the boxes therefore does NOT line up the marks: the three font icons
- * sit low and X ends up smaller than the rest. So each icon declares its own two
- * numbers and the rules below solve for them - --ink is the drawn height every
- * icon has to end up at, and the shift cancels the font glyphs' low centre.
- * Re-measure these if an icon is ever swapped out.
- */
+/* Font Awesome 6.6 brand SVGs use tight viewBoxes for equal visible heights.
+ * The Academicons Scholar glyph retains its font-specific alignment. */
 .social-icons {
-  --social-box: 2.18rem;
-  --ink: 2rem;
+  --social-box: 2.5rem;
+  --ink: 1.8rem;
   display: flex;
   align-items: center;
-  gap: 0;
+  gap: 0.3rem;
   margin-top: 6px;
 }
 
@@ -504,11 +484,23 @@ h4 {
   justify-content: center;
 }
 
+@media (min-width: 550px) {
+  .footer > .row {
+    display: flex;
+    align-items: center;
+  }
+
+  .footer > .row::after {
+    display: none;
+  }
+}
+
 .social-icon {
   --ink-ratio: 0.989;  /* measured: drawn height ÷ font-size */
   --ink-nudge: 0.07;   /* measured: correction onto the shared centre, × --ink */
-  width: var(--social-box);
+  width: auto;
   height: var(--social-box);
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -516,21 +508,6 @@ h4 {
   text-decoration: none;
   cursor: pointer;
   transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.social-icon--github {
-  --ink-ratio: 0.798;
-  --ink-nudge: -0.055;
-}
-
-.social-icon--linkedin {
-  --ink-ratio: 0.860;
-  --ink-nudge: -0.08;
-}
-
-.social-icon--x {
-  --ink-ratio: 0.935;
-  --ink-nudge: 0.07;
 }
 
 .social-icon:hover {
@@ -557,9 +534,8 @@ h4 {
 }
 
 .social-icon svg {
-  width: calc(var(--ink) / var(--ink-ratio));
-  height: calc(var(--ink) / var(--ink-ratio));
-  transform: translateY(calc(var(--ink) * var(--ink-nudge)));
+  width: auto;
+  height: var(--ink);
   fill: currentColor;
   display: block;
 }

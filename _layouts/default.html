@@ -125,17 +125,17 @@
             <p>{{ site.data.main_info.title }}</p>
             <p>{{ site.data.main_info.email | replace: '[at]', '<span class="email-sep">[at]</span>' | replace: '[dot]', '<span class="email-sep">[dot]</span>' }}</p>
             <div class="social-icons">
-              <a class="social-icon social-icon--scholar" href="{{ site.data.main_info.google_scholar }}" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar">
-                <i class="ai ai-google-scholar" aria-hidden="true"></i>
-              </a>
-              <a class="social-icon social-icon--github" href="{{ site.data.main_info.github }}" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
-                <i class="fa fa-github" aria-hidden="true"></i>
-              </a>
               <a class="social-icon social-icon--linkedin" href="{{ site.data.main_info.linkedin }}" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
-                <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                {% include social-icons/linkedin.svg %}
               </a>
               <a class="social-icon social-icon--x" href="{{ site.data.main_info.x }}" target="_blank" rel="noopener" title="X" aria-label="X">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                {% include social-icons/x-twitter.svg %}
+              </a>
+              <a class="social-icon social-icon--github" href="{{ site.data.main_info.github }}" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+                {% include social-icons/github.svg %}
+              </a>
+              <a class="social-icon social-icon--scholar" href="{{ site.data.main_info.google_scholar }}" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar">
+                <i class="ai ai-google-scholar" aria-hidden="true"></i>
               </a>
             </div>
         </div>
@@ -169,17 +169,17 @@
         </div>
         <div class="four columns">
           <div class="social-icons">
-            <a class="social-icon social-icon--scholar" href="{{ site.data.main_info.google_scholar }}" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar">
-              <i class="ai ai-google-scholar" aria-hidden="true"></i>
-            </a>
-            <a class="social-icon social-icon--github" href="{{ site.data.main_info.github }}" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
-              <i class="fa fa-github" aria-hidden="true"></i>
-            </a>
             <a class="social-icon social-icon--linkedin" href="{{ site.data.main_info.linkedin }}" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
-              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+              {% include social-icons/linkedin.svg %}
             </a>
             <a class="social-icon social-icon--x" href="{{ site.data.main_info.x }}" target="_blank" rel="noopener" title="X" aria-label="X">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              {% include social-icons/x-twitter.svg %}
+            </a>
+            <a class="social-icon social-icon--github" href="{{ site.data.main_info.github }}" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+              {% include social-icons/github.svg %}
+            </a>
+            <a class="social-icon social-icon--scholar" href="{{ site.data.main_info.google_scholar }}" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar">
+              <i class="ai ai-google-scholar" aria-hidden="true"></i>
             </a>
           </div>
         </div>
