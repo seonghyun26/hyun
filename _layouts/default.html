@@ -83,6 +83,7 @@
             {%- for pic in profile_pics %}
             <button type="button"
                     class="profile-switch-btn{% if forloop.first %} active{% endif %}"
+                    data-icon="{{ pic.icon }}"
                     data-image="{{ site.baseurl }}{{ pic.picture }}"
                     title="{{ pic.name | escape }}"
                     aria-label="{{ pic.name | escape }}"

@@ -4,6 +4,7 @@ transition:
   patch_fade_ms: 300 # Each patch fades for 0.3s; starts are spread evenly over the remaining 0.9s.
   patch_rows: 32
   patch_columns: 32
+  auto_switch_ms: 10000 # Move to the next photo on its own 10s after the last change; 0 turns it off.
   easing: "cubic-bezier(0.33, 0, 0.67, 1)" # Gentle acceleration and deceleration for each patch.
 
 # The first picture is shown on load. Icons: book, camera, guitar, music.
