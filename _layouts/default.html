@@ -119,6 +119,52 @@
                   <ellipse cx="5.7" cy="19.1" rx="3.3" ry="2.4" transform="rotate(-20 5.7 19.1)" fill="currentColor" stroke="none"/>
                   <ellipse cx="18.05" cy="16.6" rx="3.3" ry="2.4" transform="rotate(-20 18.05 16.6)" fill="currentColor" stroke="none"/>
                 </svg>
+                {%- when "ski" -%}
+                <svg class="profile-switch-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <!-- A skier in a tuck, running downhill to the left. Drawn to
+                       the same gesture as the reference, not traced from it - that
+                       one is a licensed solid silhouette, and this file's icons are
+                       all open strokes on the same 24 canvas.
+
+                       Two long skis on one slope (18 degrees below horizontal, the
+                       near one offset 2 across the perpendicular), the boot set
+                       on the far ski's stroke - the figure and the plates are held
+                       0.45 apart so the boot's round cap rests in the ski rather
+                       than hanging below its underside, while the pair stays
+                       centred - and shoulder-hip-knee-boot as a single path so the
+                       round joins carry through the tuck. The head is solid: a ring
+                       this small closes into a blob at the 25px these are drawn at.
+                       Centred on (12, 12) with the stroke counted in. -->
+                  <!-- The figure sits 2 to the right of centre along the slope, so
+                       the ski runs further ahead of the boot than behind it. -->
+                  <circle cx="7.65" cy="5.22" r="1.9" fill="currentColor" stroke="none"/>
+                  <path d="M9.45 7.02 13.25 9.02 11.05 12.42 14.85 14.22"/>
+                  <path d="M9.45 7.42 7.6 10.38"/>
+                  <!-- The plates run thinner than the figure: 1.92 x 0.8. Each ends
+                       downhill in a tip that turns up off the snow - the shaft is
+                       shortened by that much so the pair still occupies the frame
+                       it did, and the whole icon is nudged (0.25, 0.24) to put the
+                       tips' new reach back on centre. -->
+                  <g stroke-width="1.536">
+                    <path d="M20.65 12.67 4.85 17.8C3.75 18.17 2.95 18.17 2.75 17.07"/>
+                    <path d="M21.25 14.57 5.45 19.7C4.35 20.07 3.55 20.07 3.35 18.97"/>
+                  </g>
+                  <!-- One pole, trailing uphill from the hand on the plates' own
+                       line reversed. The arm used to reach the hand at 173 degrees
+                       to it - near enough one straight line that the two read as a
+                       single bent stroke - so the arm now drops at 58 degrees and
+                       the pair opens to a clear 40.
+
+                       It crosses the torso at 40.8 degrees, where the figure's 1.92
+                       stroke covers 2.93 along the pole; plus 0.4 of air each side
+                       and the round caps, the break is 4.99 - so it is drawn as a
+                       grip stub and a shaft, and reads as passing behind the body
+                       rather than through it. -->
+                  <g stroke-width="1.25">
+                    <path d="M7.6 10.38 10.24 9.52"/>
+                    <path d="M14.98 7.98 19.96 6.36"/>
+                  </g>
+                </svg>
               {%- endcase -%}
             </button>
             {%- endfor %}

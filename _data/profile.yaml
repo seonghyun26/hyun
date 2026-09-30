@@ -7,7 +7,7 @@ transition:
   auto_switch_ms: 10000 # Move to the next photo on its own 10s after the last change; 0 turns it off.
   easing: "cubic-bezier(0.33, 0, 0.67, 1)" # Gentle acceleration and deceleration for each patch.
 
-# The first picture is shown on load. Icons: book, camera, guitar, music.
+# The first picture is shown on load. Icons: book, camera, guitar, music, ski.
 pictures:
   - name: "Research"
     icon: "book"
@@ -21,3 +21,6 @@ pictures:
   - name: "Music"
     icon: "music"
     picture: "/assets/img/profile/music.jpeg"
+  - name: "Skiing"
+    icon: "ski"
+    picture: "/assets/img/profile/ski.jpeg"
