@@ -47,6 +47,10 @@ html {
   /* Scrollbar thumb: present, but the quietest thing on the page. */
   --scrollbar-thumb: #C4C9CC;
 
+  /* The CV timeline's spine. It runs the height of the section, so it has to be
+     light enough to sit behind the entries rather than divide them. */
+  --timeline-rule: #DDDDDD;
+
   /* Skeleton's own accent, still driving the navbar's active link. */
   --accent-sky: #33C3F0;
 }
@@ -117,6 +121,14 @@ h4 {
 
 .paper p {
   margin-bottom: 2px
+}
+
+/* The author list and the venue are supporting lines, not the entry itself. Set
+   to the same 0.85em as .publication-note, so every piece of small print in this
+   section is one size. */
+.paper .authors,
+.paper .venue {
+  font-size: 0.85em;
 }
 
 .author-link {
@@ -418,7 +430,7 @@ h4 {
   display: flex;
   align-items: center;
   padding: 0;
-  transition: color 0.2s ease, padding-left 0.2s ease;
+  transition: color 0.3s ease;
   position: relative;
   white-space: nowrap;
 }
@@ -441,8 +453,11 @@ h4 {
      margin with the width makes the active one grow about its middle rather
      than stretch out to the right. */
   margin-left: calc(var(--toc-axis) - var(--tick-w) / 2 - var(--toc-pad-x));
-  transition: opacity 0.2s ease, width 0.2s ease, margin-left 0.2s ease,
-              background 0.2s ease;
+  /* Same 0.3s ease as the panel's padding, deliberately: see the expanded
+     active rule below, where the two cancel out to hold the mark on the axis. */
+  transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease,
+              margin-left 0.3s ease, margin-right 0.3s ease,
+              background 0.3s ease;
 }
 
 #floating-toc a.active::before {
@@ -455,10 +470,31 @@ h4 {
   color: #555;
 }
 
+/* Expanded, and not the current section: the tick simply goes. */
 #floating-toc:is(:hover, :has(:focus-visible)) a::before {
   opacity: 0;
   width: 0;
   margin-left: 0;
+}
+
+/*
+ * Expanded, and the current section: the same mark, stood on end - rather than a
+ * tick that fades out while a border-left appears in its place, which is a swap,
+ * not a transition.
+ *
+ * It pivots because the centre never moves. The mark's centre sits at
+ * padding-left + margin-left + width/2. Collapsed that is 10 + 0 + 20/2 = 20;
+ * expanded it is 18.5 + 0 + 3/2 = 20. Since the panel's padding and this width
+ * run over the same 0.3s with the same easing, the halves cancel at every frame
+ * between, not just at the ends - so it stays on --toc-axis the whole way while
+ * height carries it from flat to upright.
+ */
+#floating-toc:is(:hover, :has(:focus-visible)) a.active::before {
+  opacity: 1;
+  width: var(--toc-mark);
+  height: 100%;
+  margin-left: 0;
+  margin-right: 6px;   /* the inset the active row's padding used to give */
 }
 
 #floating-toc:is(:hover, :has(:focus-visible)) a:hover {
@@ -468,8 +504,6 @@ h4 {
 #floating-toc:is(:hover, :has(:focus-visible)) a.active {
   color: var(--accent-strong);
   font-weight: 600;
-  padding-left: 6px;
-  border-left: var(--toc-mark) solid var(--accent-strong);
 }
 
 /* Only show on larger screens */
@@ -731,11 +765,19 @@ h4 {
 }
 
 /* A blue copy wipes across the stationary grey icon on selection changes. */
+/*
+ * Centred with inset + auto margins, not with left/top 50% and a -50% translate.
+ * Both land on the same 4.742px, but only the translated one is composited on its
+ * own layer, where it is rasterised and antialiased independently of the grey
+ * original laid out underneath it. On a fractional offset like that one the two
+ * do not resolve to the same device pixels, and the blue copy reads as a shadow
+ * a hair off the icon. Auto margins put it through ordinary layout instead, the
+ * same arithmetic the flex centring below it already uses.
+ */
 .profile-switch-svg--selected {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  inset: 0;
+  margin: auto;
   color: var(--accent);
   pointer-events: none;
   clip-path: inset(0 100% 0 0);
@@ -1262,19 +1304,43 @@ body.has-overlay {
   flex-shrink: 0;
 }
 
+/* Skeleton sets every heading to 300; the popup's title is the one thing in that
+   header that should carry weight. */
 .side-project-modal-header h5 {
   margin-bottom: 2px;
+  font-weight: 700;
 }
 
+/* The date closes the header, below the buttons - so the spacing it needs is
+   above it, where it used to be below when it sat under the title. */
 .side-project-modal-date {
   font-size: 1.1rem;
   color: rgba(0, 0, 0, 0.4);
-  margin: 0 0 4px 0 !important;
+  margin: 10px 0 0 0 !important;
 }
 
 .side-project-modal-subtitle {
   color: rgba(0, 0, 0, 0.55);
   margin-bottom: 10px !important;
+}
+
+/* An icon and a word, no box: it is a link, and it takes the palette's hover
+   colour like every other link on the page. */
+.side-project-modal-github-btn {
+  flex: 0 0 auto;
+  margin-left: auto;
+  display: inline-flex;
+  align-items: baseline;
+  color: rgba(0, 0, 0, 0.55);
+  text-decoration: none;
+  font-size: 1.3rem;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+.side-project-modal-github-btn:hover,
+.side-project-modal-github-btn:focus-visible {
+  color: var(--accent-strong);
 }
 
 .side-project-modal-github-btn .fa {
@@ -1384,8 +1450,9 @@ body.has-overlay {
 .side-project-modal-title-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  /* The GitHub link sits between the title and the close button, pushed over by
+     its own auto margin - so this gap is what separates it from the x. */
+  gap: 14px;
   margin-bottom: 2px;
 }
 
@@ -1577,6 +1644,31 @@ body.has-overlay {
     margin: 0.9em 0.9em 0; /* was 1em 1em 0 1em */
     padding: 0.9em; /* was 1em */
   }
+}
+
+/*
+ * The marker rings arrive from timeline.css in a dark maroon that belongs to no
+ * palette here. That file is loaded after this one, so this needs the extra
+ * classes to outweigh it - and it sets the colour a second time inside its own
+ * narrow breakpoint, which the same specificity covers.
+ */
+.docs-section .timeline .direction-l .flag:before,
+.docs-section .timeline .direction-r .flag:before {
+  border-color: var(--accent-strong);
+}
+
+/*
+ * The spine arrives from timeline.css as a dark grey, which reads as a divider
+ * down the middle of the section. Keep its fade at each end, in a light grey.
+ * One background declaration replaces the stack of prefixed ones there, since
+ * this selector outweighs all of them.
+ */
+.docs-section .timeline:before {
+  background: linear-gradient(to bottom,
+              transparent 0%,
+              var(--timeline-rule) 8%,
+              var(--timeline-rule) 92%,
+              transparent 100%);
 }
 
 /*  ================ CV timeline logos  ================ */

@@ -27,7 +27,7 @@ title: Home
   </h5> -->
 
   <h4>Bio</h4>
-  Hello! I'm a 2nd year Ph.D. student at <a href="https://gsai.kaist.ac.kr/">KAIST AI</a>, advised by <a href="https://sungsoo-ahn.github.io/">Sungsoo Ahn</a> in the <a class="spml-logo-link" href="https://sites.google.com/view/sungsooahn0215"><img src="{{ '/assets/img/logo/spml_logo.svg' | prepend: site.baseurl }}" alt="SPML" class="spml-logo" /></a> Lab.
+  Hello! I'm a 2nd year Ph.D. student at <a href="https://gsai.kaist.ac.kr/">KAIST AI</a>, advised by <a href="https://sungsoo-ahn.github.io/">Sungsoo Ahn</a> in the <a class="spml-logo-link" href="https://sungsoo-ahn.github.io/"><img src="{{ '/assets/img/logo/spml_logo.svg' | prepend: site.baseurl }}" alt="SPML" class="spml-logo" /></a> Lab.
   My research interests are mainly on <b>AI4Science</b>, integrating machine learning to advance scientific discovery on small molecules and proteins! I'm interested in the following topics:
   <br>
   <br>
@@ -95,8 +95,8 @@ title: Home
                   {% assign author_text = author_text | replace: author.name, author_link %}
                 {% endif %}
               {% endfor %}
-              <p>{{ author_text }}</p>
-              <p><i>{{ paper.venue }}</i></p>
+              <p class="authors">{{ author_text }}</p>
+              <p class="venue"><i>{{ paper.venue }}</i></p>
               <div class="paper-buttons">
                 {% if paper.page %}
                   <a class="button" href="{{ paper.page }}" target="_blank"><i class="fa fa-flask" aria-hidden="true"></i> Project page</a>
@@ -177,8 +177,8 @@ title: Home
                   {% assign author_text = author_text | replace: author.name, author_link %}
                 {% endif %}
               {% endfor %}
-              <p>{{ author_text }}</p>
-              <p><i>{{ paper.venue }}</i></p>
+              <p class="authors">{{ author_text }}</p>
+              <p class="venue"><i>{{ paper.venue }}</i></p>
               <div class="paper-buttons">
                 {% if paper.page %}
                   <a class="button" href="{{ paper.page }}" target="_blank"><i class="fa fa-flask" aria-hidden="true"></i> Project page</a>
@@ -228,7 +228,12 @@ title: Home
   <div class="side-projects-grid">
     {% assign selected_projects = site.data.side_projects.projects | where: "selected", "y" | sort: "date" | reverse %}
     {% for project in selected_projects %}
-      <div class="side-project-card" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="side-project-modal-{{ forloop.index0 }}" aria-label="Open {{ project.title | escape }}" data-project-index="{{ forloop.index0 }}" data-project-title="{{ project.title | escape }}" data-project-slug="{{ project.title | slugify }}">
+      <!-- The id is the target of a #side-project-<slug> link, such as the one a
+           paper uses for its project page. The click handler opens the modal and
+           prevents the jump, so the id is never navigated to in practice - but it
+           makes the fragment real, for a link checker and for a reader whose JS
+           did not run, who lands on the card itself. -->
+      <div class="side-project-card" id="side-project-{{ project.title | slugify }}" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="side-project-modal-{{ forloop.index0 }}" aria-label="Open {{ project.title | escape }}" data-project-index="{{ forloop.index0 }}" data-project-title="{{ project.title | escape }}" data-project-slug="{{ project.title | slugify }}">
         <div class="side-project-card-image">
           {% if project.thumbnail %}
             <img src="{{ project.thumbnail | prepend: site.baseurl }}" alt="{{ project.title | escape }} preview" loading="lazy" />
@@ -259,22 +264,20 @@ title: Home
             <div class="side-project-modal-header-info">
               <div class="side-project-modal-title-row">
                 <h5 id="side-project-title-{{ forloop.index0 }}">{{ project.title }}</h5>
+                {% if project.code %}
+                  <a class="side-project-modal-github-btn" href="{{ project.code }}" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
+                {% endif %}
                 <button class="side-project-modal-close" aria-label="Close project">
                   <svg class="side-project-modal-close-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                     <path d="M5.5 5.5 18.5 18.5M18.5 5.5 5.5 18.5"/>
                   </svg>
                 </button>
               </div>
-              {% if project.date %}
-                <p class="side-project-modal-date">{{ project.date | date: "%B %Y" }}</p>
-              {% endif %}
               {% if project.subtitle %}
                 <p class="side-project-modal-subtitle">{{ project.subtitle }}</p>
               {% endif %}
+              {% if project.page or project.demo %}
               <div class="paper-buttons">
-                {% if project.code %}
-                  <a class="button side-project-modal-github-btn" href="{{ project.code }}" target="_blank"><i class="fa fa-github"></i> GitHub</a>
-                {% endif %}
                 {% if project.page %}
                   <a class="button" href="{{ project.page }}" target="_blank">Project page</a>
                 {% endif %}
@@ -282,6 +285,10 @@ title: Home
                   <a class="button" href="{{ project.demo }}" target="_blank">Demo</a>
                 {% endif %}
               </div>
+              {% endif %}
+              {% if project.date %}
+                <p class="side-project-modal-date">{{ project.date | date: "%B %Y" }}</p>
+              {% endif %}
             </div>
           </div>
           <div class="side-project-modal-body">
@@ -445,7 +452,11 @@ title: Home
             <button class="photo-lightbox-prev" aria-label="Previous photo"><i class="fa fa-chevron-left"></i></button>
             <button class="photo-lightbox-next" aria-label="Next photo"><i class="fa fa-chevron-right"></i></button>
             <div class="photo-lightbox-content">
-              <img src="" alt="" />
+              <!-- The photo's src is set by the lightbox when one is opened. The
+                   placeholder is a 1x1 transparent GIF rather than src="", which
+                   a browser resolves against the current URL and re-requests the
+                   whole page for. -->
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" />
               <div class="photo-lightbox-info">
                 <span class="photo-lightbox-caption"></span>
                 <span class="photo-lightbox-location"></span>
