@@ -61,9 +61,15 @@ jobs:
           # No --exclude-mail: lychee 2 dropped it and skips mailto by default,
           # with --include-mail to opt back in. Passing it aborts the run before
           # a single link is checked.
+          #
+          # resume/output is RenderCV's build product, not content written here -
+          # its DOIs and CDN script tags are the generator's to get right, and a
+          # dead DOI is not something a commit to this repo can fix. The glob
+          # picks up the CV's HTML rendering; --exclude-path (a regex) drops it.
           args: >-
             --no-progress
             --root-dir ${{ github.workspace }}/_site
+            --exclude-path resume/output/
             --accept 200..=299,403,429,999
             --max-concurrency 8
             --max-retries 2
