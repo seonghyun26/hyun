@@ -6,13 +6,13 @@
 
 Open `http://localhost:8000` and sign in. Each user gets their own sessions and settings stored in a local SQLite database.
 
-![Login]({{ site.baseurl }}/assets/side-projects/amd/login.png)
+![Login]({{ site.baseurl }}/assets/img/project/amd/login.png)
 
 ## 2. Create a New Session
 
 The main dashboard shows a sidebar for managing sessions. Click **+ New Session** to start.
 
-![Dashboard]({{ site.baseurl }}/assets/side-projects/amd/dashboard.png)
+![Dashboard]({{ site.baseurl }}/assets/img/project/amd/dashboard.png)
 
 The session creation screen lets you configure three things:
 
@@ -22,7 +22,7 @@ The session creation screen lets you configure three things:
 
 For this tutorial, select **Chignolin (CLN025)**, **Metadynamics**, and the **Default** template.
 
-![Session Creation]({{ site.baseurl }}/assets/side-projects/amd/session-creation.png)
+![Session Creation]({{ site.baseurl }}/assets/img/project/amd/session-creation.png)
 
 ## 3. Load and Inspect the Molecule
 
@@ -30,7 +30,7 @@ The **Molecule** tab renders chignolin in an interactive NGL 3D viewer with Ball
 
 Below, the **Molecule Files** panel lists all PDB files — original structure, processed conformations, and topology files. Upload additional files by dragging them in, or search RCSB directly.
 
-![Molecule Viewer]({{ site.baseurl }}/assets/side-projects/amd/session-molecule.png)
+![Molecule Viewer]({{ site.baseurl }}/assets/img/project/amd/session-molecule.png)
 
 ## 4. Configure GROMACS Parameters
 
@@ -43,7 +43,7 @@ The **GROMACS** tab provides full control over simulation parameters:
 
 **Suggest Settings** (TBA) — AI-powered parameter recommendations based on your molecule system and simulation method.
 
-![GROMACS Config]({{ site.baseurl }}/assets/side-projects/amd/session-gromacs.png)
+![GROMACS Config]({{ site.baseurl }}/assets/img/project/amd/session-gromacs.png)
 
 ## 5. Set Up Metadynamics
 
@@ -62,7 +62,7 @@ The **Collective Variables** section lets you define CVs interactively — click
 
 **Preview PLUMED** — Preview of the PLUMED input file before launching.
 
-![Method Selection]({{ site.baseurl }}/assets/side-projects/amd/session-method.png)
+![Method Selection]({{ site.baseurl }}/assets/img/project/amd/session-method.png)
 
 ## 6. Launch the Simulation
 
@@ -73,7 +73,7 @@ Click **Start MD Simulation** to see a summary dialog before running. It shows:
 
 Review the estimates, then click **Run** to launch. You can also go back to **Edit Settings** if anything needs adjustment.
 
-![Start Simulation]({{ site.baseurl }}/assets/side-projects/amd/session-runMD.png)
+![Start Simulation]({{ site.baseurl }}/assets/img/project/amd/session-runMD.png)
 
 ## 7. Track Progress
 
@@ -83,7 +83,7 @@ While running, the **Progress** tab updates in real time:
 - **Progress bar** — current step out of total with completion percentage
 - **Trajectory** — live 3D viewer showing chignolin after simulation has finished, with play/pause, reset, screenshot, and fullscreen controls
 
-![Progress Monitoring]({{ site.baseurl }}/assets/side-projects/amd/session-progress.png)
+![Progress Monitoring]({{ site.baseurl }}/assets/img/project/amd/session-progress.png)
 
 ## 8. Analyze Results
 
@@ -92,11 +92,11 @@ Once the simulation finishes (green **Simulation Finished** banner), click **+ A
 
 Select the plots you want and click **Run Analysis** to generate them.
 
-![Add Analysis]({{ site.baseurl }}/assets/side-projects/amd/session-analysis.png)
+![Add Analysis]({{ site.baseurl }}/assets/img/project/amd/session-analysis.png)
 
 The **Results** panel then displays all analysis plots side by side — CV scatter plots, RMSD over time, pressure fluctuations, total energy, and more. Each plot is interactive and can be resized or rearranged.
 
-![Analysis Results]({{ site.baseurl }}/assets/side-projects/amd/session-analysis-result.png)
+![Analysis Results]({{ site.baseurl }}/assets/img/project/amd/session-analysis-result.png)
 
 **AI Analysis** (TBA) — automated interpretation of simulation results, identifying metastable states and convergence.
 

@@ -14,6 +14,10 @@ url: "https://seonghyun26.github.io"
 theme: minima
 
 exclude:
+  # The project writeups are pulled into the page by include_relative, which reads
+  # the source tree - nothing links to them, so they need not also be served as
+  # raw markdown at /projects/*.md.
+  - projects
   - resume/.venv
   - resume/classic
   - resume/markdown

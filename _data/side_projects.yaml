@@ -5,21 +5,21 @@ projects:
     subtitle: "Ongoing"
     date: "2026-09-28"
     description: "Ongoing, TBA"
-    thumbnail: "/assets/side-projects/atlas-log/preview.png"
+    thumbnail: "/assets/img/project/atlas-log/preview.png"
     selected: y
 
   - title: "Scholar2BibTeX"
     subtitle: "Auto-pasting BibTeX to clipboard"
     date: "2026-08-26"
-    include: "_projects/scholar2bibtex.md"
+    include: "projects/scholar2bibtex.md"
     code: "https://github.com/seonghyun26/scholar2bibtex"
-    thumbnail: "/assets/side-projects/scholar2bibtex/preview.png"
+    thumbnail: "/assets/img/project/scholar2bibtex/preview.png"
     selected: y
 
   - title: "AMD"
     subtitle: "Automating Molecular Dynamics"
     date: "2026-03-25"
-    include: "_projects/amd.md"
+    include: "projects/amd.md"
     code: "https://github.com/seonghyun26/amd"
-    thumbnail: "/assets/side-projects/amd/preview.png"
+    thumbnail: "/assets/img/project/amd/preview.png"
     selected: y
