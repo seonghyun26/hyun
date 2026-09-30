@@ -5,7 +5,6 @@ projects:
     subtitle: "Recodring travel experiences across the globe"
     date: "2026-09-28"
     description: "Ongoing, TBA"
-    # code: "https://github.com/seonghyun26/trail-exp"
     thumbnail: "/assets/img/project/atlas-log/preview.png"
     selected: y
 
