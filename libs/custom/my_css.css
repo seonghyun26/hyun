@@ -38,10 +38,16 @@ html {
   /* Resting grey for icon rows that have a selected state. */
   --icon-idle: #B4BBBE;
 
+  /* The accent at a whisper, for the fill behind a hovered control. Some of
+     those controls sit on a shadow or a border that a translucent fill would
+     show through, so the same colour is kept as an opaque pair. */
+  --accent-wash: rgba(128, 146, 246, 0.15);
+  --accent-wash-solid: rgb(236, 238, 254);
+
   /* Scrollbar thumb: present, but the quietest thing on the page. */
   --scrollbar-thumb: #C4C9CC;
 
-  /* Skeleton's own accent, still driving the navbar and popover states. */
+  /* Skeleton's own accent, still driving the navbar's active link. */
   --accent-sky: #33C3F0;
 }
 
@@ -171,15 +177,9 @@ h4 {
 .paper-buttons .button:focus-visible {
   color: var(--accent-strong);
   border-color: var(--accent);
-  background-color: rgba(128, 146, 246, 0.12);
+  background-color: var(--accent-wash);
 }
 
-.section-header {
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  letter-spacing: .2rem;
-  font-weight: 600;
-}
 
 .docs-section {
   border-top: 1px solid #eee;
@@ -211,28 +211,6 @@ h4 {
   text-align: center;
 }
 
-/*  ================ Project styling  ================ */
-.project-container {
-  margin-bottom: 30px;
-}
-
-.project-image-container {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 3px;
-  transition: 0.3s;
-}
-
-.project-image-container:hover {
-  transition: 0.3s;
-}
-
-.project-image-container:hover img {
-  opacity: 0.4;
-}
-
-.project-caption {
-  padding: 3px;
-}
 
 /*  ================ Publication image styling  ================ */
 /*
@@ -337,96 +315,6 @@ h4 {
   /* Re-overiding the width 100% declaration to match size of % based container */
   .has-docked-nav .navbar>.container {
     width: 80%;
-  }
-
-  /* Popover */
-  .popover.open {
-    display: block;
-  }
-
-  .popover {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 4px;
-    top: 92%;
-    left: -50%;
-    -webkit-filter: drop-shadow(0 0 6px rgba(0, 0, 0, .1));
-    -moz-filter: drop-shadow(0 0 6px rgba(0, 0, 0, .1));
-    filter: drop-shadow(0 0 6px rgba(0, 0, 0, .1));
-  }
-
-  .popover-item:first-child .popover-link:after,
-  .popover-item:first-child .popover-link:before {
-    bottom: 100%;
-    left: 50%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-  }
-
-  .popover-item:first-child .popover-link:after {
-    border-color: rgba(255, 255, 255, 0);
-    border-bottom-color: #fff;
-    border-width: 10px;
-    margin-left: -10px;
-  }
-
-  .popover-item:first-child .popover-link:before {
-    border-color: rgba(238, 238, 238, 0);
-    border-bottom-color: #eee;
-    border-width: 11px;
-    margin-left: -11px;
-  }
-
-  .popover-list {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
-  .popover-item {
-    padding: 0;
-    margin: 0;
-  }
-
-  .popover-link {
-    position: relative;
-    color: #222;
-    display: block;
-    padding: 8px 20px;
-    border-bottom: 1px solid #eee;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 1.0rem;
-    font-weight: 600;
-    text-align: center;
-    letter-spacing: .1rem;
-  }
-
-  .popover-item:first-child .popover-link {
-    border-radius: 4px 4px 0 0;
-  }
-
-  .popover-item:last-child .popover-link {
-    border-radius: 0 0 4px 4px;
-    border-bottom-width: 0;
-  }
-
-  .popover-link:hover {
-    color: #fff;
-    background: #33C3F0;
-  }
-
-  .popover-link:hover,
-  .popover-item:first-child .popover-link:hover:after {
-    border-bottom-color: #33C3F0;
   }
 }
 
@@ -935,6 +823,7 @@ h4 {
   left: 0;
   width: 100%;
   height: 100%;
+  height: var(--overlay-viewport, 100dvh);
   z-index: 3000;
   align-items: center;
   justify-content: center;
@@ -1246,7 +1135,7 @@ h4 {
 }
 
 /* Modal */
-body.has-project-modal {
+body.has-overlay {
   position: fixed;
   left: 0;
   right: 0;
@@ -1262,7 +1151,7 @@ body.has-project-modal {
   width: 100%;
   height: 100%;
   height: 100dvh;
-  height: var(--modal-viewport, 100dvh);
+  height: var(--overlay-viewport, 100dvh);
   box-sizing: border-box;
   padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
   z-index: 2000;
@@ -1447,7 +1336,7 @@ body.has-project-modal {
 .side-project-modal-close:hover,
 .side-project-modal-close:focus-visible {
   color: var(--accent-strong);
-  background: rgba(128, 146, 246, 0.18);
+  background: var(--accent-wash);
 }
 
 @media (max-width: 749px) {
@@ -1625,9 +1514,9 @@ body.has-project-modal {
 
 .timeline a.flag:hover,
 .timeline a.flag:focus-visible {
-  /* Opaque rather than a tint: the plate carries a box-shadow, and a
+  /* The opaque pair, not the tint: the plate carries a box-shadow, and a
      translucent face lets that shadow read as an edge around it. */
-  --flag-plate: rgb(232, 235, 253);
+  --flag-plate: var(--accent-wash-solid);
   color: var(--accent-strong);
 }
 

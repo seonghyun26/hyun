@@ -1,30 +1,16 @@
 $(document).ready(function() {
 
   // Variables
-  var $codeSnippets = $('.code-example-body'),
-      $nav = $('.navbar'),
+  var $nav = $('.navbar'),
       $body = $('body'),
       $window = $(window),
-      $popoverLink = $('[data-popover]'),
-      navOffsetTop = $nav.offset().top,
-      $document = $(document),
-      entityMap = {
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': '&quot;',
-        "'": '&#39;',
-        "/": '&#x2F;'
-      }
+      navOffsetTop = $nav.offset().top;
 
   function init() {
     $window.on('scroll', onScroll)
     $window.on('resize', resize)
-    $popoverLink.on('click', openPopover)
-    $document.on('click', closePopover)
     $('a[href^="#"], .navbar-link').on('click', smoothScroll)
 
-    buildSnippets();
     onScroll();
     buildTOC();
   }
@@ -58,55 +44,21 @@ $(document).ready(function() {
     });
   }
 
-  function openPopover(e) {
-    e.preventDefault()
-    closePopover();
-    var popover = $($(this).data('popover'));
-    popover.toggleClass('open')
-    e.stopImmediatePropagation();
-  }
-
-  function closePopover(e) {
-    if($('.popover.open').length > 0) {
-      $('.popover').removeClass('open')
-    }
-  }
-
-  $("#button").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#elementtoScrollToID").offset().top
-    }, 2000);
-});
-
   function resize() {
-    if ($body.hasClass('has-project-modal')) return;
+    if ($body.hasClass('has-overlay')) return;
     $body.removeClass('has-docked-nav')
     navOffsetTop = $nav.offset().top
     onScroll()
   }
 
   function onScroll() {
-    if ($body.hasClass('has-project-modal')) return;
+    if ($body.hasClass('has-overlay')) return;
     if(navOffsetTop < $window.scrollTop() && !$body.hasClass('has-docked-nav')) {
       $body.addClass('has-docked-nav')
     }
     if(navOffsetTop > $window.scrollTop() && $body.hasClass('has-docked-nav')) {
       $body.removeClass('has-docked-nav')
     }
-  }
-
-  function escapeHtml(string) {
-    return String(string).replace(/[&<>"'\/]/g, function (s) {
-      return entityMap[s];
-    });
-  }
-
-  function buildSnippets() {
-    $codeSnippets.each(function() {
-      var newContent = escapeHtml($(this).html())
-      $(this).html(newContent)
-    })
-
   }
 
   function buildTOC() {
@@ -171,47 +123,60 @@ $(document).ready(function() {
   // A viewport overlay must live outside the horizontally scrolling card rail.
   // In particular, iOS can clip fixed descendants of a touch scroller.
   $('.side-project-modal').appendTo($body);
-  var projectScrollTop = 0;
-  var projectBodyTop = '';
-  var projectTrigger = null;
 
   // A phone hides and shows its toolbars as you scroll, so the height the page
   // is laid out at is not the height you can see. iOS reports the taller one for
-  // 100vh, and has no dvh at all before 16.4, which leaves a modal sized that
+  // 100vh, and has no dvh at all before 16.4, which leaves an overlay sized that
   // way hanging off both ends of the screen. Measure the visible viewport and
-  // let the modal follow it.
+  // let the overlays follow it.
   var visualViewport = window.visualViewport;
-  function syncModalViewport() {
+  function syncOverlayViewport() {
     var height = visualViewport ? visualViewport.height : window.innerHeight;
-    document.documentElement.style.setProperty('--modal-viewport', height + 'px');
+    document.documentElement.style.setProperty('--overlay-viewport', height + 'px');
   }
   if (visualViewport) {
-    visualViewport.addEventListener('resize', syncModalViewport);
-    visualViewport.addEventListener('scroll', syncModalViewport);
+    visualViewport.addEventListener('resize', syncOverlayViewport);
+    visualViewport.addEventListener('scroll', syncOverlayViewport);
   }
-  $window.on('resize orientationchange', syncModalViewport);
-  syncModalViewport();
+  $window.on('resize orientationchange', syncOverlayViewport);
+  syncOverlayViewport();
+
+  // One scroll lock for every overlay. Hiding the body's overflow does not stop
+  // an iOS page scrolling underneath, so the body is pinned at the offset it was
+  // read at and put back there on the way out.
+  var lockedScrollTop = 0;
+  var lockedBodyTop = '';
+  function lockPageScroll() {
+    if ($body.hasClass('has-overlay')) return;
+    $('html, body').stop();
+    syncOverlayViewport();
+    lockedScrollTop = $window.scrollTop();
+    lockedBodyTop = document.body.style.top;
+    $body.css('top', -lockedScrollTop + 'px').addClass('has-overlay');
+  }
+  function unlockPageScroll() {
+    if (!$body.hasClass('has-overlay')) return;
+    $body.removeClass('has-overlay').css('top', lockedBodyTop);
+    window.scrollTo(0, lockedScrollTop);
+    resize();
+  }
+
+  var projectTrigger = null;
 
   function openProjectModal(index, trigger) {
     var $modal = $('#side-project-modal-' + index);
-    if (!$modal.length || $body.hasClass('has-project-modal')) return;
-    $('html, body').stop();
-    syncModalViewport();
-    projectScrollTop = $window.scrollTop();
-    projectBodyTop = document.body.style.top;
+    if (!$modal.length || $('.side-project-modal.open').length) return;
+    lockPageScroll();
     projectTrigger = trigger;
-    $body.css('top', -projectScrollTop + 'px').addClass('has-project-modal');
     $modal.addClass('open').attr('aria-hidden', 'false');
     $modal.find('.side-project-modal-body').scrollTop(0);
     $modal.find('.side-project-modal-close')[0].focus({ preventScroll: true });
   }
 
   function closeProjectModal() {
-    if (!$body.hasClass('has-project-modal')) return;
+    if (!$('.side-project-modal.open').length) return;
     $('.side-project-modal.open').removeClass('open').attr('aria-hidden', 'true');
-    $body.removeClass('has-project-modal').css('top', projectBodyTop);
-    window.scrollTo(0, projectScrollTop);
-    resize();
+    unlockPageScroll();
     if (projectTrigger) projectTrigger.focus({ preventScroll: true });
     projectTrigger = null;
   }
@@ -269,7 +234,7 @@ $(document).ready(function() {
     if (e.key === 'Escape') {
       closeProjectModal();
     }
-    if (e.key === 'Tab' && $body.hasClass('has-project-modal')) {
+    if (e.key === 'Tab' && $('.side-project-modal.open').length) {
       var $focusable = $('.side-project-modal.open').find('button, a[href], [tabindex="0"]').filter(':visible');
       var first = $focusable[0];
       var last = $focusable[$focusable.length - 1];
@@ -351,18 +316,20 @@ $(document).ready(function() {
     } else {
       $camera.hide();
     }
+    lockPageScroll();
     $lb.addClass('open');
-    $('body').css('overflow', 'hidden');
+  }
+
+  function closeLightbox() {
+    $('#photo-lightbox').removeClass('open');
+    unlockPageScroll();
   }
 
   $('.photo-item').on('click', function() {
     showPhoto($(this).data('photo-index'));
   });
 
-  $('.photo-lightbox-close, .photo-lightbox-backdrop').on('click', function() {
-    $('#photo-lightbox').removeClass('open');
-    $('body').css('overflow', '');
-  });
+  $('.photo-lightbox-close, .photo-lightbox-backdrop').on('click', closeLightbox);
 
   $('.photo-lightbox-prev').on('click', function(e) {
     e.stopPropagation();
@@ -378,10 +345,7 @@ $(document).ready(function() {
     if (!$('#photo-lightbox').hasClass('open')) return;
     if (e.key === 'ArrowLeft') showPhoto(currentPhotoIndex - 1);
     if (e.key === 'ArrowRight') showPhoto(currentPhotoIndex + 1);
-    if (e.key === 'Escape') {
-      $('#photo-lightbox').removeClass('open');
-      $('body').css('overflow', '');
-    }
+    if (e.key === 'Escape') closeLightbox();
   });
 
   // Profile picture switcher
