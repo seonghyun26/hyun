@@ -37,8 +37,9 @@ authors:
     homepage: "https://honghuikim.github.io/"
   - name: "Taewon Kim"
     homepage: "https://holymollyhao.github.io/"
-  - name: "Shuan Chen"
-    homepage: "https://scholar.google.com/citations?user=ocU1zLgAAAAJ"
+  # Scholar profile returns 404 - the name shows unlinked until a live URL turns up.
+  # - name: "Shuan Chen"
+  #   homepage: "https://scholar.google.com/citations?user=ocU1zLgAAAAJ"
   - name: "Jun Jin Choong"
     homepage: "https://scholar.google.com/citations?user=mh7M6LcAAAAJ"
   - name: "Noboru Kuno"

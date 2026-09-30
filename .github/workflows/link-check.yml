@@ -1,0 +1,66 @@
+name: Link check
+
+# The site is almost entirely links - papers, co-authors, labs, code - and they
+# rot from the other end, without a commit here. So: on every push, and once a
+# week regardless.
+on:
+  push:
+  schedule:
+    # 23:00 UTC Sunday is 08:00 Monday in Seoul, which is where this is read.
+    - cron: "0 23 * * 0"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: link-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # The same build the deploy workflow runs, minus configure-pages: without
+      # it the baseurl stays empty, so a root-relative href resolves against
+      # _site and the checker can follow it to a real file.
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      # index.html keeps a long commented-out list of sites using this template.
+      # Those links are not on the page, so they are not the page's problem -
+      # strip comments from the built copy before checking it. The source is
+      # untouched; only _site is edited, and only inside this run.
+      - name: Drop commented-out markup
+        run: |
+          python3 - <<'PY'
+          import re, pathlib
+          for f in pathlib.Path('_site').rglob('*.html'):
+              text = f.read_text(encoding='utf-8', errors='ignore')
+              f.write_text(re.sub(r'<!--.*?-->', '', text, flags=re.S), encoding='utf-8')
+          PY
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Hosts that block robots answer a live URL with 403 or LinkedIn's
+          # own 999; treated as reachable, since the alternative is a red run
+          # every week over links that are fine in a browser.
+          args: >-
+            --no-progress
+            --base _site
+            --accept 200..=299,403,429,999
+            --exclude-mail
+            --max-concurrency 8
+            --max-retries 2
+            --timeout 25
+            --cache
+            --max-cache-age 1d
+            './_site/**/*.html'
+          fail: true
+          jobSummary: true

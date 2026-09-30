@@ -4,6 +4,31 @@
  * with var(), so a change lands everywhere instead of in the places someone
  * remembered to update.
  */
+/*
+ * Scrollbars in a quiet grey: narrow, square, and not competing with anything
+ * on the page. scrollbar-color is the standard property; the WebKit rules are
+ * the only way to ask for a square-cornered thumb, and a browser that honours
+ * them ignores the standard ones.
+ */
+html {
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 :root {
   /* Interactive accents: the light one at rest, the strong one for hover and
      for whatever is currently selected. */
@@ -12,6 +37,9 @@
 
   /* Resting grey for icon rows that have a selected state. */
   --icon-idle: #B4BBBE;
+
+  /* Scrollbar thumb: present, but the quietest thing on the page. */
+  --scrollbar-thumb: #C4C9CC;
 
   /* Skeleton's own accent, still driving the navbar and popover states. */
   --accent-sky: #33C3F0;
@@ -42,7 +70,9 @@ h4 {
 
 .header {
   margin-top: 60px;
-  margin-bottom: 60px;
+  /* The photo switcher is the last thing in the header, so this margin is the
+     whole distance from those icons down to the navbar. Half of 60 is plenty. */
+  margin-bottom: 30px;
   text-align: left;
 }
 
@@ -84,10 +114,14 @@ h4 {
   text-decoration: underline;
   text-decoration-thickness: 0.5px;
   text-underline-offset: 2px;
+  transition: color 0.15s ease;
 }
 
-.author-link:hover {
-  color: var(--accent-strong);
+/* The light accent, not the strong one: a line of co-authors is a run of links,
+   and the quieter blue keeps it from reading as a row of buttons. */
+.author-link:hover,
+.author-link:focus-visible {
+  color: var(--accent);
 }
 
 .paper-buttons {
@@ -106,6 +140,38 @@ h4 {
 .paper .button .fa,
 .paper .button .ai {
   margin-right: 4px;
+}
+
+/* The glyphs are set at the label's 11px, which leaves them spindly next to it.
+   Draw them larger with a transform, which costs no layout: the advance stays
+   what it was, so no button grows a pixel wider. */
+.paper-buttons .button .fa,
+.paper-buttons .button .ai {
+  display: inline-block;
+  transform: scale(1.3);
+  transform-origin: center;
+}
+
+/* These two carry their own margin inside the glyph - a circle and a wordmark
+   in a square box - so at a shared scale they measure a couple of pixels
+   shorter than the rest. Push them out until the ink matches. */
+.paper-buttons .button .fa-github,
+.paper-buttons .button .ai-arxiv {
+  transform: scale(1.55);
+}
+
+/* Every button that opens something - the links under a publication, the links
+   in a project's popup - lights up in the site's own accent rather than
+   Skeleton's grey. */
+.paper-buttons .button {
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.paper-buttons .button:hover,
+.paper-buttons .button:focus-visible {
+  color: var(--accent-strong);
+  border-color: var(--accent);
+  background-color: rgba(128, 146, 246, 0.12);
 }
 
 .section-header {
@@ -550,8 +616,8 @@ h4 {
  */
 .header .profile-column {
   --profile-width: 100%;
-  --profile-icon-box: 3.7632rem; /* 20% larger controls. */
-  --profile-icon-glyph: 2.8224rem; /* 20% larger glyphs. */
+  --profile-icon-box: 3.38688rem; /* Controls at 0.9 of the enlarged size. */
+  --profile-icon-glyph: 2.54016rem; /* Glyphs kept to the same ratio. */
   width: 100%;
 }
 
@@ -597,37 +663,30 @@ h4 {
 }
 
 /*
- * One patch of the incoming photo. Each is a window onto an <img> sized to the
- * whole frame and offset by the patch's position, so every patch gets the same
- * object-fit crop the base image has - computing a background-position per
- * patch would have to redo that crop by hand.
+ * The incoming photo is painted patch by patch onto this cover, which sits over
+ * the live one until the last patch has landed. It is one element and one
+ * layer; the patches used to be elements of their own, and a thousand of them
+ * is a thousand layers for a phone to composite every frame.
  */
-.profile-tile {
+.profile-dissolve {
   position: absolute;
-  overflow: hidden;
-  opacity: 0;
-  transition: opacity var(--profile-tile-fade) var(--profile-tile-easing);
-  will-change: opacity;
-}
-
-.profile-tile.show {
-  opacity: 1;
-}
-
-.profile-tile img {
-  position: absolute;
-  object-fit: cover;
-  max-width: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
 }
 
 /*
  * Centre the controls within the photo width, with room above and between them.
  */
 .profile-switch {
+  --profile-icon-gap: clamp(2px, 1vw, 10px);
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: clamp(2px, 1vw, 10px);
+  gap: var(--profile-icon-gap);
   width: var(--profile-width);
   margin-top: 16px;
 }
@@ -655,11 +714,11 @@ h4 {
   }
 
   .header .main-description {
-    text-align: center;
+    text-align: left;
   }
 
   .main-description .social-icons {
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 
@@ -702,6 +761,13 @@ h4 {
   outline-offset: 2px;
 }
 
+/* The guitar leans into its corners and the note is drawn narrower than the
+   rest, so the air between those two reads wider than the other gaps. Close it
+   to 0.6 of the shared gap. */
+.profile-switch-btn[data-icon="music"] {
+  margin-left: calc(var(--profile-icon-gap) * -0.4);
+}
+
 .profile-switch-svg {
   width: var(--profile-icon-glyph);
   max-width: 100%;
@@ -720,7 +786,7 @@ h4 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: var(--accent-strong);
+  color: var(--accent);
   pointer-events: none;
   clip-path: inset(0 100% 0 0);
 }
@@ -730,10 +796,6 @@ h4 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .profile-tile {
-    transition: none;
-  }
-
   .profile-switch-btn {
     transition: none;
   }
@@ -1062,12 +1124,12 @@ h4 {
 }
 
 .side-projects-grid::-webkit-scrollbar {
-  height: 6px;
+  height: 9px;
 }
 
 .side-projects-grid::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
+  background: var(--scrollbar-thumb);
+  border-radius: 0;
 }
 
 .side-projects-grid::-webkit-scrollbar-track {
@@ -1184,6 +1246,14 @@ h4 {
 }
 
 /* Modal */
+body.has-project-modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
 .side-project-modal {
   display: none;
   position: fixed;
@@ -1191,6 +1261,10 @@ h4 {
   left: 0;
   width: 100%;
   height: 100%;
+  height: 100dvh;
+  height: var(--modal-viewport, 100dvh);
+  box-sizing: border-box;
+  padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
   z-index: 2000;
 }
 
@@ -1207,7 +1281,14 @@ h4 {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(4px);
+}
+
+/* Blurring a whole page, embeds and all, is more than a phone can paint in a
+   frame; the backdrop is opaque enough to carry the separation on its own. */
+@media (min-width: 750px) {
+  .side-project-modal-backdrop {
+    backdrop-filter: blur(4px);
+  }
 }
 
 .side-project-modal-content {
@@ -1217,6 +1298,7 @@ h4 {
   max-width: 960px;
   width: 94%;
   max-height: 88vh;
+  max-height: min(88dvh, 100%);
   display: flex;
   flex-direction: column;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
@@ -1225,6 +1307,7 @@ h4 {
 
 .side-project-modal-header {
   padding: 30px 40px 18px;
+  padding-right: 64px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   flex-shrink: 0;
 }
@@ -1251,6 +1334,10 @@ h4 {
 .side-project-modal-body {
   padding: 28px 40px 36px;
   overflow-y: auto;
+  min-height: 0;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  overflow-wrap: anywhere;
   flex: 1;
   line-height: 1.8;
   font-size: 1.3rem;
@@ -1344,19 +1431,23 @@ h4 {
   right: 18px;
   background: none;
   border: none;
-  font-size: 2.4rem;
+  font-size: 4.8rem;
   cursor: pointer;
   color: #666;
   line-height: 1;
-  padding: 4px 8px;
+  padding: 0;
+  width: 56px;
+  height: 56px;
+  margin: 0;
   z-index: 1;
   border-radius: 6px;
   transition: background 0.15s ease, color 0.15s ease;
 }
 
-.side-project-modal-close:hover {
-  color: #333;
-  background: rgba(0, 0, 0, 0.06);
+.side-project-modal-close:hover,
+.side-project-modal-close:focus-visible {
+  color: var(--accent-strong);
+  background: rgba(128, 146, 246, 0.18);
 }
 
 @media (max-width: 749px) {
@@ -1366,7 +1457,7 @@ h4 {
   }
 
   .side-project-modal-header {
-    padding: 24px 24px 14px;
+    padding: 24px 64px 14px 24px;
   }
 
   .side-project-modal-body {
@@ -1403,13 +1494,15 @@ h4 {
   }
 
   .side-project-modal-content {
-    width: 96%;
+    width: 100%;
+    max-width: 100%;
     max-height: 90vh;
+    max-height: min(90dvh, 100%);
     border-radius: 10px;
   }
 
   .side-project-modal-header {
-    padding: 20px 16px 12px;
+    padding: 20px 64px 12px 16px;
   }
 
   .side-project-modal-header h5 {
@@ -1446,12 +1539,169 @@ h4 {
   .side-project-modal-close {
     top: 10px;
     right: 12px;
-    font-size: 2rem;
+    font-size: 4rem;
+    width: 48px;
+    height: 48px;
   }
 
   .side-project-modal-github-btn {
     font-size: 1rem;
   }
+}
+
+/*  ================ CV timeline density  ================ */
+/*
+ * timeline.css is spaced for a page of its own; here the timeline is one
+ * section among several, so every vertical step it sets is taken to 0.9. The
+ * rules are reached through .docs-section only to outweigh that file, which the
+ * layout loads after this one.
+ */
+.docs-section .timeline {
+  margin-top: 18px; /* was 20px */
+  padding: 0.9em 0; /* was 1em 0 */
+}
+
+.docs-section .timeline li {
+  padding: 0.9em 0; /* was 1em 0 */
+}
+
+.docs-section .timeline .desc {
+  margin-top: 0.9em; /* was 1em; the side margins stay as timeline.css set them */
+}
+
+.docs-section .service {
+  margin-top: 32px; /* was 35px */
+}
+
+.docs-section .service h5 {
+  margin-bottom: 11px; /* was 12px */
+}
+
+.docs-section .service-line {
+  margin-bottom: 7px; /* was 8px */
+}
+
+@media screen and (max-width: 660px) {
+  /* The folded timeline sets its own, larger steps; scale those the same way. */
+  .docs-section .timeline {
+    padding: 3.6em 0 0.9em; /* was 4em 0 1em */
+  }
+
+  .docs-section .timeline li {
+    padding: 1.8em 0; /* was 2em 0 */
+  }
+
+  .docs-section .timeline .desc,
+  .docs-section .timeline .direction-l .desc,
+  .docs-section .timeline .direction-r .desc {
+    margin: 0.9em 0.9em 0; /* was 1em 1em 0 1em */
+    padding: 0.9em; /* was 1em */
+  }
+}
+
+/*  ================ CV timeline logos  ================ */
+/*
+ * The flag stays one line - mark, then name - at every width. In the left-hand
+ * column the pair is mirrored so the logo sits beside the timeline rather than
+ * out at the ragged edge; once the timeline folds into a single column there is
+ * no left and right any more, so both read logo first.
+ */
+/* Scoped to .timeline to outweigh timeline.css, which is loaded after this. */
+.timeline .flag {
+  --flag-plate: rgb(248, 248, 248);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--flag-plate);
+}
+
+/* The whole plate is the link - mark, name and the card they sit on - so the
+   name carries no underline of its own. */
+.timeline a.flag {
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.timeline a.flag:hover,
+.timeline a.flag:focus-visible {
+  /* Opaque rather than a tint: the plate carries a box-shadow, and a
+     translucent face lets that shadow read as an edge around it. */
+  --flag-plate: rgb(232, 235, 253);
+  color: var(--accent-strong);
+}
+
+.timeline a.flag:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}
+
+/* The pointer joining plate to timeline is a border, so it has to be told the
+   plate's colour again every time that colour changes. */
+@media screen and (min-width: 661px) {
+  .timeline .direction-l .flag:after {
+    border-left-color: var(--flag-plate);
+  }
+
+  .timeline .direction-r .flag:after {
+    border-right-color: var(--flag-plate);
+  }
+}
+
+/* The pointer has to fade at the plate's own pace. Left to snap, it finishes
+   the colour change first and stands out as a rim until the plate catches up. */
+.timeline a.flag:after {
+  transition: border-color 0.18s ease;
+}
+
+@media screen and (max-width: 660px) {
+  /* The folded timeline gives the plate a white face and points it downwards. */
+  .timeline .flag {
+    --flag-plate: rgb(255, 255, 255);
+  }
+
+  .timeline .flag:after {
+    border-bottom-color: var(--flag-plate);
+  }
+}
+
+.timeline .direction-l .flag {
+  flex-direction: row-reverse;
+}
+
+/*
+ * Logos are whatever shape their owner made them, from a round seal to a wide
+ * wordmark, so fix the height and let the width follow. The cap keeps the
+ * widest of them from crowding out the name it belongs to.
+ */
+.flag-logo {
+  height: 19px;
+  width: auto;
+  max-width: 42px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+}
+
+@media screen and (max-width: 660px) {
+  .timeline .direction-l .flag {
+    flex-direction: row;
+  }
+}
+
+/*  ================ Hobbies heading  ================ */
+/*
+ * The hint under the heading keeps its line after it fades out, so that the
+ * section does not jump when it opens - which leaves the heading and the first
+ * line of the section three margins apart. Halve the two margins that are ours
+ * to give; the reserved line stays.
+ */
+#hobbies-toggle {
+  margin-bottom: 12px; /* was 22.4px */
+}
+
+#hobbies-hint {
+  margin-bottom: 4px; /* was 28px */
 }
 
 /* SPML lab logo (inline in bio) */
@@ -1485,7 +1735,9 @@ h4 {
 }
 .service-label {
   font-weight: 600;
-  min-width: 140px;
+  /* Wide enough to hold the longer of the two labels, so the venues below line
+     up with the ones above - 140px left a hand's width of nothing. */
+  min-width: 72px;
   color: rgba(0, 0, 0, 0.65);
 }
 .service-item {
@@ -1501,6 +1753,15 @@ h4 {
   font-size: 0.9em;
   margin-left: 3px;
 }
+/* On a phone the label would leave a ragged stub of the first venue beside it,
+   so it takes the whole line and the venues start under it. */
+@media (max-width: 549px) {
+  .service-label {
+    flex: 0 0 100%;
+    min-width: 0;
+  }
+}
+
 .service-more {
   color: rgba(0, 0, 0, 0.45);
   font-size: 0.78em;

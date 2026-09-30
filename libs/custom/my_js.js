@@ -79,12 +79,14 @@ $(document).ready(function() {
 });
 
   function resize() {
+    if ($body.hasClass('has-project-modal')) return;
     $body.removeClass('has-docked-nav')
     navOffsetTop = $nav.offset().top
     onScroll()
   }
 
   function onScroll() {
+    if ($body.hasClass('has-project-modal')) return;
     if(navOffsetTop < $window.scrollTop() && !$body.hasClass('has-docked-nav')) {
       $body.addClass('has-docked-nav')
     }
@@ -166,6 +168,54 @@ $(document).ready(function() {
   }
 
 
+  // A viewport overlay must live outside the horizontally scrolling card rail.
+  // In particular, iOS can clip fixed descendants of a touch scroller.
+  $('.side-project-modal').appendTo($body);
+  var projectScrollTop = 0;
+  var projectBodyTop = '';
+  var projectTrigger = null;
+
+  // A phone hides and shows its toolbars as you scroll, so the height the page
+  // is laid out at is not the height you can see. iOS reports the taller one for
+  // 100vh, and has no dvh at all before 16.4, which leaves a modal sized that
+  // way hanging off both ends of the screen. Measure the visible viewport and
+  // let the modal follow it.
+  var visualViewport = window.visualViewport;
+  function syncModalViewport() {
+    var height = visualViewport ? visualViewport.height : window.innerHeight;
+    document.documentElement.style.setProperty('--modal-viewport', height + 'px');
+  }
+  if (visualViewport) {
+    visualViewport.addEventListener('resize', syncModalViewport);
+    visualViewport.addEventListener('scroll', syncModalViewport);
+  }
+  $window.on('resize orientationchange', syncModalViewport);
+  syncModalViewport();
+
+  function openProjectModal(index, trigger) {
+    var $modal = $('#side-project-modal-' + index);
+    if (!$modal.length || $body.hasClass('has-project-modal')) return;
+    $('html, body').stop();
+    syncModalViewport();
+    projectScrollTop = $window.scrollTop();
+    projectBodyTop = document.body.style.top;
+    projectTrigger = trigger;
+    $body.css('top', -projectScrollTop + 'px').addClass('has-project-modal');
+    $modal.addClass('open').attr('aria-hidden', 'false');
+    $modal.find('.side-project-modal-body').scrollTop(0);
+    $modal.find('.side-project-modal-close')[0].focus({ preventScroll: true });
+  }
+
+  function closeProjectModal() {
+    if (!$body.hasClass('has-project-modal')) return;
+    $('.side-project-modal.open').removeClass('open').attr('aria-hidden', 'true');
+    $body.removeClass('has-project-modal').css('top', projectBodyTop);
+    window.scrollTo(0, projectScrollTop);
+    resize();
+    if (projectTrigger) projectTrigger.focus({ preventScroll: true });
+    projectTrigger = null;
+  }
+
   // Handle links that open a side project modal (e.g. #side-project-amd)
   $(document).on('click', 'a[href^="#side-project-"]', function(e) {
     e.preventDefault();
@@ -174,36 +224,75 @@ $(document).ready(function() {
       return $(this).data('project-slug') === slug;
     });
     if ($card.length) {
-      var index = $card.data('project-index');
-      $('html, body').animate({
-        scrollTop: $('#side-projects').offset().top - 40
-      }, 400, function() {
-        $('#side-project-modal-' + index).addClass('open');
-        $('body').css('overflow', 'hidden');
-      });
+      openProjectModal($card.data('project-index'), this);
     }
   });
 
   // Side project modals
-  $('.side-project-card').on('click', function(e) {
+  $('.side-project-card').on('click keydown', function(e) {
     // Don't open modal if clicking the GitHub link
     if ($(e.target).closest('.side-project-github-link').length) return;
+    if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
+    e.preventDefault();
     var index = $(this).data('project-index');
-    $('#side-project-modal-' + index).addClass('open');
-    $('body').css('overflow', 'hidden');
+    openProjectModal(index, this);
   });
 
+  // The cards sit in a horizontal, snapping scroller, which on a touch screen
+  // can swallow a tap: a few pixels of finger travel count as a scroll and no
+  // click is ever dispatched. Recognise the tap ourselves, with the tolerance a
+  // browser would use. openProjectModal ignores the second call if the click
+  // does arrive after all.
+  var cardTap = null;
+  $('.side-project-card').on('pointerdown', function(e) {
+    var native = e.originalEvent || e;
+    if (native.pointerType === 'mouse') return;
+    cardTap = { card: this, x: e.clientX, y: e.clientY, at: Date.now() };
+  });
+  $('.side-project-card').on('pointerup', function(e) {
+    var tap = cardTap;
+    cardTap = null;
+    if (!tap || tap.card !== this) return;
+    var travel = Math.abs(e.clientX - tap.x) + Math.abs(e.clientY - tap.y);
+    if (travel > 12 || Date.now() - tap.at > 700) return;
+    if ($(e.target).closest('.side-project-github-link').length) return;
+    e.preventDefault();
+    openProjectModal($(this).data('project-index'), this);
+  });
+  $('.side-project-card').on('pointercancel', function() { cardTap = null; });
+
   $('.side-project-modal-backdrop, .side-project-modal-close').on('click', function() {
-    $(this).closest('.side-project-modal').removeClass('open');
-    $('body').css('overflow', '');
+    closeProjectModal();
   });
 
   $(document).on('keydown', function(e) {
     if (e.key === 'Escape') {
-      $('.side-project-modal.open').removeClass('open');
-      $('body').css('overflow', '');
+      closeProjectModal();
+    }
+    if (e.key === 'Tab' && $body.hasClass('has-project-modal')) {
+      var $focusable = $('.side-project-modal.open').find('button, a[href], [tabindex="0"]').filter(':visible');
+      var first = $focusable[0];
+      var last = $focusable[$focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     }
   });
+
+  // The hobbies section starts collapsed, but a hidden iframe still loads, so a
+  // dozen YouTube players were being fetched on every visit - far and away the
+  // most expensive thing on the page, and all of it before anyone asked for it.
+  // Give them their src when the section is opened.
+  function loadHobbyVideos() {
+    $('#hobbies-content iframe[data-src]').each(function() {
+      this.src = this.getAttribute('data-src');
+      this.removeAttribute('data-src');
+    });
+  }
 
   // Keep the hint's space stable so fading it out never jumps the content.
   $('#hobbies-toggle').on('click keydown', function(e) {
@@ -214,11 +303,18 @@ $(document).ready(function() {
     var reducedMotion = window.matchMedia &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     $(this).attr('aria-expanded', String(expanded));
+    if (expanded) loadHobbyVideos();
     // Interrupt from the current height instead of queuing extra toggles.
     $('#hobbies-content').stop(true, false).slideToggle(reducedMotion ? 0 : 550, 'swing');
-    $('#hobbies-hint').stop(true, false)
-      .attr('aria-hidden', String(expanded))
-      .fadeTo(reducedMotion ? 0 : 180, expanded ? 0 : 1);
+    var $hint = $('#hobbies-hint').stop(true, false).attr('aria-hidden', String(expanded));
+    if (expanded) {
+      // Opening: the hint has done its job, so it gets out of the way quickly.
+      $hint.fadeTo(reducedMotion ? 0 : 180, 0);
+    } else {
+      // Closing: it used to snap back while the section was still sliding away.
+      // Let it surface at the fold's own pace, a beat after the fold starts.
+      $hint.delay(reducedMotion ? 0 : 120).fadeTo(reducedMotion ? 0 : 430, 1);
+    }
   });
 
   // Photo lightbox
@@ -290,10 +386,11 @@ $(document).ready(function() {
 
   // Profile picture switcher
   //
-  // Clicking an icon dissolves the new photo in patch by patch. Each patch is a
-  // window onto its own copy of the incoming image, sized to the whole frame and
-  // shifted into place, so all of them share the base image's object-fit crop.
-  // The patches light up in a shuffled order rather than sweeping a direction,
+  // Picking an icon - or the rotation timer - dissolves the new photo in patch
+  // by patch. Every patch is painted onto one canvas: the patches used to be
+  // absolutely positioned elements holding their own copy of the photo, and a
+  // thousand of those is a thousand composited layers, which phones cannot
+  // afford. They light up in a shuffled order rather than sweeping a direction,
   // so the photo appears to surface all over at once instead of being wiped on.
   var profileStage = document.getElementById('profile-pic');
   if (profileStage) {
@@ -304,14 +401,47 @@ $(document).ready(function() {
     var TILE_COLS = profileTransition.patch_columns;
     var PROFILE_DURATION = profileTransition.duration_ms;
     var TILE_FADE = Math.min(profileTransition.patch_fade_ms, PROFILE_DURATION);
-    // Use the same YAML timing for both the stagger and the CSS fade.
+    // Use the same YAML timing for both the stagger and each patch's own fade.
     var TILE_SPREAD = PROFILE_DURATION - TILE_FADE;
-    profileStage.style.setProperty('--profile-tile-fade', TILE_FADE + 'ms');
-    profileStage.style.setProperty('--profile-tile-easing', profileTransition.easing);
+    var AUTO_SWITCH = profileTransition.auto_switch_ms || 0;
+    var profileEase = buildEasing(profileTransition.easing);
     var profileRequest = 0;
     var activeProfileTransition = 0;
     var decodedPhotos = Object.create(null);
     var currentProfileSrc = $profileImg.attr('src');
+    var dissolveCanvas = null;
+    var dissolveFrame = 0;
+
+    // The YAML names a CSS timing function, which a canvas has to evaluate for
+    // itself. Sample the curve into a table once instead of solving it per
+    // patch per frame.
+    function buildEasing(spec) {
+      var points = String(spec).match(/-?\d*\.?\d+/g);
+      if (!points || points.length < 4) return function(t) { return t; };
+      var x1 = +points[0], y1 = +points[1], x2 = +points[2], y2 = +points[3];
+      function axis(p, a, b) {
+        var q = 1 - p;
+        return 3 * q * q * p * a + 3 * q * p * p * b + p * p * p;
+      }
+      var STEPS = 64;
+      var table = new Float32Array(STEPS + 1);
+      for (var i = 0; i <= STEPS; i++) {
+        var x = i / STEPS;
+        var lo = 0, hi = 1, mid = x;
+        for (var k = 0; k < 20; k++) { // Bisect for the parameter that lands on x.
+          mid = (lo + hi) / 2;
+          if (axis(mid, x1, x2) < x) lo = mid; else hi = mid;
+        }
+        table[i] = axis(mid, y1, y2);
+      }
+      return function(t) {
+        if (t <= 0) return 0;
+        if (t >= 1) return 1;
+        var at = t * STEPS;
+        var i = Math.floor(at);
+        return table[i] + (table[i + 1] - table[i]) * (at - i);
+      };
+    }
 
     function prepareProfilePhoto(src) {
       if (!decodedPhotos[src]) {
@@ -342,7 +472,13 @@ $(document).ready(function() {
     var reduceMotion = window.matchMedia &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function setActiveProfileBtn($btn) {
+    // A click wants its feedback at once, so the colour wipes across in its own
+    // brisk time. A change the photo made on its own has no such moment to
+    // answer, so there the wipe is stretched to the length of the dissolve and
+    // the two read as one movement.
+    var CLICK_WIPE_MS = 320;
+
+    function setActiveProfileBtn($btn, wipeMs) {
       var $previous = $profileBtns.filter('.active');
       var movingLeft = $profileBtns.index($btn) < $profileBtns.index($previous);
       var hiddenLeft = 'inset(0% 100% 0% 0%)';
@@ -374,121 +510,198 @@ $(document).ready(function() {
         mask.icon.animate([
           { clipPath: mask.start },
           { clipPath: mask.selected ? shown : leavingTo }
-        ], { duration: 320, easing: 'cubic-bezier(0.4, 0, 0.6, 1)' });
+        ], { duration: wipeMs, easing: 'cubic-bezier(0.4, 0, 0.6, 1)' });
       });
     }
 
-    function swapProfilePic(src, $btn) {
-      if (currentProfileSrc === src) return;
+    function swapProfilePic(src, $btn, wipeMs) {
+      if (currentProfileSrc === src) {
+        scheduleAutoSwitch();
+        return;
+      }
       currentProfileSrc = src;
       var request = ++profileRequest;
       prepareProfilePhoto(src).then(function(photo) {
         if (request !== profileRequest) return;
         if (!photo) {
           currentProfileSrc = $profileBtns.filter('.active').data('image');
+          scheduleAutoSwitch();
           return;
         }
-        beginProfileSwap(src, $btn);
+        beginProfileSwap(src, $btn, photo, wipeMs || CLICK_WIPE_MS);
       });
     }
 
-    function beginProfileSwap(src, $btn) {
-      var transition = ++activeProfileTransition;
-      setActiveProfileBtn($btn);
+    // A dissolve that is still running gets committed rather than dropped:
+    // removing its canvas alone would snap the frame back to the photo before it.
+    function endDissolve() {
+      if (dissolveFrame) cancelAnimationFrame(dissolveFrame);
+      dissolveFrame = 0;
+      if (dissolveCanvas) {
+        $profileImg.attr('src', dissolveCanvas.getAttribute('data-src'));
+        dissolveCanvas.parentNode.removeChild(dissolveCanvas);
+        dissolveCanvas = null;
+      }
+    }
 
-      if (reduceMotion) {
+    function beginProfileSwap(src, $btn, photo, wipeMs) {
+      var transition = ++activeProfileTransition;
+      setActiveProfileBtn($btn, wipeMs);
+      endDissolve();
+
+      var stageW = profileStage.clientWidth;
+      var stageH = profileStage.clientHeight;
+      var canvas = !reduceMotion && stageW > 0 && stageH > 0 && photo.naturalWidth
+        ? document.createElement('canvas') : null;
+      var ctx = canvas && canvas.getContext ? canvas.getContext('2d') : null;
+      if (!ctx) {
         $profileImg.attr('src', src);
-        $(profileStage).find('.profile-tile').remove();
+        scheduleAutoSwitch();
         return;
       }
 
-      var w = $(profileStage).width();
-      var h = $(profileStage).height();
-      var tileW = w / TILE_COLS;
-      var tileH = h / TILE_ROWS;
-      var tiles = [];
-      var fragment = document.createDocumentFragment();
+      // Two device pixels per CSS pixel is already past what the dissolve can
+      // show; a phone's third one only costs fill rate.
+      var density = Math.min(window.devicePixelRatio || 1, 2);
+      var pxW = Math.max(1, Math.round(stageW * density));
+      var pxH = Math.max(1, Math.round(stageH * density));
+      canvas.width = pxW;
+      canvas.height = pxH;
+      canvas.className = 'profile-dissolve';
+      canvas.setAttribute('data-src', src);
+      profileStage.appendChild(canvas);
+      dissolveCanvas = canvas;
 
-      for (var row = 0; row < TILE_ROWS; row++) {
-        for (var col = 0; col < TILE_COLS; col++) {
-          var $tile = $('<div class="profile-tile"></div>').css({
-            left: col * tileW + 'px',
-            top: row * tileH + 'px',
-            width: tileW + 'px',
-            height: tileH + 'px'
-          });
-          $('<img>').attr('src', src).css({
-            width: w + 'px',
-            height: h + 'px',
-            left: -col * tileW + 'px',
-            top: -row * tileH + 'px'
-          }).appendTo($tile);
+      // Redo the base image's object-fit: cover crop by hand, so each patch
+      // shows exactly the pixels the finished photo will show in that spot.
+      var scale = Math.max(pxW / photo.naturalWidth, pxH / photo.naturalHeight);
+      var originX = (pxW - photo.naturalWidth * scale) / 2;
+      var originY = (pxH - photo.naturalHeight * scale) / 2;
 
-          tiles.push($tile[0]);
-          fragment.appendChild($tile[0]);
-        }
-      }
-      profileStage.appendChild(fragment);
+      // Patch edges land on whole device pixels so neighbours share an edge
+      // exactly; a fractional one leaves a seam across the whole grid.
+      var colEdges = [];
+      var rowEdges = [];
+      for (var c = 0; c <= TILE_COLS; c++) colEdges.push(Math.round(c * pxW / TILE_COLS));
+      for (var r = 0; r <= TILE_ROWS; r++) rowEdges.push(Math.round(r * pxH / TILE_ROWS));
 
+      var count = TILE_ROWS * TILE_COLS;
+      var order = new Int32Array(count);
+      for (var i = 0; i < count; i++) order[i] = i;
       // Fisher-Yates: the patches are laid out in reading order but have to come
       // up in a scattered one, so shuffle the turn order rather than the layout.
-      var order = tiles.map(function(_, i) { return i; });
-      for (var i = order.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var tmp = order[i]; order[i] = order[j]; order[j] = tmp;
+      for (var last = count - 1; last > 0; last--) {
+        var pick = Math.floor(Math.random() * (last + 1));
+        var held = order[last]; order[last] = order[pick]; order[pick] = held;
       }
 
-      // The stagger is a transition-delay per patch rather than a timer per
-      // patch: at this count the gap is under 2ms, well below what setTimeout
-      // can resolve, so hundreds of timers would clump into visible steps.
-      var step = TILE_SPREAD / Math.max(1, order.length - 1);
-      order.forEach(function(tileIndex, turn) {
-        tiles[tileIndex].style.transitionDelay = (turn * step).toFixed(2) + 'ms';
-      });
+      var step = TILE_SPREAD / Math.max(1, count - 1);
+      var painted = new Float32Array(count); // Alpha already on the canvas.
+      var head = 0; // First patch that is not opaque yet.
+      var tail = 0; // First patch that has not started yet.
+      var startedAt = 0;
 
-      // Wait for every patch's real completion. A wall-clock timer can run ahead
-      // of painting on busy devices and expose unfinished patches at the end.
-      var remaining = tiles.length;
       function finishProfileSwap() {
         if (transition !== activeProfileTransition) return;
+        // The rotation counts from the photo that just settled, not from a
+        // fixed cadence, so a picture is always on screen for its full turn.
+        scheduleAutoSwitch();
         $profileImg.attr('src', src);
         var ready = $profileImg[0].decode ? $profileImg[0].decode() : Promise.resolve();
-        ready.then(function() {
+        ready.catch(function() {}).then(function() {
+          // Only lift the cover once the <img> underneath holds the new photo.
           requestAnimationFrame(function() {
-            if (transition === activeProfileTransition) {
-              $(profileStage).find('.profile-tile').remove();
+            if (transition === activeProfileTransition && dissolveCanvas === canvas) {
+              canvas.parentNode.removeChild(canvas);
+              dissolveCanvas = null;
             }
           });
-        }).catch(function() {
-          // Keep the fully visible patches covering the frame if decoding fails.
         });
       }
-      tiles.forEach(function(tile) {
-        if (TILE_FADE === 0 && parseFloat(tile.style.transitionDelay) === 0) {
-          remaining--;
+
+      // One pass over the patches that are mid-fade, rather than a timer each:
+      // at this count the gap between two starts is under 2ms, well below what
+      // setTimeout can resolve, so the timers would clump into visible steps.
+      function paintFrame(now) {
+        if (transition !== activeProfileTransition) return;
+        if (!startedAt) startedAt = now;
+        var elapsed = now - startedAt;
+        while (tail < count && tail * step <= elapsed) tail++;
+        for (var turn = head; turn < tail; turn++) {
+          var was = painted[turn];
+          if (was >= 1) continue;
+          var target = TILE_FADE > 0
+            ? profileEase(Math.min(1, (elapsed - turn * step) / TILE_FADE))
+            : 1;
+          if (target <= was) continue;
+          // Painting alpha a over alpha A leaves A + a(1 - A), so solve for the
+          // a that lands on this patch's target and the fade stays true to the
+          // easing curve instead of drifting opaque.
+          ctx.globalAlpha = target >= 1 ? 1 : (target - was) / (1 - was);
+          var tile = order[turn];
+          var col = tile % TILE_COLS;
+          var row = (tile - col) / TILE_COLS;
+          var x = colEdges[col];
+          var y = rowEdges[row];
+          var w = colEdges[col + 1] - x;
+          var h = rowEdges[row + 1] - y;
+          if (w > 0 && h > 0) {
+            ctx.drawImage(photo,
+              (x - originX) / scale, (y - originY) / scale, w / scale, h / scale,
+              x, y, w, h);
+          }
+          painted[turn] = target;
+        }
+        // Every patch fades for the same length of time, so they finish in the
+        // order they started and the head only ever moves forwards.
+        while (head < count && painted[head] >= 1) head++;
+        if (head < count) {
+          dissolveFrame = requestAnimationFrame(paintFrame);
           return;
         }
-        function onPatchEnd(event) {
-          if (event.target !== tile || event.propertyName !== 'opacity') return;
-          tile.removeEventListener('transitionend', onPatchEnd);
-          if (--remaining === 0) finishProfileSwap();
-        }
-        tile.addEventListener('transitionend', onPatchEnd);
-      });
+        dissolveFrame = 0;
+        finishProfileSwap();
+      }
 
-      // Read a layout property so the browser commits opacity:0 before the class
-      // lands - without this the tiles jump straight to opaque, no transition.
-      void profileStage.offsetHeight;
-
-      tiles.forEach(function(t) { t.classList.add('show'); });
-
-      // Zero-duration settings have no transitionend event to wait for.
-      if (remaining === 0) finishProfileSwap();
+      dissolveFrame = requestAnimationFrame(paintFrame);
     }
+
+    // The photo also rotates on its own. A manual pick restarts the clock, so
+    // the photo somebody just chose is never replaced a moment later.
+    var autoSwitchTimer = 0;
+    var profileOnScreen = true;
+    if (window.IntersectionObserver) {
+      new IntersectionObserver(function(entries) {
+        profileOnScreen = entries[entries.length - 1].isIntersecting;
+      }).observe(profileStage);
+    }
+
+    function scheduleAutoSwitch() {
+      if (!AUTO_SWITCH) return;
+      clearTimeout(autoSwitchTimer);
+      autoSwitchTimer = setTimeout(function() {
+        // Skip a turn rather than dissolve into a photo nobody is looking at.
+        if (document.hidden || !profileOnScreen) {
+          scheduleAutoSwitch();
+          return;
+        }
+        var index = $profileBtns.index($profileBtns.filter('.active'));
+        var $next = $profileBtns.eq((index + 1) % $profileBtns.length);
+        // The clock is restarted by the swap itself, once the photo has landed.
+        swapProfilePic($next.data('image'), $next, PROFILE_DURATION);
+      }, AUTO_SWITCH);
+    }
+
+    $(document).on('visibilitychange', function() {
+      if (!document.hidden) scheduleAutoSwitch();
+    });
 
     $profileBtns.on('click', function() {
       swapProfilePic($(this).data('image'), $(this));
+      scheduleAutoSwitch();
     });
+
+    scheduleAutoSwitch();
   }
 
   init();
