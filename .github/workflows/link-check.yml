@@ -23,20 +23,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # The same build the deploy workflow runs, minus configure-pages: without
-      # it the baseurl stays empty, so a root-relative href resolves against
-      # _site and the checker can follow it to a real file. That resolution is
-      # what --root-dir does below; lychee 2 rejects a relative --base for it.
+      # The same build the deploy workflow runs.
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
           destination: ./_site
 
+      # Two things have to be squared away before anything can read the output.
+      #
       # jekyll-build-pages runs in a container as root, so _site comes back owned
       # by root and the next step - running as `runner` - cannot write to it.
-      - name: Take ownership of the build
-        run: sudo chown -R "$(id -u):$(id -g)" _site
+      #
+      # And it applies the project-page baseurl by itself, configure-pages or not:
+      # every root-relative href in the output is /<repo>/..., not /... . Checked
+      # against a root-dir of _site those all resolve to _site/<repo>/..., which
+      # does not exist, and every local link fails at once. Staging the output
+      # inside a directory of that name lines the paths up with what is deployed.
+      - name: Take ownership, and stage the build under its baseurl
+        run: |
+          sudo chown -R "$(id -u):$(id -g)" _site
+          mkdir -p _check
+          mv _site "_check/${{ github.event.repository.name }}"
 
       # index.html keeps a long commented-out list of sites using this template.
       # Those links are not on the page, so they are not the page's problem -
@@ -46,7 +54,7 @@ jobs:
         run: |
           python3 - <<'PY'
           import re, pathlib
-          for f in pathlib.Path('_site').rglob('*.html'):
+          for f in pathlib.Path('_check').rglob('*.html'):
               text = f.read_text(encoding='utf-8', errors='ignore')
               f.write_text(re.sub(r'<!--.*?-->', '', text, flags=re.S), encoding='utf-8')
           PY
@@ -62,20 +70,24 @@ jobs:
           # with --include-mail to opt back in. Passing it aborts the run before
           # a single link is checked.
           #
+          # libs/external is vendored: those packages ship their own demo pages,
+          # and this repo cannot fix a link inside one of them.
+          #
           # resume/output is RenderCV's build product, not content written here -
           # its DOIs and CDN script tags are the generator's to get right, and a
           # dead DOI is not something a commit to this repo can fix. The glob
           # picks up the CV's HTML rendering; --exclude-path (a regex) drops it.
           args: >-
             --no-progress
-            --root-dir ${{ github.workspace }}/_site
+            --root-dir ${{ github.workspace }}/_check
             --exclude-path resume/output/
+            --exclude-path libs/external/
             --accept 200..=299,403,429,999
             --max-concurrency 8
             --max-retries 2
             --timeout 25
             --cache
             --max-cache-age 1d
-            './_site/**/*.html'
+            './_check/**/*.html'
           fail: true
           jobSummary: true
