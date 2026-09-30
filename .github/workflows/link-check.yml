@@ -57,11 +57,14 @@ jobs:
           # Hosts that block robots answer a live URL with 403 or LinkedIn's
           # own 999; treated as reachable, since the alternative is a red run
           # every week over links that are fine in a browser.
+          #
+          # No --exclude-mail: lychee 2 dropped it and skips mailto by default,
+          # with --include-mail to opt back in. Passing it aborts the run before
+          # a single link is checked.
           args: >-
             --no-progress
             --root-dir ${{ github.workspace }}/_site
             --accept 200..=299,403,429,999
-            --exclude-mail
             --max-concurrency 8
             --max-retries 2
             --timeout 25
