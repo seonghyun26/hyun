@@ -27,7 +27,7 @@ title: Home
   </h5> -->
 
   <h4>Bio</h4>
-  Hello! I'm a 2nd year Ph.D. student at <a href="https://gsai.kaist.ac.kr/">Kim Jaechul Graduate School of AI at KAIST</a>, advised by <a href="https://sungsoo-ahn.github.io/">Sungsoo Ahn</a> in the Structured and Probabilistic Machine Learning (<img src="{{ '/assets/img/spml_logo.svg' | prepend: site.baseurl }}" alt="SPML" class="spml-logo" />) Lab.
+  Hello! I'm a 2nd year Ph.D. student at <a href="https://gsai.kaist.ac.kr/">KAIST AI</a>, advised by <a href="https://sungsoo-ahn.github.io/">Sungsoo Ahn</a> in the <a class="spml-logo-link" href="https://sites.google.com/view/sungsooahn0215"><img src="{{ '/assets/img/logo/spml_logo.svg' | prepend: site.baseurl }}" alt="SPML" class="spml-logo" /></a> Lab.
   My research interests are mainly on <b>AI4Science</b>, integrating machine learning to advance scientific discovery on small molecules and proteins! I'm interested in the following topics:
   <br>
   <br>
@@ -255,10 +255,16 @@ title: Home
       <div class="side-project-modal" id="side-project-modal-{{ forloop.index0 }}" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="side-project-title-{{ forloop.index0 }}">
         <div class="side-project-modal-backdrop"></div>
         <div class="side-project-modal-content">
-          <button class="side-project-modal-close" aria-label="Close project">&times;</button>
           <div class="side-project-modal-header">
             <div class="side-project-modal-header-info">
-              <h5 id="side-project-title-{{ forloop.index0 }}">{{ project.title }}</h5>
+              <div class="side-project-modal-title-row">
+                <h5 id="side-project-title-{{ forloop.index0 }}">{{ project.title }}</h5>
+                <button class="side-project-modal-close" aria-label="Close project">
+                  <svg class="side-project-modal-close-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M5.5 5.5 18.5 18.5M18.5 5.5 5.5 18.5"/>
+                  </svg>
+                </button>
+              </div>
               {% if project.date %}
                 <p class="side-project-modal-date">{{ project.date | date: "%B %Y" }}</p>
               {% endif %}
@@ -280,7 +286,7 @@ title: Home
           </div>
           <div class="side-project-modal-body">
             {% if project.include %}
-              {% capture md_content %}{% include {{ project.include }} %}{% endcapture %}
+              {% capture md_content %}{% include_relative {{ project.include }} %}{% endcapture %}
               {{ md_content | markdownify }}
             {% elsif project.description %}
               {{ project.description }}
@@ -467,6 +473,6 @@ title: Home
     ChaeYoung Huh
     </a> for the inspiration behind the profile photo transitions!
   </br>
-    Feel free to use from my version of the template on <a href="https://github.com/seonghyun26/hyun">github</a>,
-    if you end up using it just drop me an <a href="mailto:hyun26@kaist.ac.kr">email</a> and I would be happy 😆!
+    Feel free to use from my version of the template on <a href="https://github.com/seonghyun26/hyun"><i class="fa fa-github" aria-hidden="true"></i>Github</a>.
+    If you end up using it, just drop me an <a href="mailto:hyun26@kaist.ac.kr">email</a> and I would be happy 😆
 </div>

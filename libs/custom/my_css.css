@@ -98,9 +98,13 @@ h4 {
   font-size: 0.85em;
 }
 
+/* The selected tab in both groups - Selected/All, Music/Photos. skeleton-tabs
+   already steps 500 to 600 here, which reads as barely a change; 700 is the
+   weight the rest of the page calls bold. */
 #publications .tab-nav .button.active,
 #hobbies .tab-nav .button.active {
   color: var(--accent-strong);
+  font-weight: 700;
 }
 
 .paper .title a {
@@ -242,6 +246,17 @@ h4 {
   display: block;
 }
 
+/*
+ * A paper's text sits a column gutter away from its thumbnail, which is tight
+ * against the image frame — and tighter still while the frame is hovered up to
+ * 1.12. Pad the text column so the title keeps clear of both.
+ */
+@media (min-width: 550px) {
+  .paper > .row > .columns + .columns {
+    padding-left: 1.2rem;
+  }
+}
+
 /* Larger than phone */
 @media (min-width: 550px) {
   .header {
@@ -289,7 +304,7 @@ h4 {
 
   .navbar-link {
     text-transform: uppercase;
-    font-size: 11px;
+    font-size: 12.1px;   /* Skeleton's 11px × 1.1 */
     font-weight: 600;
     letter-spacing: .2rem;
     margin-right: 35px;
@@ -324,36 +339,54 @@ h4 {
   top: 50%;
   left: 20px;
   transform: translateY(-50%);
-  width: 40px;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 16px 10px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  /*
+   * One vertical axis, shared by both states: the collapsed ticks are centred on
+   * it and the expanded active marker's border sits on it, so the mark does not
+   * jump sideways when the panel opens. Measured from this element's left edge,
+   * which never moves.
+   */
+  --toc-axis: 20px;
+  --toc-pad-x: 10px;
+  /* Thickness of both marks - the collapsed tick's height and the expanded
+     active bar's width. A whole pixel: fractional border widths get snapped to
+     device pixels, so 2.4px painted the same as 2px on an ordinary screen and
+     half a pixel thicker on a retina one - a change you could not see.
+     The axis offsets below are derived from this, so changing it keeps both
+     marks centred on --toc-axis. */
+  --toc-mark: 3px;
+
+  /*
+   * The same box in both states. It used to widen on hover, which meant the area
+   * that opened the panel was narrower than the area whose exit closed it again -
+   * the pointer could leave and re-enter without meaning to. One width, the wider
+   * of the two, so opening and closing answer to the same rectangle.
+   */
+  width: 180px;
+  padding: 24px var(--toc-pad-x);
   display: none;
   z-index: 1000;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  transition: width 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  /*
+   * No panel in either state: collapsed it is the tick marks alone, expanded it
+   * is the section names alone. Nothing is painted behind either, so there is no
+   * background, border, shadow or radius here.
+   */
+  background: transparent;
+  transition: padding 0.3s ease, transform 0.3s ease;
   overflow: hidden;
 }
 
-#floating-toc:is(:hover, :focus-within) {
-  width: 230px;
-  padding: 24px 22px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-#floating-toc h5 {
-  font-size: 1.6rem;
-  margin-bottom: 16px;
-  text-align: center;
-  font-weight: 600;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  white-space: nowrap;
-}
-
-#floating-toc:is(:hover, :focus-within) h5 {
-  opacity: 1;
+/*
+ * :has(:focus-visible) rather than :focus-within. Clicking a link focuses it, and
+ * :focus-within then held the panel open after the pointer had left - it stayed
+ * expanded until something else took focus. :focus-visible is not set by a mouse
+ * click, so a click no longer pins it open, while tabbing to a link still does.
+ * :is() is forgiving, so a browser without :has() drops that half and keeps
+ * :hover working.
+ */
+#floating-toc:is(:hover, :has(:focus-visible)) {
+  /* Only the left inset moves: back by half a mark, so the active marker's
+     border straddles --toc-axis exactly where the collapsed tick was centred. */
+  padding: 24px calc(var(--toc-axis) - var(--toc-mark) / 2);
 }
 
 #floating-toc ul {
@@ -366,52 +399,77 @@ h4 {
   margin-bottom: 14px;
 }
 
+/*
+ * The expanded list sets the rhythm; the collapsed ticks follow it. Every row is
+ * the height the name occupies when shown - so the row is that height in the
+ * collapsed state too, rather than shrinking to its 2px tick, and centres
+ * whichever of the two it is holding. That is what keeps each tick on the middle
+ * of the name it stands for. Were the pitches to differ, only the middle row
+ * could line up, the list being centred as a whole.
+ */
 #floating-toc a {
   text-decoration: none;
   color: transparent;
   font-size: 1.4rem;
+  line-height: 1.6;
+  /* The 2.24rem line box (1.4rem x 1.6) plus the 2px it used to carry above and
+     below as padding; flex centring reproduces that padding exactly. */
+  height: calc(2.24rem + 4px);
+  display: flex;
+  align-items: center;
+  padding: 0;
   transition: color 0.2s ease, padding-left 0.2s ease;
-  display: block;
-  padding: 2px 0;
   position: relative;
   white-space: nowrap;
 }
 
-/* Collapsed state: show a short line for each link */
+/*
+ * Collapsed state: one tick per link. Thinner and shorter than the section
+ * titles they stand for, and the current section reads as the long one - length
+ * carries the state as well as the colour does, so it survives a glance.
+ */
 #floating-toc a::before {
   content: '';
   display: block;
-  width: 18px;
-  height: 3px;
+  flex: 0 0 auto;   /* the row also holds the (transparent) name; do not shrink */
+  --tick-w: 12px;
+  width: var(--tick-w);
+  height: var(--toc-mark);
   background: #ccc;
-  border-radius: 2px;
-  transition: opacity 0.2s ease, background 0.2s ease;
+  border-radius: calc(var(--toc-mark) / 2);   /* keeps the ends round */
+  /* Centre the tick on the shared axis, whatever its length. Transitioning the
+     margin with the width makes the active one grow about its middle rather
+     than stretch out to the right. */
+  margin-left: calc(var(--toc-axis) - var(--tick-w) / 2 - var(--toc-pad-x));
+  transition: opacity 0.2s ease, width 0.2s ease, margin-left 0.2s ease,
+              background 0.2s ease;
 }
 
 #floating-toc a.active::before {
+  --tick-w: 20px;
   background: var(--accent-strong);
 }
 
 /* Expanded state on hover: show text, hide lines */
-#floating-toc:is(:hover, :focus-within) a {
+#floating-toc:is(:hover, :has(:focus-visible)) a {
   color: #555;
 }
 
-#floating-toc:is(:hover, :focus-within) a::before {
+#floating-toc:is(:hover, :has(:focus-visible)) a::before {
   opacity: 0;
   width: 0;
-  height: 0;
+  margin-left: 0;
 }
 
-#floating-toc:is(:hover, :focus-within) a:hover {
+#floating-toc:is(:hover, :has(:focus-visible)) a:hover {
   color: var(--accent);
 }
 
-#floating-toc:is(:hover, :focus-within) a.active {
+#floating-toc:is(:hover, :has(:focus-visible)) a.active {
   color: var(--accent-strong);
   font-weight: 600;
   padding-left: 6px;
-  border-left: 2px solid var(--accent-strong);
+  border-left: var(--toc-mark) solid var(--accent-strong);
 }
 
 /* Only show on larger screens */
@@ -512,8 +570,12 @@ h4 {
 @media (min-width: 550px) {
   .header .profile-header {
     --profile-gutter: 4%;
+    /* The gap between the photo and the name beside it is its own measure: the
+       outer gutter keeps the photo lined up with the page, while the text needs
+       a little more air than a column gutter gives it. */
+    --profile-text-gap: 6%;
     display: grid;
-    grid-template-columns: var(--profile-gutter) 33.12% var(--profile-gutter) minmax(0, 1fr);
+    grid-template-columns: var(--profile-gutter) 33.12% var(--profile-text-gap) minmax(0, 1fr);
     align-items: start;
   }
 
@@ -1196,7 +1258,6 @@ body.has-overlay {
 
 .side-project-modal-header {
   padding: 30px 40px 18px;
-  padding-right: 64px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   flex-shrink: 0;
 }
@@ -1239,7 +1300,7 @@ body.has-overlay {
 }
 
 .side-project-modal-body h2 {
-  font-size: 1.7rem;
+  font-size: 2.04rem;   /* 1.7 × 1.2 — a writeup's section heads read too close to its body text */
   font-weight: 700;
   margin-top: 28px;
   margin-bottom: 10px;
@@ -1314,29 +1375,62 @@ body.has-overlay {
   margin-bottom: 12px;
 }
 
+/*
+ * The × shares the title's line rather than floating over the corner, so it is
+ * centred on the title by construction — no offset to re-guess per breakpoint.
+ * Its box is the title's own line height (font-size × the 1.5 line-height), so
+ * the row is no taller than the title alone.
+ */
+.side-project-modal-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 2px;
+}
+
+.side-project-modal-title-row h5 {
+  margin-bottom: 0;
+}
+
 .side-project-modal-close {
-  position: absolute;
-  top: 14px;
-  right: 18px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.6rem;   /* h5 at 2.4rem × the 1.5 line-height */
+  height: 3.6rem;
   background: none;
   border: none;
-  font-size: 4.8rem;
   cursor: pointer;
   color: #666;
-  line-height: 1;
   padding: 0;
-  width: 56px;
-  height: 56px;
   margin: 0;
-  z-index: 1;
-  border-radius: 6px;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: color 0.15s ease;
+}
+
+/*
+ * Drawn rather than set as a × character: that glyph's ink sits below the middle
+ * of its own line box in this font, so centring the box still left the mark
+ * looking dropped. A 24-unit canvas centres on the title exactly, at any size.
+ * Same light rounded stroke as the profile switcher's icons.
+ */
+.side-project-modal-close-svg {
+  /* 0.8 of the button, which stays at the title's line height as the click
+     target. Scaling the canvas rather than the path takes the stroke with it. */
+  width: 80%;
+  height: 80%;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.92;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .side-project-modal-close:hover,
 .side-project-modal-close:focus-visible {
   color: var(--accent-strong);
-  background: var(--accent-wash);
 }
 
 @media (max-width: 749px) {
@@ -1346,7 +1440,7 @@ body.has-overlay {
   }
 
   .side-project-modal-header {
-    padding: 24px 64px 14px 24px;
+    padding: 24px 24px 14px;
   }
 
   .side-project-modal-body {
@@ -1391,7 +1485,7 @@ body.has-overlay {
   }
 
   .side-project-modal-header {
-    padding: 20px 64px 12px 16px;
+    padding: 20px 16px 12px;
   }
 
   .side-project-modal-header h5 {
@@ -1408,7 +1502,7 @@ body.has-overlay {
   }
 
   .side-project-modal-body h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;   /* 1.5 × 1.2, to match */
     margin-top: 20px;
   }
 
@@ -1426,11 +1520,8 @@ body.has-overlay {
   }
 
   .side-project-modal-close {
-    top: 10px;
-    right: 12px;
-    font-size: 4rem;
-    width: 48px;
-    height: 48px;
+    width: 2.7rem;   /* h5 drops to 1.8rem here, still × 1.5 */
+    height: 2.7rem;
   }
 
   .side-project-modal-github-btn {
@@ -1599,6 +1690,21 @@ body.has-overlay {
   vertical-align: middle;
   position: relative;
   top: -0.15em;
+}
+
+/*
+ * The wordmark stands in for the lab's name, so the link around it carries no
+ * text to underline or recolour on hover. A slight fade is the affordance.
+ */
+.spml-logo-link {
+  display: inline-block;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.spml-logo-link:hover,
+.spml-logo-link:focus-visible {
+  opacity: 0.65;
 }
 
 /* Shrink the [at] / [dot] separators in the obfuscated email */

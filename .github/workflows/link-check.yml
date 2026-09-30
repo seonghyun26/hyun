@@ -32,6 +32,11 @@ jobs:
           source: ./
           destination: ./_site
 
+      # jekyll-build-pages runs in a container as root, so _site comes back owned
+      # by root and the next step - running as `runner` - cannot write to it.
+      - name: Take ownership of the build
+        run: sudo chown -R "$(id -u):$(id -g)" _site
+
       # index.html keeps a long commented-out list of sites using this template.
       # Those links are not on the page, so they are not the page's problem -
       # strip comments from the built copy before checking it. The source is

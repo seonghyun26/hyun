@@ -62,7 +62,9 @@ $(document).ready(function() {
   }
 
   function buildTOC() {
-    var toc = $('<div id="floating-toc"><h5>Contents</h5><ul></ul></div>');
+    // No heading: the list of section names is its own label, and a "Contents"
+    // title only costs height in a panel that is already small.
+    var toc = $('<div id="floating-toc" aria-label="Contents"><ul></ul></div>');
     var $sections = $('.docs-section').filter(function() {
       return this.id && $(this).find('h4').length;
     });
@@ -95,10 +97,15 @@ $(document).ready(function() {
 
       // Highlight active section
       var currentId = '';
-      $sections.each(function() {
+      $sections.each(function(i) {
         // Use the same reachable position as a TOC click. Short final sections
         // cannot always reach the top of the viewport, especially when folded.
-        var sectionTop = sectionScrollTop(this);
+        //
+        // The first section reaches back to the top of the page: the header and
+        // the navbar above it are still part of the section you are reading, so
+        // Bio is current from the very first pixel rather than only once its own
+        // heading is reached - which otherwise left nothing marked at all.
+        var sectionTop = i === 0 ? 0 : sectionScrollTop(this);
         if (scrollTop + 2 >= sectionTop) {
           currentId = $(this).attr('id');
         }
