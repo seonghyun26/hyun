@@ -30,7 +30,7 @@ Change one of the files in `_data`, unless you are changing the look of the webs
 | `photos.yaml` | the Hobbies gallery |
 
 Images live under `assets/img/` — `logo/`, `profile/`, `camera/`, and `project/<project>/` for a side
-project's screenshots; paper thumbnails and PDFs under `assets/publications/`. A side project's longer
+project's screenshots; paper PDFs under `assets/publications/`, paper thumbnails under `assets/img/publications/`. A side project's longer
 writeup is Markdown in `projects/`, pulled into the page by that project's `include:` key (via
 `include_relative`, which reads the source tree; `_config.yml` excludes `projects` from the build so
 the writeups are not also served as raw markdown).

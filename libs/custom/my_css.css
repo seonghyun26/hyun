@@ -1673,10 +1673,8 @@ body.has-overlay {
 
 /*  ================ CV timeline logos  ================ */
 /*
- * The flag stays one line - mark, then name - at every width. In the left-hand
- * column the pair is mirrored so the logo sits beside the timeline rather than
- * out at the ragged edge; once the timeline folds into a single column there is
- * no left and right any more, so both read logo first.
+ * The flag stays one line - mark, then name - at every width and in both
+ * columns, so work and school entries read the same way round.
  */
 /* Scoped to .timeline to outweigh timeline.css, which is loaded after this. */
 .timeline .flag {
@@ -1685,6 +1683,7 @@ body.has-overlay {
   align-items: center;
   gap: 7px;
   background: var(--flag-plate);
+  padding: 4.8px 10px; /* was 6px, from timeline.css */
 }
 
 /* The whole plate is the link - mark, name and the card they sit on - so the
@@ -1737,10 +1736,6 @@ body.has-overlay {
   }
 }
 
-.timeline .direction-l .flag {
-  flex-direction: row-reverse;
-}
-
 /*
  * Logos are whatever shape their owner made them, from a round seal to a wide
  * wordmark, so fix the height and let the width follow. The cap keeps the
@@ -1753,12 +1748,6 @@ body.has-overlay {
   object-fit: contain;
   flex-shrink: 0;
   display: block;
-}
-
-@media screen and (max-width: 660px) {
-  .timeline .direction-l .flag {
-    flex-direction: row;
-  }
 }
 
 /*  ================ Hobbies heading  ================ */

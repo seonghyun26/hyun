@@ -13,6 +13,11 @@ url: "https://seonghyun26.github.io"
 
 theme: minima
 
+include:
+  # Jekyll skips anything starting with "_", so the preprint assets would never
+  # reach the build without this.
+  - "_preprint_*"
+
 exclude:
   # The project writeups are pulled into the page by include_relative, which reads
   # the source tree - nothing links to them, so they need not also be served as

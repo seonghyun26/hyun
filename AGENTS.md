@@ -29,7 +29,7 @@ This is a data-driven Jekyll site. The page layout and content are intentionally
 
 - **`libs/custom/my_css.css`** and **`libs/custom/my_js.js`** — site-specific styles and scripts.
 
-- **`assets/publications/`** — paper PDFs and `thumbnails/` for paper images. The `profile-pics/` directory is under `assets/`.
+- **`assets/publications/`** — paper PDFs. Paper thumbnails live under `assets/img/publications/`. The `profile-pics/` directory is under `assets/`.
 
 ## Key Conventions
 
@@ -38,4 +38,4 @@ This is a data-driven Jekyll site. The page layout and content are intentionally
 - Set `selected: y` on papers to show them in the "Selected" publications tab
 - `baseurl` is set via `_config.yml` (currently commented out as `/~hyun`); all asset paths use `{{ site.baseurl }}` prepend
 - Paper PDFs follow naming convention: `assets/publications/YYVENUE_ShortName.pdf`
-- Thumbnails go in `assets/publications/thumbnails/`
+- Thumbnails go in `assets/img/publications/`, named to match their PDF
