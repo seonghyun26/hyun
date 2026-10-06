@@ -20,7 +20,7 @@ This is a data-driven Jekyll site. The page layout and content are intentionally
 
 - **Content lives in `_data/*.yaml`** — almost all updates (adding a paper, updating experience, changing profile info) should be done by editing these YAML files, not the HTML.
   - `main_info.yaml` — name, title, email, profile pic path, social links (Google Scholar, GitHub, LinkedIn)
-  - `publications.yaml` — list of papers with fields: `title`, `authors`, `venue`, `paper_pdf`, `thumbnail`, `url`, `selected` (y/n), and optional `page`, `slides`, `poster`, `video`, `code`, `data`
+  - `publications.yaml` — list of papers with fields: `title`, `authors`, `venue` (list of `name` + optional `url` and `note`; a conference links to the paper's virtual page, a workshop to its homepage), `paper_pdf`, `thumbnail`, `selected` (y/n), and optional `page`, `slides`, `poster`, `video`, `code`, `data`
   - `experience.yaml` — CV timeline entries with `place`, `time`, `title`, `subtitle`, `category` ("work" or "school" — determines left/right placement on timeline)
 
 - **`index.html`** — main page, uses Liquid templates to render data from `_data/`. Sections: Bio, Publications (with Selected/All tabs), CV timeline. The Projects section exists in markup but is commented out.

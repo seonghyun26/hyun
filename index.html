@@ -96,7 +96,13 @@ title: Home
                 {% endif %}
               {% endfor %}
               <p class="authors">{{ author_text }}</p>
-              <p class="venue"><i>{{ paper.venue }}</i></p>
+              <p class="venue"><i>
+                {%- for v in paper.venue -%}
+                  {%- if v.url -%}<a href="{{ v.url }}" target="_blank" class="venue-link">{{ v.name }}</a>{%- else -%}{{ v.name }}{%- endif -%}
+                  {%- if v.note %} ({{ v.note }}){% endif -%}
+                  {%- unless forloop.last -%}<br>{%- endunless -%}
+                {%- endfor -%}
+              </i></p>
               <div class="paper-buttons">
                 {% if paper.page %}
                   <a class="button" href="{{ paper.page }}" target="_blank"><i class="fa fa-flask" aria-hidden="true"></i> Project page</a>
@@ -178,7 +184,13 @@ title: Home
                 {% endif %}
               {% endfor %}
               <p class="authors">{{ author_text }}</p>
-              <p class="venue"><i>{{ paper.venue }}</i></p>
+              <p class="venue"><i>
+                {%- for v in paper.venue -%}
+                  {%- if v.url -%}<a href="{{ v.url }}" target="_blank" class="venue-link">{{ v.name }}</a>{%- else -%}{{ v.name }}{%- endif -%}
+                  {%- if v.note %} ({{ v.note }}){% endif -%}
+                  {%- unless forloop.last -%}<br>{%- endunless -%}
+                {%- endfor -%}
+              </i></p>
               <div class="paper-buttons">
                 {% if paper.page %}
                   <a class="button" href="{{ paper.page }}" target="_blank"><i class="fa fa-flask" aria-hidden="true"></i> Project page</a>
