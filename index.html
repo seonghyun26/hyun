@@ -109,7 +109,7 @@ title: Home
                 {% endif %}
 
                 {% if paper.paper_pdf %}
-                  <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Paper</a>
+                  <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">{% include icon-paper.svg %} Paper</a>
                 {% endif %}
 
                 {% if paper.arxiv %}
@@ -197,7 +197,7 @@ title: Home
                 {% endif %}
 
                 {% if paper.paper_pdf %}
-                  <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Paper</a>
+                  <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">{% include icon-paper.svg %} Paper</a>
                 {% endif %}
 
                 {% if paper.arxiv %}

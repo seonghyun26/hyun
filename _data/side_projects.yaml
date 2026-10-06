@@ -2,7 +2,7 @@
 # `date`: the day the project was first registered here (YYYY-MM-DD).
 projects:
   - title: "Atlas Log"
-    subtitle: "Recodring travel experiences across the globe"
+    subtitle: "Recording travel experiences across the globe"
     date: "2026-09-28"
     description: "Ongoing, TBA"
     thumbnail: "/assets/img/project/atlas-log/preview.png"

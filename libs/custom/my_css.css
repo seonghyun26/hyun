@@ -192,15 +192,25 @@ h4 {
 }
 
 .paper .button .fa,
-.paper .button .ai {
+.paper .button .ai,
+.paper .button .paper-icon {
   margin-right: 4px;
+}
+
+/* A plain sheet with a deep dog-ear, drawn inline in place of Font Awesome's
+   file-pdf glyph and its Acrobat mark. Sized to the glyphs beside it. */
+.paper-icon {
+  width: 0.875em;
+  height: 1em;
+  vertical-align: -0.125em;
 }
 
 /* The glyphs are set at the label's 12px, which leaves them spindly next to it.
    Draw them larger with a transform, which costs no layout: the advance stays
    what it was, so no button grows a pixel wider. */
 .paper-buttons .button .fa,
-.paper-buttons .button .ai {
+.paper-buttons .button .ai,
+.paper-buttons .button .paper-icon {
   display: inline-block;
   transform: scale(1.3);
   transform-origin: center;
