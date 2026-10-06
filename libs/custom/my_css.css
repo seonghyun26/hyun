@@ -30,6 +30,14 @@ html {
 }
 
 :root {
+  /* Four text sizes for everything below the headings: running text, the
+     supporting lines under it (authors, venues, roles), captions and controls,
+     and the metadata at the bottom (dates, years, separators). */
+  --fs-body: 17px;
+  --fs-sub: 14px;
+  --fs-caption: 12px;
+  --fs-meta: 10px;
+
   /* Interactive accents: the light one at rest, the strong one for hover and
      for whatever is currently selected. */
   --accent: #8092F6;
@@ -69,6 +77,11 @@ html {
   font-size: 70%;
 }
 
+/* Skeleton sets the body to 1.5em of the root, 16.8px here. */
+body {
+  font-size: var(--fs-body);
+}
+
 h4 {
   letter-spacing: .1rem;
   font-weight: 700;
@@ -99,7 +112,12 @@ h4 {
 }
 
 .publication-note {
-  font-size: 0.85em;
+  font-size: var(--fs-sub);
+}
+
+.publication-note sup,
+.paper .authors sup {
+  font-size: var(--fs-meta);
 }
 
 /* The selected tab in both groups - Selected/All, Music/Photos. skeleton-tabs
@@ -124,11 +142,11 @@ h4 {
 }
 
 /* The author list and the venue are supporting lines, not the entry itself. Set
-   to the same 0.85em as .publication-note, so every piece of small print in this
+   to the same size as .publication-note, so every piece of small print in this
    section is one size. */
 .paper .authors,
 .paper .venue {
-  font-size: 0.85em;
+  font-size: var(--fs-sub);
 }
 
 /* A workshop name links to its page but should read as plain venue text: no
@@ -167,6 +185,7 @@ h4 {
   display: inline-block;
   height: 25px;
   padding: 0 25px;
+  font-size: var(--fs-caption);
   font-weight: 500;
   line-height: 25px;
   text-transform: none;
@@ -177,7 +196,7 @@ h4 {
   margin-right: 4px;
 }
 
-/* The glyphs are set at the label's 11px, which leaves them spindly next to it.
+/* The glyphs are set at the label's 12px, which leaves them spindly next to it.
    Draw them larger with a transform, which costs no layout: the advance stays
    what it was, so no button grows a pixel wider. */
 .paper-buttons .button .fa,
@@ -329,7 +348,7 @@ h4 {
 
   .navbar-link {
     text-transform: uppercase;
-    font-size: 12.1px;   /* Skeleton's 11px × 1.1 */
+    font-size: var(--fs-caption);
     font-weight: 600;
     letter-spacing: .2rem;
     margin-right: 35px;
@@ -1218,7 +1237,7 @@ h4 {
 
 .side-project-card-title {
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: var(--fs-body);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1231,7 +1250,7 @@ h4 {
 }
 
 .side-project-card-subtitle {
-  font-size: 1.1rem;
+  font-size: var(--fs-caption);
   color: rgba(0, 0, 0, 0.5);
   white-space: nowrap;
   overflow: hidden;
@@ -1541,11 +1560,11 @@ body.has-overlay {
   }
 
   .side-project-card-title {
-    font-size: 1.2rem;
+    font-size: var(--fs-sub);
   }
 
   .side-project-card-subtitle {
-    font-size: 1rem;
+    font-size: var(--fs-caption);
   }
 
   .side-project-card-footer {
@@ -1775,6 +1794,7 @@ body.has-overlay {
 }
 
 #hobbies-hint {
+  font-size: var(--fs-sub);
   margin-bottom: 4px; /* was 28px */
 }
 
@@ -1803,7 +1823,7 @@ body.has-overlay {
 
 /* Shrink the [at] / [dot] separators in the obfuscated email */
 .email-sep {
-  font-size: 0.6em;
+  font-size: var(--fs-meta);
 }
 
 /* ===== Academic Service (under Vitæ) ===== */
@@ -1811,7 +1831,7 @@ body.has-overlay {
   margin-top: 35px;
 }
 .service h5 {
-  font-size: 1.5rem;
+  font-size: var(--fs-body);
   margin-bottom: 12px;
 }
 .service-line {
@@ -1820,7 +1840,7 @@ body.has-overlay {
   align-items: baseline;
   gap: 7px;
   margin-bottom: 8px;
-  font-size: 1.2rem;
+  font-size: var(--fs-sub);
 }
 .service-label {
   font-weight: 600;
@@ -1834,12 +1854,10 @@ body.has-overlay {
   padding: 2px 9px;
   border-radius: 11px;
   background: rgba(26, 115, 232, 0.08);
-  font-size: 0.92em;
   white-space: nowrap;
 }
 .service-years {
   color: rgba(0, 0, 0, 0.45);
-  font-size: 0.9em;
   margin-left: 3px;
 }
 /* On a phone the label would leave a ragged stub of the first venue beside it,
@@ -1853,6 +1871,21 @@ body.has-overlay {
 
 .service-more {
   color: rgba(0, 0, 0, 0.45);
-  font-size: 0.78em;
   font-style: italic;
+}
+
+/* The vendored tab and timeline sheets load after this one, so these reach
+   them through a containing id to land on the same four sizes. */
+.docs-section ul.tab-nav li .button {
+  font-size: var(--fs-caption);
+}
+
+#resume .timeline .time-wrapper {
+  font-size: var(--fs-meta);
+}
+
+/* In the Vitae the place names keep the body size; the role and affiliation
+   under each are captions. */
+#resume .timeline .desc {
+  font-size: var(--fs-caption);
 }
