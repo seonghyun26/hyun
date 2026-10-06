@@ -25,6 +25,7 @@ papers:
     authors: "Hyosoon Jang, Hyunjin Seo, Honghui Kim, <b>Seonghyun Park</b>, Taewon Kim, Yunhui Jang, Sungsoo Ahn"
     venue:
       - name: "NeurIPS 2026"
+        url: "https://neurips.cc/virtual/2026/loc/sydney/poster/154961"
     paper_pdf: "/assets/publications/_preprint_cofolding.pdf"
     thumbnail: "/assets/img/publications/_preprint_cofolding.png"
     arxiv: "https://arxiv.org/abs/2602.13249"
