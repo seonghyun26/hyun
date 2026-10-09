@@ -1,0 +1,43 @@
+# Add title, image and link entries to extend each horizontal gallery.
+# Local paths start with /; external links use a full URL.
+---
+title: Molecular futures.
+intro: Understanding proteins. Designing molecules. Connecting them through autonomous
+  science.
+groups:
+- id: proteins
+  name: Proteins
+  papers:
+  - title: Learning Collective Variables from BioEmu with Time-lagged Generation
+    image: "/assets/img/publications/26ICLR_BioEmuCV.png"
+    link: "/assets/publications/26ICLR_BioEmuCV.pdf"
+  - title: Transition path sampling with improved off-policy training of diffusion
+      path samplers
+    image: "/assets/img/publications/25ICLR_TPS-DPS.png"
+    link: "/assets/publications/25ICLR_TPS-DPS.pdf"
+  - title: Riemannian MeanFlow
+    image: "/assets/img/publications/26ICML_RMF.png"
+    link: "/assets/publications/26ICML_RMF.pdf"
+  - title: AMD · Agents for molecular dynamics & collective variables
+    image: "/assets/img/project/amd/session-analysis-result.png"
+    link: https://github.com/seonghyun26/amd
+- id: interactions
+  name: protein X molecule interaction
+  papers:
+  - title: Blending experimental electron density information to protein-ligand interactions
+    image: "/assets/img/publications/_preprint_CoDE.png"
+    link: "/assets/publications/_preprint_CoDE.pdf"
+- id: molecules
+  name: Small molecules
+  papers:
+  - title: Non-backtracking Graph Neural Networks
+    image: "/assets/img/publications/24TMLR_NBA-GNN.png"
+    link: "/assets/publications/24TMLR_NBA-GNN.pdf"
+  - title: A Systematic Evaluation of Co-folding Model Representations for Small-Molecule
+      Learning
+    image: "/assets/img/publications/_preprint_cofolding.png"
+    link: "/assets/publications/_preprint_cofolding.pdf"
+  - title: 'INDIBATOR: Diverse and Fact-Grounded Individuality for Multi-Agent Debate
+      in Molecular Discovery'
+    image: "/assets/img/publications/_preprint_Indibator.png"
+    link: "/assets/publications/_preprint_Indibator.pdf"

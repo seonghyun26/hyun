@@ -260,11 +260,28 @@ $(document).ready(function() {
   // most expensive thing on the page, and all of it before anyone asked for it.
   // Give them their src when the section is opened.
   function loadHobbyVideos() {
+    if ($('#hobbies-toggle').attr('aria-expanded') !== 'true' ||
+        !$('#hobbies-music').hasClass('active')) return;
     $('#hobbies-content iframe[data-src]').each(function() {
       this.src = this.getAttribute('data-src');
       this.removeAttribute('data-src');
     });
   }
+
+  // Unload hidden players to stop playback, including before a player is ready.
+  // Keep their URLs for lazy loading when Music becomes visible again.
+  function stopHobbyVideos() {
+    $('#hobbies-content iframe[src]').each(function() {
+      this.setAttribute('data-src', this.getAttribute('src'));
+      this.removeAttribute('src');
+    });
+  }
+
+  // Bind directly: the tab library stops the click from bubbling to ancestors.
+  $('#hobbies-content .tab-nav .button').on('click', function() {
+    if ($(this).attr('data-ref') === '#hobbies-music') loadHobbyVideos();
+    else stopHobbyVideos();
+  });
 
   // Keep the hint's space stable so fading it out never jumps the content.
   $('#hobbies-toggle').on('click keydown', function(e) {
@@ -276,6 +293,7 @@ $(document).ready(function() {
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     $(this).attr('aria-expanded', String(expanded));
     if (expanded) loadHobbyVideos();
+    else stopHobbyVideos();
     // Interrupt from the current height instead of queuing extra toggles.
     $('#hobbies-content').stop(true, false).slideToggle(reducedMotion ? 0 : 550, 'swing');
     var $hint = $('#hobbies-hint').stop(true, false).attr('aria-hidden', String(expanded));
@@ -292,10 +310,12 @@ $(document).ready(function() {
   // Photo lightbox
   var photoItems = [];
   var currentPhotoIndex = 0;
+  var photoTrigger = null;
 
   $('.photo-item').each(function() {
     photoItems.push({
       src: $(this).find('img').attr('src'),
+      alt: $(this).find('img').attr('alt') || '',
       caption: $(this).find('.photo-caption').text() || '',
       location: $(this).find('.photo-location').text() || '',
       camera: $(this).data('camera') || '',
@@ -308,7 +328,9 @@ $(document).ready(function() {
     currentPhotoIndex = (index + photoItems.length) % photoItems.length;
     var photo = photoItems[currentPhotoIndex];
     var $lb = $('#photo-lightbox');
-    $lb.find('.photo-lightbox-content img').attr('src', photo.src);
+    var opening = !$lb.hasClass('open');
+    if (opening) photoTrigger = document.activeElement;
+    $lb.find('.photo-lightbox-content img').attr({ src: photo.src, alt: photo.alt });
     $lb.find('.photo-lightbox-caption').text(photo.caption);
     $lb.find('.photo-lightbox-location').text(photo.location);
     var $date = $lb.find('.photo-lightbox-date');
@@ -324,16 +346,22 @@ $(document).ready(function() {
       $camera.hide();
     }
     lockPageScroll();
-    $lb.addClass('open');
+    $lb.addClass('open').attr('aria-hidden', 'false');
+    if (opening) $lb.find('.photo-lightbox-close')[0].focus({ preventScroll: true });
   }
 
   function closeLightbox() {
-    $('#photo-lightbox').removeClass('open');
+    if (!$('#photo-lightbox').hasClass('open')) return;
+    $('#photo-lightbox').removeClass('open').attr('aria-hidden', 'true');
     unlockPageScroll();
+    if (photoTrigger) photoTrigger.focus({ preventScroll: true });
+    photoTrigger = null;
   }
 
   $('.photo-item').on('click', function() {
     showPhoto($(this).data('photo-index'));
+    // Some browsers do not focus a button on pointer activation.
+    photoTrigger = this;
   });
 
   $('.photo-lightbox-close, .photo-lightbox-backdrop').on('click', closeLightbox);
@@ -349,10 +377,23 @@ $(document).ready(function() {
   });
 
   $(document).on('keydown', function(e) {
-    if (!$('#photo-lightbox').hasClass('open')) return;
+    var $lb = $('#photo-lightbox');
+    if (!$lb.hasClass('open')) return;
+    if (['ArrowLeft', 'ArrowRight', 'Escape'].indexOf(e.key) !== -1) e.preventDefault();
     if (e.key === 'ArrowLeft') showPhoto(currentPhotoIndex - 1);
     if (e.key === 'ArrowRight') showPhoto(currentPhotoIndex + 1);
     if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'Tab') {
+      var $buttons = $lb.find('button').filter(':visible');
+      var first = $buttons[0];
+      var last = $buttons[$buttons.length - 1];
+      if (!$lb[0].contains(document.activeElement) ||
+          (e.shiftKey && document.activeElement === first) ||
+          (!e.shiftKey && document.activeElement === last)) {
+        e.preventDefault();
+        (e.shiftKey ? last : first).focus();
+      }
+    }
   });
 
   // Profile picture switcher

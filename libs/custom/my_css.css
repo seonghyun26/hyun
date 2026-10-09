@@ -6,11 +6,11 @@
  */
 /*
  * Scrollbars in a quiet grey: narrow, square, and not competing with anything
- * on the page. scrollbar-color is the standard property; the WebKit rules are
- * the only way to ask for a square-cornered thumb, and a browser that honours
- * them ignores the standard ones.
+ * on the page. Use the same standard width for the page and project rail;
+ * WebKit rules provide matching dimensions in browsers using that fallback.
  */
-html {
+html,
+.side-projects-grid {
   scrollbar-color: var(--scrollbar-thumb) transparent;
   scrollbar-width: thin;
 }
@@ -910,10 +910,30 @@ h4 {
 }
 
 .photo-item {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  font: inherit;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: normal;
   position: relative;
   cursor: pointer;
   overflow: hidden;
   aspect-ratio: 3 / 4;
+}
+
+.photo-item:focus-visible {
+  outline: 3px solid var(--accent-strong);
+  outline-offset: 2px;
+  z-index: 1;
 }
 
 .photo-item img {
@@ -942,7 +962,8 @@ h4 {
   transition: opacity 0.25s ease;
 }
 
-.photo-item:hover .photo-overlay {
+.photo-item:hover .photo-overlay,
+.photo-item:focus-visible .photo-overlay {
   opacity: 1;
 }
 
@@ -1068,6 +1089,11 @@ h4 {
   color: #fff;
 }
 
+.photo-lightbox button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
 .photo-lightbox-close {
   top: 20px;
   right: 24px;
@@ -1156,19 +1182,6 @@ h4 {
   margin: -26px -20px -14px;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-}
-
-.side-projects-grid::-webkit-scrollbar {
-  height: 9px;
-}
-
-.side-projects-grid::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
-  border-radius: 0;
-}
-
-.side-projects-grid::-webkit-scrollbar-track {
-  background: transparent;
 }
 
 .side-project-card {

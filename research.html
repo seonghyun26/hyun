@@ -1,0 +1,102 @@
+---
+layout: null
+title: Research vision
+permalink: /research/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} — {{ site.data.main_info.name }}</title>
+  <meta name="description" content="{{ site.data.vision.intro | escape }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:title" content="{{ site.data.vision.title | escape }}">
+  <meta property="og:description" content="{{ site.data.vision.intro | escape }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:image" content="{{ '/assets/img/vision/cell-activities.png' | absolute_url }}">
+  <link rel="icon" href="{{ '/libs/icon.png' | relative_url }}">
+  <link rel="preload" as="image" href="{{ '/assets/img/vision/loader-protein-pocket.png' | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/libs/custom/research.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+  <link rel="stylesheet" href="{{ '/libs/custom/research-entry.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+  <script>document.documentElement.classList.add('research-is-loading');</script>
+  <script src="{{ '/libs/custom/protein-ribbon.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+  <script src="{{ '/libs/vendor/ngl/ngl-2.4.0.js' | relative_url }}" defer></script>
+  <script src="{{ '/libs/custom/research-rendering.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+  <script src="{{ '/libs/custom/protein-ngl.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+  <script src="{{ '/libs/custom/molecules-ngl.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+  <script src="{{ '/libs/custom/research-entry.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+  <script src="{{ '/libs/custom/cell-motion.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+  <script src="{{ '/libs/custom/research.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+</head>
+<body>
+  {% include research-transition.html %}
+  <a class="skip-link" href="#research-map">Skip to research</a>
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient-image"></div>
+    <div class="ambient-orb ambient-orb--blue"></div>
+    <div class="ambient-orb ambient-orb--violet"></div>
+    <div class="ambient-grid"></div>
+    <svg class="ambient-particles" viewBox="0 0 1440 1000" preserveAspectRatio="xMidYMid slice"><g fill="currentColor"><circle cx="75" cy="140" r="2"/><circle cx="360" cy="240" r="3"/><circle cx="560" cy="110" r="2"/><circle cx="800" cy="350" r="3"/><circle cx="1130" cy="180" r="2"/><circle cx="1320" cy="500" r="4"/><circle cx="230" cy="640" r="2"/><circle cx="670" cy="730" r="3"/><circle cx="1080" cy="810" r="2"/><circle cx="1390" cy="930" r="3"/></g></svg>
+  </div>
+
+  <header class="site-header">
+    <a class="home-link" href="{{ '/' | relative_url }}" aria-label="Back to Seonghyun Park's homepage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7M5 9v11h5v-7h4v7h5V9"/></svg></a>
+    <button class="motion-toggle" type="button" aria-label="Pause motion" aria-pressed="false"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><g class="pause-symbol"><path d="M7 5v10M13 5v10"/></g><path class="play-symbol" d="m7 4 9 6-9 6Z"/></svg></button>
+  </header>
+
+  <main>
+    <h1 class="visually-hidden">{{ site.data.vision.title }}</h1>
+
+    <nav class="research-switch" aria-label="Research field">
+      {% for group in site.data.vision.groups %}<button type="button" data-field="{{ group.id }}" aria-controls="{{ group.id }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">{{ group.name }} ({{ group.papers | size }})</button>{% endfor %}
+    </nav>
+
+    <div class="atlas" id="research-map">
+      <svg class="connections" aria-hidden="true"><g></g></svg>
+      <aside class="cell-world" aria-label="A cell connects proteins, molecular interactions and small molecules">
+        <div class="cell-orbit" aria-hidden="true"></div>
+        <div class="cell-art">
+          <div class="cell-motion">
+            <img class="cell-base" src="{{ '/assets/img/vision/cell-activities.png' | relative_url }}" data-motion-src="{{ '/assets/img/vision/cell-motion-golgi.png' | relative_url }}" alt="Cutaway cell with protein folding in the upper cytoplasm, drug binding to a protein pocket in the middle, and small molecules dispersed below." width="1312" height="1199" fetchpriority="high">
+            <div class="protein-ngl" data-structure="{{ '/assets/img/vision/chignolin-1UAO.pdb' | relative_url }}" data-motion="{{ '/assets/img/vision/chignolin-motion.json' | relative_url }}" aria-hidden="true"></div>
+            <div class="molecules-ngl" aria-hidden="true"></div>
+            <canvas class="cell-processes" width="1312" height="1199" aria-hidden="true"></canvas>
+            <a class="cell-point cell-point--proteins" data-connect="proteins" href="#proteins" aria-label="Explore protein folding inside the cell"></a>
+            <a class="cell-point cell-point--interactions" data-connect="interactions" href="#interactions" aria-label="Explore drug docking inside the cell"></a>
+            <a class="cell-point cell-point--molecules" data-connect="molecules" href="#molecules" aria-label="Explore small molecules inside the cell"></a>
+          </div>
+        </div>
+      </aside>
+
+      <div class="research-groups">
+        {% for group in site.data.vision.groups %}
+        <section class="research-group research-group--{{ group.id }}{% if forloop.first %} is-current{% endif %}" id="{{ group.id }}" aria-labelledby="heading-{{ group.id }}" style="--group-index: {{ forloop.index0 }}">
+          <header class="group-heading">
+            <div class="group-name"><h2 id="heading-{{ group.id }}">{{ group.name }} <span class="group-count">({{ group.papers | size }})</span></h2></div>
+          </header>
+          <div class="research-cards" role="region" aria-label="{{ group.name | escape }} papers" tabindex="0">
+            {% for paper in group.papers %}
+              {% assign link_start = paper.link | slice: 0, 1 %}
+              <a class="research-card" href="{% if link_start == '/' %}{{ paper.link | relative_url }}{% else %}{{ paper.link }}{% endif %}" target="_blank" rel="noopener" aria-label="{{ paper.title | escape }} (opens in a new tab)" style="--card-index: {{ forloop.index0 }}">
+                <div class="holo-stage"><div class="paper-image">
+                  <img src="{{ paper.image | relative_url }}" alt="Figure from {{ paper.title | escape }}" loading="lazy">
+                </div></div>
+                <div class="paper-caption"><p class="paper-title">{{ paper.title }}</p></div>
+              </a>
+            {% endfor %}
+          </div>
+        </section>
+        {% endfor %}
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer" aria-hidden="true"></footer>
+</body>
+</html>

@@ -1,0 +1,29 @@
+.research-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 45%, #e6edff 0, #f4f8fc 43%, #fafafd 80%);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  outline: none;
+}
+.research-is-loading { overflow: hidden; }
+.research-is-loading .research-loader { visibility: visible; opacity: 1; pointer-events: auto; }
+.research-loader::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(#aebfec12 1px, transparent 1px), linear-gradient(90deg, #aebfec12 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(ellipse, #000, transparent 65%); }
+.research-loader-core { width: 280px; filter: drop-shadow(0 0 24px #a2bbfc66); }
+.research-loader-core canvas { width: 100%; display: block; }
+.research-is-loading .research-loader.is-ready .research-loader-core { animation: loader-arrive 1.8s cubic-bezier(.2,.7,.3,1) both; }
+.research-loader-label { margin: 20px 0 22px; color: #65779d; font: 500 11px/1.5 'Raleway', sans-serif; letter-spacing: 4px; text-transform: uppercase; }
+.research-loader-progress { width: 110px; height: 1px; background: #dbe3f3; overflow: hidden; }
+.research-loader-progress span { display: block; width: 100%; height: 100%; background: #839ced; transform-origin: left; transform: scaleX(.2); }
+.research-is-loading .research-loader.is-ready .research-loader-progress span { animation: loader-progress 1.8s ease-in-out infinite alternate; }
+.research-loader-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@keyframes loader-arrive { from { transform: scale(.94); } 30%, to { transform: scale(1); } }
+@keyframes loader-progress { from { transform: translateX(-70%) scaleX(.3); } to { transform: translateX(70%) scaleX(.3); } }
+.research-is-loading .research-loader.page-ready .research-loader-progress span { animation: none; transform: scaleX(1); transition: transform .2s; }
+@media (prefers-reduced-motion: reduce) { .research-loader *, .research-loader *::before, .research-loader *::after { animation: none !important; } }

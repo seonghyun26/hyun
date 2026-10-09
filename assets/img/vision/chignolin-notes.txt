@@ -1,0 +1,16 @@
+Protein: Chignolin, PDB 1UAO, first NMR conformer, 77 non-hydrogen atoms.
+Source: https://www.rcsb.org/structure/1UAO
+Coordinates downloaded from https://files.rcsb.org/download/1UAO.pdb
+
+chignolin-1UAO.pdb preserves the first conformer's geometry, rotated and
+centered to present the beta hairpin upright. The ten C-alpha positions define
+the viewing basis; no folded bond lengths or side-chain conformations change.
+
+chignolin-motion.json stores matching atom-order coordinates for the folded
+and illustrative extended endpoints. The extended endpoint rigidly orients
+each residue along a straight chain. Interpolation is an artistic folding
+transition, not a physically simulated molecular-dynamics trajectory.
+
+Rendering: locally vendored NGL 2.4.0, MIT license in README.md and the JavaScript bundle header.
+Cartoon backbone plus licorice heavy-atom bonds; opaque periwinkle palette.
+The procedural Canvas renderer remains a fallback when WebGL is unavailable.

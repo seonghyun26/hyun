@@ -1,8 +1,16 @@
 *.DS_Store
-.jekyll-cache
+
+# Jekyll build output and local caches
+.jekyll-cache/
+/.jekyll-metadata
+/.sass-cache/
 _site/
 _site [0-9]/
 _snap_md5.txt
+
+# Local Bundler configuration and installed gems
+/.bundle/
+/vendor/bundle/
 
 */archive/*
 Icon

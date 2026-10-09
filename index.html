@@ -36,7 +36,7 @@ title: Home
     <li>Protein dynamics and Collective Variables (CVs)</li>
     <li>Graph Neural Networks (GNNs), Over-squashing</li>
   </ul>
-  In the long term, I envision building an AI-native scientific discovery platform with autonomous agents on molecules and proteins, enabling end-to-end self-improving scientific workflows!!
+  In the <a class="research-entry" target="_blank" rel="noopener" href="{{ '/research/' | relative_url }}">long term</a>, I envision building an AI-native scientific discovery platform with autonomous agents on molecules and proteins, enabling end-to-end self-improving scientific workflows!!
 </div>
 
 
@@ -445,20 +445,20 @@ title: Home
             {% for key in sorted_keys %}
               {% assign photo_index = key | split: "|" | last | minus: 10000 %}
               {% assign photo = site.data.photos.photos[photo_index] %}
-              <div class="photo-item" data-photo-index="{{ forloop.index0 }}" {% if photo.camera %}data-camera="{{ photo.camera }}"{% endif %} {% if photo.date %}data-date="{{ photo.date }}"{% endif %}>
-                <img src="{{ photo.image | prepend: site.baseurl }}" alt="{{ photo.caption }}" loading="lazy" />
+              <button type="button" class="photo-item" aria-haspopup="dialog" aria-controls="photo-lightbox" aria-label="Open photo: {{ photo.caption | default: photo.location | default: 'Photo' | escape }}" data-photo-index="{{ forloop.index0 }}" {% if photo.camera %}data-camera="{{ photo.camera | escape }}"{% endif %} {% if photo.date %}data-date="{{ photo.date | escape }}"{% endif %}>
+                <img src="{{ photo.image | prepend: site.baseurl }}" alt="{{ photo.caption | escape }}" loading="lazy" />
                 {% if photo.caption or photo.location %}
-                  <div class="photo-overlay">
+                  <span class="photo-overlay">
                     {% if photo.caption %}<span class="photo-caption">{{ photo.caption }}</span>{% endif %}
                     {% if photo.location %}<span class="photo-location"><i class="fa fa-map-marker"></i> {{ photo.location }}</span>{% endif %}
-                  </div>
+                  </span>
                 {% endif %}
-              </div>
+              </button>
             {% endfor %}
           </div>
 
           <!-- Lightbox -->
-          <div class="photo-lightbox" id="photo-lightbox">
+          <div class="photo-lightbox" id="photo-lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Photo viewer">
             <div class="photo-lightbox-backdrop"></div>
             <button class="photo-lightbox-close" aria-label="Close photo">&times;</button>
             <button class="photo-lightbox-prev" aria-label="Previous photo"><i class="fa fa-chevron-left"></i></button>
