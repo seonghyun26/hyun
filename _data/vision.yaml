@@ -22,7 +22,7 @@ groups:
     image: "/assets/img/project/amd/session-analysis-result.png"
     link: https://github.com/seonghyun26/amd
 - id: interactions
-  name: protein X molecule interaction
+  name: Interactions
   papers:
   - title: Blending experimental electron density information to protein-ligand interactions
     image: "/assets/img/publications/_preprint_CoDE.png"

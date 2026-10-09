@@ -1,6 +1,10 @@
 (function () {
   'use strict';
 
+  // The page is artwork and figure links; dragging either out of it does
+  // nothing useful, and -webkit-user-drag is not honoured everywhere.
+  document.addEventListener('dragstart', function (event) { event.preventDefault(); });
+
   document.querySelectorAll('.paper-image img').forEach(function (image) {
     function fitFigure() {
       if (image.naturalWidth && image.naturalHeight) {

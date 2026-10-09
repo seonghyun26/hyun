@@ -6,6 +6,11 @@ a { color: inherit; text-decoration: none; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 3px; }
 button { font: inherit; color: inherit; }
 img { display: block; max-width: 100%; }
+/* Nothing on this page is meant to be pulled out of it: the cell is artwork,
+   the hotspots over it are links, the figures are links too, and a link or an
+   image drags by default. Firefox ignores -webkit-user-drag, so research.js
+   also cancels dragstart. */
+body, body * { -webkit-user-drag: none; -webkit-user-select: none; user-select: none; }
 h1, h2, p { margin: 0; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .skip-link { position: fixed; top: 14px; left: 20px; padding: 12px 20px; background: white; z-index: 30; clip-path: inset(100%); }
@@ -57,9 +62,14 @@ main { min-height: 0; display: grid; grid-template-rows: minmax(0,1fr); }
 .group-heading { position: relative; z-index: 2; flex: 0 0 30px; display: flex; align-items: flex-start; }
 .group-name h2 { font-size: 14px; font-weight: 500; letter-spacing: .3px; color: #596b99; }
 .group-count { color: #8a96b8; font-size: .88em; font-variant-numeric: tabular-nums; }
-/* Extend the scroll viewport upward for the 9px lift and 16px glow,
-   while the matching negative margin preserves figure size and position. */
-.research-cards { --float-room: 28px; --gap: 28px; --figure-height: clamp(28px, calc(100cqh - 76px), 180px); container-type: size; flex: 1; min-height: 0; min-width: 0; display: flex; gap: var(--gap); overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; scrollbar-width: none; padding: calc(8px + var(--float-room)) 8px 4px; margin-top: calc(-1 * var(--float-room)); }
+/* Extend the scroll viewport past the figures on every side - the rail scrolls,
+   so it clips whatever leaves it, and a figure's frame sits 1px outside the
+   image with a glow 16px wider still. --float-room covers the 9px lift and the
+   glow above; --edge-room does the same at the two ends, where otherwise the
+   first figure's left frame is cut off. The matching negative margins keep the
+   figures the size and position they would have had, lined up with the heading,
+   and scroll-padding keeps the room when a card snaps to the start edge. */
+.research-cards { --float-room: 28px; --edge-room: 20px; --gap: 28px; --figure-height: clamp(28px, calc(100cqh - 76px), 180px); container-type: size; flex: 1; min-height: 0; min-width: 0; display: flex; gap: var(--gap); overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; scrollbar-width: none; padding: calc(8px + var(--float-room)) var(--edge-room) 4px; margin-top: calc(-1 * var(--float-room)); margin-inline: calc(-1 * var(--edge-room)); scroll-padding-inline: var(--edge-room); }
 .research-cards::-webkit-scrollbar { display: none; width: 0; height: 0; }
 .research-cards:focus-visible { outline: 1px solid var(--accent-strong); outline-offset: -1px; }
 /* Match the actual figure heights; natural aspect ratios determine widths. */
@@ -101,13 +111,13 @@ main { min-height: 0; display: grid; grid-template-rows: minmax(0,1fr); }
   .group-name h2 { font-size: 12px; }
   /* Center the figure-and-caption block as a unit in single-field views.
      Size queries use the group so short screens still fit without scrolling. */
-  .research-cards { --figure-height: clamp(28px, calc(100cqh - 116px), 180px); container-type: normal; flex: 0 0 calc(var(--figure-height) + 88px); padding: calc(10px + var(--float-room)) 18px 4px 2px; scroll-snap-type: none; overscroll-behavior-x: contain; touch-action: pan-x pinch-zoom; }
+  .research-cards { --figure-height: clamp(28px, calc(100cqh - 116px), 180px); container-type: normal; flex: 0 0 calc(var(--figure-height) + 88px); padding: calc(10px + var(--float-room)) var(--edge-room) 4px; margin-inline: 0; scroll-snap-type: none; overscroll-behavior-x: contain; touch-action: pan-x pinch-zoom; }
 }
 @media (max-width: 600px) {
   .atlas { grid-template-columns: 1fr; grid-template-rows: minmax(0,1fr) minmax(0,1fr); gap: 18px; }
   .cell-art, .cell-orbit { width: min(312px,36.8vh); right: auto; left: 50%; top: 50%; transform: translate(-50%,-50%); }
   .group-heading { padding-left: 32px; flex-basis: 28px; }
-  .research-cards { padding: calc(8px + var(--float-room)) 20px 4px; }
+  .research-cards { padding: calc(8px + var(--float-room)) var(--edge-room) 4px; }
   .ambient-image { opacity: .5; }
 }
 @media (hover: none) { .research-card:focus .paper-caption { opacity: 1; transform: none; } }

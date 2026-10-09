@@ -77,11 +77,18 @@ jobs:
           # its DOIs and CDN script tags are the generator's to get right, and a
           # dead DOI is not something a commit to this repo can fix. The glob
           # picks up the CV's HTML rendering; --exclude-path (a regex) drops it.
+          #
+          # Every page carries a canonical and an og:url pointing at its own
+          # live address. Those pages are already checked here as files, and
+          # fetching them over the network instead races the deploy: a page
+          # added in this very push is not served yet, and answers 404. So the
+          # site's own origin is excluded, local links are what gets verified.
           args: >-
             --no-progress
             --root-dir ${{ github.workspace }}/_check
             --exclude-path resume/output/
             --exclude-path libs/external/
+            --exclude '^https://seonghyun26\.github\.io/'
             --accept 200..=299,403,429,999
             --max-concurrency 8
             --max-retries 2

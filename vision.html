@@ -1,21 +1,30 @@
 ---
 layout: null
 title: Research vision
-permalink: /research/
+permalink: /vision/
 ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title }} — {{ site.data.main_info.name }}</title>
-  <meta name="description" content="{{ site.data.vision.intro | escape }}">
+  <title>{{ site.data.main_info.name }}</title>
+  <meta name="description" content="{{ page.title }}">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
-  <meta property="og:title" content="{{ site.data.vision.title | escape }}">
-  <meta property="og:description" content="{{ site.data.vision.intro | escape }}">
+  <!-- The share card (KakaoTalk, Slack, X) reads these: the name on top, the
+       page on the line under it, and one flattened cell as the thumbnail. The
+       source artwork is transparent, which a card would fill with black, so
+       og-vision.png is the same cell composited onto the page background. -->
+  <meta property="og:site_name" content="{{ site.data.main_info.name }}">
+  <meta property="og:title" content="{{ site.data.main_info.name }}">
+  <meta property="og:description" content="{{ page.title }}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
-  <meta property="og:image" content="{{ '/assets/img/vision/cell-activities.png' | absolute_url }}">
+  <meta property="og:image" content="{{ '/assets/img/vision/og-vision.png' | absolute_url }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A cutaway cell with proteins, a drug-bound pocket and small molecules">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="{{ '/libs/icon.png' | relative_url }}">
   <link rel="preload" as="image" href="{{ '/assets/img/vision/loader-protein-pocket.png' | relative_url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,7 +71,7 @@ permalink: /research/
         <div class="cell-orbit" aria-hidden="true"></div>
         <div class="cell-art">
           <div class="cell-motion">
-            <img class="cell-base" src="{{ '/assets/img/vision/cell-activities.png' | relative_url }}" data-motion-src="{{ '/assets/img/vision/cell-motion-golgi.png' | relative_url }}" alt="Cutaway cell with protein folding in the upper cytoplasm, drug binding to a protein pocket in the middle, and small molecules dispersed below." width="1312" height="1199" fetchpriority="high">
+            <img class="cell-base" draggable="false" src="{{ '/assets/img/vision/cell-activities.png' | relative_url }}" data-motion-src="{{ '/assets/img/vision/cell-motion-golgi.png' | relative_url }}" alt="Cutaway cell with protein folding in the upper cytoplasm, drug binding to a protein pocket in the middle, and small molecules dispersed below." width="1312" height="1199" fetchpriority="high">
             <div class="protein-ngl" data-structure="{{ '/assets/img/vision/chignolin-1UAO.pdb' | relative_url }}" data-motion="{{ '/assets/img/vision/chignolin-motion.json' | relative_url }}" aria-hidden="true"></div>
             <div class="molecules-ngl" aria-hidden="true"></div>
             <canvas class="cell-processes" width="1312" height="1199" aria-hidden="true"></canvas>
