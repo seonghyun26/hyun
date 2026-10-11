@@ -1,6 +1,9 @@
 name: "Seonghyun Park"
 name_kr: "박성현"
 title: "Ph.D. student @ KAIST AI"
+# The small line under the name in a link preview (KakaoTalk, iMessage, Slack)
+# and the page's search-result snippet.
+tagline: "Interested in protein and molecules!"
 email: "hyun26 [at] kaist [dot] ac [dot] kr"
 x: "https://x.com/hyuunnnnnn"
 linkedin: "https://www.linkedin.com/in/shpark26"

@@ -22,8 +22,8 @@ cv:
       location: Seoul, South Korea
       start_date: 2025-02
       highlights:
-      - '[Structured and Probabilistic Machine Learning Lab](https://sites.google.com/view/sungsooahn0215) @ Sungsoo Ahn'
-      - 'Interest: Protein-drug interactions, Molecular dynamics (MD)'
+      - '[Structured and Probabilistic Machine Learning (SPML) Lab](https://sites.google.com/view/sungsooahn0215) @ Sungsoo Ahn'
+      - 'Protein-drug interactions, Molecular dynamics (MD)'
     - institution: Pohang University of Science and Technology (POSTECH)
       area: Graduate School of Computer Science and Engineering (CSE)
       degree: M.S.
@@ -31,15 +31,14 @@ cv:
       start_date: 2023-03
       end_date: 2025-02
       highlights: 
-      - '[Machine Learning Lab](https://ml.postech.ac.kr/) @ Sungsoo Ahn '
-      - 'Interest: Graph Neural Networks (GNNs), Over-squashing'
+      - '[Machine Learning Lab](https://ml.postech.ac.kr/) @ Sungsoo Ahn'
+      - 'Graph Neural Networks (GNNs), Over-squashing'
     - institution: Institut National des Sciences Appliquées (INSA) Lyon
-      area: Bioinformatics
+      area: Bioinformatique, exchange student
       degree: E.S.
       location: Lyon, France
       start_date: 2022-01
       end_date: 2022-06
-      summary: Exchange Student
     - institution: Pohang University of Science and Technology (POSTECH)
       area: Computer Science and Engineering (CSE)
       degree: B.S.
@@ -47,6 +46,12 @@ cv:
       start_date: 2019-02
       end_date: 2023-02
     Experience:
+    - company: Machine Learning Lab
+      position: Research intern
+      location: Pohang, South Korea
+      start_date: 2022-07
+      end_date: 2023-01
+      summary: Graph Neural Networks (GNNs), advised by Sungsoo Ahn
     - company: Bagelcode
       position: Business Analyst (BA) intern
       location: Seoul, South Korea
@@ -63,7 +68,7 @@ cv:
     # - title: 
     #   authors: 
     #   - asdf
-    #   jounral: Preprint, under review
+    #   journal: Preprint, under review
     #   date: 2026
     #   # doi:
     #   # url: 
@@ -78,9 +83,8 @@ cv:
       - Keisuke Ozawa
       - Hikaru Shindo
       - Sungsoo Ahn
-      jounral: Preprint, under review
+      journal: NeurIPS 2026 Workshop, AI4DD
       # date: 2026
-      url: 
     - title: A Systematic Evaluation of Co-folding Model Representations for Small-Molecule Learning
       authors: 
       - Hyosoon Jang
@@ -161,7 +165,19 @@ cv:
       doi: 10.48550/arXiv.2302.10506
 design:
   theme: classic
+  sections:
+    # RenderCV prints a running total ("9 months") beside experience dates by
+    # default; the dates alone say it.
+    show_time_spans_in: []
   templates:
+    # The default puts the area on the institution's line ("**INSTITUTION**,
+    # AREA"); these names are long enough that it wrapped mid-phrase.
+    education_entry:
+      main_column: |-
+        **INSTITUTION**
+        AREA
+        SUMMARY
+        HIGHLIGHTS
     publication_entry:
       main_column: |-
         **TITLE**

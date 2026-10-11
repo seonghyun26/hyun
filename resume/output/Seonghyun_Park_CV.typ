@@ -6,7 +6,7 @@
   name: "Seonghyun Park",
   title: "Seonghyun Park - CV",
   footer: context { [#emph[Seonghyun Park -- #str(here().page())\/#str(counter(page).final().first())]] },
-  top-note: [ #emph[Last updated in Sept 2026] ],
+  top-note: [ #emph[Last updated in Oct 2026] ],
   locale-catalog-language: "en",
   text-direction: ltr,
   page-size: "us-letter",
@@ -80,8 +80,8 @@
   entries-highlights-space-between-bullet-and-text: 0.5em,
   date: datetime(
     year: 2026,
-    month: 9,
-    day: 28,
+    month: 10,
+    day: 10,
   ),
 )
 
@@ -101,17 +101,19 @@
 
 == Summary
 
-I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate School of AI at KAIST], advised by #link("https://sungsoo-ahn.github.io/")[Sungsoo Ahn]. My research interests lie mainly in #strong[AI4Science], and I believe that machine learning can advance scientific discovery involving small molecules and proteins. Recently, I have been focusing on incorporating experimental data into machine learning models to better understand protein-ligand interactions.
+I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate School of AI at KAIST], advised by #link("https://sungsoo-ahn.github.io/")[Sungsoo Ahn]. My research interests lie mainly in #strong[AI4Science], and I believe that machine learning can accelerate scientific discovery. Recently, I have been focusing on incorporating experimental data into models to better understand protein-ligand interactions.
 
 == Education
 
 #education-entry(
   [
-    #strong[Korea Advanced Institute of Science and Technology (KAIST)], Kim Jaechul Graduate School of Artificial Intelligence
+    #strong[Korea Advanced Institute of Science and Technology (KAIST)]
 
-    - #link("https://sites.google.com/view/sungsooahn0215")[Structured and Probabilistic Machine Learning Lab] \@ Sungsoo Ahn
+    Kim Jaechul Graduate School of Artificial Intelligence
 
-    - Interest: Protein-drug interactions, Molecular dynamics (MD)
+    - #link("https://sites.google.com/view/sungsooahn0215")[Structured and Probabilistic Machine Learning (SPML) Lab] \@ Sungsoo Ahn
+
+    - Protein-drug interactions, Molecular dynamics (MD)
 
   ],
   [
@@ -127,11 +129,13 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
 
 #education-entry(
   [
-    #strong[Pohang University of Science and Technology (POSTECH)], Graduate School of Computer Science and Engineering (CSE)
+    #strong[Pohang University of Science and Technology (POSTECH)]
+
+    Graduate School of Computer Science and Engineering (CSE)
 
     - #link("https://ml.postech.ac.kr/")[Machine Learning Lab] \@ Sungsoo Ahn
 
-    - Interest: Graph Neural Networks (GNNs), Over-squashing
+    - Graph Neural Networks (GNNs), Over-squashing
 
   ],
   [
@@ -147,9 +151,9 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
 
 #education-entry(
   [
-    #strong[Institut National des Sciences Appliquées (INSA) Lyon], Bioinformatics
+    #strong[Institut National des Sciences Appliquées (INSA) Lyon]
 
-    #summary[Exchange Student]
+    Bioinformatique, exchange student
 
   ],
   [
@@ -165,7 +169,9 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
 
 #education-entry(
   [
-    #strong[Pohang University of Science and Technology (POSTECH)], Computer Science and Engineering (CSE)
+    #strong[Pohang University of Science and Technology (POSTECH)]
+
+    Computer Science and Engineering (CSE)
 
   ],
   [
@@ -183,6 +189,21 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
 
 #regular-entry(
   [
+    #text(size: 11pt)[#strong[Machine Learning Lab], Research intern]
+
+    #summary[Graph Neural Networks (GNNs), advised by Sungsoo Ahn]
+
+  ],
+  [
+    Pohang, South Korea
+
+    July 2022 – Jan 2023
+
+  ],
+)
+
+#regular-entry(
+  [
     #text(size: 11pt)[#strong[Bagelcode], Business Analyst (BA) intern]
 
     #summary[Game economy management and KPI analysis automation]
@@ -192,10 +213,6 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
     Seoul, South Korea
 
     June 2021 – Aug 2021
-
-    
-
-    3 months
 
   ],
 )
@@ -211,10 +228,6 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
     Seoul, South Korea
 
     July 2020 – Aug 2020
-
-    
-
-    2 months
 
   ],
 )
@@ -232,6 +245,8 @@ I'm a second-year Ph.D. student at #link("https://gsai.kaist.ac.kr/")[Graduate S
     #text(size: 11pt)[#strong[Blending experimental electron density information to protein-ligand interactions]]
 
     #strong[#emph[Seonghyun Park]], Shuan Chen, Jun Jin Choong, Noboru Kuno, Gyubok Lee, Kaushalya Madhawa, Keisuke Ozawa, Hikaru Shindo, Sungsoo Ahn
+
+    NeurIPS 2026 Workshop, AI4DD
 
   ],
 )

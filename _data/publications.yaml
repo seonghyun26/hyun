@@ -19,6 +19,7 @@ papers:
     page: "https://huggingface.co/spaces/hyunnnnnnnn/drug-design-viewer"
     thumbnail: "/assets/img/publications/_preprint_CoDE.png"
     # arxiv: "https://arxiv.org/abs/"
+    code: "https://github.com/seonghyun26/CoDE"
     selected: y
 
   - title: "A Systematic Evaluation of Co-folding Model Representations for Small-Molecule Learning"

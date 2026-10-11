@@ -177,8 +177,23 @@ h4 {
   color: var(--accent);
 }
 
+/*
+ * The buttons were inline-blocks spaced by the whitespace in the markup, which
+ * gave 4px sideways but a line box's leading plus Skeleton's per-button bottom
+ * margin - some 13px - between rows, and a publication wraps to two rows on a
+ * phone. Flex sets both from one number; the bottom margin moves off the
+ * buttons, where it was only ever padding under the last row, onto the group.
+ */
 .paper-buttons {
-  margin-top: 5px
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px; /* the width the markup's space had, now between rows as well */
+  margin-top: 5px;
+  padding-bottom: 1rem; /* what Skeleton's per-button margin used to leave */
+}
+
+.paper-buttons .button {
+  margin-bottom: 0; /* Skeleton's 1rem, now the group's padding */
 }
 
 .paper .button {
@@ -1492,6 +1507,25 @@ body.has-overlay {
   margin-right: auto;
 }
 
+/*
+ * An app's own icon, set inline beside its name in the opening line. The
+ * blanket rule above dresses a writeup's images as figures - full width, framed
+ * and shadowed - which is everything a mark in a sentence must not be, so each
+ * of those is unset here rather than overridden piecemeal. The badge is square
+ * and already rounded in the file, so it is sized a little over the text's cap
+ * height and left alone otherwise.
+ */
+.side-project-modal-body img.modal-img-icon {
+  width: auto;
+  height: 1.25em;
+  display: inline;
+  vertical-align: -0.22em; /* sits on the baseline the way a capital would */
+  margin: 0 0.35em 0 0;
+  border: none;
+  border-radius: 0; /* the file carries its own corners */
+  box-shadow: none;
+}
+
 .side-project-modal-body p {
   margin-bottom: 12px;
 }
@@ -1499,8 +1533,8 @@ body.has-overlay {
 /*
  * The × shares the title's line rather than floating over the corner, so it is
  * centred on the title by construction — no offset to re-guess per breakpoint.
- * Its box is the title's own line height (font-size × the 1.5 line-height), so
- * the row is no taller than the title alone.
+ * Its box is sized off the title's own line height (font-size × the 1.5
+ * line-height), so the row is no taller than the title alone.
  */
 .side-project-modal-title-row {
   display: flex;
@@ -1520,8 +1554,8 @@ body.has-overlay {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3.6rem;   /* h5 at 2.4rem × the 1.5 line-height */
-  height: 3.6rem;
+  width: 2.88rem;  /* 0.8 of the title's line height (h5 2.4rem × 1.5) */
+  height: 2.88rem;
   background: none;
   border: none;
   cursor: pointer;
@@ -1538,8 +1572,8 @@ body.has-overlay {
  * Same light rounded stroke as the profile switcher's icons.
  */
 .side-project-modal-close-svg {
-  /* 0.8 of the button, which stays at the title's line height as the click
-     target. Scaling the canvas rather than the path takes the stroke with it. */
+  /* 0.8 of the button, so the mark scales with the box rather than needing its
+     own number. Scaling the canvas rather than the path takes the stroke too. */
   width: 80%;
   height: 80%;
   display: block;
@@ -1642,8 +1676,8 @@ body.has-overlay {
   }
 
   .side-project-modal-close {
-    width: 2.7rem;   /* h5 drops to 1.8rem here, still × 1.5 */
-    height: 2.7rem;
+    width: 2.16rem;  /* h5 drops to 1.8rem here, so the same 0.8 of × 1.5 */
+    height: 2.16rem;
   }
 
   .side-project-modal-github-btn {
@@ -1693,11 +1727,22 @@ body.has-overlay {
     padding: 1.8em 0; /* was 2em 0 */
   }
 
+  /*
+   * Folded, the spine runs straight down behind each entry's title and
+   * affiliation, so the grey card timeline.css puts there is doing real work -
+   * it masks the line. What it should not do is stretch the full column width,
+   * which it does only because the breakpoint meant to inset it is misspelt
+   * upstream and dropped. Shrinking it to its text keeps the mask and loses the
+   * banner.
+   */
   .docs-section .timeline .desc,
   .docs-section .timeline .direction-l .desc,
   .docs-section .timeline .direction-r .desc {
-    margin: 0.9em 0.9em 0; /* was 1em 1em 0 1em */
-    padding: 0.9em; /* was 1em */
+    width: fit-content; /* the card was block, so it took the whole column */
+    max-width: calc(100% - 1.8em); /* the side margins, so a long line still wraps */
+    margin: 0.9em auto 0; /* was 1em 1em 0 1em; auto centres the shrunk card */
+    padding: 0.5em 0.9em; /* was 1em all round; the card reads shorter for it */
+    border-radius: 5px; /* the plate above it, and a hair off the buttons' 4px */
   }
 }
 
@@ -1827,6 +1872,15 @@ body.has-overlay {
   vertical-align: middle;
   position: relative;
   top: -0.15em;
+}
+
+/* POSTECH ML Lab's mark, which stands in for the acronym in the CV timeline. It
+   is a solid letterform rather than a wordmark, so it is set to the cap height
+   of the text around it rather than to the full em. */
+.mllab-logo {
+  height: 0.7em; /* the cap height of the text, not its line */
+  vertical-align: baseline;
+  margin: 0 0.08em; /* clear of the brackets without loosening them */
 }
 
 /*

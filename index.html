@@ -324,6 +324,14 @@ title: Home
   <p>Full Resume in <a href={{ "/resume/output/Seonghyun_Park_CV.pdf" | prepend: site.baseurl }} target="_blank">PDF</a>.</p>
 
   <!-- The Timeline -->
+  <!-- The lab's wordmark stands in for the letters SPML wherever a subtitle
+       spells them out, the same substitution the bio makes by hand. It is built
+       here rather than in experience.yaml so the path keeps its baseurl. -->
+  {%- capture spml_mark -%}<img src="{{ '/assets/img/logo/spml_logo.svg' | prepend: site.baseurl }}" alt="SPML" class="spml-logo" />{%- endcapture -%}
+  <!-- The POSTECH lab's mark sits in the brackets the acronym held, the same
+       substitution the line above makes for SPML. The whole phrase is matched
+       rather than the two letters alone, which appear elsewhere. -->
+  {%- capture mllab_lockup -%}Machine Learning (<img src="{{ '/assets/img/logo/mllab_logo.png' | prepend: site.baseurl }}" alt="ML" class="mllab-logo" />) Lab{%- endcapture -%}
   <ul class="timeline">
     {% for exp in site.data.experience.experiences %}
     <li>
@@ -343,7 +351,7 @@ title: Home
           {% endif %}
           <span class="time-wrapper"><span class="time">{{ exp.time }}</span></span>
         </div>
-        <div class="desc"><b>{{ exp.title }}</b> <br/> {{ exp.subtitle }}</div>
+        <div class="desc"><b>{{ exp.title }}</b> <br/> {{ exp.subtitle | replace: 'SPML', spml_mark | replace: 'Machine Learning (ML) Lab', mllab_lockup }}</div>
       </div>
     </li>
     {% endfor %}

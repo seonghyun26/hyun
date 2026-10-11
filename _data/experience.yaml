@@ -18,7 +18,7 @@ experiences:
     logo: "/assets/img/logo/kaist.png"
     time: "2026 - 2028 (expected)"
     title: "Technical Research Personnel (Military Service)"
-    subtitle: "Structured and Probabilistic Machine Learning (SPML) Lab"
+    subtitle: "Structured and Probabilistic Machine Learning<br/>(SPML) Lab"
     category: "work"
     url: "https://www.mma.go.kr/contents.do?mc=mma0000760"
 
@@ -26,7 +26,7 @@ experiences:
     logo: "/assets/img/logo/kaist.png"
     time: "2025 - Present"
     title: "Ph.D. Student"
-    subtitle: "Structured and Probabilistic Machine Learning (SPML) Lab"
+    subtitle: "Structured and Probabilistic Machine Learning<br/>(SPML) Lab"
     category: "school"
     url: "https://sungsoo-ahn.github.io/"
 

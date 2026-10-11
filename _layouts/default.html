@@ -6,12 +6,17 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   <title>{{ site.data.main_info.name }} | {{ page.title }}</title>
-  <meta name="description" content="Seonghyun Park">
-  <meta name="author" content="Seonghyun Park">
-  <meta property="og:title" content="Seonghyun Park" />
+  <meta name="description" content="{{ site.data.main_info.tagline | escape }}">
+  <meta name="author" content="{{ site.data.main_info.name | escape }}">
+  <!-- A link preview - KakaoTalk, iMessage, Slack - sets og:title in large type
+       and og:description under it in small, so the name goes in the first and
+       the one-line introduction in the second. Both read from main_info.yaml
+       rather than being spelt out here, so the name is in one place. -->
+  <meta property="og:title" content="{{ site.data.main_info.name | escape }}" />
+  <meta property="og:description" content="{{ site.data.main_info.tagline | escape }}" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://seonghyun26.github.io/hyun/" />
-  <meta property="og:site_name" content="Seonghyun Park" />
+  <meta property="og:site_name" content="{{ site.data.main_info.name | escape }}" />
   <meta name="google-site-verification" content="Mb70cW0BhAIuTp3pLTxP9PkpyQ99fq9cl52XW0HVouA" />
   <!-- <meta name="google-site-verification" content="DusRF1xL-EJtJ09BPs4BG38aWwvHOCB4fY5EbNEgaO8" /> -->
   <link rel="canonical" href="https://seonghyun26.github.io/hyun/" />

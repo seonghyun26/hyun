@@ -10,10 +10,10 @@
 
 
 # Summary
-I'm a second-year Ph.D. student at [Graduate School of AI at KAIST](https://gsai.kaist.ac.kr/), advised by [Sungsoo Ahn](https://sungsoo-ahn.github.io/). My research interests lie mainly in **AI4Science**, and I believe that machine learning can advance scientific discovery involving small molecules and proteins. Recently, I have been focusing on incorporating experimental data into machine learning models to better understand protein-ligand interactions.
+I'm a second-year Ph.D. student at [Graduate School of AI at KAIST](https://gsai.kaist.ac.kr/), advised by [Sungsoo Ahn](https://sungsoo-ahn.github.io/). My research interests lie mainly in **AI4Science**, and I believe that machine learning can accelerate scientific discovery. Recently, I have been focusing on incorporating experimental data into models to better understand protein-ligand interactions.
 
 # Education
-## **Korea Advanced Institute of Science and Technology (KAIST)**, Kim Jaechul Graduate School of Artificial Intelligence
+## **Korea Advanced Institute of Science and Technology (KAIST)**
 
 **Ph.D.**
 
@@ -23,13 +23,15 @@ Seoul, South Korea
 
 Feb 2025 – present
 
-- [Structured and Probabilistic Machine Learning Lab](https://sites.google.com/view/sungsooahn0215) @ Sungsoo Ahn
+Kim Jaechul Graduate School of Artificial Intelligence
 
-- Interest: Protein-drug interactions, Molecular dynamics (MD)
+- [Structured and Probabilistic Machine Learning (SPML) Lab](https://sites.google.com/view/sungsooahn0215) @ Sungsoo Ahn
+
+- Protein-drug interactions, Molecular dynamics (MD)
 
 
 
-## **Pohang University of Science and Technology (POSTECH)**, Graduate School of Computer Science and Engineering (CSE)
+## **Pohang University of Science and Technology (POSTECH)**
 
 **M.S.**
 
@@ -39,13 +41,15 @@ Pohang, South Korea
 
 Mar 2023 – Feb 2025
 
-- [Machine Learning Lab](https://ml.postech.ac.kr/) @ Sungsoo Ahn 
+Graduate School of Computer Science and Engineering (CSE)
 
-- Interest: Graph Neural Networks (GNNs), Over-squashing
+- [Machine Learning Lab](https://ml.postech.ac.kr/) @ Sungsoo Ahn
+
+- Graph Neural Networks (GNNs), Over-squashing
 
 
 
-## **Institut National des Sciences Appliquées (INSA) Lyon**, Bioinformatics
+## **Institut National des Sciences Appliquées (INSA) Lyon**
 
 **E.S.**
 
@@ -55,11 +59,11 @@ Lyon, France
 
 Jan 2022 – June 2022
 
-Exchange Student
+Bioinformatique, exchange student
 
 
 
-## **Pohang University of Science and Technology (POSTECH)**, Computer Science and Engineering (CSE)
+## **Pohang University of Science and Technology (POSTECH)**
 
 **B.S.**
 
@@ -69,18 +73,26 @@ Pohang, South Korea
 
 Feb 2019 – Feb 2023
 
+Computer Science and Engineering (CSE)
+
 
 
 # Experience
+## **Machine Learning Lab**, Research intern
+
+Pohang, South Korea
+
+July 2022 – Jan 2023
+
+Graph Neural Networks (GNNs), advised by Sungsoo Ahn
+
+
+
 ## **Bagelcode**, Business Analyst (BA) intern
 
 Seoul, South Korea
 
 June 2021 – Aug 2021
-
-
-
-3 months
 
 Game economy management and KPI analysis automation
 
@@ -92,10 +104,6 @@ Seoul, South Korea
 
 July 2020 – Aug 2020
 
-
-
-2 months
-
 Organization-wide task prioritization and landing funnel renewal
 
 
@@ -104,6 +112,8 @@ Organization-wide task prioritization and landing funnel renewal
 ## **Blending experimental electron density information to protein-ligand interactions**
 
 ***Seonghyun Park***, Shuan Chen, Jun Jin Choong, Noboru Kuno, Gyubok Lee, Kaushalya Madhawa, Keisuke Ozawa, Hikaru Shindo, Sungsoo Ahn
+
+NeurIPS 2026 Workshop, AI4DD
 
 
 
