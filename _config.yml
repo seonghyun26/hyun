@@ -3,9 +3,13 @@
 # includes:    ./_includes
 # baseurl: /~hyun
 
-# collections:
-#   projects:
-#     output: true
+# The project writeups and the screenshots they use sit together under
+# _projects/<slug>/. Jekyll skips an underscored directory unless it is a
+# collection, and a collection only copies its static files when it is output -
+# so this is what puts the screenshots on the site, at /projects/<slug>/.
+collections:
+  projects:
+    output: true
 
 # Site origin, used by absolute_url (sitemap.xml, robots.txt).
 # baseurl (/hyun) is injected at build time by actions/configure-pages.
@@ -19,10 +23,10 @@ include:
   - "_preprint_*"
 
 exclude:
-  # The project writeups are pulled into the page by include_relative, which reads
-  # the source tree - nothing links to them, so they need not also be served as
-  # raw markdown at /projects/*.md.
-  - projects
+  # The writeups are pulled into the page by include_relative, which reads the
+  # source tree - nothing links to them, so they need not also be served as raw
+  # markdown next to the screenshots they sit with.
+  - "_projects/*/*.md"
   - resume/.venv
   - resume/classic
   - resume/markdown

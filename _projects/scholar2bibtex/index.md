@@ -1,6 +1,6 @@
-**Scholar → BibTeX** — drag-select a paper title, hit a shortcut, and its BibTeX is on your clipboard. A Chromium extension (Manifest V3) that grabs the top Google Scholar result's citation without the manual *Cite → BibTeX → copy* dance.
+<img class="modal-img-icon" src="{{ site.baseurl }}/projects/scholar2bibtex/icon.png" alt="" />**Scholar → BibTeX** — drag-select a paper title, hit a shortcut, and its BibTeX is on your clipboard. A Chromium extension (Manifest V3) that grabs the top Google Scholar result's citation without the manual *Cite → BibTeX → copy* dance.
 
-<img class="modal-img-half" src="{{ site.baseurl }}/assets/img/project/scholar2bibtex/preview.png" alt="Scholar → BibTeX popup" />
+<img class="modal-img-half" src="{{ site.baseurl }}/projects/scholar2bibtex/preview.png" alt="Scholar → BibTeX popup" />
 
 **How to use**
 

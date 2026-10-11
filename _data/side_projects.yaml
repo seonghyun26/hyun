@@ -5,21 +5,21 @@ projects:
     subtitle: "Recording travel experiences across the globe"
     date: "2026-09-28"
     description: "Ongoing, TBA"
-    thumbnail: "/assets/img/project/atlas-log/preview.png"
+    thumbnail: "/projects/atlas-log/preview.png"
     selected: y
 
   - title: "Scholar2BibTeX"
     subtitle: "Auto-pasting BibTeX to clipboard"
     date: "2026-08-26"
-    include: "projects/scholar2bibtex.md"
+    include: "_projects/scholar2bibtex/index.md"
     code: "https://github.com/seonghyun26/scholar2bibtex"
-    thumbnail: "/assets/img/project/scholar2bibtex/preview.png"
+    thumbnail: "/projects/scholar2bibtex/preview.png"
     selected: y
 
   - title: "AMD"
     subtitle: "Automating Molecular Dynamics"
     date: "2026-03-25"
-    include: "projects/amd.md"
+    include: "_projects/amd/index.md"
     code: "https://github.com/seonghyun26/amd"
-    thumbnail: "/assets/img/project/amd/preview.png"
+    thumbnail: "/projects/amd/preview.png"
     selected: y
