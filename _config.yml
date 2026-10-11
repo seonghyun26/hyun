@@ -23,6 +23,9 @@ include:
   - "_preprint_*"
 
 exclude:
+  # Local notes on how an image was generated; gitignored, and no business being
+  # served next to the image either.
+  - "assets/img/**/*-prompt.txt"
   # The writeups are pulled into the page by include_relative, which reads the
   # source tree - nothing links to them, so they need not also be served as raw
   # markdown next to the screenshots they sit with.

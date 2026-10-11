@@ -31,12 +31,36 @@
   var animationUnavailable = false;
   var minimumDockShown = false;
   var readyTimer;
+  // The ring is a progress reading, so these have to agree with the durations
+  // research-entry.css gives loader-fill and loader-close.
+  var FILL_MS = 2000, CLOSE_MS = 300, FULL_HOLD_MS = 400;
+  var fillStarted = 0, settling = false;
   function markPageReady() {
     if (finished || pageReady) return;
     pageReady = true;
     clearTimeout(readyTimer);
-    loader.classList.add('page-ready');
-    if (animationUnavailable || (reducedMotion.matches && minimumDockShown)) finish();
+    // Without the ring - no illustration, or motion turned down - there is no
+    // progress to read and the old handover stands.
+    if (animationUnavailable || reducedMotion.matches) {
+      loader.classList.add('page-ready');
+      if (animationUnavailable || minimumDockShown) finish();
+      return;
+    }
+    settle();
+  }
+  // Everything is in. The ring still owes the viewer the two seconds it was
+  // filling for - arriving early must not cut the fill short - so wait out any
+  // remainder, close the last fifth, rest a moment on the full ring, and only
+  // then hand the page over.
+  function settle() {
+    if (finished || settling || !pageReady) return;
+    settling = true;
+    var elapsed = fillStarted ? performance.now() - fillStarted : FILL_MS;
+    setTimeout(function () {
+      if (finished) return;
+      loader.classList.add('page-ready');
+      setTimeout(finish, CLOSE_MS + FULL_HOLD_MS);
+    }, Math.max(0, FILL_MS - elapsed));
   }
   function waitForImage(url) {
     return new Promise(function (resolve) {
@@ -125,15 +149,16 @@
         progress < .6 ? 1 : progress < .9 ? 1 - ease((progress - .6) / .3) : 0;
       drawDocking(dock);
       loader.dataset.docking = dock === 1 ? 'bound' : 'moving';
-      if (dock === 1 && progress >= .46 && pageReady) finish();
-      else frame = requestAnimationFrame(dockDrug);
+      frame = requestAnimationFrame(dockDrug);
     }
     pocket.onload = function () {
       if (finished || animationUnavailable) return;
       clearTimeout(timer);
       drawDocking(reducedMotion.matches ? 1 : 0);
       started = performance.now();
+      fillStarted = started;
       loader.classList.add('is-ready');
+      settle();
       if (!reducedMotion.matches) frame = requestAnimationFrame(dockDrug);
       else timer = setTimeout(function () {
         minimumDockShown = true;
@@ -156,6 +181,18 @@
     document.documentElement.classList.remove('research-is-loading');
     loader.setAttribute('aria-hidden', 'true');
     elements.forEach(function (element) { element.inert = false; });
+    enter();
+  }
+  // The page is laid out but not yet readable as a picture, so it assembles
+  // itself: orbit, cell, a line out to each field, then that field's papers.
+  // research-entry.css owns the timing; this only opens and closes the window,
+  // because the entry state must not outlive the entry - the connections have a
+  // resting animation of their own to go back to.
+  function enter() {
+    if (reducedMotion.matches) return;
+    var root = document.documentElement;
+    root.classList.add('research-entering');
+    setTimeout(function () { root.classList.remove('research-entering'); }, 3000);
   }
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') finish();

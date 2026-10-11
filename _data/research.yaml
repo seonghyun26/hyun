@@ -19,10 +19,10 @@ groups:
     image: "/assets/img/publications/26ICML_RMF.png"
     link: "/assets/publications/26ICML_RMF.pdf"
   - title: AMD · Agents for molecular dynamics & collective variables
-    image: "/assets/img/project/amd/session-analysis-result.png"
+    image: "/projects/amd/session-analysis-result.png"
     link: https://github.com/seonghyun26/amd
 - id: interactions
-  name: Interactions
+  name: Protein x Molecule Interactions
   papers:
   - title: Blending experimental electron density information to protein-ligand interactions
     image: "/assets/img/publications/_preprint_CoDE.png"

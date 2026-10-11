@@ -20,10 +20,14 @@
   var singleFieldView = window.matchMedia('(max-width: 1000px)');
   document.querySelectorAll('.research-cards').forEach(function (rail) {
     var activeCard = null;
-    // Keep field headings outside the scrolling rail. A regular mouse wheel
-    // moves figures horizontally; trackpad horizontal gestures stay native.
+    // A regular mouse wheel moves figures horizontally. The page itself never
+    // scrolls vertically - html and body are overflow:hidden at every width -
+    // so a vertical wheel over a rail has nothing else to do, and this is the
+    // only way a wheel-only mouse reaches the figures past the first screenful.
+    // Trackpad horizontal gestures already scroll the rail natively and are
+    // left alone, as is ctrl+wheel, which the browser reads as zoom.
     rail.addEventListener('wheel', function (event) {
-      if (!singleFieldView.matches || event.ctrlKey ||
+      if (event.ctrlKey ||
           rail.scrollWidth <= rail.clientWidth || Math.abs(event.deltaX) >= Math.abs(event.deltaY)) return;
       var unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? rail.clientWidth : 1;
       event.preventDefault();
@@ -33,9 +37,12 @@
       var bounds = rail.getBoundingClientRect();
       var figure = card.querySelector('.paper-image').getBoundingClientRect();
       var cardBounds = card.getBoundingClientRect();
-      var width = Math.min(280, bounds.width - 16);
+      // 320 rather than 280: at 280 the longest titles take a third line, and
+      // every figure has to reserve room for that line whether it uses it or
+      // not. Wider wraps them to two and the rails get shorter for it.
+      var width = Math.min(320, bounds.width - 16);
       var centered = (figure.left + figure.right - width) / 2;
-      var left = Math.max(bounds.left + 8, Math.min(centered, bounds.right - width - 8));
+      var left = Math.max(bounds.left, Math.min(centered, bounds.right - width));
       card.style.setProperty('--caption-width', width + 'px');
       card.style.setProperty('--caption-left', (left - cardBounds.left) + 'px');
     }
@@ -154,20 +161,32 @@
   var canvas = document.querySelector('.connections');
   if (!atlas || !canvas) return;
   var group = canvas.querySelector('g');
+  var namespaceURI = 'http://www.w3.org/2000/svg';
+  var defs = document.createElementNS(namespaceURI, 'defs');
+  canvas.insertBefore(defs, canvas.firstChild);
   var points = Array.from(document.querySelectorAll('[data-connect]'));
   var namespace = 'http://www.w3.org/2000/svg';
-  var connections = points.map(function (point) {
+  var connections = points.map(function (point, index) {
     var target = document.getElementById(point.dataset.connect);
     var path = document.createElementNS(namespace, 'path');
     var dot = document.createElementNS(namespace, 'circle');
     path.setAttribute('class', 'connection');
     path.dataset.connection = point.dataset.connect;
+    var clip = document.createElementNS(namespace, 'clipPath');
+    var reveal = document.createElementNS(namespace, 'rect');
+    clip.setAttribute('id', 'connection-clip-' + point.dataset.connect);
+    reveal.setAttribute('class', 'connection-reveal');
+    reveal.style.setProperty('--connection-index', index);
+    clip.appendChild(reveal);
+    defs.appendChild(clip);
+    path.setAttribute('clip-path', 'url(#connection-clip-' + point.dataset.connect + ')');
     dot.setAttribute('class', 'connection-dot');
     dot.dataset.endpoint = point.dataset.connect;
+    dot.style.setProperty('--connection-index', index);
     dot.setAttribute('r', '4');
     group.appendChild(path);
     group.appendChild(dot);
-    return {point: point, target: target, title: target && target.querySelector('h2'), path: path, dot: dot};
+    return {point: point, target: target, title: target && target.querySelector('h2'), path: path, dot: dot, reveal: reveal};
   });
 
   // Measure the actual layout so connections follow type, viewport and image
@@ -189,9 +208,22 @@
       var x2 = title.left - bounds.left - 13;
       var y2 = title.top + title.height / 2 - bounds.top;
       var bend = Math.max(30, (x2 - x1) * .5);
-      path.setAttribute('d', 'M' + x1 + ',' + y1 + ' C' + (x1 + bend) + ',' + y1 + ' ' + (x2 - bend) + ',' + y2 + ' ' + x2 + ',' + y2);
+      // The curve comes from the drop between its ends, so a connector running
+      // nearly level has no shape of its own and draws as a rule. This sags the
+      // control points to give that one a belly, like a slack wire, and fades
+      // out as the drop grows - the steep connectors are already curves and
+      // want nothing added.
+      var sag = Math.max(0, 1 - Math.abs(y2 - y1) / 150) * 54;
+      path.setAttribute('d', 'M' + x1 + ',' + y1 + ' C' + (x1 + bend) + ',' + (y1 + sag) + ' ' + (x2 - bend) + ',' + (y2 + sag) + ' ' + x2 + ',' + y2);
       dot.setAttribute('cx', x2);
       dot.setAttribute('cy', y2);
+      // The wipe scales from the rect's own left edge, so the rect has to be
+      // the line's own box - padded out past the stroke and its round caps.
+      var box = path.getBBox();
+      connection.reveal.setAttribute('x', box.x - 12);
+      connection.reveal.setAttribute('y', box.y - 12);
+      connection.reveal.setAttribute('width', box.width + 24);
+      connection.reveal.setAttribute('height', box.height + 24);
     });
   }
 

@@ -17,7 +17,15 @@ h1, h2, p { margin: 0; }
 .skip-link:focus { clip-path: none; }
 .ambient { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: -1; }
 /* Fill the viewport without stretching; cover crops only the excess edges. */
-.ambient-image { position: absolute; inset: 0; background: url('../../assets/img/vision/future-medicine.png') center / cover no-repeat; opacity: .66; }
+.ambient-image { position: absolute; inset: 0; background: url('../../assets/img/research/future-medicine.png') center / cover no-repeat; opacity: .66; }
+/* `cover` on a 16:9 image in a 9:16 window keeps about a third of its width and
+   throws the rest away - the edge elements it is composed around end up out of
+   frame entirely. There is a portrait cut of the same artwork for that, and the
+   swap is keyed on orientation rather than width so a tall narrow desktop
+   window gets it too. Only the matching one is ever fetched. */
+@media (orientation: portrait) {
+  .ambient-image { background-image: url('../../assets/img/research/future-medicine-portrait.png'); }
+}
 .ambient::after { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, #fafbff2e, #f8faff8c 42%, #f5f8ff52); }
 .ambient-orb { position: absolute; width: 60vw; height: 65vh; border-radius: 50%; filter: blur(65px); opacity: .2; animation: aura-drift 17s ease-in-out infinite alternate; }
 .ambient-orb--blue { background: radial-gradient(ellipse, #94ddf4, transparent 65%); left: -20%; top: 10%; }
@@ -25,10 +33,10 @@ h1, h2, p { margin: 0; }
 .ambient-grid { position: absolute; width: 150%; height: 60%; left: -25%; bottom: -35%; background-image: linear-gradient(#92b6dc26 1px, transparent 1px), linear-gradient(90deg,#92b6dc26 1px,transparent 1px); background-size: 55px 55px; transform: perspective(700px) rotateX(58deg); mask-image: linear-gradient(transparent, #000); }
 .ambient-particles { position: absolute; inset: -5%; width: 110%; height: 110%; color: #a5bff2; opacity: .45; animation: particles-drift 20s ease-in-out infinite alternate; }
 .site-header, .site-footer { width: calc(100% - 64px); margin-inline: auto; display: flex; align-items: center; justify-content: space-between; }
-.home-link { color: #67769a; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; }
+.home-link { color: var(--ink); display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; }
 .home-link svg { width: 21px; height: 21px; }
 .home-link:hover { color: var(--accent-strong); background: #8092f610; }
-.motion-toggle { width: 32px; height: 32px; padding: 6px; display: grid; place-items: center; border: 1px solid #a6b9db66; border-radius: 50%; background: #fff5; cursor: pointer; }
+.motion-toggle { width: 32px; height: 32px; padding: 6px; display: grid; place-items: center; border: none; background: none; cursor: pointer; }
 .motion-toggle svg { width: 18px; height: 18px; }
 .motion-toggle .play-symbol { display: none; }
 .motion-toggle[aria-pressed='true'] .play-symbol { display: block; }
@@ -42,7 +50,15 @@ main { min-height: 0; display: grid; grid-template-rows: minmax(0,1fr); }
 .connection.is-active { stroke-width: 1.9; }
 .connection-dot { fill: var(--accent-strong); }
 .cell-world { position: relative; min-width: 0; min-height: 0; }
-.cell-art { position: absolute; width: min(632px,66.4vh); max-width: none; right: -15px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+/* The cell is placed with `translate`, not with `transform`, and the two
+   are not interchangeable here: the entry animation scales the cell, and a
+   keyframe setting `transform` replaces whatever `transform` was positioning
+   it with. Every breakpoint centres it differently - one axis on a wide
+   screen, both in portrait - so a keyframe could only ever restate one of
+   them, and the others would sit wrong for the length of the entry and then
+   jump into place. Positioning on `translate` and animating on `transform`
+   keeps the two from overwriting each other at all. */
+.cell-art { position: absolute; width: min(632px,66.4vh); max-width: none; right: -15px; top: 50%; translate: 0 -50%; pointer-events: none; }
 .protein-ngl { position: absolute; left: 57.55%; top: 21.68%; width: 27.44%; height: 21.68%; pointer-events: none; opacity: 0; }
 .protein-ngl[data-renderer="ngl"] { opacity: 1; }
 .protein-ngl canvas, .molecules-ngl canvas { display: block; }
@@ -51,13 +67,35 @@ main { min-height: 0; display: grid; grid-template-rows: minmax(0,1fr); }
 .cell-processes { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .cell-motion { position: relative; animation: cell-drift 7s ease-in-out infinite; }
 .cell-art img { width: 100%; height: auto; filter: drop-shadow(0 0 24px #91b9ef28); }
-.cell-orbit { position: absolute; width: min(632px,66.4vh); aspect-ratio: 1; top: 50%; right: -32px; transform: translateY(-50%); border: 1px solid #91b4da22; border-radius: 50%; }
-.cell-orbit::before { content: ''; position: absolute; inset: -18px; border: 1px dashed #93b5df40; border-radius: 50%; animation: orbit 90s linear infinite; }
+.cell-orbit { position: absolute; width: min(632px,66.4vh); aspect-ratio: 1; top: 50%; right: -32px; translate: 0 -50%; }
+/* The two rings turn against each other. The inner one is drawn on ::after
+   rather than on .cell-orbit itself so that its rotation stays its own - put on
+   the box, it would carry the outer ring around with it and change that ring's
+   speed as well. Its dashes are the thinner of the two, and they are what make
+   the counter-rotation legible: a ring of unbroken colour shows nothing at all
+   when it turns. Dashing it also spends about half the ink a solid stroke did,
+   so the colour comes up a step to keep the ring reading as faintly as before,
+   still under the outer ring's. */
+.cell-orbit::after { content: ''; position: absolute; inset: 0; border: 1px dashed #91b4da33; border-radius: 50%; animation: orbit-reverse 120s linear infinite; }
+.cell-orbit::before { content: ''; position: absolute; inset: -18px; border: 2px dashed #93b5df40; border-radius: 50%; animation: orbit 90s linear infinite; }
 .cell-point { position: absolute; z-index: 2; width: 44px; height: 44px; transform: translate(-50%,-50%); border-radius: 50%; pointer-events: auto; }
 .cell-point--proteins { left: 71.3%; top: 31.7%; }
 .cell-point--interactions { left: 72%; top: 55%; }
-.cell-point--molecules { left: 72%; top: 75%; }
-.research-groups { min-width: 0; min-height: 0; display: grid; grid-template-rows: repeat(3,minmax(0,1fr)); gap: 8px; padding: 12px 0 0; }
+.cell-point--molecules { left: 76%; top: 82%; }
+/* The three fields are equal rows of a grid that fills the viewport, so `gap`
+   buys nothing - whatever it gives up, the rows take back. Pulling the fields
+   together means shrinking the whole block and leaving the slack at the top and
+   bottom of the page, which is what the symmetric padding does.
+
+   How much to take is not a taste question, it is arithmetic. A row works out
+   to (100dvh - 108px - 2 x squeeze) / 3, and the rail inside it to two pixels
+   less; a rail wants to be exactly its figure plus the 69px a three-line
+   caption needs under it, which at the figure's 144px ceiling is 253px. Solving
+   the two for the squeeze gives (100dvh - 873px) / 2, so the rail lands on 253
+   at every height tall enough to allow it and the card ends where its longest
+   caption does rather than running on past it. Below 873px there is no slack to
+   take, the squeeze floors at zero, and the figures give way instead. */
+.research-groups { --field-squeeze: max(0px, calc((100dvh - 873px) / 2)); min-width: 0; min-height: 0; display: grid; grid-template-rows: repeat(3,minmax(0,1fr)); gap: 8px; padding: calc(12px + var(--field-squeeze)) 0 var(--field-squeeze) 28px; }
 .research-group { position: relative; min-height: 0; min-width: 0; display: flex; flex-direction: column; }
 .group-heading { position: relative; z-index: 2; flex: 0 0 30px; display: flex; align-items: flex-start; }
 .group-name h2 { font-size: 14px; font-weight: 500; letter-spacing: .3px; color: #596b99; }
@@ -69,7 +107,7 @@ main { min-height: 0; display: grid; grid-template-rows: minmax(0,1fr); }
    first figure's left frame is cut off. The matching negative margins keep the
    figures the size and position they would have had, lined up with the heading,
    and scroll-padding keeps the room when a card snaps to the start edge. */
-.research-cards { --float-room: 28px; --edge-room: 20px; --gap: 28px; --figure-height: clamp(28px, calc(100cqh - 76px), 180px); container-type: size; flex: 1; min-height: 0; min-width: 0; display: flex; gap: var(--gap); overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; scrollbar-width: none; padding: calc(8px + var(--float-room)) var(--edge-room) 4px; margin-top: calc(-1 * var(--float-room)); margin-inline: calc(-1 * var(--edge-room)); scroll-padding-inline: var(--edge-room); }
+.research-cards { --float-room: 28px; --edge-room: 44px; --gap: 28px; --figure-height: clamp(22px, calc(100cqh - 69px), 144px); container-type: size; flex: 1; min-height: 0; min-width: 0; display: flex; gap: var(--gap); overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; scrollbar-width: none; padding: calc(8px + var(--float-room)) var(--edge-room) 4px; margin-top: calc(-1 * var(--float-room)); margin-inline: calc(-1 * var(--edge-room)); scroll-padding-inline: var(--edge-room); }
 .research-cards::-webkit-scrollbar { display: none; width: 0; height: 0; }
 .research-cards:focus-visible { outline: 1px solid var(--accent-strong); outline-offset: -1px; }
 /* Match the actual figure heights; natural aspect ratios determine widths. */
@@ -89,6 +127,7 @@ main { min-height: 0; display: grid; grid-template-rows: minmax(0,1fr); }
 @keyframes particles-drift { to { transform: translate3d(1%,-4%,0); opacity: .2; } }
 @keyframes signal-flow { to { stroke-dashoffset: -150; } }
 @keyframes orbit { to { transform: rotate(360deg); } }
+@keyframes orbit-reverse { to { transform: rotate(-360deg); } }
 @keyframes holo-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 @media (max-height: 700px) and (min-width: 1001px) {
   body { grid-template-rows: 44px minmax(0,1fr) 16px; }
@@ -109,18 +148,44 @@ main { min-height: 0; display: grid; grid-template-rows: minmax(0,1fr); }
   .research-group.is-transitioning:not(.is-current) .group-heading { visibility: hidden; }
   .group-heading { padding: 0 16px; flex-basis: 40px; }
   .group-name h2 { font-size: 12px; }
-  /* Center the figure-and-caption block as a unit in single-field views.
-     Size queries use the group so short screens still fit without scrolling. */
-  .research-cards { --figure-height: clamp(28px, calc(100cqh - 116px), 180px); container-type: normal; flex: 0 0 calc(var(--figure-height) + 88px); padding: calc(10px + var(--float-room)) var(--edge-room) 4px; margin-inline: 0; scroll-snap-type: none; overscroll-behavior-x: contain; touch-action: pan-x pinch-zoom; }
+  /* Center the figure-and-caption block as a unit in single-field views, on the
+     same three-line reckoning the wide layout uses, but measured against the
+     group: container-type is normal here, so 100cqh is the group's height, not
+     the rail's. The rail wants its 38px of top padding, the figure, the 14px
+     to the caption, three lines of it and 4px under - figure + 111 - and the
+     group wants that plus the 40px heading, so the figure can have whatever is
+     left of cqh past 151, up to the same 144px ceiling as the wide layout.
+     --edge-room goes back to 20px because the margins that compensate for it
+     are off here, so every pixel of it is width taken from a narrow screen. */
+  .research-cards { --edge-room: 20px; --figure-height: clamp(22px, calc(100cqh - 151px), 144px); container-type: normal; flex: 0 0 calc(var(--figure-height) + 111px); padding: calc(10px + var(--float-room)) var(--edge-room) 4px; margin-inline: 0; scroll-snap-type: none; overscroll-behavior-x: contain; touch-action: pan-x pinch-zoom; }
+}
+/* Portrait is still a single-field view, but the atlas keeps its two columns
+   and puts a 528px cell in one barely a third that wide, so on a tablet held
+   upright the cell hangs off the side of the screen. Portrait stacks instead,
+   cell above and papers below, which is what the phone rules further down
+   already do - this just starts it where the columns stop fitting rather than
+   at a width that happens to be a phone. The cell is bounded by the viewport
+   on both axes so it cannot outgrow either. */
+@media (max-width: 1000px) and (orientation: portrait) {
+  .atlas { grid-template-columns: 1fr; grid-template-rows: minmax(0,1fr) minmax(0,1fr); gap: 18px; }
+  .cell-art, .cell-orbit { width: min(430px, 40vh, 76vw); right: auto; left: 50%; top: 50%; translate: -50% -50%; }
 }
 @media (max-width: 600px) {
   .atlas { grid-template-columns: 1fr; grid-template-rows: minmax(0,1fr) minmax(0,1fr); gap: 18px; }
-  .cell-art, .cell-orbit { width: min(312px,36.8vh); right: auto; left: 50%; top: 50%; transform: translate(-50%,-50%); }
+  .cell-art, .cell-orbit { width: min(312px,36.8vh); right: auto; left: 50%; top: 50%; translate: -50% -50%; }
   .group-heading { padding-left: 32px; flex-basis: 28px; }
   .research-cards { padding: calc(8px + var(--float-room)) var(--edge-room) 4px; }
   .ambient-image { opacity: .5; }
 }
-@media (hover: none) { .research-card:focus .paper-caption { opacity: 1; transform: none; } }
+/* Where there is no pointer there is nothing to reveal a title with, so the
+   titles are simply there. They are also held to the width of their own figure
+   rather than the 320px a pointer gets: a caption wider than the picture it
+   belongs to stops reading as that picture's caption. The explicit left and
+   width override the two custom properties the script sets for the hover case,
+   which it goes on setting harmlessly. */
+@media (hover: none) {
+  .paper-caption { opacity: 1; transform: none; left: 0; width: 100%; }
+}
 @media (max-height: 560px) and (max-width: 1000px) {
   body { grid-template-rows: 36px minmax(0,1fr) 14px; }
   main { grid-template-rows: 46px minmax(0,1fr); }
@@ -131,3 +196,7 @@ main { min-height: 0; display: grid; grid-template-rows: minmax(0,1fr); }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .motion-toggle { display: none; }
 }
+
+/* The clip each connection is drawn through. It is wiped open once on entry and
+   left open; scaling it needs its own box as the origin, not the viewBox's. */
+.connection-reveal { transform-box: fill-box; transform-origin: left center; }

@@ -15,15 +15,166 @@
 .research-is-loading { overflow: hidden; }
 .research-is-loading .research-loader { visibility: visible; opacity: 1; pointer-events: auto; }
 .research-loader::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(#aebfec12 1px, transparent 1px), linear-gradient(90deg, #aebfec12 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(ellipse, #000, transparent 65%); }
-.research-loader-core { width: 280px; filter: drop-shadow(0 0 24px #a2bbfc66); }
+/* The dial has to clear the diagonal of what it encloses, not just its width,
+   and the core is sized as a share of it so the two shrink together on a small
+   screen instead of the ring closing in on the artwork. */
+.research-loader-dial { position: relative; width: min(378px, 76vmin); aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.research-loader-ring { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); overflow: visible; }
+/* The width is in viewBox units, not pixels, and deliberately so: with
+   vector-effect: non-scaling-stroke Chrome measures the dash in screen space
+   too, which throws out the pathLength normalisation below - the arc comes
+   unanchored from the top of the ring and stops reading as a fill. The viewBox
+   is 100 units across a 378px dial, so .529 lands on the 2px the outer ring
+   behind the cell carries, and on a smaller dial the line thins with
+   everything else. */
+.research-loader-track, .research-loader-arc { fill: none; stroke-width: .529; }
+.research-loader-track { stroke: #dbe3f3; }
+/* One dash covering the whole ring, held back by the offset: the blue grows
+   from the top and travels one way round, the bar's fill bent into a circle
+   rather than a spinner chasing its tail. */
+.research-loader-arc { stroke: #839ced; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.research-loader-core { width: 66%; filter: drop-shadow(0 0 24px #a2bbfc66); }
 .research-loader-core canvas { width: 100%; display: block; }
 .research-is-loading .research-loader.is-ready .research-loader-core { animation: loader-arrive 1.8s cubic-bezier(.2,.7,.3,1) both; }
-.research-loader-label { margin: 20px 0 22px; color: #65779d; font: 500 11px/1.5 'Raleway', sans-serif; letter-spacing: 4px; text-transform: uppercase; }
-.research-loader-progress { width: 110px; height: 1px; background: #dbe3f3; overflow: hidden; }
-.research-loader-progress span { display: block; width: 100%; height: 100%; background: #839ced; transform-origin: left; transform: scaleX(.2); }
-.research-is-loading .research-loader.is-ready .research-loader-progress span { animation: loader-progress 1.8s ease-in-out infinite alternate; }
+.research-loader-label { margin: 18px 0 0; color: #65779d; font: 500 11px/1.5 'Raleway', sans-serif; letter-spacing: 4px; text-transform: uppercase; }
 .research-loader-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 @keyframes loader-arrive { from { transform: scale(.94); } 30%, to { transform: scale(1); } }
-@keyframes loader-progress { from { transform: translateX(-70%) scaleX(.3); } to { transform: translateX(70%) scaleX(.3); } }
-.research-is-loading .research-loader.page-ready .research-loader-progress span { animation: none; transform: scaleX(1); transition: transform .2s; }
+/* The ring reports progress rather than looping. It fills four fifths of the
+   way over two seconds and stops there, because the page is not in yet and a
+   ring that closed would be saying it was; `both` holds that last frame for
+   however long the rest of the loading takes. */
+.research-is-loading .research-loader.is-ready .research-loader-arc { animation: loader-fill 2s cubic-bezier(.33,.7,.3,1) both; }
+@keyframes loader-fill { from { stroke-dashoffset: 1; } to { stroke-dashoffset: .2; } }
+
+/* Everything is in: close the last fifth. This is its own animation rather
+   than a transition laid over the first, so its starting point is stated
+   outright instead of being whatever value the interrupted fill happened to
+   hold - which is the kind of thing that reads fine until it doesn't. Coming
+   after the fill rule, at equal specificity, it is the one that applies once
+   both classes are on. */
+.research-is-loading .research-loader.page-ready .research-loader-arc { animation: loader-close .3s ease-out both; }
+@keyframes loader-close { from { stroke-dashoffset: .2; } to { stroke-dashoffset: 0; } }
 @media (prefers-reduced-motion: reduce) { .research-loader *, .research-loader *::before, .research-loader *::after { animation: none !important; } }
+
+/* ================  Page entry  ================
+   The loader lifts on a page that is already laid out but not yet readable as a
+   picture, so it assembles itself in the order it is meant to be read: the
+   orbit is already turning, the cell arrives inside it, a line runs out of the
+   cell to each field, and that field's papers land last. Every stage is a plain
+   CSS animation keyed off --group-index and --card-index, which the markup
+   already carries for its own field transitions, so the stagger costs no
+   per-element JavaScript. research-entry.js removes the class when the last
+   card has landed, which hands the connections back to their resting dash flow
+   and leaves no entry state on the page. */
+
+/* The ring leads: it is the frame the cell arrives into, so it is already
+   there - and already turning, its rotation never having stopped - before
+   anything else resolves. */
+.research-entering .cell-orbit {
+  animation: entry-orbit 560ms ease-out both;
+}
+
+/* The cell proper, enlarging into the ring. .cell-art is centred with a
+   translate, so every frame has to carry it or the cell jumps to the top. */
+.research-entering .cell-art {
+  animation: entry-cell 820ms cubic-bezier(.2,.7,.3,1) both;
+  animation-delay: 240ms;
+}
+
+/* One line per field, reaching out of the cell. The line is drawn by opening
+   the clip research.js put on it rather than by any stroke trick, because the
+   stroke is the point: these lines are dashed and flowing, and they have to be
+   dashed and flowing while they arrive. The rect scales from its own left edge,
+   which is the end of the line nearest the cell, so the dashes appear out of
+   the cell and run outward. The clip stays after the entry, held fully open. */
+.research-entering .connection-reveal {
+  animation: entry-wipe 760ms cubic-bezier(.35,.6,.2,1) both;
+  animation-delay: calc(820ms + var(--connection-index, 0) * 200ms);
+}
+
+/* The endpoint dot is the line arriving, so it waits out the draw. */
+.research-entering .connection-dot {
+  animation: entry-fade 300ms ease-out both;
+  animation-delay: calc(1420ms + var(--connection-index, 0) * 200ms);
+}
+
+/* The field's name, picked up by the line that just reached it. */
+.research-entering .group-heading {
+  animation: entry-heading 520ms cubic-bezier(.2,.7,.3,1) both;
+  animation-delay: calc(1360ms + var(--group-index, 0) * 200ms);
+}
+
+/* Then its papers, left to right - and the fade goes on the figure itself, not
+   on the card around it. The figures carry mix-blend-mode, which blends them
+   into the artwork behind the page, and a blend only reaches as far as its
+   nearest stacking context. Giving the card an opacity - or a transform, which
+   does it just as surely - makes one, sealing the figures off from the page for
+   as long as the entry runs; the blend would then switch on at the instant the
+   entry ended and every image would change tone at once. Animating the image's
+   own opacity, a property it already carries at rest, leaves every stacking
+   context exactly as the finished page has it, so the figures are blended from
+   the first frame to the last. */
+.research-entering .paper-image img {
+  animation: entry-figure 520ms cubic-bezier(.2,.7,.3,1) both;
+  animation-delay: calc(1560ms + var(--group-index, 0) * 200ms + var(--card-index, 0) * 80ms);
+}
+
+/* Where there is no pointer the titles are not revealed by hovering, they are
+   simply part of the picture - so they have to arrive as part of it too, on the
+   same beat as the figure they name rather than being there before it. The
+   delay is the figure's, to the millisecond; with a pointer this rule is not
+   needed, because there the caption is still waiting on a hover that cannot
+   come until the entry is over. */
+@media (hover: none) {
+  .research-entering .paper-caption {
+    animation: entry-fade 520ms ease-out both;
+    animation-delay: calc(1560ms + var(--group-index, 0) * 200ms + var(--card-index, 0) * 80ms);
+  }
+}
+
+/* A pointer already resting where a figure is about to appear would otherwise
+   pop that figure's title up in the middle of the entry - before the figure it
+   belongs to has arrived, and before the script has had a mouseenter to measure
+   and place it with, so it would come up against the card's left edge rather
+   than centred. Taking the cards out of hit-testing for the length of the entry
+   means the first hover the page reacts to is a real one, made after the page
+   has finished assembling. pointer-events makes no stacking context, so the
+   figures' blend is untouched by it. */
+.research-entering .research-card { pointer-events: none; }
+
+/* Its frame and glow, which sit on a pseudo-element of their own and so can
+   fade without enclosing anything. */
+.research-entering .paper-image::before {
+  animation: entry-fade 520ms ease-out both;
+  animation-delay: calc(1560ms + var(--group-index, 0) * 200ms + var(--card-index, 0) * 80ms);
+}
+
+@keyframes entry-orbit { from { opacity: 0; } to { opacity: 1; } }
+/* Scale only. The cell's own placement lives on the `translate` property, so
+   nothing here has to know how this breakpoint centres it. */
+@keyframes entry-cell {
+  from { opacity: 0; transform: scale(.88); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes entry-wipe { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes entry-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes entry-heading {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: none; }
+}
+/* .82 is the resting opacity of a figure, not 1 - it is part of how they sit
+   in the page, so the fade has to land on it rather than overshoot to full. */
+@keyframes entry-figure { from { opacity: 0; } to { opacity: .82; } }
+
+/* Nothing here carries meaning that the finished page does not also carry, so
+   when motion is unwelcome the page simply arrives. */
+@media (prefers-reduced-motion: reduce) {
+  .research-entering .cell-orbit,
+  .research-entering .cell-art,
+  .research-entering .connection-reveal,
+  .research-entering .connection-dot,
+  .research-entering .group-heading,
+  .research-entering .paper-image img,
+  .research-entering .paper-image::before,
+  .research-entering .paper-caption { animation: none !important; }
+}

@@ -1,7 +1,7 @@
 ---
 layout: null
 title: Research vision
-permalink: /vision/
+permalink: /research/
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -14,19 +14,19 @@ permalink: /vision/
   <!-- The share card (KakaoTalk, Slack, X) reads these: the name on top, the
        page on the line under it, and one flattened cell as the thumbnail. The
        source artwork is transparent, which a card would fill with black, so
-       og-vision.png is the same cell composited onto the page background. -->
+       og-research.png is the same cell composited onto the page background. -->
   <meta property="og:site_name" content="{{ site.data.main_info.name }}">
   <meta property="og:title" content="{{ site.data.main_info.name }}">
   <meta property="og:description" content="{{ page.title }}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
-  <meta property="og:image" content="{{ '/assets/img/vision/og-vision.png' | absolute_url }}">
+  <meta property="og:image" content="{{ '/assets/img/research/og-research.png' | absolute_url }}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="A cutaway cell with proteins, a drug-bound pocket and small molecules">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="{{ '/libs/icon.png' | relative_url }}">
-  <link rel="preload" as="image" href="{{ '/assets/img/vision/loader-protein-pocket.png' | relative_url }}">
+  <link rel="preload" as="image" href="{{ '/assets/img/research/loader-protein-pocket.png' | relative_url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -54,15 +54,15 @@ permalink: /vision/
   </div>
 
   <header class="site-header">
-    <a class="home-link" href="{{ '/' | relative_url }}" aria-label="Back to Seonghyun Park's homepage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7M5 9v11h5v-7h4v7h5V9"/></svg></a>
-    <button class="motion-toggle" type="button" aria-label="Pause motion" aria-pressed="false"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><g class="pause-symbol"><path d="M7 5v10M13 5v10"/></g><path class="play-symbol" d="m7 4 9 6-9 6Z"/></svg></button>
+    <a class="home-link" href="{{ '/' | relative_url }}" aria-label="Back to Seonghyun Park's homepage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7M5 9v11h5v-7h4v7h5V9"/></svg></a>
+    <button class="motion-toggle" type="button" aria-label="Pause motion" aria-pressed="false"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><g class="pause-symbol"><path d="M7 5v10M13 5v10"/></g><path class="play-symbol" d="m7 4 9 6-9 6Z"/></svg></button>
   </header>
 
   <main>
-    <h1 class="visually-hidden">{{ site.data.vision.title }}</h1>
+    <h1 class="visually-hidden">{{ site.data.research.title }}</h1>
 
     <nav class="research-switch" aria-label="Research field">
-      {% for group in site.data.vision.groups %}<button type="button" data-field="{{ group.id }}" aria-controls="{{ group.id }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">{{ group.name }} ({{ group.papers | size }})</button>{% endfor %}
+      {% for group in site.data.research.groups %}<button type="button" data-field="{{ group.id }}" aria-controls="{{ group.id }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">{{ group.name }} ({{ group.papers | size }})</button>{% endfor %}
     </nav>
 
     <div class="atlas" id="research-map">
@@ -71,8 +71,8 @@ permalink: /vision/
         <div class="cell-orbit" aria-hidden="true"></div>
         <div class="cell-art">
           <div class="cell-motion">
-            <img class="cell-base" draggable="false" src="{{ '/assets/img/vision/cell-activities.png' | relative_url }}" data-motion-src="{{ '/assets/img/vision/cell-motion-golgi.png' | relative_url }}" alt="Cutaway cell with protein folding in the upper cytoplasm, drug binding to a protein pocket in the middle, and small molecules dispersed below." width="1312" height="1199" fetchpriority="high">
-            <div class="protein-ngl" data-structure="{{ '/assets/img/vision/chignolin-1UAO.pdb' | relative_url }}" data-motion="{{ '/assets/img/vision/chignolin-motion.json' | relative_url }}" aria-hidden="true"></div>
+            <img class="cell-base" draggable="false" src="{{ '/assets/img/research/cell-activities.png' | relative_url }}" data-motion-src="{{ '/assets/img/research/cell-motion-golgi.png' | relative_url }}" alt="Cutaway cell with protein folding in the upper cytoplasm, drug binding to a protein pocket in the middle, and small molecules dispersed below." width="1312" height="1199" fetchpriority="high">
+            <div class="protein-ngl" data-structure="{{ '/assets/img/research/chignolin-1UAO.pdb' | relative_url }}" data-motion="{{ '/assets/img/research/chignolin-motion.json' | relative_url }}" aria-hidden="true"></div>
             <div class="molecules-ngl" aria-hidden="true"></div>
             <canvas class="cell-processes" width="1312" height="1199" aria-hidden="true"></canvas>
             <a class="cell-point cell-point--proteins" data-connect="proteins" href="#proteins" aria-label="Explore protein folding inside the cell"></a>
@@ -83,7 +83,7 @@ permalink: /vision/
       </aside>
 
       <div class="research-groups">
-        {% for group in site.data.vision.groups %}
+        {% for group in site.data.research.groups %}
         <section class="research-group research-group--{{ group.id }}{% if forloop.first %} is-current{% endif %}" id="{{ group.id }}" aria-labelledby="heading-{{ group.id }}" style="--group-index: {{ forloop.index0 }}">
           <header class="group-heading">
             <div class="group-name"><h2 id="heading-{{ group.id }}">{{ group.name }} <span class="group-count">({{ group.papers | size }})</span></h2></div>
