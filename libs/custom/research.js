@@ -39,8 +39,11 @@
       var cardBounds = card.getBoundingClientRect();
       // 320 rather than 280: at 280 the longest titles take a third line, and
       // every figure has to reserve room for that line whether it uses it or
-      // not. Wider wraps them to two and the rails get shorter for it.
-      var width = Math.min(320, bounds.width - 16);
+      // not. Wider wraps them to two and the rails get shorter for it. The
+      // title's type grows with the window past 1440 x 900 (--u in
+      // research.css), and the measure grows with it so it still wraps to two.
+      var scale = parseFloat(getComputedStyle(card.querySelector('.paper-title')).fontSize) / 13 || 1;
+      var width = Math.min(320 * scale, bounds.width - 16);
       var centered = (figure.left + figure.right - width) / 2;
       var left = Math.max(bounds.left, Math.min(centered, bounds.right - width));
       card.style.setProperty('--caption-width', width + 'px');

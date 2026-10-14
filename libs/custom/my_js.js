@@ -719,3 +719,13 @@ $(document).ready(function() {
   init();
 
 });
+
+// The address is published as "user [at] host [dot] tld" so it never sits in
+// the page as a scrapeable mailto; it is put together only when clicked.
+$(function () {
+  $('.ping-mail').on('click', function (event) {
+    event.preventDefault();
+    var address = this.dataset.email.replace(/\s*\[at\]\s*/g, '@').replace(/\s*\[dot\]\s*/g, '.');
+    window.location.href = 'mailto:' + address;
+  });
+});

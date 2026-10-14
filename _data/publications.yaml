@@ -18,7 +18,7 @@ papers:
     paper_pdf: "/assets/publications/_preprint_CoDE.pdf"
     page: "https://huggingface.co/spaces/hyunnnnnnnn/drug-design-viewer"
     thumbnail: "/assets/img/publications/_preprint_CoDE.png"
-    # arxiv: "https://arxiv.org/abs/"
+    arxiv: "https://arxiv.org/abs/2610.14862"
     code: "https://github.com/seonghyun26/CoDE"
     selected: y
 

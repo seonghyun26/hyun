@@ -1,4 +1,11 @@
-:root { --ink: #303e60; --accent: #8092f6; --accent-strong: #4761f2; --font: 'Raleway', sans-serif; color-scheme: light; }
+:root { --ink: #303e60; --accent: #8092f6; --accent-strong: #4761f2; --font: 'Raleway', sans-serif; color-scheme: light;
+  /* One "pixel" of the wide layout, grown with the window. Every size below was
+     tuned on a 1440 x 900 viewport, and on a bigger monitor the fixed caps left
+     the cell and the figures stranded in a sea of background. --u is 1px up to
+     that size and grows with whichever axis is tighter past it, so the layout
+     scales as one picture instead of each piece hitting its own ceiling. It
+     never drops below 1px: smaller screens keep the rules they were tuned for. */
+  --u: clamp(1px, min(calc(100vw / 1440), calc(100dvh / 900)), 2px); }
 * { box-sizing: border-box; }
 html, body { width: 100%; height: 100%; overflow: hidden; overflow: clip; }
 body { margin: 0; height: 100svh; height: 100dvh; display: grid; grid-template-rows: 60px minmax(0,1fr) 20px; background: #f1f5fc; color: var(--ink); font: 14px/1.6 var(--font); -webkit-font-smoothing: antialiased; }
@@ -44,7 +51,7 @@ h1, h2, p { margin: 0; }
 .motion-paused *, .motion-paused *::before, .motion-paused *::after { animation-play-state: paused !important; }
 main { min-height: 0; display: grid; grid-template-rows: minmax(0,1fr); }
 .research-switch { display: none; }
-.atlas { position: relative; min-height: 0; display: grid; grid-template-columns: 26.4% minmax(0,1fr); gap: 42px; width: calc(100% - 42px); }
+.atlas { position: relative; min-height: 0; display: grid; grid-template-columns: 26.4% minmax(0,1fr); gap: calc(42 * var(--u)); width: calc(100% - 42px); }
 .connections { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 1; }
 .connection { fill: none; stroke: var(--accent-strong); stroke-width: 1.4; stroke-linecap: round; stroke-dasharray: 3 7; opacity: 1; animation: signal-flow 18s linear infinite; transition: stroke .3s, opacity .3s; }
 .connection.is-active { stroke-width: 1.9; }
@@ -58,7 +65,7 @@ main { min-height: 0; display: grid; grid-template-rows: minmax(0,1fr); }
    them, and the others would sit wrong for the length of the entry and then
    jump into place. Positioning on `translate` and animating on `transform`
    keeps the two from overwriting each other at all. */
-.cell-art { position: absolute; width: min(632px,66.4vh); max-width: none; right: -15px; top: 50%; translate: 0 -50%; pointer-events: none; }
+.cell-art { position: absolute; width: min(calc(632 * var(--u)),66.4vh); max-width: none; right: -15px; top: 50%; translate: 0 -50%; pointer-events: none; }
 .protein-ngl { position: absolute; left: 57.55%; top: 21.68%; width: 27.44%; height: 21.68%; pointer-events: none; opacity: 0; }
 .protein-ngl[data-renderer="ngl"] { opacity: 1; }
 .protein-ngl canvas, .molecules-ngl canvas { display: block; }
@@ -67,7 +74,7 @@ main { min-height: 0; display: grid; grid-template-rows: minmax(0,1fr); }
 .cell-processes { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .cell-motion { position: relative; animation: cell-drift 7s ease-in-out infinite; }
 .cell-art img { width: 100%; height: auto; filter: drop-shadow(0 0 24px #91b9ef28); }
-.cell-orbit { position: absolute; width: min(632px,66.4vh); aspect-ratio: 1; top: 50%; right: -32px; translate: 0 -50%; }
+.cell-orbit { position: absolute; width: min(calc(632 * var(--u)),66.4vh); aspect-ratio: 1; top: 50%; right: -32px; translate: 0 -50%; }
 /* The two rings turn against each other. The inner one is drawn on ::after
    rather than on .cell-orbit itself so that its rotation stays its own - put on
    the box, it would carry the outer ring around with it and change that ring's
@@ -77,7 +84,7 @@ main { min-height: 0; display: grid; grid-template-rows: minmax(0,1fr); }
    so the colour comes up a step to keep the ring reading as faintly as before,
    still under the outer ring's. */
 .cell-orbit::after { content: ''; position: absolute; inset: 0; border: 1px dashed #91b4da33; border-radius: 50%; animation: orbit-reverse 120s linear infinite; }
-.cell-orbit::before { content: ''; position: absolute; inset: -18px; border: 2px dashed #93b5df40; border-radius: 50%; animation: orbit 90s linear infinite; }
+.cell-orbit::before { content: ''; position: absolute; inset: calc(-18 * var(--u)); border: 2px dashed #93b5df40; border-radius: 50%; animation: orbit 90s linear infinite; }
 .cell-point { position: absolute; z-index: 2; width: 44px; height: 44px; transform: translate(-50%,-50%); border-radius: 50%; pointer-events: auto; }
 .cell-point--proteins { left: 71.3%; top: 31.7%; }
 .cell-point--interactions { left: 72%; top: 55%; }
@@ -94,11 +101,15 @@ main { min-height: 0; display: grid; grid-template-rows: minmax(0,1fr); }
    the two for the squeeze gives (100dvh - 873px) / 2, so the rail lands on 253
    at every height tall enough to allow it and the card ends where its longest
    caption does rather than running on past it. Below 873px there is no slack to
-   take, the squeeze floors at zero, and the figures give way instead. */
-.research-groups { --field-squeeze: max(0px, calc((100dvh - 873px) / 2)); min-width: 0; min-height: 0; display: grid; grid-template-rows: repeat(3,minmax(0,1fr)); gap: 8px; padding: calc(12px + var(--field-squeeze)) 0 var(--field-squeeze) 28px; }
+   take, the squeeze floors at zero, and the figures give way instead.
+
+   On a bigger screen the ceiling, the caption and the 30px heading all grow
+   with --u, to 144u, 69u and 30u, and the same solve gives
+   (100dvh - 144px - 729u) / 2, which is the 873 above again at u = 1px. */
+.research-groups { --field-squeeze: max(0px, calc((100dvh - 144px - 729 * var(--u)) / 2)); min-width: 0; min-height: 0; display: grid; grid-template-rows: repeat(3,minmax(0,1fr)); gap: 8px; padding: calc(12px + var(--field-squeeze)) 0 var(--field-squeeze) 28px; }
 .research-group { position: relative; min-height: 0; min-width: 0; display: flex; flex-direction: column; }
-.group-heading { position: relative; z-index: 2; flex: 0 0 30px; display: flex; align-items: flex-start; }
-.group-name h2 { font-size: 14px; font-weight: 500; letter-spacing: .3px; color: #596b99; }
+.group-heading { position: relative; z-index: 2; flex: 0 0 calc(30 * var(--u)); display: flex; align-items: flex-start; }
+.group-name h2 { font-size: calc(14 * var(--u)); font-weight: 500; letter-spacing: .3px; color: #596b99; }
 .group-count { color: #8a96b8; font-size: .88em; font-variant-numeric: tabular-nums; }
 /* Extend the scroll viewport past the figures on every side - the rail scrolls,
    so it clips whatever leaves it, and a figure's frame sits 1px outside the
@@ -107,7 +118,7 @@ main { min-height: 0; display: grid; grid-template-rows: minmax(0,1fr); }
    first figure's left frame is cut off. The matching negative margins keep the
    figures the size and position they would have had, lined up with the heading,
    and scroll-padding keeps the room when a card snaps to the start edge. */
-.research-cards { --float-room: 28px; --edge-room: 44px; --gap: 28px; --figure-height: clamp(22px, calc(100cqh - 69px), 144px); container-type: size; flex: 1; min-height: 0; min-width: 0; display: flex; gap: var(--gap); overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; scrollbar-width: none; padding: calc(8px + var(--float-room)) var(--edge-room) 4px; margin-top: calc(-1 * var(--float-room)); margin-inline: calc(-1 * var(--edge-room)); scroll-padding-inline: var(--edge-room); }
+.research-cards { --float-room: 28px; --edge-room: 44px; --gap: calc(28 * var(--u)); --figure-height: clamp(22px, calc(100cqh - 69 * var(--u)), calc(144 * var(--u))); container-type: size; flex: 1; min-height: 0; min-width: 0; display: flex; gap: var(--gap); overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; scrollbar-width: none; padding: calc(8px + var(--float-room)) var(--edge-room) 4px; margin-top: calc(-1 * var(--float-room)); margin-inline: calc(-1 * var(--edge-room)); scroll-padding-inline: var(--edge-room); }
 .research-cards::-webkit-scrollbar { display: none; width: 0; height: 0; }
 .research-cards:focus-visible { outline: 1px solid var(--accent-strong); outline-offset: -1px; }
 /* Match the actual figure heights; natural aspect ratios determine widths. */
@@ -116,8 +127,8 @@ main { min-height: 0; display: grid; grid-template-rows: minmax(0,1fr); }
 .paper-image { position: relative; height: 100%; width: calc(var(--figure-height) * var(--figure-ratio, 1.7)); flex: 0 0 auto; mix-blend-mode: multiply; animation: holo-float 5s ease-in-out infinite; animation-delay: calc(var(--card-index) * -.9s - var(--group-index) * 1.1s); }
 .paper-image::before { content: ''; position: absolute; inset: -1px; border: 1px solid #8092f62b; border-radius: 2px; box-shadow: 0 0 9px #8092f62b; pointer-events: none; transition: border-color .3s, box-shadow .3s; }
 .paper-image img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; opacity: .82; }
-.paper-caption { position: absolute; top: calc(var(--figure-height) + 10px); left: var(--caption-left, 0px); width: var(--caption-width, 240px); margin: 0; text-align: center; opacity: 0; color: #52659c; transform: translateY(4px); transition: opacity .25s, transform .25s; pointer-events: none; }
-.paper-title { font-size: 13px; line-height: 1.4; font-weight: 500; white-space: normal; overflow-wrap: anywhere; text-wrap: pretty; }
+.paper-caption { position: absolute; top: calc(var(--figure-height) + 10 * var(--u)); left: var(--caption-left, 0px); width: var(--caption-width, 240px); margin: 0; text-align: center; opacity: 0; color: #52659c; transform: translateY(4px); transition: opacity .25s, transform .25s; pointer-events: none; }
+.paper-title { font-size: calc(13 * var(--u)); line-height: 1.4; font-weight: 500; white-space: normal; overflow-wrap: anywhere; text-wrap: pretty; }
 .research-card:hover .holo-stage, .research-card:focus-visible .holo-stage { transform: translateY(-3px); }
 .research-card:hover .paper-image::before, .research-card:focus-visible .paper-image::before { border-color: #4761f2a6; box-shadow: 0 0 5px #4761f266, 0 0 16px #4761f24d; }
 .research-card:hover .paper-caption, .research-card:focus-visible .paper-caption { opacity: 1; transform: none; }
