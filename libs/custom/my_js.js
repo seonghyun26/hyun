@@ -131,6 +131,110 @@ $(document).ready(function() {
   // In particular, iOS can clip fixed descendants of a touch scroller.
   $('.side-project-modal').appendTo($body);
 
+  // Fade the clipped edges of the horizontal side-projects rail only when more
+  // cards lie off-screen in that direction, and drive its custom pill scrollbar.
+  var projectRail = document.querySelector('.side-projects-grid');
+  if (projectRail) {
+    var railBar = document.querySelector('.side-projects-scrollbar');
+    var railTrack = railBar && railBar.querySelector('.side-projects-scrollbar-track');
+    var railThumb = railBar && railBar.querySelector('.side-projects-scrollbar-thumb');
+
+    function updateProjectRailUI() {
+      var fade = parseFloat(getComputedStyle(projectRail).getPropertyValue('--rail-fade')) || 56;
+      var clientW = projectRail.clientWidth;
+      var scrollW = projectRail.scrollWidth;
+      var maxScroll = Math.max(0, scrollW - clientW);
+      var left = Math.max(0, Math.min(maxScroll, projectRail.scrollLeft));
+      var right = Math.max(0, maxScroll - left);
+      var edgeLeft = maxScroll <= 1 ? 1 : Math.max(0, 1 - left / fade);
+      var edgeRight = maxScroll <= 1 ? 1 : Math.max(0, 1 - right / fade);
+      projectRail.style.setProperty('--rail-edge-left', edgeLeft.toFixed(3));
+      projectRail.style.setProperty('--rail-edge-right', edgeRight.toFixed(3));
+
+      if (!railBar || !railTrack || !railThumb) return;
+      if (maxScroll <= 1) {
+        railBar.hidden = true;
+        return;
+      }
+      railBar.hidden = false;
+      var trackW = railTrack.clientWidth;
+      var thumbW = Math.max(36, Math.min(trackW, (clientW / scrollW) * trackW));
+      var travel = Math.max(0, trackW - thumbW);
+      var offset = maxScroll > 0 ? (left / maxScroll) * travel : 0;
+      railThumb.style.width = thumbW.toFixed(1) + 'px';
+      railThumb.style.transform = 'translateX(' + offset.toFixed(1) + 'px)';
+    }
+
+    var railHideTimer = 0;
+    function showProjectRailBar() {
+      if (!railBar || railBar.hidden) return;
+      railBar.classList.add('is-active');
+      clearTimeout(railHideTimer);
+      railHideTimer = setTimeout(function() {
+        railBar.classList.remove('is-active');
+      }, 900);
+    }
+
+    if (railBar && railTrack && railThumb) {
+      var dragState = null;
+
+      railBar.addEventListener('pointerdown', function(e) {
+        if (e.button !== 0 && e.pointerType === 'mouse') return;
+        var maxScroll = projectRail.scrollWidth - projectRail.clientWidth;
+        if (maxScroll <= 1) return;
+        var trackRect = railTrack.getBoundingClientRect();
+        var thumbRect = railThumb.getBoundingClientRect();
+        var thumbW = thumbRect.width;
+        var travel = Math.max(1, trackRect.width - thumbW);
+        var hitThumb = e.clientX >= thumbRect.left && e.clientX <= thumbRect.right;
+
+        if (!hitThumb) {
+          var clickX = e.clientX - trackRect.left - thumbW / 2;
+          var ratio = Math.max(0, Math.min(1, clickX / travel));
+          showProjectRailBar();
+          projectRail.scrollTo({ left: ratio * maxScroll, behavior: 'smooth' });
+          return;
+        }
+
+        e.preventDefault();
+        railBar.setPointerCapture(e.pointerId);
+        railBar.classList.add('is-dragging');
+        projectRail.classList.add('is-dragging');
+        dragState = {
+          pointerId: e.pointerId,
+          startX: e.clientX,
+          startScroll: projectRail.scrollLeft,
+          scale: maxScroll / travel
+        };
+      });
+
+      railBar.addEventListener('pointermove', function(e) {
+        if (!dragState || e.pointerId !== dragState.pointerId) return;
+        projectRail.scrollLeft = dragState.startScroll + (e.clientX - dragState.startX) * dragState.scale;
+      });
+
+      function endRailDrag(e) {
+        if (!dragState || e.pointerId !== dragState.pointerId) return;
+        dragState = null;
+        railBar.classList.remove('is-dragging');
+        projectRail.classList.remove('is-dragging');
+        showProjectRailBar();
+      }
+      railBar.addEventListener('pointerup', endRailDrag);
+      railBar.addEventListener('pointercancel', endRailDrag);
+    }
+
+    projectRail.addEventListener('scroll', function() {
+      updateProjectRailUI();
+      showProjectRailBar();
+    }, { passive: true });
+    if (window.ResizeObserver) {
+      new ResizeObserver(updateProjectRailUI).observe(projectRail);
+    }
+    $window.on('resize load', updateProjectRailUI);
+    updateProjectRailUI();
+  }
+
   // A phone hides and shows its toolbars as you scroll, so the height the page
   // is laid out at is not the height you can see. iOS reports the taller one for
   // 100vh, and has no dvh at all before 16.4, which leaves an overlay sized that

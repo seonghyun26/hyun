@@ -9,8 +9,7 @@
  * on the page. Use the same standard width for the page and project rail;
  * WebKit rules provide matching dimensions in browsers using that fallback.
  */
-html,
-.side-projects-grid {
+html {
   scrollbar-color: var(--scrollbar-thumb) transparent;
   scrollbar-width: thin;
 }
@@ -918,6 +917,30 @@ h4 {
 }
 
 /*  ================ Photo Gallery styling  ================ */
+.photos-instagram {
+  /* Skeleton gives ul.tab-nav a 2.5rem bottom margin; pull this caption back up
+     so it sits close under the tab divider without changing the other tabs. */
+  margin-top: -1.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.photos-instagram-link {
+  margin-left: 0.25em;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.photos-instagram-link:hover,
+.photos-instagram-link:focus-visible {
+  color: var(--accent-strong);
+}
+
+.photos-instagram-link .fa {
+  font-size: 1.2em;
+  vertical-align: -0.08em;
+}
+
 .photo-gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1187,16 +1210,114 @@ h4 {
 
 /*  ================ Side Projects styling  ================ */
 .side-projects-grid {
+  --rail-fade: 56px;
+  --rail-edge-left: 1;
+  --rail-edge-right: 1;
   display: flex;
   gap: 20px;
   overflow-x: auto;
   overflow-y: visible;
+  scrollbar-width: none;
   /* overflow-x:auto forces overflow-y to clip too, so pad generously to give the
-     hover shadow room; negative margins keep the layout position unchanged. */
+     hover shadow room; negative margins keep the layout position unchanged.
+     scroll-padding-inline matches the horizontal padding so card 1 snaps at
+     scrollLeft = 0 instead of 20px. */
   padding: 26px 20px 26px;
   margin: -26px -20px -14px;
-  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 20px;
+  scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
+  /* Fade cards smoothly at whichever edge still has cards scrolled out of view;
+     my_js.js drives --rail-edge-left/right from 1 (crisp) to 0 (faded). */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, var(--rail-edge-left)) 0,
+    #000 var(--rail-fade),
+    #000 calc(100% - var(--rail-fade)),
+    rgba(0, 0, 0, var(--rail-edge-right)) 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, var(--rail-edge-left)) 0,
+    #000 var(--rail-fade),
+    #000 calc(100% - var(--rail-fade)),
+    rgba(0, 0, 0, var(--rail-edge-right)) 100%
+  );
+}
+
+.side-projects-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.side-projects-grid.is-dragging {
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+/* Custom pill scrollbar below the card rail, outside the fade mask. Fixed box
+   height keeps hovering the track from shifting the section underneath.
+   Fades out when idle and reappears while scrolling, hovering, or dragging. */
+.side-projects-scrollbar {
+  display: flex;
+  align-items: center;
+  height: 18px;
+  margin-top: 2px;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.side-projects-scrollbar.is-active,
+.side-projects-scrollbar.is-dragging,
+.side-projects-grid:focus-within + .side-projects-scrollbar {
+  opacity: 1;
+  transition: opacity 0.15s ease;
+}
+
+@media (hover: hover) {
+  .side-projects-grid:hover + .side-projects-scrollbar,
+  .side-projects-scrollbar:hover {
+    opacity: 1;
+    transition: opacity 0.15s ease;
+  }
+}
+
+.side-projects-scrollbar[hidden] {
+  display: none;
+}
+
+.side-projects-scrollbar-track {
+  width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  transition: height 0.18s ease, background-color 0.18s ease;
+}
+
+.side-projects-scrollbar:hover .side-projects-scrollbar-track,
+.side-projects-scrollbar.is-dragging .side-projects-scrollbar-track {
+  height: 6px;
+  background: rgba(0, 0, 0, 0.09);
+}
+
+.side-projects-scrollbar-thumb {
+  height: 100%;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.22);
+  cursor: grab;
+  transition: background-color 0.18s ease;
+  will-change: transform;
+}
+
+.side-projects-scrollbar:hover .side-projects-scrollbar-thumb {
+  background: var(--accent);
+}
+
+.side-projects-scrollbar.is-dragging .side-projects-scrollbar-thumb {
+  background: var(--accent-strong);
+  cursor: grabbing;
 }
 
 .side-project-card {
@@ -1606,9 +1727,11 @@ body.has-overlay {
 
 @media (max-width: 549px) {
   .side-projects-grid {
+    --rail-fade: 36px;
     gap: 12px;
     padding: 6px 6px 10px;
     margin: -6px -6px 0;
+    scroll-padding-inline: 6px;
   }
 
   .side-project-card {

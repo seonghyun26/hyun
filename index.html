@@ -29,7 +29,7 @@ title: Home
   <h5 align="center" style="font-size: 1.8rem;">
     I will be at <a href="https://neurips.cc/Conferences/2026" target="_blank">NeurIPS 2026</a> in Sydney 🇦🇺 (12/6-13), <br/> check out <a href="https://huggingface.co/spaces/hyunnnnnnnn/drug-design-viewer" target="_blank">CoDE</a> and <a href="https://neurips.cc/virtual/2026/loc/sydney/poster/154961" target="_blank">Co-folding Model Representations for Small-Molecule Learning</a>!
     <br/>
-    Always happy to nerd out about molecules and proteins, ping me (<a class="ping-icon" href="{{ site.data.main_info.linkedin }}" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a> <a class="ping-icon ping-mail" href="#" data-email="{{ site.data.main_info.email }}" title="Email" aria-label="Email"><i class="fa fa-envelope" aria-hidden="true"></i></a>) and let's grab a coffee ☕
+    Always happy to chat about molecules and proteins (<a class="ping-icon" href="{{ site.data.main_info.linkedin }}" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a> <a class="ping-icon ping-mail" href="#" data-email="{{ site.data.main_info.email }}" title="Email" aria-label="Email"><i class="fa fa-envelope" aria-hidden="true"></i></a>)
   </h5>
 
   <h4>Bio</h4>
@@ -321,6 +321,11 @@ title: Home
       </div>
     {% endfor %}
   </div>
+  <div class="side-projects-scrollbar" aria-hidden="true" hidden>
+    <div class="side-projects-scrollbar-track">
+      <div class="side-projects-scrollbar-thumb"></div>
+    </div>
+  </div>
 </div>
 
 <!-- ========== RESUME ========== -->
@@ -394,46 +399,15 @@ title: Home
     <p style="margin-bottom: 10px;">I love music, coffee, and traveling!</p>
 
     <ul class="tab-nav">
-      <li><button type="button" class="button active" data-ref="#hobbies-music">🎶 Music</button></li>
-      <li><button type="button" class="button" data-ref="#hobbies-photos">📷 Photos</button></li>
+      <li><button type="button" class="button active" data-ref="#hobbies-photos">📷 Photos</button></li>
+      <li><button type="button" class="button" data-ref="#hobbies-music">🎶 Music</button></li>
     </ul>
 
     <div class="tab-content">
-      <div class="tab-pane active" id="hobbies-music">
-        <div class="hobby-grid">
-        {% for hobby in site.data.hobbies.hobbies %}
-          <div class="hobby-item">
-            {% if hobby.youtube %}
-              {% assign yt_url = hobby.youtube %}
-              {% if yt_url contains "youtu.be/" %}
-                {% assign yt_id = yt_url | split: "youtu.be/" | last | split: "?" | first %}
-              {% elsif yt_url contains "watch?v=" %}
-                {% assign yt_id = yt_url | split: "watch?v=" | last | split: "&" | first %}
-              {% elsif yt_url contains "/embed/" %}
-                {% assign yt_id = yt_url | split: "/embed/" | last | split: "?" | first %}
-              {% else %}
-                {% assign yt_id = yt_url %}
-              {% endif %}
-              <iframe width="500" height="281" loading="lazy" data-src="https://www.youtube.com/embed/{{ yt_id }}"
-                      title="{{ hobby.title | escape }}"
-                      referrerpolicy="strict-origin-when-cross-origin"
-                      allow="encrypted-media; picture-in-picture; fullscreen"
-                      frameborder="0"></iframe>
-            {% elsif hobby.image %}
-              <img src="{{ hobby.image | prepend: site.baseurl }}" alt="{{ hobby.title }}" />
-            {% elsif hobby.emoji %}
-              <div class="hobby-emoji" role="img" aria-label="{{ hobby.title | escape }}">{{ hobby.emoji }}</div>
-            {% endif %}
-            <div class="hobby-info">
-              <p class="title"><b>{{ hobby.title }}</b></p>
-              {% if hobby.description %}<p>{{ hobby.description }}</p>{% endif %}
-            </div>
-          </div>
-        {% endfor %}
-        </div>
-      </div>
-
-      <div class="tab-pane" id="hobbies-photos">
+      <div class="tab-pane active" id="hobbies-photos">
+        {% if site.data.photos.instagram %}
+          <p class="photos-instagram">More Photos here! <a class="photos-instagram-link" href="{{ site.data.photos.instagram }}" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></p>
+        {% endif %}
         <!-- <p style="margin-bottom: 10px;">Taken by FUJIFILM X-T30 II and iPhone 12 Pro</p> -->
         {% if site.data.photos.photos.size > 0 %}
           <div class="photo-gallery">
@@ -496,6 +470,40 @@ title: Home
         {% else %}
           <p style="color: rgba(0,0,0,0.4);">Photos coming soon!</p>
         {% endif %}
+      </div>
+
+      <div class="tab-pane" id="hobbies-music">
+        <div class="hobby-grid">
+        {% for hobby in site.data.hobbies.hobbies %}
+          <div class="hobby-item">
+            {% if hobby.youtube %}
+              {% assign yt_url = hobby.youtube %}
+              {% if yt_url contains "youtu.be/" %}
+                {% assign yt_id = yt_url | split: "youtu.be/" | last | split: "?" | first %}
+              {% elsif yt_url contains "watch?v=" %}
+                {% assign yt_id = yt_url | split: "watch?v=" | last | split: "&" | first %}
+              {% elsif yt_url contains "/embed/" %}
+                {% assign yt_id = yt_url | split: "/embed/" | last | split: "?" | first %}
+              {% else %}
+                {% assign yt_id = yt_url %}
+              {% endif %}
+              <iframe width="500" height="281" loading="lazy" data-src="https://www.youtube.com/embed/{{ yt_id }}"
+                      title="{{ hobby.title | escape }}"
+                      referrerpolicy="strict-origin-when-cross-origin"
+                      allow="encrypted-media; picture-in-picture; fullscreen"
+                      frameborder="0"></iframe>
+            {% elsif hobby.image %}
+              <img src="{{ hobby.image | prepend: site.baseurl }}" alt="{{ hobby.title }}" />
+            {% elsif hobby.emoji %}
+              <div class="hobby-emoji" role="img" aria-label="{{ hobby.title | escape }}">{{ hobby.emoji }}</div>
+            {% endif %}
+            <div class="hobby-info">
+              <p class="title"><b>{{ hobby.title }}</b></p>
+              {% if hobby.description %}<p>{{ hobby.description }}</p>{% endif %}
+            </div>
+          </div>
+        {% endfor %}
+        </div>
       </div>
     </div>
 
